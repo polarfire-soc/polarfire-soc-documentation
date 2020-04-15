@@ -1,14 +1,30 @@
 # PolarFire SoC Memory Hierarchy
 
+This document provides a brief overview of the PolarFire SoC hardware features related to memory hierarchy and suggested uses of these features.
+
+Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the detailed description of PolarFire SoC.
+
 ## Overview
+PolarFire SoC uses a classic three level memory hierarchy including:
+- 32 Kbytes instruction and data  level 1 caches associated with each U54 application core
+- 16 Kbytes instruction cache and 8Kbytes Data Tightly Integrated Memory associated with the E51 monitor core
+- 2 Mbytes level 2 cache
+- external DDR memory
 
 ![Hierarchy](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-hierarchy.png?at=refs%2Fheads%2Ftemporary-images)
 
+The PolarFire SoC instruction caches can optionally be configured to be used as Instruction Tightly Integrated Memory (ITIM). ITIM is memory mapped to the address space, providing deterministic access to fast memory.
+Likewise, L2 cache memory can be configured as either Loosely Integrated Memory (LIM) providing deterministic access to L2 memory or as fast access scratchpad.
 
 ![Memory Map](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-full-memory-map.png?at=refs%2Fheads%2Ftemporary-images)
 
-## L1 Memory Use Cases
+Cached and non-cached access to external DDR memory can be done through 32-bit or 64-bit addresses through separate memory ranges.
+Non-cached DDR accesses can be done through a Write Combine Buffer (WCB) to improve performance by combinig multiple accesses into a single burst. 
 
+## L1 Memory Use Cases
+The L1 instruction cache memory attached to the U54 processor cores can be used as fast deterministic access Instruction Tighly Integrated Memory (ITIM) instead of cache memory. L1 memory is converted from cache to ITIM by writing to the relevant ITIM memory range associated with each U54 processor core. The ITIM memory can be returned to being used as L1 cache by writing a zero to the first byte above the top of the ITIM region.
+
+ITIM memory is intended to be used for time critical code such as interrupt service routines where fast deterministic operations are important.
 
 
 ## L2 Memory Use Cases
@@ -38,7 +54,7 @@ The L2 cache is a 16-way set associative cache. It is made up of 4 banks, each b
 
 ![Cache Structure](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-cache-structure.png?at=refs%2Fheads%2Ftemporary-images)
 
-Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the deatiled description of the L2 cache hardware.
+Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the detailed description of the L2 cache hardware.
 
 The address of the memory accessed through the cache is used to determine which bank and set combination will be used to store the 64 byte block acccessed from the backing memory. The backing memory is typically external DDR memory.The index of the way that will be used within the set is determined based on the current content and previous use of the various ways within the set. This means that a specific backing memory location can be stored in one of 16 possible ways within a set.
 

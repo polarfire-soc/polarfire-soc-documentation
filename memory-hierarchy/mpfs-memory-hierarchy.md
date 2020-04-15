@@ -5,7 +5,7 @@
 ![Hierarchy](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-hierarchy.png?at=refs%2Fheads%2Ftemporary-images)
 
 
-![Memory Map](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-Memory-Map.png?at=refs%2Fheads%2Ftemporary-images)
+![Memory Map](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-full-memory-map.png?at=refs%2Fheads%2Ftemporary-images)
 
 ## L1 Memory Use Cases
 

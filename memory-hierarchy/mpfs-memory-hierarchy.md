@@ -127,7 +127,7 @@ Cache ways enabled as cache using the WayEnable register can be further configur
 
 Once configured, you will see that WayMask registers are used to prevent eviction from a number of cache ways. All Waymask registers will have the same set of cache ways non-masked (bits set to zero). This means no master will be able to evict the content of these ways through cache mamagement. The initial content of these L2 memory ways will have been set by the configuration algorithm.
 
-The scratchpad configuration algorithm's general method is to use one master "S" to prevent eviction from the ways we want to use as scratchpad by other masters "M", have master "S" force these ways' content to be mapped to the Zero Device address range by writing to the Zero Device before preventing itself from effecting the content of these ways by unmasking its own access to the scratchpad way.
+The scratchpad configuration algorithm’s general method is to use one master, say Master S, to prevent eviction from the ways we want to use as scratchpad. To do this Master “S” forces the ways content (located in the cache way) to be mapped to the Zero Device address range by writing to the Zero Device. Master "S" then prevents itself from affecting the content of the cache way that is being mapped to the zero device by unmasking its own access to the cache way being used as a scratchpad.
 
 The algorithm for setting up scratchpad memory is detailed in the L2 Cache Controller section of the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide). You can also refer to the bare metal library's MPFS-HAL implementation for a working example.
 
@@ -157,66 +157,5 @@ L2 memory ways assigned to cache are not accessible through the memory map. Thes
 
 
 ![L2 Allocation to Memory Map](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-Memory-Map.png?at=refs%2Fheads%2Ftemporary-images)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

@@ -44,7 +44,7 @@ Scratchpad memory is made up of L2 memory blocks which are made accessible throu
 Pinned memory is a similar use case to scratchpad memory. It locks the content of specific DDR memory addresses into the L2 cache, preventing eviction of the content of these memory locations back to DDR memory.
 
 ### Master Affinity
-Master affinity is the ability to limit the eviction of data or code from the L2 cache to specific masters. This can be used to prevent some L2 masters activities from affecting the performance of other masters. It can also be used to allocate a lerger L2 cache to one or more masters than others. This feature is used for system performance tuning.
+Master affinity is the ability to limit the eviction of data or code from the L2 cache to specific masters. This can be used to prevent some L2 masters activities from affecting the performance of other masters. It can also be used to allocate a larger L2 cache to one or more masters than others. This feature is used for system performance tuning.
 
 
 ## L2 Memory Configuration
@@ -56,9 +56,9 @@ The L2 cache is a 16-way set associative cache. It is made up of 4 banks, each b
 
 Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the detailed description of the L2 cache hardware.
 
-The address of the memory accessed through the cache is used to determine which bank and set combination will be used to store the 64 byte block acccessed from the backing memory. The backing memory is typically external DDR memory.The index of the way that will be used within the set is determined based on the current content and previous use of the various ways within the set. This means that a specific backing memory location can be stored in one of 16 possible ways within a set.
+The address of the memory accessed through the cache is used to determine which bank and set combination will be used to store the 64 byte block accessed from the backing memory. The backing memory is typically external DDR memory. The index of the way that will be used within the set is determined based on the current content and previous use of the various ways within the set. This means that a specific backing memory location can be stored in one of 16 possible ways within a set.
 
-The L2 cache controller control registers can be used to add additonal constraints on which cache ways can be used. It can limit the number of ways available within a set or prevent some ways to be used by specifc L2 masters. These constraints are applied based on the index of cache way within a set. These constraints are applied across all sets and banks. As such, constraints are applied to all ways of the same index, i.e. 128Kbytes. The rest of this document refers to a specific way index across all sets and banks and not a single 64 byte way within a set when discussiong ways configuration.
+The L2 cache controller control registers can be used to add additional constraints on which cache ways can be used. It can limit the number of ways available within a set or prevent some ways to be used by specific L2 masters. These constraints are applied based on the index of cache way within a set. These constraints are applied across all sets and banks. As such, constraints are applied to all ways of the same index, i.e. 128Kbytes. The rest of this document refers to a specific way index across all sets and banks and not a single 64 byte way within a set when discussing ways configuration.
 
 
 ### Configuration Registers of Interest
@@ -109,7 +109,7 @@ Flush64 and Flush32 registers are available to flush the content of a specific p
 
 Flush64 takes a 64-bit address for the address of the memory location to flush out of the cache.
 
-Flush32 takes a 32-bit addess for the address of the memory location to flush out of the cache. The physical address flushed is that 32-bit value shifted left by 4 bits.
+Flush32 takes a 32-bit address for the address of the memory location to flush out of the cache. The physical address flushed is that 32-bit value shifted left by 4 bits.
 
 ### Configuration Mechanisms
 The L2 memory is organized into 16 cache ways. Each cache way is 128 Kbytes.
@@ -139,7 +139,7 @@ Set the value of the WayEnable to the number of ways you want enabled as cache m
 Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value.
 
 #### Scratchpad Memory
-Cache ways enabled as cache using the WayEnable register can be further configured to be accessble through the the Zero Device memory address range as a general purpose scratchpad memory by careful manipulation of the WayMask registers.
+Cache ways enabled as cache using the WayEnable register can be further configured to be accessible through the the Zero Device memory address range as a general purpose scratchpad memory by careful manipulation of the WayMask registers.
 
 Once configured, you will see that WayMask registers are used to prevent eviction from a number of cache ways. All WayMask registers will have the same set of cache ways non-masked (bits set to zero). This means no master will be able to evict the content of these ways through cache management. The initial content of these L2 memory ways will have been set by the configuration algorithm.
 
@@ -150,12 +150,12 @@ The algorithm for setting up scratchpad memory is detailed in the L2 Cache Contr
 
 ![Scratchpad](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-scratchpad.png?at=refs%2Fheads%2Ftemporary-images)
 
-Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value. Using different values for WayMask regiters allows fine-grained control over which L2 masters can evist from specific ways. This can be used for tuning system performance.
+Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value. Using different values for WayMask registers allows fine-grained control over which L2 masters can evist from specific ways. This can be used for tuning system performance.
 
 #### Master Affinity
 The WayMask control registers can be used to control an L2 master's affinity to specific cache ways. The examples above all assumed that all WayMask registers had the same value. We can partition the enabled cache ways between masters, allowing more cache for a set of masters than others based on system performance requirements or preventing performance interference from a system's task associated with a specific master.
 
-For example, we could reserve two ways to handle data shared between the FPGA fabric and one hart processing that data. We could also allow the DMA controller to evict from these same ways to populate buffers modified by the FPGA fabric. We could reserve 3 ways for one of the processor core's data and another 3 ways for its executable while leaving the remining ways to be shared by the remaining processor cores.
+For example, we could reserve two ways to handle data shared between the FPGA fabric and one hart processing that data. We could also allow the DMA controller to evict from these same ways to populate buffers modified by the FPGA fabric. We could reserve 3 ways for one of the processor core's data and another 3 ways for its executable while leaving the remaining ways to be shared by the remaining processor cores.
 
 ![Affinity](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-affinity.png?at=refs%2Fheads%2Ftemporary-images)
 

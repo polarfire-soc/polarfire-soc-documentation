@@ -34,7 +34,7 @@ The PolarFire SoC L2 memory can be configured for different use cases where the 
 L2 cache is on-chip memory providing fast access to copies of data and code stored in external DDR memory. The L2 cache increases system performance by decreasing the time required to access the content of recently used DDR external memory.
 
 ### Loosely Integrated Memory (LIM)
-Loosely Integrated Memory (LIM) is L2 memory accessed with a deterministic access time. LIM memory is not cacheable, meaning that the content of LIM memory will never be cached in processors' L1 cache.
+Loosely Integrated Memory (LIM) is L2 memory accessed with a deterministic access time. LIM memory is not cacheable, meaning that the content of LIM memory will never be cached in the processors' L1 cache.
 LIM memory is used where deterministic operations are more important than performance. It can also be used for simple bare metal software debug since the bulk of L2 memory (1920KiBytes) is available through the memory map coming out of reset.
 
 ### Scratchpad Memory

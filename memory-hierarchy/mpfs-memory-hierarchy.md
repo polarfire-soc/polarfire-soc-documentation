@@ -64,27 +64,27 @@ The L2 cache controller control registers can be used to add additional constrai
 ### Configuration Registers of Interest
 The L2 memory is configured through a small number of configuration registers that can be written by any processor core. Although any processor core can write these registers, by convention, only the E51 core will modify these registers during system startup to setup a consistent memory hierarchy configuration for all cores in the system.
 
-|  Address   |  Name       |  Description                                                                    |
-| ---------- | ----------- | ------------------------------------------------------------------------------- |
-| 0x02010000 | Config      | Read-only Information about the cache structure (banks, ways, sets, block size) |
-| 0x02010008 | WayEnable   | Index of the largest way which has been enabled. May only be increased.         |
-| 0x02010200 | Flush64     | Flush cache block, 64-bit address                                               |
-| 0x02010240 | Flush32     | Flush cache block, 32-bit address                                               |
-| 0x02010800 | WayMask0    | Platform DMA master way mask register                                           |
-| 0x02010808 | WayMask1    | FPGA fabric AXI4 port 0 master way mask register                                |
-| 0x02010810 | WayMask2    | FPGA fabric AXI4 port 1 master way mask register                                |
-| 0x02010818 | WayMask3    | FPGA fabric AXI4 port 2 master way mask register                                |
-| 0x02010820 | WayMask4    | FPGA fabric AXI4 port 3 master way mask register                                |
-| 0x02010828 | WayMask5    | E51 DCache MMIO master way mask register                                        |
-| 0x02010830 | WayMask6    | E51 ICache  master way mask register                                            |
-| 0x02010838 | WayMask7    | U54_1 DCache master way mask register                                           |
-| 0x02010840 | WayMask8    | U54_1 ICache  master way mask register                                          |
-| 0x02010848 | WayMask9    | U54_2 DCache master way mask register                                           |
-| 0x02010850 | WayMask10   | U54_2 ICache  master way mask register                                          |
-| 0x02010858 | WayMask11   | U54_3 DCache master way mask register                                           |
-| 0x02010860 | WayMask12   | U54_3 ICache  master way mask register                                          |
-| 0x02010868 | WayMask13   | U54_4 DCache master way mask register                                           |
-| 0x02010870 | WayMask14   | U54_4 ICache  master way mask register                                          |
+|  Address    |  Name       |  Description                                                                    |
+| ----------- | ----------- | ------------------------------------------------------------------------------- |
+| 0x0201_0000 | Config      | Read-only Information about the cache structure (banks, ways, sets, block size) |
+| 0x0201_0008 | WayEnable   | Index of the largest way which has been enabled. May only be increased.         |
+| 0x0201_0200 | Flush64     | Flush cache block, 64-bit address                                               |
+| 0x0201_0240 | Flush32     | Flush cache block, 32-bit address                                               |
+| 0x0201_0800 | WayMask0    | Platform DMA master way mask register                                           |
+| 0x0201_0808 | WayMask1    | FPGA fabric AXI4 port 0 master way mask register                                |
+| 0x0201_0810 | WayMask2    | FPGA fabric AXI4 port 1 master way mask register                                |
+| 0x0201_0818 | WayMask3    | FPGA fabric AXI4 port 2 master way mask register                                |
+| 0x0201_0820 | WayMask4    | FPGA fabric AXI4 port 3 master way mask register                                |
+| 0x0201_0828 | WayMask5    | E51 DCache MMIO master way mask register                                        |
+| 0x0201_0830 | WayMask6    | E51 ICache  master way mask register                                            |
+| 0x0201_0838 | WayMask7    | U54_1 DCache master way mask register                                           |
+| 0x0201_0840 | WayMask8    | U54_1 ICache  master way mask register                                          |
+| 0x0201_0848 | WayMask9    | U54_2 DCache master way mask register                                           |
+| 0x0201_0850 | WayMask10   | U54_2 ICache  master way mask register                                          |
+| 0x0201_0858 | WayMask11   | U54_3 DCache master way mask register                                           |
+| 0x0201_0860 | WayMask12   | U54_3 ICache  master way mask register                                          |
+| 0x0201_0868 | WayMask13   | U54_4 DCache master way mask register                                           |
+| 0x0201_0870 | WayMask14   | U54_4 ICache  master way mask register                                          |
 
 Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the complete register descriptions.
 
@@ -165,9 +165,9 @@ The L2 configuration use case presented above are not all mutually exclusive. Th
 #### Effect of L2 Cache Controller Configuration on the Memory Map
 Non-masked L2 memory ways can be accessed through the memory map.
 
-L2 memory ways allocated to LIM via the WayEnable register are accessible througn the 0x08000000-0x081FFFFF LIM address range. The LIM address range starts with 1920KiBytes of addressable memory coming out of reset. This size decreases in 128KiBytes increment as L2 memory ways are assigned to cacheable L2 memory through increasing the value of the WayEnable register.
+L2 memory ways allocated to LIM via the WayEnable register are accessible througn the 0x0800_0000-0x081F_FFFF LIM address range. The LIM address range starts with 1920KiBytes of addressable memory coming out of reset. This size decreases in 128KiBytes increment as L2 memory ways are assigned to cacheable L2 memory through increasing the value of the WayEnable register.
 
-L2 memory ways allocated to the scratchpad via manipulation of the WayMask registers are accessible through the 0x0A000000-0x0BFFFFFF Zero Device address range. The offset and layout of the L2 ways within the Zero Device address range is software controlled. The MPFS-HAL start-up code provided as part of the PolarFire SoC bare metal library. allocates scratchpad ways contiguously from the bottom of the Zero Device address range.
+L2 memory ways allocated to the scratchpad via manipulation of the WayMask registers are accessible through the 0x0A00_0000-0x0BFF_FFFF Zero Device address range. The offset and layout of the L2 ways within the Zero Device address range is software controlled. The MPFS-HAL start-up code provided as part of the PolarFire SoC bare metal library. allocates scratchpad ways contiguously from the bottom of the Zero Device address range.
 
 L2 memory ways assigned to cache are not accessible through the memory map. These cache ways are managed by the cache coherence engine. Their content is opaque to the software executing on the system.
 

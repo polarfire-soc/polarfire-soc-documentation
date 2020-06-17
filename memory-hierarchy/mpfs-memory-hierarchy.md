@@ -19,7 +19,7 @@ Likewise, L2 cache memory can be configured as either Loosely Integrated Memory 
 ![Memory Map](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-full-memory-map.png?at=refs%2Fheads%2Ftemporary-images)
 
 Cached and non-cached access to external DDR memory can be done through 32-bit or 64-bit addresses through separate memory ranges.
-Non-cached DDR accesses can be done through a Write Combine Buffer (WCB) to improve performance by combinig multiple accesses into a single burst. 
+Non-cached DDR accesses can be done through a Write Combine Buffer (WCB) to improve performance by combining multiple accesses into a single burst. 
 
 ## L1 Memory Use Cases
 The L1 instruction cache memory attached to the U54 processor cores can be used as fast deterministic access Instruction Tighly Integrated Memory (ITIM) instead of cache memory. L1 memory is converted from cache to ITIM by writing to the relevant ITIM memory range associated with each U54 processor core. The ITIM memory can be returned to being used as L1 cache by writing a zero to the first byte above the top of the ITIM region.
@@ -35,7 +35,7 @@ L2 cache is on-chip memory providing fast access to copies of data and code stor
 
 ### Loosely Integrated Memory (LIM)
 Loosely Integrated Memory (LIM) is L2 memory accessed with a deterministic access time. LIM memory is not cacheable, meaning that the content of LIM memory will never be cached in processors' L1 cache.
-LIM memory is used where determinic operations are more important than performance. It can also be used for simple bare metal software debug since the bulk of L2 memory (1920Kbytes) is available through the memory map coming out of reset.
+LIM memory is used where deterministic operations are more important than performance. It can also be used for simple bare metal software debug since the bulk of L2 memory (1920Kbytes) is available through the memory map coming out of reset.
 
 ### Scratchpad Memory
 Scratchpad memory is made up of L2 memory blocks which are made accessible through the Zero Device address range. Scratchpad memory is cacheable. It provides the best execution performances as it is made up of low latency on-chip memory.
@@ -58,7 +58,7 @@ Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](ht
 
 The address of the memory accessed through the cache is used to determine which bank and set combination will be used to store the 64 byte block acccessed from the backing memory. The backing memory is typically external DDR memory.The index of the way that will be used within the set is determined based on the current content and previous use of the various ways within the set. This means that a specific backing memory location can be stored in one of 16 possible ways within a set.
 
-The L2 cache controller control registers can be used to add additonal constraints on which cache ways can be used. It can limit the number of ways available within a set or prevent some ways to be used by specifc L2 masters. These constraints are applied based on the index of cache way within a set. These constraints are applied across all sets and banks. As such, constraints are applied to all ways of the same index, i.e. 128Kbytes. The rest of this document refers to a specific way index across all sets and banks and not a single 64 byte way witihin a set when discussiong ways configuration.
+The L2 cache controller control registers can be used to add additonal constraints on which cache ways can be used. It can limit the number of ways available within a set or prevent some ways to be used by specifc L2 masters. These constraints are applied based on the index of cache way within a set. These constraints are applied across all sets and banks. As such, constraints are applied to all ways of the same index, i.e. 128Kbytes. The rest of this document refers to a specific way index across all sets and banks and not a single 64 byte way within a set when discussiong ways configuration.
 
 
 ### Configuration Registers of Interest
@@ -86,7 +86,7 @@ The L2 memory is configured through a small number of configuration registers th
 | 0x02010868 | WayMask13   | U54_4 DCache master way mask register                                           |
 | 0x02010870 | WayMask14   | U54_4 ICache  master way mask register                                          |
 
-Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the complete registers description.
+Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the complete register descriptions.
 
 #### Way Enable Register
 This register controls how many cache ways are enabled as cache memory. It contains the index of the last enabled cache way. Cache ways not enabled are used as LIM memory.
@@ -118,7 +118,7 @@ The L2 memory is configured through the WayEnable register and 15 WayMask regist
 
 The WayEnable register controls the number of L2 memory ways that are enabled as cacheable memory for the L2 masters. It contains the index of last available way starting from zero. In other words, it is the number of enabled cache ways minus one. This number can only be increased as decreasing it would  remove available memory from the cache hierarchy and cause cache coherence to fail.
 
-The WayMask registers controls which L2 master can evict from specific ways' content. The content of cache ways is evicted as a result of cache content management or explit flushes through memory barrier instructions (e.g. fence.i) or writes to the Flush64/Flush32 of the L2 Cache Controller control registers
+The WayMask registers controls which L2 master can evict from specific ways' content. The content of cache ways is evicted as a result of cache content management or explicit flushes through memory barrier instructions (e.g. fence.i) or writes to the Flush64/Flush32 of the L2 Cache Controller control registers
 
 #### L2 Memory After Reset
 Coming out of reset there is only one cache way enabled. The remaining L2 memory is configured as Loosely Integrated Memory (LIM).
@@ -127,7 +127,7 @@ The WayEnable register is set to zero coming out of reset indicating that only o
 
 ![L2 Reset Configuration](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-reset.png?at=refs%2Fheads%2Ftemporary-images)
 
-Note: The _Waymasks Registers_ in the diagram above is the logical OR of all 15 Waymask registers. This diagram assumes that all WayMask registers contain the same value.
+Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value.
 
 #### L2 Memory Split Between Cache and LIM
 The most basic level of L2 cache configuration is partitioning the size of the L2 memory between cache and LIM usage. This is achieved by setting the value of the WayEnable register, leaving all bits in the WayMask registers set to one. This provides the ability to partition the L2 cache memory between cache and LIM with a granularity of 128Kbytes since each way is 128Kbytes long,
@@ -136,12 +136,12 @@ Set the value of the WayEnable to the number of ways you want enabled as cache m
 
 ![Cache LIM Partition](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-simple-split.png?at=refs%2Fheads%2Ftemporary-images)
 
-Note: The _Waymasks Registers_ in the diagram above is the logical OR of all 15 Waymask registers. This diagram assumes that all WayMask registers contain the same value.
+Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value.
 
 #### Scratchpad Memory
 Cache ways enabled as cache using the WayEnable register can be further configured to be accessble through the the Zero Device memory address range as a general purpose scratchpad memory by careful manipulation of the WayMask registers.
 
-Once configured, you will see that WayMask registers are used to prevent eviction from a number of cache ways. All Waymask registers will have the same set of cache ways non-masked (bits set to zero). This means no master will be able to evict the content of these ways through cache mamagement. The initial content of these L2 memory ways will have been set by the configuration algorithm.
+Once configured, you will see that WayMask registers are used to prevent eviction from a number of cache ways. All WayMask registers will have the same set of cache ways non-masked (bits set to zero). This means no master will be able to evict the content of these ways through cache management. The initial content of these L2 memory ways will have been set by the configuration algorithm.
 
 The scratchpad configuration algorithm’s general method is to use one master, say Master S, to prevent eviction from the ways we want to use as scratchpad. To do this Master “S” forces the ways content (located in the cache way) to be mapped to the Zero Device address range by writing to the Zero Device. Master "S" then prevents itself from affecting the content of the cache way that is being mapped to the zero device by unmasking its own access to the cache way being used as a scratchpad.
 
@@ -150,10 +150,10 @@ The algorithm for setting up scratchpad memory is detailed in the L2 Cache Contr
 
 ![Scratchpad](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-scratchpad.png?at=refs%2Fheads%2Ftemporary-images)
 
-Note: The _Waymasks Registers_ in the diagram above is the logical OR of all 15 Waymask registers. This diagram assumes that all WayMask registers contain the same value. Using different values for WayMAsk regiters allows fine-grained control over which L2 masters can evist from specific ways. This can be used for tuning system performance.
+Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value. Using different values for WayMask regiters allows fine-grained control over which L2 masters can evist from specific ways. This can be used for tuning system performance.
 
 #### Master Affinity
-The WayMask control registers can be used to control an L2 master's affinity to specific cache ways. The examples above all assumed that all Waymask registers had the same value. We can partition the enabled cache ways between masters, allowing more cache for a set of masters than others based on system performance requirements or preventing performance interference from a system's task associated with a specific master.
+The WayMask control registers can be used to control an L2 master's affinity to specific cache ways. The examples above all assumed that all WayMask registers had the same value. We can partition the enabled cache ways between masters, allowing more cache for a set of masters than others based on system performance requirements or preventing performance interference from a system's task associated with a specific master.
 
 For example, we could reserve two ways to handle data shared between the FPGA fabric and one hart processing that data. We could also allow the DMA controller to evict from these same ways to populate buffers modified by the FPGA fabric. We could reserve 3 ways for one of the processor core's data and another 3 ways for its executable while leaving the remining ways to be shared by the remaining processor cores.
 

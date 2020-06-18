@@ -94,6 +94,15 @@ curl flex gawk gdisk git gperf gmp-devel libmpc-dev libmpfr-dev ncurses-devel li
 libtool patchutils python screen texinfo unzip zlib1g-dev zlib-devel patch dtc
 openssl-devel wget vim-common
 ```
+### Polarfire SoC Yocto BSP for the HiFive Unleashed Expansion Board
+The Polarfire SoC Yocoto BSP builds the requried cross-compile toolchain and software to boot
+a Linux system. It includes drivers for Micrsemi PCIe / I2C, SPI, QSPI, CAN and GPIO peripherals.
+The build creates wic. gz file which is a compressed sector by sector copy of a bootable microSD card.
+The following software applications are copied to the SD card.
+ * FSBL (First Stage Boot loader)
+ * Opensbi and U-boot
+ * DTB (Device Tree Blob)
+ * A Linux kernel image
 
 ### Firmware Versions
 The following table contains links to the .stp file, .job file, schematic and the Linux SDK for each

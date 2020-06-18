@@ -58,7 +58,7 @@ and debug on the HiFive Unleashed Platform (MPFS-DEV-KIT).
 The Microsemi FlashPro programming system is a combination of Microsemi's FlashPro software and a
 hardware programmer. Together, they provide in-system programming (ISP) for all FPGA families. The
 required programming and debug software is integrated with the Libero SoC PolarFire software. This
-software is available as a standalone programmer for production programming. Visit [Microsemi's
+software is also available as a standalone programmer for production programming. Visit [Microsemi's
 FlashPro page](https://www.microsemi.com/product-directory/programming/4977-flashpro#software) 
 to download the standalone programmer (if needed).
 

@@ -71,10 +71,10 @@ to download the standalone programmer (if needed).
 The following table contains links to the .stp file, .job file, schematic and the Linux SDK for each
 release.
 
-| Revision | .stp | .job | MPFS-Linux-SDK | Schematic |
-| --- | --- | --- | --- | --- |
-| Initial release | [.stp](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244810) | [.job](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244809) | [Polarfire SoC Buildroot SDK](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) | [Schematic](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244811) |
-| Second release | [.stp Second Release](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1245017) | [.job Second Release](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1245018) | [Polarfire SoC Buildroot SDK](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) | [Schematic](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244811) |
+| Revision | .stp | .job | Schematic |
+| --- | --- | --- | --- |
+| Initial release | [.stp](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244810) | [.job](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244809) | [Schematic](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244811) |
+| Second release | [.stp Second Release](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1245017) | [.job Second Release](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1245018) | [Schematic](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244811) |
 
 ## Linux Build Systems
 The Linux image for the HiFive Unleashed Platform can be build using either the Buildroot or Yocto build systems. The table below contains Links to these build systems.

@@ -119,7 +119,7 @@ more information on MSEL.
 ![DIP Switch Setting](images/HiFive_Unleashed_Board_DIP-Switch_setting.png)
 
 3. Insert an SD-card programmed with the bootloader and Linux. See the Linux build instructions in the [top level README](../README.md) for details on creating the content of this SD card.
-4. 
+ 
 ![SD Card](images/HiFive_Unleashed_Board_SD_Card.png)
 
 4. If available, connect the board to a network switch. The board will run DHCP on boot and start an

@@ -87,7 +87,8 @@ The Linux image for the HiFive Unleashed Platform can be build using either the 
 ### Polarfire SoC Buildroot SDK for the HiFive Unleashed Expansion Board
 The Polarfire SoC Buildroot SDK is based on the SiFive freedom-u-sdk with modifications to the
 device tree to support the HiFive Unleashed Expansion board. It also includes drivers for Microsemi
-PCIe, I2C, SPI, MMUART, and GPIO peripherals. See the [Firmware Versions section](#firmware-versions) to download the Polarfire SoC Buildroot SDK. The build procedure is described in the [top level README](../README.md).
+PCIe, I2C, SPI, MMUART, and GPIO peripherals. See the build systems table above to download the Polarfire SoC Buildroot SDK.
+The build procedure is described in the Linux build system's README.
 
 Before building the Linux image, the following packages must be installed depending on the Linux
 distribution in your machine.
@@ -134,7 +135,7 @@ more information on MSEL.
 
 ![DIP Switch Setting](images/HiFive_Unleashed_Board_DIP-Switch_setting.png)
 
-3. Insert an SD-card programmed with the bootloader and Linux. See the Linux build instructions in the [top level README](../README.md) for details on creating the content of this SD card.
+3. Insert an SD-card programmed with the bootloader and Linux. See the Linux build instructions in the Builroot/Yocto top level README for details on creating the content of this SD card.
  
 ![SD Card](images/HiFive_Unleashed_Board_SD_Card.png)
 
@@ -228,7 +229,7 @@ See the [FlashPro Express User Guide](https://www.microsemi.com/document-portal/
 |||||Close: 1K||100K pull down connected to TRSTB||
 
 ## Building and Loading the Linux Image
-For instructions on how to build and load a Linux image, see the Linux build instructions in the [top level README](../README.md).
+For instructions on how to build and load a Linux image, see the Linux build instructions in the Buildroot/Yocto top level README.
 
 #### Linux Boot and Login Credentials
 The Linux boot process can be observed by connecting a serial terminal to the USB port on the HiFive

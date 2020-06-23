@@ -54,7 +54,7 @@ The HiFive Unleashed Expansion board contains the following items:
 Download and install the following development tools in the PC in order to design, simulate,
 and debug on the HiFive Unleashed Platform (MPFS-DEV-KIT).
 
-### Programming FlashPro and FlashPro Express
+### FlashPro and FlashPro Express Programming Tools
 The Microsemi FlashPro programming system is a combination of Microsemi's FlashPro software and a
 hardware programmer. Together, they provide in-system programming (ISP) for all FPGA families. The
 required programming and debug software is integrated with the Libero SoC PolarFire software. This
@@ -68,7 +68,7 @@ to download the standalone programmer (if needed).
 | FlashPro | Software for Windows | FlashPro4 | Hardware programmer for Windows |
 
 ### Firmware Versions
-The following table contains links to the .stp file, .job file, schematic and the Linux SDK for each
+The following table contains links to the .stp file, .job file and schematic for each
 release.
 
 | Revision | .stp | .job | Schematic |
@@ -77,7 +77,7 @@ release.
 | Second release | [.stp Second Release](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1245017) | [.job Second Release](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1245018) | [Schematic](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244811) |
 
 ## Linux Build Systems
-The Linux image for the HiFive Unleashed Platform can be build using either the Buildroot or Yocto build systems. The table below contains Links to these build systems.
+The Linux image for the HiFive Unleashed Platform can be built using either the Buildroot or Yocto build systems. The table below contains links to these build systems.
 
 | Build System | Location                                                                                    |
 | ------------ | ------------------------------------------------------------------------------------------- |
@@ -115,7 +115,7 @@ openssl-devel wget vim-common
 ### Polarfire SoC Yocto BSP for the HiFive Unleashed Expansion Board
 The Polarfire SoC Yocoto BSP builds the requried cross-compile toolchain and software to boot
 a Linux system. It includes drivers for Micrsemi PCIe / I2C, SPI, QSPI, CAN and GPIO peripherals.
-The build creates wic. gz file which is a compressed sector by sector copy of a bootable microSD card.
+The build creates wic.gz file which is a compressed sector by sector copy of a bootable microSD card.
 The following software applications are copied to the SD card.
  * FSBL (First Stage Boot loader)
  * Opensbi and U-boot

@@ -202,7 +202,7 @@ For instructions on how to build and load a Linux image, see the Linux build ins
 #### Linux Boot and Login Credentials
 The Linux boot process can be observed by connecting a serial terminal to the USB port on the HiFive
 Unleashed board. Settings are 115200 baud, 8 data bits, 1 stop bit, no parity, and no flow control.
-The root password is “microchip”. The console should look similar to the following figure.
+The root password is “microchip” for Buildroot & Yocto `mpfs-dev-cli`. No password is set for Yocto `core-image*`. The console should look similar to the following figure.
 
 ![Console Image for Boot](images/Console_Image_for_Boot.png)
 

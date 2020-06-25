@@ -90,38 +90,6 @@ device tree to support the HiFive Unleashed Expansion board. It also includes dr
 PCIe, I2C, SPI, MMUART, and GPIO peripherals. See the build systems table above to download the Polarfire SoC Buildroot SDK.
 The build procedure is described in the Linux build system's README.
 
-Before building the Linux image, the following packages must be installed depending on the Linux
-distribution in your machine.
-
-#### Ubuntu
-(tested on Ubuntu 16.04)
-```
-apt-get update
-sudo apt-get install autoconf automake autotools-dev bc bison build-essential curl
-flex gawk gdisk git gperf libgmp-dev libmpc-dev libmpfr-dev libncurses-dev libssl-dev
-libtool patchutils python screen texinfo unzip zlib1g-dev patch device-tree-compiler
-openssl-devel wget
-```
-
-#### Centos
-(tested on Centos7)
-```
-yum update
-sudo yum install autoconf automake autotools-dev bc bison build-essential gcc-c++
-curl flex gawk gdisk git gperf gmp-devel libmpc-dev libmpfr-dev ncurses-devel libssldev
-libtool patchutils python screen texinfo unzip zlib1g-dev zlib-devel patch dtc
-openssl-devel wget vim-common
-```
-### Polarfire SoC Yocto BSP for the HiFive Unleashed Expansion Board
-The Polarfire SoC Yocoto BSP builds the requried cross-compile toolchain and software to boot
-a Linux system. It includes drivers for Micrsemi PCIe / I2C, SPI, QSPI, CAN and GPIO peripherals.
-The build creates wic.gz file which is a compressed sector by sector copy of a bootable microSD card.
-The following software applications are copied to the SD card.
- * FSBL (First Stage Boot loader)
- * Opensbi and U-boot
- * DTB (Device Tree Blob)
- * A Linux kernel image
-
 ## Board Setup
 Follow the instructions to set up the HiFive Unleashed board.
 1. Switch off the power button (red button in the following figure) on the HiFive Unleashed board.

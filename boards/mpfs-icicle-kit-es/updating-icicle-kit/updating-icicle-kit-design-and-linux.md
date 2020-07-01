@@ -68,7 +68,7 @@ Please use FlashPRO Express to program the PolarFire SoC design to the Icicle Ki
 <a name="Programming-Linux-Image"></a>
 ## Programming the Linux Image
 <a name="SD-Card"></a>
-###SD Card 
+### SD Card 
 Put an SD card into the SD card reader of your host machine and use the instructions below depending on your host computer's operating system.
 
 <a name="Linux-Host"></a>

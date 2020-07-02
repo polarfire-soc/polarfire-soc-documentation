@@ -29,7 +29,7 @@ Please note that the Linux images are provided as wic.gz files for Linux hosts a
 | SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EfEZUeJqez5LjbgE7VLKQlIB7gD3O55D9AY2c-dymtsEmA?e=bTldiZ)  |
 |  Minimal Linux image                        | [Minimal Linux Image (wc.gz)](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EY7sfoD-Ud9Bqa0hTxnJCvABvZc4sZir87mYrWKxuN34vQ?e=lFas9R)  |
 | Linux image with development tools | [Development Linux image (wic.gz)](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EbPy2CSsm29ApA0y-wvGi2kBgLsGsP3g4HIdbVnh2RbkqQ?e=T4DtX3)  |
-| Minimal Linx image zip (Windows host)| [zip file of Linux minimal image](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EbmNJM8GO-NMlBtx_azAqA4B6Ruw_kOQoS5owypxR20hBA?e=tYSAOY)  |
+| Minimal Linux image zip (Windows host)| [zip file of Linux minimal image](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EbmNJM8GO-NMlBtx_azAqA4B6Ruw_kOQoS5owypxR20hBA?e=tYSAOY)  |
 | Linux image with development tools zip (windows host)| [zip file of Linux image with development tools](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EXZmE6wahFJFqNVNOT1Yi2MBSfD0pCtGRLgqsch-kgnH0w?e=ZMYqS5)  |
 
 
@@ -76,7 +76,7 @@ Put an SD card into the SD card reader of your host machine and use the instruct
 
 <a name="Unmount"></a>
 ##### Unmount any partitions from the SD card
-Find out which partitions were mounted, if any, for the SD card. This can be used using the following command before and after plugging the SD card to your host computer:
+Find out which partitions were mounted, if any, for the SD card. This can be done using the following command before and after plugging the SD card to your host computer:
 ```
 ls /dev/sd*
 ```

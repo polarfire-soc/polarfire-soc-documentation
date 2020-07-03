@@ -64,7 +64,7 @@ For this design, the jumper settings must be set as follows:
 ## Serial Ports
 Please note that the first two serial ports available from the J11 USB-UART connector are used when booting Linux. The first UART displays first stage bootloader messages, the second UART displays U-Boot and Linux messages.
 
-Serial ports settings: 115200 baud, 8-bit, no flowe control.
+Serial ports settings: 115200 baud, 8-bit, no flow control.
 
 <a name="Credentials"></a>
 ## Linux Credentials
@@ -73,7 +73,7 @@ You can login to the board using 'root' as user name and 'microchip' as password
 
 <a name="Programming-Design"></a>
 ## Programming The PolarFire SoC Design
-Please use FlashPRO Express to program the PolarFire SoC design to the Icicle Kit.
+Please use FlashPro Express to program the PolarFire SoC design to the Icicle Kit.
 
 <a name="Programming-Linux-Image"></a>
 ## Programming the Linux Image

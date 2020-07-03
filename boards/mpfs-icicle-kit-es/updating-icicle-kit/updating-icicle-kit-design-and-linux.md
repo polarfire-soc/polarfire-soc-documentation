@@ -37,6 +37,7 @@ Please note that the Linux images are provided as wic.gz files for Linux hosts a
 ## Jumper Settings
 Some jumper settings are design version specific. Please check the following jumpers' settings.
 
+### Design Specific Jumpers
 |   Jumper  |  Setting |
 | --------- | -------- |
 |    J15    |   Open   |
@@ -49,6 +50,15 @@ Some jumper settings are design version specific. Please check the following jum
 |    J43    |  1 & 2   |
 |    J45    |  1 & 2   |
 |    J46    |  Closed  |
+
+### FlashPro Jumpers
+
+|   Jumper  |  Description                                                         |
+| --------- | -------------------------------------------------------------------- |
+|    J9     |   Select between Embedded FlashPro and external FlashPro.            |
+|           |     J9 closed: On-board Embedded FlashPro connected to J33 USB port. |
+|           |     J9 open: External FlashPro connected to J23 header.              |
+|    J21    |   JTAG nTRST interface pull down enable. Leave open.                 |
 
 <a name="Serial-Ports"></a>
 ## Serial Ports

@@ -17,7 +17,7 @@
 This document provides links to files and instructions to provision an Icicle Kit to boot Linux.
 
 Two items must be programmed to the board:
-- PolarFire SoC Icicle Kit reference design and first stage boot loader.
+- PolarFire SoC Icicle Kit reference design - including first stage boot loader
 - Linux image for the PolarFire SoC Icicle Kit reference design
 
 <a name="Links"></a> 

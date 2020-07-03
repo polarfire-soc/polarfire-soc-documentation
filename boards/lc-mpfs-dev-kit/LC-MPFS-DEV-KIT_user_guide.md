@@ -17,17 +17,8 @@ The LC-MPFS-DEV-KIT consists of the following:
 
 ![LC-MPFS-DEV-KIT Board](images/LC-MPFS-DEV-KIT.jpg)
 
-## System Setup and Prerequisites
-### Libero SoC Design Suite
-Libero SoC design suite version 12.3 or later is needed to use the Libero project provided with the LC-MPFS-DEV-KIT.
-
-Download the Libero SoC design suite v12.3 for Windows [here](https://www.microsemi.com/document-portal/doc_download/1244618-download-libero-soc-v12-3-for-windows).             
-Download the Libero SoC design suite v12.3 for Linux [here](https://www.microsemi.com/document-portal/doc_download/1244619-download-libero-soc-v12-3-for-linux).
-
-Along with the purchase of the LC-MPFS-DEV-KIT, customers are eligible for one platinum floating license for the Libero SoC Design Suite. Write to [mi-v-embeddedpartner@microchip.com](mi-v-embeddedpartner@microchip.com) with the subject “License Request <your organization name>” and include the 12-digit MAC ID of the two linux machines/PCs in your email.
-
 ### Solution Versions
-The latest revisions of the Libero project and bitstream files are available [here](http://soc.microsemi.com/download/rsc/?f=Libero_Project_LC-MPFS-DEV-KIT).
+The latest revisions of the FPGA programming files are available [here](http://soc.microsemi.com/download/rsc/?f=Libero_Project_LC-MPFS-DEV-KIT).
 
 ## Linux Build Systems
 The Linux image for the HiFive Unleashed Platform can be built using either the Buildroot or Yocto build systems. The table below contains links to these build systems.
@@ -71,13 +62,12 @@ The following instructions guide you through setting up the LC-MPFS-DEV-KIT.
 
 ![USB Connector](images/USB_Connector.PNG)
 
-6. Update the PolarFire FPGA with the FPGA bitstream provided in Software Versions. See Programming the FPGA Using FlashPro for steps to program the FPGA.
-7. The LC-MPFS-DEV-KIT is now configured as seen in Libero Block Diagram.
-8. Ensure the push-button is switched on, connect the power supply to the board, and slide the power switch SW3 as shown in the following figure.
+6. The LC-MPFS-DEV-KIT is now configured as seen in Libero Block Diagram.
+7. Ensure the push-button is switched on, connect the power supply to the board, and slide the power switch SW3 as shown in the following figure.
 
 ![Power on the Device](images/Power_On.PNG)
 
-9. Configure the serial terminal in the Host PC for 115200 baud, 8 data bits, no stop bits, no parity, and no flow control. Push reset button (near the power button) on the LC-MPFS-DEV-KIT.
+8. Configure the serial terminal in the Host PC for 115200 baud, 8 data bits, no stop bits, no parity, and no flow control. Push reset button (near the power button) on the LC-MPFS-DEV-KIT.
 
 #### Linux Boot and Login Credentials
 The Linux boot process can be observed by connecting a serial terminal to the USB port on the HiFive

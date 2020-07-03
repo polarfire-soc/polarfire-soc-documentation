@@ -35,7 +35,7 @@ Please note that the Linux images are provided as wic.gz files for Linux hosts a
 
 <a name="Jumpers"></a>
 ## Jumper Settings
-Some jumper settings are design version specific. Please check the following jumpers' settings.
+For this design, the jumper settings must be set as follows:
 
 ### Design Specific Jumpers
 |   Jumper  |  Setting |

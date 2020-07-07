@@ -95,7 +95,7 @@ Identify which new partitions appear after pluging in the SD card. For example:
 ```
 /dev/sdc  /dev/sdc1  /dev/sdc2  /dev/sdc3
 ```
-Use the following command to umount the SD card replacing /dev/sdX with the drive letter found in the previous step. For example, "/dev/sd**c**?" from the example above.
+Use the following command to unmount the SD card replacing /dev/sdX with the drive letter found in the previous step. For example, "/dev/sd**c**?" from the example above.
 
 
 ```
@@ -104,14 +104,14 @@ sudo umount /dev/sdX?
 
 <a name="Copy-wic"></a>
 ##### Copy the wic image to the SD card
-Copy the Linux image of your choice to the SD card using the command below, replacing /dev/sdX with actual SD card drive name and &lt; linux-image&gt; with the name of the Linux image you downloaded from the table at the top of this document.
+Copy the Linux image of your choice to the SD card using the command below, replacing /dev/sdX with actual SD card drive name and &lt;linux-image&gt; with the name of the Linux image you downloaded from the table at the top of this document.
 
 **!!! You must be extremely careful when changing sdX as selecting the wrong target may damage your host computer!!!**
 
 ```
 zcat <linux-image>.wic.gz | sudo dd of=/dev/sdX bs=512 iflag=fullblock oflag=direct conv=fsync status=progress
 ```
-Once write completed, eject the SD-card from the host PC. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot message coming from the first two UARTs.
+Once writing has completed, eject the SD-card from the host PC. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
 
 <a name="Windows-Host"></a>
 #### Windows Host
@@ -137,7 +137,7 @@ Click *Write*.
 
 ![](./images/progress.png) 
 
-Once write completed, eject the SD-card from the host PC. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot message coming from the first two UARTs.
+Once writing has completed, eject the SD-card from the host PC. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
 
 <a name="Tools"></a>
 ## Tools

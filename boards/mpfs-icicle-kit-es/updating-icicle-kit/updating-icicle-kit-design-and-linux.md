@@ -26,11 +26,11 @@ Please note that the Linux images are provided as wic.gz files for Linux hosts a
 
 | Description                                                       | SD card |
 | ----------------------------------------------- | --------- |
-| SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EfEZUeJqez5LjbgE7VLKQlIB7gD3O55D9AY2c-dymtsEmA?e=bTldiZ)  |
-|  Minimal Linux image                        | [Minimal Linux Image (wc.gz)](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EY7sfoD-Ud9Bqa0hTxnJCvABvZc4sZir87mYrWKxuN34vQ?e=lFas9R)  |
-| Linux image with development tools | [Development Linux image (wic.gz)](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EbPy2CSsm29ApA0y-wvGi2kBgLsGsP3g4HIdbVnh2RbkqQ?e=T4DtX3)  |
-| Minimal Linux image zip (Windows host)| [Minimal Linux Image for Windows host (zip)](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EbmNJM8GO-NMlBtx_azAqA4B6Ruw_kOQoS5owypxR20hBA?e=tYSAOY)  |
-| Linux image with development tools zip (Windows host)| [Development Linux image for Windows host (zip)](https://microchiptechnology-my.sharepoint.com/:u:/g/personal/cyril_jean_microchip_com/EXZmE6wahFJFqNVNOT1Yi2MBSfD0pCtGRLgqsch-kgnH0w?e=ZMYqS5)  |
+| SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](ftp://ftp.actel.com/incoming/Icicle-Kit-develop-1.1.0-HSS-0.99.7-sdcard.zip)  |
+|  Minimal Linux image                        | [Minimal Linux Image (wc.gz)](ftp://ftp.actel.com/incoming/core-image-minimal-icicle-kit-es-sd-20200628190857.rootfs.wic.gz)  |
+| Linux image with development tools | [Development Linux image (wic.gz)](ftp://ftp.actel.com/incoming/mpfs-dev-cli-icicle-kit-es-sd-20200628193451.rootfs.wic.gz)  |
+| Minimal Linux image zip (Windows host)| [Minimal Linux Image for Windows host (zip)](ftp://ftp.actel.com/incoming/core-image-minimal-icicle-kit-es-sd-20200628190857.rootfs.wic.zip)  |
+| Linux image with development tools zip (Windows host)| [Development Linux image for Windows host (zip)](ftp://ftp.actel.com/incoming/mpfs-dev-cli-icicle-kit-es-sd-20200628193451.rootfs.wic.zip)  |
 
 
 <a name="Jumpers"></a>

@@ -20,3 +20,9 @@ One terminal displays the Hart Software Service (HSS) boot messages. The second 
 ## Reprogramming With The Latest Reference Design
 The document [Updating PolarFire SoC Icicle Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md)  provides links to the FPGA programming files and pre-built Linux images for the Icicle Kit's reference design.
 
+## Reference
+[Polarfire-SoC Yocto Board Support Package](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) 
+
+[PolarFire SoC Buildroot Linux Software Development Kit](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) 
+
+[PolarFire SoC Icicle Kit Schematics (Preliminary)](https://www.microsemi.com/document-portal/doc_download/1244587-polarfire-soc-icicle-kit-schematics) 

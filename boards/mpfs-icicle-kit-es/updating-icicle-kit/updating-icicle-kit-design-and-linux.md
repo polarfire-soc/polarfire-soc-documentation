@@ -26,11 +26,11 @@ Please note that the Linux images are provided as wic.gz files for Linux hosts a
 
 | Description                                                       | SD card |
 | ----------------------------------------------- | --------- |
-| SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](ftp://ftp.actel.com/incoming/Icicle-Kit-develop-1.1.0-HSS-0.99.7-sdcard.zip)  |
-|  Minimal Linux image                        | [Minimal Linux Image (wc.gz)](ftp://ftp.actel.com/incoming/core-image-minimal-icicle-kit-es-sd-20200628190857.rootfs.wic.gz)  |
-| Linux image with development tools | [Development Linux image (wic.gz)](ftp://ftp.actel.com/incoming/mpfs-dev-cli-icicle-kit-es-sd-20200628193451.rootfs.wic.gz)  |
-| Minimal Linux image zip (Windows host)| [Minimal Linux Image for Windows host (zip)](ftp://ftp.actel.com/incoming/core-image-minimal-icicle-kit-es-sd-20200628190857.rootfs.wic.zip)  |
-| Linux image with development tools zip (Windows host)| [Development Linux image for Windows host (zip)](ftp://ftp.actel.com/incoming/mpfs-dev-cli-icicle-kit-es-sd-20200628193451.rootfs.wic.zip)  |
+| SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](ftp://ftpsoc.microsemi.com/outgoing/Icicle-Kit-develop-1.1.0-HSS-0.99.7-sdcard.zip)  |
+|  Minimal Linux image                        | [Minimal Linux Image (wc.gz)](ftp://ftpsoc.microsemi.com/outgoing/core-image-minimal-icicle-kit-es-sd-20200628190857.rootfs.wic.gz)  |
+| Linux image with development tools | [Development Linux image (wic.gz)](ftp://ftpsoc.microsemi.com/outgoing/mpfs-dev-cli-icicle-kit-es-sd-20200628193451.rootfs.wic.gz)  |
+| Minimal Linux image zip (Windows host)| [Minimal Linux Image for Windows host (zip)](ftp://ftpsoc.microsemi.com/outgoing/core-image-minimal-icicle-kit-es-sd-20200628190857.rootfs.wic.zip)  |
+| Linux image with development tools zip (Windows host)| [Development Linux image for Windows host (zip)](ftp://ftpsoc.microsemi.com/outgoing/mpfs-dev-cli-icicle-kit-es-sd-20200628193451.rootfs.wic.zip)  |
 
 
 <a name="Jumpers"></a>

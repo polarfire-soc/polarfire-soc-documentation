@@ -14,7 +14,7 @@ Connect the Icicle Kit's *USB- UART Terminal* connector (J11) to your host compu
 
 ![](./images/terminals.png) 
 
-One terminal displays the Hart Software Service (HSS) boot messages. The second terminal displays the U-Boot and Linux boot messages and provides a Linux prompt. Login using user name "root".
+One terminal displays the Hart Software Service (HSS) boot messages. The second terminal displays the U-Boot and Linux boot messages and provides a Linux prompt. Login using user name "root". No password is required. Please note that "microchip" is used as password for some other Linux images.
 
 
 ## Reprogramming With The Latest Reference Design

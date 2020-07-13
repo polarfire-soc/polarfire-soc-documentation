@@ -10,7 +10,7 @@
 ## Coming out of the box
 The board is pre-programmed with a reference design booting Linux from eMMC.
 
-Connect the Icicle Kit's  *USB- UART Terminal* connector (J11) to your host computer, Use the terminal software of your choice (Putty, ExtraPutty, minicom, screen) to open serial connections to the four UARTs available though the J11 USB connector. **Serial port setting: 115220 baud, no flow control, no parity**. Power cycle the board. This should result in boot messages appearing on two of the serials ports.
+Connect the Icicle Kit's *USB- UART Terminal* connector (J11) to your host computer. Use the terminal software of your choice (Putty, ExtraPutty, minicom, screen) to open serial connections to the four UARTs available though the J11 USB connector. **Serial port setting: 115220 baud, no flow control, no parity**. Power cycle the board. This should result in boot messages appearing on two of the serials ports.
 
 ![](./images/terminals.png) 
 

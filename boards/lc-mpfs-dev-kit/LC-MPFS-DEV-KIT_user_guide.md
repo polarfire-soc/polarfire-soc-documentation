@@ -80,8 +80,8 @@ The root password is “microchip” for Buildroot & Yocto `mpfs-dev-cli`. No pa
 The following sections explain the step-by-step procedure to download the FPGA bitstream onto the PolarFire FPGA. 
 ### Programming the FPGA using FlashPro
 #### Windows Environment 
-+To program the PolarFire SoC device with the .job programming file (using FlashPro in Windows environment), perform the following steps.       
-+The link to the .job file is given in Software Versions. Ensure that the jumpers J13, J21, J28, and J31 are plugged in.
+To program the PolarFire SoC device with the .job programming file (using FlashPro in Windows environment), perform the following steps.       
+The link to the .job file is given in Software Versions. Ensure that the jumpers J13, J21, J28, and J31 are plugged in.
 Note: The power supply switch must be switched off while making the jumper connections.
 
 1. Connect the power supply cable to the J3 connector on the board.

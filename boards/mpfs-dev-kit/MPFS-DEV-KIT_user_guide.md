@@ -114,9 +114,7 @@ address are 0:3f.
 
 ![Ethernet](images/HiFive_Unleashed_Board_Ethernet.png)
 
-5. Connect the board through USB to a developer machine. The USB connector has two serial
-interfaces: the first contains the Linux console running at 115200 baud and the second provides
-JTAG suitable for use with OpenOCD.
+5. Connect the board through USB to the host PC. The USB connector has two serial interfaces: the first contains the Linux console running at 115200 baud and the second provides JTAG suitable for use with OpenOCD.
 6. On the HiFive Unleashed Expansion board, update the PolarFire FPGA with the FPGA bitstream
 provided. See the [Software Installation and Configuration section](#software-installation-and-configuration) for steps to program
 the FPGA.
@@ -130,7 +128,7 @@ Note: Do not connect the power supply to the HiFive Unleashed board.
 9. Connect the power supply to the HiFive Unleashed Expansion board in order to power the HiFive
 Unleashed board.
 10. Slide the HiFive Unleashed Expansion board’s power switch (SW3) on. Boot messages should now
-appear on the console in the developer's machine.
+appear on the console in the host PC.
 
 ![Power Connections](images/HiFive_Unleashed_Platform_Power_Connections.jpg)
 

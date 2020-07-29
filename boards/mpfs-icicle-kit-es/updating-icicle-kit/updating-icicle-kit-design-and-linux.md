@@ -6,6 +6,7 @@
 - [Linux Credentials](#Credentials)
 - [Programming The PolarFire SoC Design](#Programming-Design)
 - [Programming the Linux Image](#Programming-Linux-Image)
+    - [eMMC](#eMMC)
     - [SD Card](#SD-Card) 
         - [Linux Host](#Linux-Host)
             - [Unmount any partitions from the SD card](#Unmount)
@@ -77,6 +78,22 @@ Please use FlashPro Express to program the PolarFire SoC design to the Icicle Ki
 
 <a name="Programming-Linux-Image"></a>
 ## Programming the Linux Image
+<a name="eMMC"></a>
+### eMMC 
+The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) using the `usbdmsc` command. The HSS `usbdmsc` command exposes the eMMC as a USB mass storage device through the Icicle Kit's USB-OTG J16 connector located beside the SD card slot.
+
+#### eMMC content update procedure
+
+1. Connect the J11 USB-UART connector to your host PC. This is the micro-USB connector on the same side as the Ethernet connectors. This connection will give you access to 4 of the PolarFire SoC UARTs
+2. Open a terminal application to interact with the HSS through UART0. Settings are 115200 baud, 8 data bits, 1 stop bit, no parity, and no flow control. 
+3. Power cycle the board.
+4. Type a key in the terminal application to stop the HSS from booting. This will give you access to the HSS command line interface.
+5. Type `usbdmsc` in the HSS command line interface. This will expose the eMMC as a mass storage device through the USB-OTG connector.
+6. Connect the J16 USB-OTG connector to your host PC. The eMMC content will be transfered to the Icicle Kit through this connection.
+7. The Icicle Kit should now appear as mass storage device/drive on your host PC.
+8. Use the same procedure to write the eMMC as the one for writing an SD-card depending whether your host PC uses [Windows](#Windows-Host) or [Linux](#Linux-Host).
+9. Once the Linux image is copied to the eMMC, press `CTRL+C` in the HSS command line interface, then type `boot` to boot the newly copied Linux image.
+
 <a name="SD-Card"></a>
 ### SD Card 
 Put an SD card into the SD card reader of your host machine and use the instructions below depending on your host computer's operating system.

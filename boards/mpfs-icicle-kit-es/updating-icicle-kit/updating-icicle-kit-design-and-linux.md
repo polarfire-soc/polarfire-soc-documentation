@@ -25,13 +25,13 @@ Two items must be programmed to the board:
 ##  Programming Files and Linux Images Links
 Please note that the Linux images are provided as wic.gz files for Linux hosts and zip files for Windows. Please ensure you download the zip files if programming the board from a Windows host.
 
-| Description                                                       | SD card | eMMC |
-| ----------------------------------------------- | --------- | --- |
-| SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](https://bit.ly/38PHnrB)  |  [FlashPro Express programming file](https://bit.ly/3hL0aYj) |
-|  Minimal Linux image                        | [Minimal Linux Image (wc.gz)](https://bit.ly/2OfuRrK)  | [Minimal Linux Image (wc.gz)](https://bit.ly/3hMS3KN)  |
-| Linux image with development tools | [Development Linux image (wic.gz)](https://bit.ly/2ZZvKul)  | [Development Linux image (wic.gz)](https://bit.ly/2Dgl4zK) |
-| Minimal Linux image zip (Windows host)| [Minimal Linux Image for Windows host (zip)](https://bit.ly/3fhbBWZ)  | [Minimal Linux Image for Windows host (zip)](https://bit.ly/2CQmn8M) |
-| Linux image with development tools zip (Windows host)| [Development Linux image for Windows host (zip)](https://bit.ly/2Ckq2uH)  | [Development Linux image for Windows host (zip)](https://bit.ly/2Er9q5r) | 
+| Description                                                        | SD card                                                                  | eMMC                                                                     |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](https://bit.ly/38PHnrB)              | [FlashPro Express programming file](https://bit.ly/3hL0aYj)              |
+| Minimal Linux image                                                | [Minimal Linux Image (wc.gz)](https://bit.ly/2OfuRrK)                    | [Minimal Linux Image (wc.gz)](https://bit.ly/3hMS3KN)                    |
+| Linux image with development tools                                 | [Development Linux image (wic.gz)](https://bit.ly/2ZZvKul)               | [Development Linux image (wic.gz)](https://bit.ly/2Dgl4zK)               |
+| Minimal Linux image zip (Windows host)                             | [Minimal Linux Image for Windows host (zip)](https://bit.ly/3fhbBWZ)     | [Minimal Linux Image for Windows host (zip)](https://bit.ly/2CQmn8M)     |
+| Linux image with development tools zip (Windows host)              | [Development Linux image for Windows host (zip)](https://bit.ly/2Ckq2uH) | [Development Linux image for Windows host (zip)](https://bit.ly/2Er9q5r) | 
 
 
 <a name="Jumpers"></a>

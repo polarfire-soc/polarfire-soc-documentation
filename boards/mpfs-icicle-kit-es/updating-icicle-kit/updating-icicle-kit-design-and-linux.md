@@ -96,14 +96,14 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 
 <a name="SD-Card"></a>
 ### SD Card 
-Put an SD card into the SD card reader of your host machine and use the instructions below depending on your host computer's operating system.
+Put an SD card into the SD card reader of your host PC and use the instructions below depending on your host PC's operating system.
 
 <a name="Linux-Host"></a>
 #### Linux Host
 
 <a name="Unmount"></a>
 ##### Unmount any partitions from the SD card
-Find out which partitions were mounted, if any, for the SD card. This can be done by using the following command before and after plugging the SD card into your host computer:
+Find out which partitions were mounted, if any, for the SD card. This can be done by using the following command before and after plugging the SD card into your host PC:
 ```
 ls /dev/sd*
 ```
@@ -123,7 +123,7 @@ sudo umount /dev/sdX?
 ##### Copy the wic image to the SD card
 Copy the Linux image of your choice to the SD card using the command below, replacing /dev/sdX with actual SD card drive name and &lt;linux-image&gt; with the name of the Linux image you downloaded from the table at the top of this document.
 
-**!!! You must be extremely careful when changing sdX as selecting the wrong target may damage your host computer!!!**
+**!!! You must be extremely careful when changing sdX as selecting the wrong target may damage your host PC!!!**
 
 ```
 zcat <linux-image>.wic.gz | sudo dd of=/dev/sdX bs=512 iflag=fullblock oflag=direct conv=fsync status=progress

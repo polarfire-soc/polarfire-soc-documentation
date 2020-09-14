@@ -18,7 +18,7 @@
 This document provides links to files and instructions to provision an Icicle Kit to boot Linux.
 
 Two items must be programmed to the board:
-- PolarFire SoC Icicle Kit reference design - including first stage boot loader
+- PolarFire SoC Icicle Kit reference design - including zero stage boot loader
 - Linux image for the PolarFire SoC Icicle Kit reference design
 
 <a name="Links"></a> 
@@ -61,7 +61,7 @@ For this design, the jumper settings must be set as follows:
 
 <a name="Serial-Ports"></a>
 ## Serial Ports
-Please note that the first two serial ports available from the J11 USB-UART connector are used when booting Linux. The first UART displays first stage bootloader messages, the second UART displays U-Boot and Linux messages.
+Please note that the first two serial ports available from the J11 USB-UART connector are used when booting Linux. The first UART displays zero stage bootloader messages, the second UART displays U-Boot and Linux messages.
 
 Serial ports settings: 115200 baud, 8-bit, no flow control.
 

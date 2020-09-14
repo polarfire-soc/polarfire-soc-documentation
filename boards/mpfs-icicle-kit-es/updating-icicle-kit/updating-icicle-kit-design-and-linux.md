@@ -27,7 +27,7 @@ Please note that the Linux images are provided as wic.gz files for Linux hosts a
 
 | Description                                                        | SD card                                                                  | eMMC                                                                     |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](https://bit.ly/38PHnrB)              | [FlashPro Express programming file](https://bit.ly/3hL0aYj)              |
+| SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](https://bit.ly/35AzVks)              | [FlashPro Express programming file](https://bit.ly/35BA87g)              |
 | Minimal Linux image                                                | [Minimal Linux Image (wc.gz)](https://bit.ly/2OfuRrK)                    | [Minimal Linux Image (wc.gz)](https://bit.ly/3hMS3KN)                    |
 | Linux image with development tools                                 | [Development Linux image (wic.gz)](https://bit.ly/2ZZvKul)               | [Development Linux image (wic.gz)](https://bit.ly/2Dgl4zK)               |
 | Minimal Linux image zip (Windows host)                             | [Minimal Linux Image for Windows host (zip)](https://bit.ly/3fhbBWZ)     | [Minimal Linux Image for Windows host (zip)](https://bit.ly/2CQmn8M)     |

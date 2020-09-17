@@ -156,9 +156,9 @@ Once writing has completed, eject the SD-card from the host PC. Insert it in the
 
 <a name="Tools"></a>
 ## Tools
-[FlashPro Express Linux Installer](https://www.microsemi.com/document-portal/doc_download/1244910-download-programming-and-debug-v12-4-for-linux) 
+[FlashPro Express Linux Installer](https://www.microsemi.com/document-portal/doc_download/1245096-download-programming-and-debug-v12-5-for-linux) 
 
-[FlashPro Express Windows installer](https://www.microsemi.com/document-portal/doc_download/1244911-download-programming-and-debug-v12-4-for-windows) 
+[FlashPro Express Windows installer](https://www.microsemi.com/document-portal/doc_download/1245095-download-programming-and-debug-v12-5-for-windows) 
 
 [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/) 
 
@@ -166,7 +166,7 @@ Once writing has completed, eject the SD-card from the host PC. Insert it in the
 ## Reference
 [FlashPro Express User Guide for PolarFire](https://www.microsemi.com/document-portal/doc_download/137627-flashpro-express-user-guide-for-polarfire) 
 
-[FlashPro Express Release Notes](https://www.microsemi.com/document-portal/doc_download/1244868-programming-and-debug-tools-v12-4-release-notes) 
+[FlashPro Express Release Notes](https://www.microsemi.com/document-portal/doc_download/1245059-programming-and-debug-tools-v12-5-release-notes) 
 
 
 

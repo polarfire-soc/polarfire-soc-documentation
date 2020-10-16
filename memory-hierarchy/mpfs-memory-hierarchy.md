@@ -11,12 +11,12 @@ PolarFire SoC uses a classic three level memory hierarchy including:
 - 2 MiBytes level 2 cache
 - external DDR memory
 
-![Hierarchy](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-hierarchy.png?at=refs%2Fheads%2Ftemporary-images)
+![Hierarchy](./images/Cache-LIM-Scratchpad-hierarchy.png)
 
 The PolarFire SoC instruction caches can optionally be configured to be used as Instruction Tightly Integrated Memory (ITIM). ITIM is memory mapped to the address space, providing deterministic access to fast memory.
 Likewise, L2 cache memory can be configured as either Loosely Integrated Memory (LIM) providing deterministic access to L2 memory or as fast access scratchpad.
 
-![Memory Map](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-full-memory-map.png?at=refs%2Fheads%2Ftemporary-images)
+![Memory Map](./images/Cache-LIM-Scratchpad-full-memory-map.png)
 
 Cached and non-cached access to external DDR memory can be done through 32-bit or 64-bit addresses through separate memory ranges.
 Non-cached DDR accesses can be done through a Write Combine Buffer (WCB) to improve performance by combining multiple accesses into a single burst. 
@@ -52,7 +52,7 @@ Master affinity is the ability to limit the eviction of data or code from the L2
 ### L2 Cache Memory Structure
 The L2 cache is a 16-way set associative cache. It is made up of 4 banks, each bank contains 512 sets, each set contains 16 ways that each contain a 64 bytes block giving us 2 MiBytes of L2 memory.
 
-![Cache Structure](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-cache-structure.png?at=refs%2Fheads%2Ftemporary-images)
+![Cache Structure](./images/Cache-LIM-Scratchpad-cache-structure.png)
 
 Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the detailed description of the L2 cache hardware.
 
@@ -125,7 +125,7 @@ Coming out of reset there is only one cache way enabled. The remaining L2 memory
 
 The WayEnable register is set to zero coming out of reset indicating that only one cache way is enabled. This also means that the remaining 15 cache ways are allocated to LIM. Given that each cache way is 128 KiBytes, PolarFire SoC comes out of reset with a 128KiBytes cache and a 1920 KiBytes LIM.
 
-![L2 Reset Configuration](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-reset.png?at=refs%2Fheads%2Ftemporary-images)
+![L2 Reset Configuration](./images/Cache-LIM-Scratchpad-reset.png)
 
 Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value.
 
@@ -134,7 +134,7 @@ The most basic level of L2 cache configuration is partitioning the size of the L
 
 Set the value of the WayEnable to the number of ways you want enabled as cache minus one. Leaving all bits in the WayMask registers set to one means that all L2 masters will be able to use all the enabled cache ways. WayMask register bits for ways not enabled through the WayEnable register have no effect.
 
-![Cache LIM Partition](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-simple-split.png?at=refs%2Fheads%2Ftemporary-images)
+![Cache LIM Partition](./images/Cache-LIM-Scratchpad-simple-split.png)
 
 Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value.
 
@@ -148,7 +148,7 @@ The scratchpad configuration algorithm’s general method is to use one master, 
 The algorithm for setting up scratchpad memory is detailed in the L2 Cache Controller section of the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide). You can also refer to the bare metal library's MPFS-HAL implementation for a working example.
 
 
-![Scratchpad](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-scratchpad.png?at=refs%2Fheads%2Ftemporary-images)
+![Scratchpad](./images/Cache-LIM-Scratchpad-scratchpad.png)
 
 Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value. Using different values for WayMask registers allows fine-grained control over which L2 masters can evist from specific ways. This can be used for tuning system performance.
 
@@ -157,7 +157,7 @@ The WayMask control registers can be used to control an L2 master's affinity to 
 
 For example, we could reserve two ways to handle data shared between the FPGA fabric and one hart processing that data. We could also allow the DMA controller to evict from these same ways to populate buffers modified by the FPGA fabric. We could reserve 3 ways for one of the processor core's data and another 3 ways for its executable while leaving the remaining ways to be shared by the remaining processor cores.
 
-![Affinity](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-affinity.png?at=refs%2Fheads%2Ftemporary-images)
+![Affinity](./images/Cache-LIM-Scratchpad-affinity.png)
 
 #### Mixing Use Cases
 The L2 configuration use case presented above are not all mutually exclusive. The two mutually exclusive use cases are Cache and LIM. A cache way is either cacheable or used as LIM. Scratchpad and affinity can be combined to reserve fast access memory for use by a limited set of L2 masters. One example of this is using L2 scratchpad for time constrained operations involving the FPGA fabric and one or more processor cores.
@@ -172,6 +172,6 @@ L2 memory ways allocated to the scratchpad via manipulation of the WayMask regis
 L2 memory ways assigned to cache are not accessible through the memory map. These cache ways are managed by the cache coherence engine. Their content is opaque to the software executing on the system.
 
 
-![L2 Allocation to Memory Map](https://bitbucket.microchip.com/projects/FPGA_PFSOC_ES/repos/polarfire-soc-documentation/raw/images/memory-hierarchy/Cache-LIM-Scratchpad-Memory-Map.png?at=refs%2Fheads%2Ftemporary-images)
+![L2 Allocation to Memory Map](./images/Cache-LIM-Scratchpad-Memory-Map.png)
 
 

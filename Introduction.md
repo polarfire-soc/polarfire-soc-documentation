@@ -1,2 +1,0 @@
-# PolarFire SoC Documentation
-

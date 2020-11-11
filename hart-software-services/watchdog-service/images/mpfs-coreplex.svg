@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="273.88mm" height="52.656mm" version="1.1" viewBox="0 0 273.88 52.656" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <g id="lend4">
+   <path d="m2 1-2-1 2-1v2"/>
+  </g>
+  <marker id="mrkr4-146" class="st9" overflow="visible" orient="auto" refX="-12.08" v:arrowSize="2" v:arrowType="4" v:setback="12.08">
+   <use transform="scale(-6.04)" width="100%" height="100%" xlink:href="#lend4"/>
+  </marker>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(192.13 28.685)">
+  <g transform="matrix(.35278 0 0 .35278 -198.48 -35.035)" color-interpolation-filters="sRGB" fill="none" fill-rule="evenodd" font-size="12px" stroke-linecap="square" stroke-miterlimit="3">
+   <g v:groupContext="foregroundPage" v:index="2" v:mID="4">
+    <v:userDefs>
+     <v:ud v:nameU="msvThemeOrder" v:val="VT0(0):26"/>
+    </v:userDefs>
+    <title>Page-2</title>
+    <v:pageProperties v:drawingScale="0.0393701" v:drawingUnits="24" v:pageScale="0.0393701" v:shadowOffsetX="8.50394" v:shadowOffsetY="-8.50394"/>
+    <v:layer v:index="0" v:name="Connector"/>
+    <g transform="translate(18.14 -65.561)" v:groupContext="shape" v:mID="3">
+     <title>Sheet.3</title>
+     <path class="st1" d="m0 83.7v101.56h134.97v-101.56z" fill="#c00000"/>
+    </g>
+    <g transform="translate(18.14 -65.561)" v:groupContext="shape" v:mID="4">
+     <title>Sheet.4</title>
+     <path class="st2" d="m0 185.26h134.97v-101.56h-134.97v101.56" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(20.972 -134.78)" v:groupContext="shape" v:mID="5">
+     <title>Sheet.5</title>
+     <desc>Hart Software Services (HSS)</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="129.31" height="13.9779" cx="64.6537" cy="178.272"/>
+     <path class="st3" d="m129.31 171.28h-129.31v13.98h129.31v-13.98"/>
+     <text class="st4" x="11.07" y="174.78" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Hart Software Services <tspan class="st5" font-size="11.645px" v:langID="6153"/><tspan class="st5" x="52.139999" dy="1.2em" font-size="11.645px" v:langID="6153">(HSS)</tspan></text>
+    </g>
+    <g transform="translate(41.493 -92.06)" v:groupContext="shape" v:mID="7">
+     <title>Sheet.7</title>
+     <desc>(E51 RV64IMAC Monitor Core)</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="88.27" height="13.9779" cx="44.133" cy="178.272"/>
+     <path class="st3" d="m88.27 171.28h-88.27v13.98h88.27v-13.98"/>
+     <text class="st4" x="7.02" y="174.78" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>(E51<tspan class="st5" font-size="11.645px" v:langID="6153"/>RV64IMAC <tspan class="st5" x="10.45" dy="1.2em" font-size="11.645px">Monitor Core)</tspan></text>
+    </g>
+    <g transform="translate(178.44 -65.561)" v:groupContext="shape" v:mID="9">
+     <title>Sheet.9</title>
+     <path class="st6" d="m0 83.7v101.56h134.92v-101.56z" fill="#4672c4"/>
+    </g>
+    <g transform="translate(178.44 -65.561)" v:groupContext="shape" v:mID="10">
+     <title>Sheet.10</title>
+     <path class="st7" d="m0 185.26h134.92v-101.56h-134.92v101.56" stroke="#c8c8c8" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(188.49 -119.79)" v:groupContext="shape" v:mID="12">
+     <title>Sheet.12</title>
+     <desc>(u54_1 RV64GC Application Core)</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="114.83" height="13.9779" cx="57.4113" cy="178.272"/>
+     <path class="st3" d="m114.82 171.28h-114.82v13.98h114.82v-13.98"/>
+     <text class="st4" x="20.370001" y="174.78" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>(u54_1 <tspan class="st5" font-size="11.645px" v:langID="1033">RV64GC</tspan><tspan class="st5" x="16.4" dy="1.2em" font-size="11.645px" v:langID="1033">Application</tspan>Core)</text>
+    </g>
+    <g transform="translate(338.69 -65.561)" v:groupContext="shape" v:mID="14">
+     <title>Sheet.14</title>
+     <path class="st6" d="m0 83.7v101.56h134.97v-101.56z" fill="#4672c4"/>
+    </g>
+    <g transform="translate(338.69 -65.561)" v:groupContext="shape" v:mID="15">
+     <title>Sheet.15</title>
+     <path class="st7" d="m0 185.26h134.97v-101.56h-134.97v101.56" stroke="#c8c8c8" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(348.77 -119.79)" v:groupContext="shape" v:mID="17">
+     <title>Sheet.17</title>
+     <desc>(U54_2 RV64GC Application Core)</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="114.83" height="13.9779" cx="57.4113" cy="178.272"/>
+     <path class="st3" d="m114.82 171.28h-114.82v13.98h114.82v-13.98"/>
+     <text class="st4" x="19.700001" y="174.78" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>(U54_2 <tspan class="st5" font-size="11.645px" v:langID="1033">RV64GC</tspan><tspan class="st5" x="16.4" dy="1.2em" font-size="11.645px" v:langID="1033">Application</tspan>Core)</text>
+    </g>
+    <g transform="translate(498.94 -65.561)" v:groupContext="shape" v:mID="19">
+     <title>Sheet.19</title>
+     <path class="st6" d="m0 83.7v101.56h134.97v-101.56z" fill="#4672c4"/>
+    </g>
+    <g transform="translate(498.94 -65.561)" v:groupContext="shape" v:mID="20">
+     <title>Sheet.20</title>
+     <path class="st7" d="m0 185.26h134.97v-101.56h-134.97v101.56" stroke="#c8c8c8" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(509.02 -119.79)" v:groupContext="shape" v:mID="22">
+     <title>Sheet.22</title>
+     <desc>(U54_3 RV64GC Application Core)</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="114.83" height="13.9779" cx="57.4113" cy="178.272"/>
+     <path class="st3" d="m114.82 171.28h-114.82v13.98h114.82v-13.98"/>
+     <text class="st4" x="19.700001" y="174.78" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>(U54_3 <tspan class="st5" font-size="11.645px" v:langID="1033">RV64GC</tspan><tspan class="st5" x="16.4" dy="1.2em" font-size="11.645px" v:langID="1033">Application</tspan> Core)</text>
+    </g>
+    <g transform="translate(659.24 -65.561)" v:groupContext="shape" v:mID="24">
+     <title>Sheet.24</title>
+     <path class="st6" d="m0 83.7v101.56h134.97v-101.56z" fill="#4672c4"/>
+    </g>
+    <g transform="translate(659.24 -65.561)" v:groupContext="shape" v:mID="25">
+     <title>Sheet.25</title>
+     <path class="st7" d="m0 185.26h134.97v-101.56h-134.97v101.56" stroke="#c8c8c8" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(669.32 -119.79)" v:groupContext="shape" v:mID="27">
+     <title>Sheet.27</title>
+     <desc>(u54_4 RV64GC Application Core)</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="114.83" height="13.9779" cx="57.4113" cy="178.272"/>
+     <path class="st3" d="m114.82 171.28h-114.82v13.98h114.82v-13.98"/>
+     <text class="st4" x="20.370001" y="174.78" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>(u54_4 <tspan class="st5" font-size="11.645px" v:langID="1033">RV64GC</tspan><tspan class="st5" x="16.4" dy="1.2em" font-size="11.645px" v:langID="1033">Application</tspan>Core)</text>
+    </g>
+    <g transform="translate(178.44 -65.561)" v:groupContext="shape" v:mID="29">
+     <title>Sheet.29</title>
+     <path class="st1" d="m0 163.26v22h134.92v-22z" fill="#c00000"/>
+    </g>
+    <g transform="translate(178.44 -65.561)" v:groupContext="shape" v:mID="30">
+     <title>Sheet.30</title>
+     <path class="st2" d="m0 185.26h134.92v-22h-134.92v22" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(195.19 -68.723)" v:groupContext="shape" v:mID="33">
+     <title>Sheet.33</title>
+     <desc>M-mode ISR monitor</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="101.44" height="13.9779" cx="50.7159" cy="178.272"/>
+     <path class="st3" d="m101.43 171.28h-101.43v13.98h101.43v-13.98"/>
+     <text class="st4" x="1.17" y="181.77" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>M-<tspan class="st5" font-size="11.645px" v:langID="1033">mode ISR monitor</tspan></text>
+    </g>
+    <g transform="translate(338.69 -65.561)" v:groupContext="shape" v:mID="34">
+     <title>Sheet.34</title>
+     <path class="st1" d="m0 163.26v22h134.97v-22z" fill="#c00000"/>
+    </g>
+    <g transform="translate(338.69 -65.561)" v:groupContext="shape" v:mID="35">
+     <title>Sheet.35</title>
+     <path class="st2" d="m0 185.26h134.97v-22h-134.97v22" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(355.46 -68.723)" v:groupContext="shape" v:mID="38">
+     <title>Sheet.38</title>
+     <desc>M-mode ISR monitor</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="101.44" height="13.9779" cx="50.7159" cy="178.272"/>
+     <path class="st3" d="m101.43 171.28h-101.43v13.98h101.43v-13.98"/>
+     <text class="st4" x="1.17" y="181.77" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>M-<tspan class="st5" font-size="11.645px" v:langID="1033">mode ISR monitor</tspan></text>
+    </g>
+    <g transform="translate(498.94 -65.561)" v:groupContext="shape" v:mID="39">
+     <title>Sheet.39</title>
+     <path class="st1" d="m0 163.26v22h134.97v-22z" fill="#c00000"/>
+    </g>
+    <g transform="translate(498.94 -65.561)" v:groupContext="shape" v:mID="40">
+     <title>Sheet.40</title>
+     <path class="st2" d="m0 185.26h134.97v-22h-134.97v22" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(515.71 -68.723)" v:groupContext="shape" v:mID="43">
+     <title>Sheet.43</title>
+     <desc>M-mode ISR monitor</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="101.44" height="13.9779" cx="50.7159" cy="178.272"/>
+     <path class="st3" d="m101.43 171.28h-101.43v13.98h101.43v-13.98"/>
+     <text class="st4" x="1.17" y="181.77" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>M-<tspan class="st5" font-size="11.645px" v:langID="1033">mode ISR monitor</tspan></text>
+    </g>
+    <g transform="translate(659.24 -65.561)" v:groupContext="shape" v:mID="44">
+     <title>Sheet.44</title>
+     <path class="st1" d="m0 163.26v22h134.97v-22z" fill="#c00000"/>
+    </g>
+    <g transform="translate(659.24 -65.561)" v:groupContext="shape" v:mID="45">
+     <title>Sheet.45</title>
+     <path class="st2" d="m0 185.26h134.97v-22h-134.97v22" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(676.02 -68.723)" v:groupContext="shape" v:mID="48">
+     <title>Sheet.48</title>
+     <desc>M-mode ISR monitor</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="101.44" height="13.9779" cx="50.7159" cy="178.272"/>
+     <path class="st3" d="m101.43 171.28h-101.43v13.98h101.43v-13.98"/>
+     <text class="st4" x="1.17" y="181.77" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>M-<tspan class="st5" font-size="11.645px" v:langID="1033">mode ISR monitor</tspan></text>
+    </g>
+    <g transform="translate(72.151 -18.14)" v:groupContext="shape" v:mID="49">
+     <title>Sheet.49</title>
+     <path class="st1" d="m13.5 134.48 13.45 13.55h-6.7v37.23h-13.5v-37.23h-6.75z" fill="#c00000"/>
+    </g>
+    <g transform="translate(72.151 -18.14)" v:groupContext="shape" v:mID="50">
+     <title>Sheet.50</title>
+     <path class="st2" d="m13.5 134.48 13.45 13.55h-6.7v37.23h-13.5v-37.23h-6.75l13.5-13.55v0" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(232.4 -18.14)" v:groupContext="shape" v:mID="51">
+     <title>Sheet.51</title>
+     <path class="st1" d="m13.5 134.48 13.51 13.55h-6.76v37.23h-13.5v-37.23h-6.75z" fill="#c00000"/>
+    </g>
+    <g transform="translate(232.4 -18.14)" v:groupContext="shape" v:mID="52">
+     <title>Sheet.52</title>
+     <path class="st2" d="m13.5 134.48 13.51 13.55h-6.76v37.23h-13.5v-37.23h-6.75l13.5-13.55v0" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(392.7 -18.14)" v:groupContext="shape" v:mID="53">
+     <title>Sheet.53</title>
+     <path class="st1" d="m13.45 134.48 13.5 13.55h-6.75v37.23h-13.45v-37.23h-6.75z" fill="#c00000"/>
+    </g>
+    <g transform="translate(392.7 -18.14)" v:groupContext="shape" v:mID="54">
+     <title>Sheet.54</title>
+     <path class="st2" d="m13.45 134.48 13.5 13.55h-6.75v37.23h-13.45v-37.23h-6.75l13.45-13.55v0" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(713.23 -18.14)" v:groupContext="shape" v:mID="55">
+     <title>Sheet.55</title>
+     <path class="st1" d="m13.5 134.48 13.51 13.55h-6.76v37.23h-13.5v-37.23h-6.75z" fill="#c00000"/>
+    </g>
+    <g transform="translate(713.23 -18.14)" v:groupContext="shape" v:mID="56">
+     <title>Sheet.56</title>
+     <path class="st2" d="m13.5 134.48 13.51 13.55h-6.76v37.23h-13.5v-37.23h-6.75l13.5-13.55v0" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(552.92 -18.14)" v:groupContext="shape" v:mID="57">
+     <title>Sheet.57</title>
+     <path class="st1" d="m13.5 134.48 13.51 13.55h-6.76v37.23h-13.5v-37.23h-6.75z" fill="#c00000"/>
+    </g>
+    <g transform="translate(552.92 -18.14)" v:groupContext="shape" v:mID="58">
+     <title>Sheet.58</title>
+     <path class="st2" d="m13.5 134.48 13.51 13.55h-6.76v37.23h-13.5v-37.23h-6.75l13.5-13.55v0" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(18.14 -18.14)" v:groupContext="shape" v:mID="59">
+     <title>Sheet.59</title>
+     <path class="st1" d="m0 163.26v22h776.08v-22z" fill="#c00000"/>
+    </g>
+    <g transform="translate(18.14 -18.14)" v:groupContext="shape" v:mID="60">
+     <title>Sheet.60</title>
+     <path class="st2" d="m0 185.26h776.08v-22h-776.08v22" stroke="#f00" stroke-linecap="round" stroke-linejoin="round" stroke-width=".27946"/>
+    </g>
+    <g transform="translate(402.61 -21.389)" v:groupContext="shape" v:mID="62">
+     <title>Sheet.62</title>
+     <desc>-</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="7.14" height="13.9779" cx="3.56588" cy="178.272"/>
+     <path class="st3" d="m7.13 171.28h-7.13v13.98h7.13v-13.98"/>
+     <text class="st4" x="1.78" y="181.77" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>-</text>
+    </g>
+    <g transform="translate(170.9 -21.389)" v:groupContext="shape" v:mID="63">
+     <title>Sheet.63</title>
+     <desc>Secure Messaging (IPI Doorbells with Memory Protected Message...</desc>
+     <v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197"/>
+     <v:textRect width="470.56" height="13.9779" cx="235.276" cy="178.272"/>
+     <path class="st3" d="m470.55 171.28h-470.55v13.98h470.55v-13.98"/>
+     <text class="st4" x="58.439999" y="181.77" fill="#feffff" font-family="Calibri" font-size="11.645px" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>Secure Messaging (IPI Doorbells with Memory<tspan class="st5" font-size="11.645px" v:langID="6153"/>Protected Message Queues)</text>
+    </g>
+    <g transform="translate(733.82 -74.229)" v:groupContext="shape" v:layerMember="0" v:mID="64">
+     <title>Dynamic connector</title>
+     <path class="st8" d="m-7.09 190.77v10.41-1.21" marker-end="url(#mrkr4-146)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <style type="text/css"><![CDATA[
+		.st1 {fill:#c00000;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {stroke:#ff0000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.279459}
+		.st3 {stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st4 {fill:#feffff;font-family:Calibri;font-size:0.970436em}
+		.st5 {font-size:1em}
+		.st6 {fill:#4672c4;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st7 {stroke:#c8c8c8;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.279459}
+		.st8 {marker-end:url(#mrkr4-146);stroke:#5592c9;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st9 {fill:#5592c9;fill-opacity:1;stroke:#5592c9;stroke-opacity:1;stroke-width:0.16556291390728}
+		.st10 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]></style>
+</svg>

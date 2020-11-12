@@ -1,5 +1,15 @@
 # PolarFire SoC: Hart Software Services Watchdog Service
 
+- [Overview](#overview)
+    - [PolarFire SoC Watchdogs](#polarfire-soc-watchdogs)
+    - [Relevant KConfig Options](#relevant-kconfig-options)
+    - [How to avail of the Watchdog Service in an application](#how-to-avail-of-the-watchdog-service-in-an-application)
+        - [Watchdog Operation](#watchdog-operation)
+        - [Bare metal](#bare-metal)
+        - [Linux example](#linux-example)
+    - [Source Code](#source-code)
+    - [Watchdog State Machine](#watchdog-state-machine)
+
 This document provides a brief overview of the PolarFire SoC hardware features related to watchdog timers and suggested uses of these features.
 
 Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the detailed description of PolarFire SoC.

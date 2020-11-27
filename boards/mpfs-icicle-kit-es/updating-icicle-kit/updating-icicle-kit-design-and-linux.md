@@ -30,7 +30,7 @@ From release 2020.11, the SoC-FPGA programming files are identical for SD card a
 | Description                                                        | SD card                                                                  | eMMC                                                                     |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](https://bit.ly/3fGgrOi)              | [FlashPro Express programming file](https://bit.ly/3fGgrOi)              |
-| Linux image                                                        | [Linux Image (wic.gz)](https://bit.ly/3q7aoHG)                           | [Linux Image (wic.gz)](https://bit.ly/3mf4JwC)                           |
+| Linux image                                                        | [Linux Image (wic.gz)](https://bit.ly/379aYMe)                           | [Linux Image (wic.gz)](https://bit.ly/3mf4JwC)                           |
 | Linux image zip (Windows host)                                     | [Linux Image for Windows host (zip)](https://bit.ly/3mcCmPT)             | [Linux Image for Windows host (zip)](https://bit.ly/2JjXDIQ)             |
 
 

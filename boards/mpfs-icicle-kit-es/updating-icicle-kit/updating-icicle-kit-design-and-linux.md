@@ -25,11 +25,13 @@ Two items must be programmed to the board:
 ##  Programming Files and Linux Images Links
 Please note that the Linux images are provided as wic.gz files for Linux hosts and zip files for Windows. Please ensure you download the zip files if programming the board from a Windows host.
 
+From release 2020.11, the SoC-FPGA programming files are identical for SD card and eMMC in the table below since Linux can be booted from either SD card or eMMC using the 2020.11 HSS and Icicle Kit reference design.
+
 | Description                                                        | SD card                                                                  | eMMC                                                                     |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](https://bit.ly/2H5Ohzr)              | [FlashPro Express programming file](https://bit.ly/2GTtCPh)              |
-| Linux image                                                        | [Linux Image (wic.gz)](https://bit.ly/2IaDXGB)                           | [Linux Image (wic.gz)](https://bit.ly/33JTtBL)                           |
-| Linux image zip (Windows host)                                     | [Linux Image for Windows host (zip)](https://bit.ly/2FfS3W5)             | [Linux Image for Windows host (zip)](https://bit.ly/2SG0sVV)             |
+| SoC-FPGA + zero-stage bootloader FlashPro Express programming file | [FlashPro Express programming file](https://bit.ly/3fGgrOi)              | [FlashPro Express programming file](https://bit.ly/3fGgrOi)              |
+| Linux image                                                        | [Linux Image (wic.gz)](https://bit.ly/3o6l87j)                           | [Linux Image (wic.gz)](https://bit.ly/3mf4JwC)                           |
+| Linux image zip (Windows host)                                     | [Linux Image for Windows host (zip)](https://bit.ly/3mcCmPT)             | [Linux Image for Windows host (zip)](https://bit.ly/3q7aoHG)             |
 
 
 <a name="Jumpers"></a>

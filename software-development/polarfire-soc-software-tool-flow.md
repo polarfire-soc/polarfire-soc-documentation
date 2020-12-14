@@ -33,7 +33,7 @@ This document describes:
 ## Tools required to program a PolarFire SoC FPGA
 - Libero SoC v12.5 or greater
 	- Libero is required to run the FPGA flow. Libero is not required if you are using a FlashPro Express programming job file and do not intend to modify the FPGA design included. The MSS configurator and FlashPro Express can be installed separately to Libero when only using pre-built FPGA programming files.
-	- Libero bundles FlashPro Express and the PolarFire SoC MSS Configurator, if these tools are going to be used they don't need to be installed standalone if Libero is also installed.
+	- Libero bundles FlashPro Express and the PolarFire SoC MSS Configurator, if these tools are going to be used, the standalone versions do not need to be installed if Libero is also installed.
 	- A valid license is required to use Libero SoC, a free 1 year Gold license is provided with each kit purchased and a free Silver license supports the MPFS250 part (this is the part on the Icicle Kit). More information and links to generate licenses can be found in the [licensing section](https://www.microsemi.com/product-directory/design-resources/1711-licensing) of the Microsemi website.
 	- Libero can be downloaded [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads).
 - FlashPro Express v12.5 or greater
@@ -66,8 +66,8 @@ Design creation scripts are provided to aid the quick generation of a Linux capa
 
 <a name="software-tool-flow"></a>
 ### Software development tool flow
-The default eMMC and SD card configurations for the PolarFire SoC MSS configurator used in the Icicle Kit reference design are provided along with the resulting XML, when designing software for bare metal, Linux, RTOS etc applications this XML can be used for development.
-Bare metal applications can be built using SoftConsole v6.4 and greater, Linux for PolarFire SoC can be built using Buildroot or Yocto on a variety of Linux operating systems and the readme for each build system should be consulted.
+The default eMMC and SD card configurations for the PolarFire SoC MSS configurator used in the Icicle Kit reference design are provided along with the resulting XML. When designing software for bare metal, Linux, RTOS etc applications this XML can be used for development.
+Bare metal applications can be built using SoftConsole v6.4 and greater. Linux for PolarFire SoC can be built using Buildroot or Yocto on a variety of Linux operating systems and the readme for each build system should be consulted.
 
 <a name="full-tool-flow"></a>
 ### Full tool flow
@@ -75,9 +75,9 @@ The image below shows the full development flow for PolarFire SoC for both the F
 
 ![](./images/tool_flow_full.svg)
 
-Anything on the left (TCL Script, Libero Component, Libero SoC etc) can be considered part of the FPGA flow, anything in the middle or on the right can be conceded part of the software flow. The MSS configurator is required for both flows.
-Provided files in green can be considered end points with part of the flow already completed for a user.
-Provided makefile, script and source files in blue can be considered starting points where part of a flow will have to be run.
+Anything on the left (TCL Script, Libero Component, Libero SoC etc) can be considered part of the FPGA flow, anything in the middle or on the right can be considered part of the software flow. The MSS configurator is required for both flows.
+Provided files in green can be considered end points as, part of the flow is already completed.
+Provided makefile, script and source files in blue can be considered starting points as, part of a flow will have to be run.
 
 The different components of the tool flow are described below:
 
@@ -85,7 +85,7 @@ The different components of the tool flow are described below:
 - **PolarFire SoC MSS Configurator:** this is a tool used to configure an instance of the PolarFire SoC MSS. It produces an MSS component file which can be imported into Libero SoC and an XML file which is used as part of the software development flow.
 - **Libero component:** this file is an output of the PolarFire SoC MSS Configurator, it is imported into Libero and describes the generated MSS component to the tools.
 - **MSS XML:** see the [MSS Configuration XML Description](#mss-xml) section.
-- **Libero SoC:** The is Microchips FPGA design IDE. Libero allows the creation of a design and running the Synthesize, Place and Route, Generate FPGA Data Array and Generate Bitstream tools.
+- **Libero SoC:** This is Microchip's FPGA design IDE. Libero allows the creation of a design and running the Synthesize, Place and Route, Generate FPGA Data Array and Generate Bitstream tools.
 - **FPGA bitstream:** this is an FPGA programming file which can contain an FPGA fabric configuration and/or an sNVM client and/or an eNVM client and/or a SPI client and/or a uPROM client.
 - **SoftConsole IDE:** this is Microchips bare metal development IDE, it allows the build, debug and emulation of RISC-V embedded software projects.
 - **Hart Software Services:** this involves cloning, configuring and building the HSS in SoftConsole, it can also include programming the HSS to eNVM as a client.
@@ -103,25 +103,25 @@ There are several starting points a user can choose with different levels of con
 - [FlashPro Express and provided Linux images](#fpe-linux):
 
   Using this flow a user would program the FPGA fabric and eNVM using the provided FlashPro Express programming job file and then program the eMMC or SD card with a payload.
-  There would be no configurability over the contents of the FPGA fabric or Payload.
+  There would be no opportunity to configure the contents of the FPGA fabric or Payload.
 
 - [FlashPro Express and bare metal or Linux flow](#fpe):
 
   Using this flow a user would program the FPGA fabric and eNVM using the provided FlashPro Express programming job file.
   They would then build a Linux image or bare metal application using the provided XML and program it to the eMMC or SD card as a payload.
-  There would be no configurability over the contents of the FPGA fabric, but the Linux image or bare metal application could be customized.
+  There would be no opportunity to configure the contents of the FPGA fabric, but the Linux image or bare metal application could be customized.
 
 - [TCL design flow](#tcl-flow):
 
   Using this flow a user would build a Libero design using the provided TCL scripts, customize as needed and run the design flow.
-  They would then build and program the HSS if being used and a Linux image or bare metal application using the XML generated from their design and program the eMMC or SD card.
-  There would be configurability over the contents of the FPGA fabric and, the Linux image or bare metal application.
+  They would then build and program the HSS (if being used) and a Linux image or bare metal application using the XML generated from their design and program the eMMC or SD card.
+  There would be an opportunity to configure the contents of the FPGA fabric and, the Linux image or bare metal application.
 
 - [Full design flow](#full-flow):
 
   Using this flow a user would configure an MSS component and import it into a Libero design, customize as needed and run the design flow.
-  They would then build and program the HSS if being used and a Linux image or bare metal application using the XML generated from their design and program the eMMC or SD card.
-  There would be configurability over the contents of the FPGA fabric and, the Linux image or bare metal application.  
+  They would then build and program the HSS (if being used) and a Linux image or bare metal application using the XML generated from their design and program the eMMC or SD card.
+  There would be an opportunity to configure the contents of the FPGA fabric and, the Linux image or bare metal application.
 
 <a name="fpe-linux"></a>
 ### FlashPro Express and provided Linux images
@@ -134,7 +134,7 @@ FlashPro Express programming job files can be used to program the FPGA from a pr
 ### FlashPro Express and bare metal or Linux flow
 FlashPro Express programming job files are available for download from the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md#Links) document.
 They can be used to program the FPGA from a pre-generated design. XML for the designs is provided in the reference design [xml folder](https://github.com/polarfire-soc/icicle-kit-reference-design/tree/master/XML).
-The user can then use the provided XML to run the bare metal or Linux flow they desire and program the external memory (i.e eMMC or SD), the provided FlashPro Express programming job files will program the FPGA fabric, the eNVM and set the boot mode to 1.
+The user can then use the provided XML to run the bare metal or Linux flow they desire and program the external memory (i.e eMMC or SD). The provided FlashPro Express programming job files will program the FPGA fabric and the eNVM and then set the boot mode to 1.
 
 ![](./images/tool_flow_fpexpress.svg)
 
@@ -219,13 +219,13 @@ The default configurations for eMMC can be viewed by cloning the [HSS repository
 
 1. Copy the default configuration from
 
-	[hss_clone]/boards/icicle-kit-es/def_config
+		[hss_directory]/boards/icicle-kit-es/def_config
 
 to the top level hss_clone directory, rename it to ".config".
 
 2. Open a terminal and enter:
 
-	make BOARD=icicle-kit-es config
+		make BOARD=icicle-kit-es config
 
 3. This will display the default configuration for the Icicle Kit which can be modified as required:
 
@@ -272,11 +272,9 @@ To build the HSS clone or download the HSS source code from GitHub:
 
 ![](./images/def_config.PNG)
 
-If a custom MSS configuration has been created the:
+If a custom MSS configuration has been created the xml folder should be updated with the configuration generated by the MSS Configurator:
 
-	boards/[target]/soc_fpga_design/xml
-
-folder should be updated with the configuration generated by the MSS Configurator.
+	[hss_directory]/boards/[target]/soc_fpga_design/xml
 
 4. Build the HSS "Default" build configuration:
 
@@ -299,7 +297,7 @@ The MSS Configurator can be launched from shortcuts created during installation 
 
 <a name="mss-xml"></a>
 ### MSS Configuration XML Description
-The generated XML file contents are converted into header files by the [PolarFire SoC Configuration Generator](https://github.com/polarfire-soc/polarfire-soc-configuration-generator) which are used as part of the bare metal and HSS flows.
+The generated XML file contents are converted into header files by the [PolarFire SoC Configuration Generator](https://github.com/polarfire-soc/polarfire-soc-configuration-generator), which are used as part of the bare metal and HSS flows.
 These header files configure system settings such as clocks, MUX settings for MSS I/Os and DDR training configuration.
 
 <a name="programming-envm"></a>

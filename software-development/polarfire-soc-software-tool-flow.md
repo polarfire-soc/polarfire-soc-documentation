@@ -237,7 +237,9 @@ to the top level hss_directory
 
 <a name="build-the-hss"></a>
 ### Build the HSS
-The HSS should be built in SoftConsole v6.4 or greater or using the GNU tools built as part of the Linux flow. SoftConsole is available for download [here](https://www.microsemi.com/product-directory/design-tools/4879-softconsole#downloads). Clone or download the HSS.
+The HSS should be built in SoftConsole v6.4 or greater or using the GNU tools built as part of the Linux flow. SoftConsole is available for download [here](https://www.microsemi.com/product-directory/design-tools/4879-softconsole#downloads). The HSS repository can be downloaded and either:
+- Import the contents of the repository into a SoftConsole Workspace as an existing project and build
+- Build the HSS using the included make files and a local RISC-V toolchain
 
 <a name="config-msys2"></a>
 #### Configuring MSYS2 on Windows

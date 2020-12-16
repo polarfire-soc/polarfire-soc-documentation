@@ -221,17 +221,19 @@ The default configurations for eMMC can be viewed by cloning the [HSS repository
 
 		[hss_directory]/boards/icicle-kit-es/def_config
 
-to the top level hss_clone directory, rename it to ".config".
+to the top level hss_directory
 
-2. Open a terminal and enter:
+2. Rename the default configuration file in the top level hss_directory to ".config".
+
+3. Open a terminal and enter:
 
 		make BOARD=icicle-kit-es config
 
-3. This will display the default configuration for the Icicle Kit which can be modified as required:
+4. This will display the default configuration for the Icicle Kit which can be modified as required:
 
 ![](./images/hss_default.PNG)
 
-4. Enter "Q" to quit and save the configuration
+5. Enter "Q" to quit and save the configuration
 
 <a name="build-the-hss"></a>
 ### Build the HSS

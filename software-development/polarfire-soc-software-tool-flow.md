@@ -263,16 +263,19 @@ If running Windows MSYS2 will also be required to build the HSS. To install MSYS
 <a name="building-hss"></a>
 #### Building the HSS
 
-To build the HSS clone or download the HSS source code from GitHub:
-1. In SoftConsole select File -> Import and then select General/Existing Projects into Workspace:
+To build the HSS:
+
+1. Clone or download the HSS source code from GitHub
+
+2. In SoftConsole select File -> Import and then select General/Existing Projects into Workspace:
 
 ![](./images/sc_import.PNG)
 
-2. Navigate to the HSS repository and select finish to import the project:
+3. Navigate to the HSS repository and select finish to import the project:
 
 ![](./images/import_project.PNG)
 
-3. Place the HSS configuration file in the top level directory naming it solely ".config", the default configurations can be used from the boards folder for each target:
+4. Place the HSS configuration file in the top level directory naming it solely ".config", the default configurations can be used from the boards folder for each target:
 
 ![](./images/def_config.PNG)
 
@@ -280,7 +283,7 @@ If a custom MSS configuration has been created the xml folder should be updated 
 
 	[hss_directory]/boards/[target]/soc_fpga_design/xml
 
-4. Build the HSS "Default" build configuration:
+5. Build the HSS "Default" build configuration:
 
 ![](./images/hss_build.PNG)
 

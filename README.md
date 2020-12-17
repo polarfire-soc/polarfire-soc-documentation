@@ -7,7 +7,7 @@ Please refer to the Microsemi [website](https://www.microsemi.com/product-direct
 ## Supported boards
 
 Supported boards include:
-- [PolarFire SoC Icicle Kit}(https://github.com/polarfire-soc/polarfire-soc-documentation/tree/master/boards/mpfs-icicle-kit-es)
+- [PolarFire SoC Icicle Kit](https://github.com/polarfire-soc/polarfire-soc-documentation/tree/master/boards/mpfs-icicle-kit-es)
 - [HiFive Unleashed with Expansion Board](./boards/mpfs-dev-kit/MPFS-DEV-KIT_user_guide.md)
 - [LC-MPFS-DEV-KIT](./boards/lc-mpfs-dev-kit/LC-MPFS-DEV-KIT_user_guide.md)
 

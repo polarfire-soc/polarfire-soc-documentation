@@ -34,7 +34,7 @@ This document describes:
 - Libero SoC v12.5 or greater
 	- Libero is required to run the FPGA flow. Libero is not required if you are using a FlashPro Express programming job file and do not intend to modify the FPGA design included. The MSS configurator and FlashPro Express can be installed separately to Libero when only using pre-built FPGA programming files.
 	- Libero bundles FlashPro Express and the PolarFire SoC MSS Configurator, if these tools are going to be used, the standalone versions do not need to be installed if Libero is also installed.
-	- A valid license is required to use Libero SoC, a free 1 year Gold license is provided with each kit purchased and a free Silver license supports the MPFS250 part (this is the part on the Icicle Kit). More information and links to generate licenses can be found in the [licensing section](https://www.microsemi.com/product-directory/design-resources/1711-licensing) of the Microsemi website.
+	- A valid license is required to use Libero SoC, a free Silver license supports the MPFS250 part (this is the part on the Icicle Kit). More information and links to generate licenses can be found in the [licensing section](https://www.microsemi.com/product-directory/design-resources/1711-licensing) of the Microsemi website.
 	- Libero can be downloaded [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads).
 - FlashPro Express v12.5 or greater
 	- FlashPro Express is used to program Microchip FPGAs using a programming job file exported by Libero SoC.

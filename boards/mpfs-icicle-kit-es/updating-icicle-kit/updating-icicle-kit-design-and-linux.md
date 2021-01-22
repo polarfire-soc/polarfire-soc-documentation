@@ -24,9 +24,7 @@ All programming files and Linux images are now being provided as assets with eac
 
 Icicle Kit Reference Design programming files (including the HSS) are available as assets [here](https://github.com/polarfire-soc/icicle-kit-reference-design/releases).
 
-Yocto Linux images are available as assets [here](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases).
-
-Buildroot Linux images are available as assets [here](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk/releases).
+Linux images are available as assets with each release of the Yocto build system [here](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases).
 
 **Note:**
 From release 2020.11, the SoC-FPGA programming files are identical for SD card and eMMC since Linux can be booted from either SD card or eMMC using the 2020.11 HSS and Icicle Kit reference design release.

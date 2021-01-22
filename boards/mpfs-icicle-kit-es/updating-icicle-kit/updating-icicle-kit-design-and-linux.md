@@ -27,7 +27,7 @@ Icicle Kit Reference Design programming files (including the HSS) are available 
 Linux images are available as assets with each release of the Yocto build system [here](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases).
 
 **Note:**
-From release 2020.11, the SoC-FPGA programming files are identical for SD card and eMMC since Linux can be booted from either SD card or eMMC using the 2020.11 HSS and Icicle Kit reference design release.
+From release 2020.11, the SoC-FPGA programming files are identical for SD card and eMMC. This means Linux can be booted from either an SD card or eMMC using the 2020.11 HSS and Icicle Kit reference design release or greater.
 
 <a name="Jumpers"></a>
 ## Jumper Settings

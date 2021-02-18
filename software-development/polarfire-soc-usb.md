@@ -1,11 +1,11 @@
 # Working with PolarFire SoC Linux USB driver
 
 - [Jumper setting](#jumper-setting)
-- [Working with a USB Thumb Drive](#usb-thumb)
-	- [Mounting the Thumb Drive](#usb-device-mount)
-	- [Accessing thumb drive](#usb-device-access)
-	- [Verify the Thumb Drive](#usb-device-operations)
-	- [Disconnect the Thumb Drive](#usb-device-umount)
+- [Working with a USB Flash Drive](#usb-flash)
+	- [Mounting the Flash Drive](#usb-device-mount)
+	- [Accessing Flash drive](#usb-device-access)
+	- [Verify the Flash Drive](#usb-device-operations)
+	- [Disconnect the Flash Drive](#usb-device-umount)
 - [Working with a Webcam](#usb-webcam)
      - [Accessing a webcam](#usb-webcam-access)
 - [MSS USB hardware block configurations](#usb-spec)
@@ -20,7 +20,7 @@ The default jumper configuration shown here requires J15 and J17 to be open to a
 
 To program the eMMC again, re-opening the jumpers J15 and J17.
 
-## Thumb Drive <div id="usb-thumb"/>
+## Flash Drive <div id="usb-flash"/>
 After Linux has booted up on the Icicle Kit, connect a USB flash drive into the micro USB connector J16. The flash drive will then be enumerated,, 
 a message shown below can be seen on the console when you do “dmesg | tail -10”.
 
@@ -36,29 +36,29 @@ a message shown below can be seen on the console when you do “dmesg | tail -10
 	[   36.461102]  sda: sda1 sda2
 	
 
-### Mounting the Thumb Drive  <div id="usb-device-mount"/>
+### Mounting the Flash Drive  <div id="usb-device-mount"/>
 The flash drive can be mounted in Linux using the following method
 
 1. Create a driectory such as usbmsc inside media.
 
 		mkdir /media/usbmsc
 		
-   Once sure of the drive identifier, use the above command to mount the thumb drive, replacing the X as appropriate.
-   
 2. Mount the drive.
 
 		mount -t vfat /dev/sdaX /media/usbmsc
+		   
+	Once sure of the drive identifier, use the above command to mount the flash drive, replacing the X as appropriate.
 
-### Accessing thumb drive  <div id="usb-device-access"/>
-	Change the current directory to thumb drive.
+### Accessing Flash drive  <div id="usb-device-access"/>
+	Change the current directory to Flash drive.
 		cd /media/usbmsc
 
-    List the content of the thumb drive:
+    List the content of the Flash drive:
 	
 		ls
 
-### Verify the Thumb Drive <div id="usb-device-operations"/>
-To verify the Thumb drive, copy a file to thumb drive. Read the file from thumb drive and compare with original file. to determine the content is same/correct.
+### Verify the Flash Drive <div id="usb-device-operations"/>
+To verify the Flash drive, copy a file to Flash drive. Read the file from Flash drive and compare with original file to determine the content is same/correct.
 		cp /home/dummy.txt /media/usbmsc/
 		
 		umount /media/usbmsc
@@ -71,16 +71,16 @@ To verify the Thumb drive, copy a file to thumb drive. Read the file from thumb 
 
    The diff command should show nothing (means copy successfully).
    
-   "*" -> Change the value after determining where the thumb drive mount.
+   "*" -> Change the value after determining where the Flash drive mount.
   
-### Disconnect the Thumb Drive  <div id="usb-device-umount"/>
+### Disconnect the Flash Drive  <div id="usb-device-umount"/>
 
 Issue the umount command to un mount the flash drive so it can safely be disconnected.
    
 		umount /media/usbmsc
    
 ## Working with a Webcam  <div id="usb-webcam"/>
-To work with USB video devices, such as webcams, the following packages need to be included in the yocto or buildroot build systems
+To work with USB video devices, such as webcams, the following packages need to be included in the yocto or buildroot build systems.
 
 	 - yavta \ 
      - libuvc \
@@ -107,5 +107,5 @@ Use the command below to capture an image from a webcam
    
    To connect high power USB device, its is better to use an externally powered USB hub in between the USB device and the Icicle Kit.
    
-2.  If a VBUS_ERROR is displayed and LEDs turns off, a board power cycle will be needed to get the USB port working
+2.  If a VBUS_ERROR is displayed and LEDs turns off, a board power cycle will be needed to get the USB port working.
    

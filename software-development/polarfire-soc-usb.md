@@ -11,7 +11,7 @@
 - [MSS USB hardware block configurations](#usb-spec)
 - [Known Issue](#issues)
 
-The USB functionality is available with [yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) and [buildroot](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) from the Microchip Public GIT server under polarfire-soc. 
+The USB functionality is available with [yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) and [buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) from the Microchip Public GIT server under polarfire-soc. 
 
 ## Jumper setting <a name="jumper-setting"></a>
 Make sure the jumpers J15 and J17 are closed to use PolarFire SoC as USB Host.

@@ -11,7 +11,7 @@ Secure boot mode 3 only supports authentication of the eNVM content. No encrypti
 The Elliptic Curve Digital Signature Algorithm (ECDSA) is used to sign and authenticate certificates. It uses elliptic curve point multiplication by a scalar number as a one-way function, which is in practice impossible to reverse, to generate asymmetric key pairs and authenticate messages.
 The diagram below illustrates how difficult it would be to retrieve the scalar value used in the point multiplication to generate points P and Q from base point G. Such a scalar value is used, among other things, as a private key in the ECDSA.
 
-![](/build/mpfs-documentation/secure-boot/curve-points.png) 
+![](./images/curve-points.png) 
 
 ECDSA is used to generate a certificate containing a signature for a message using a private key. The associated public key is then used to authenticate the content of the certificate to check that the message has not been tampered with.
 
@@ -19,7 +19,7 @@ All ECDSA steps are performed using a publicly agreed elliptic curve and base po
 
 
 
-![](./images/Secure-Boot-Mode-3-ECDSA-Overview.svg) 
+![](./images/Secure-Boot-Mode-3-ECDSA-Overview.png) 
 
 | Parameter | Description |
 | --- | --- |
@@ -27,7 +27,7 @@ All ECDSA steps are performed using a publicly agreed elliptic curve and base po
 | G| Base point on the curve. Used to generate other points on the curve though point multiplication. The value of the base point is known to both the signing and authenticating sides. |
 | d | Private key. This is a large integer used in elliptic curve scalar point multiplications. The private key is only known by the signing side. |
 | Q | Public key. This is a point on the elliptic curve. It is known to both signing and authenticating sides. |
-| k | Secret random number used to generate the certificate's signature. The value of this random number is only known by the the signing side.|
+| k | Secret random scalar number (greater than zero) used to generate the certificate's signature. The value of this random number is only known by the signing side.|
 | z | Hash of the message being signed. |
 | r | Part of the signature included in the certificate. |
 | s | Part of the signature included in the certificate used to reconstruct r'. |
@@ -81,10 +81,11 @@ Two optional checks can be done by the system controller before authenticating t
 
 The actual ECDSA signature authentication is orchestrated by the system controller if the above optional checks were successful. The authenticxation is done in two steps:
 
-- The System Controller verifies the SBIC signature using the ECDSA algorithm. It uses the (s) part of the signature, the user private key and the hash of the SBIC content to compute (r'). The SBIC is authenticated if the computed (r') value is equal to thge (r) part of the SBIC's signature.
+- The System Controller verifies the SBIC signature using the ECDSA algorithm. It uses the (s) part of the signature, the user private key and the hash of the SBIC content to compute (r'). The SBIC is authenticated if the computed (r') value is equal to the (r) part of the SBIC's signature.
 - If the SBIC signature authentication is successful, the hash of the User Boot Loader is computed and compared against the hash contained in the SBIC. The computed hash matching the SBIC's hash field indicates that the USer Boot Loader has not been tampered with and can be executed.
 
-![](./images/Secure-Boot-Mode-3-check.svg) 
+
+![](./images/Secure-Boot-Mode-3-check.png) 
 
 The System Controller causes the RISC-V harts to jump the addresses defined in the SBIC's boot vector fields when authentication is successful. The System Controller signals a tamper to the FPGA fabric and the User Boot Loader is not executed if any authentication step fails
 
@@ -93,7 +94,8 @@ The Secure Boot Image Certificate (SBIC) is constructed to contain information a
 
 The SBIC also contains the boot vector addresses from which each PolarFire SoC RISC-V hart will execute from upon successful authentication of the certificate. It also contains options to bind itself to an individual PolarFire SoC device using the device's Device Serial Number (DSN), and the option to revoke the SBIC based on the SBIC's Version field.
 
-![](./images/Secure-Boot-Mode-3-generate.svg) 
+
+![](./images/Secure-Boot-Mode-3-generate.png) 
 
 Two distinct SHA-384 hash values are used to authenticate the User Boot Loader:
 

@@ -1,6 +1,6 @@
 # PolarFire SoC Boot Mode 0 Fundamentals
 
-##Overview
+## Overview
 PolarFire SoC boot mode 0 is intended to be used where either the Microprocessor Subsystem (MSS) is not used or when debugging software through JTAG. Boot mode 0 puts the MSS in a mode where all harts execute a loop waiting for a reset vector to be set by the debugger through JTAG. It prevents the MSS from executing invalid code until the debugger loads a valid executable in memory.
 
 ## Boot Mode 0 Sequence

@@ -19,6 +19,6 @@ For boot mode 1, the System Controller:
 - Sets the content of the System Registers' reset vector register from the values found in U_MSS_BOOT_CFG configuration data structure held in pNVM.
 - Releases the Coreplex reset causing all harts to execute the code found in eNVM. 
 
-![](/build/mpfs-documentation/secure-boot/bitbucket/polarfire-soc-documentation/fundamentals/boot-modes/boot-mode-0/images/boot-mode-0.png) 
+![](./images/boot-mode-1.png) 
 
 Please note that the System Controller's pNVM and sNVM content can only be modified through a programming bitstream. Neither pNVM nor sNVM content is directly accessible from the Coreplex.

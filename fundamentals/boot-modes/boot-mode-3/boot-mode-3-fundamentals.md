@@ -33,6 +33,8 @@ All ECDSA steps are performed using a publicly agreed elliptic curve and base po
 | s | Part of the signature included in the certificate used to reconstruct r'. |
 | r' | Value computed from the message's hash during authentication. Should match the signature's r value for authentication to be successful. |
 
+Note: The NIST P-384 curve is used for boot mode 3 ECDSA.
+
 ###Key Pair Generation
 >Note about mathematical notation: This document uses "." for scalar multiplication and "*" for elliptic curve point multiplication.
 	

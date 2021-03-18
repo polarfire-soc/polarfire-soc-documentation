@@ -16,12 +16,12 @@ The USB functionality is available with [yocto](https://github.com/polarfire-soc
 ## Jumper setting <a name="jumper-setting"></a>
 Make sure the jumpers J15 and J17 are closed to use PolarFire SoC as USB Host.
 
-The default jumper configuration shown here requires J15 and J17 to be open to act as a USB device. In this case PolarFire SoC will act as a USB host which requires J15 and J17 to be closed.
+The default jumper configuration shown [here](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) requires J15 and J17 to be open to act as a USB device. In this case PolarFire SoC will act as a USB host which requires J15 and J17 to be closed.
 
-To program the eMMC again, re-opening the jumpers J15 and J17.
+To program the eMMC again, open the jumpers J15 and J17.
 
 ## Flash Drive <div id="usb-flash"/>
-After Linux has booted up on the Icicle Kit, connect a USB flash drive into the micro USB connector J16. The flash drive will then be enumerated,, 
+After Linux has booted up on the Icicle Kit, connect a USB flash drive into the micro USB connector J16. The flash drive will then be enumerated, 
 a message shown below can be seen on the console when you do “dmesg | tail -10”.
 
 	[   35.112927] usb 1-1: new high-speed USB device number 2 using musb-hdrc
@@ -50,15 +50,16 @@ The flash drive can be mounted in Linux using the following method
 	Once sure of the drive identifier, use the above command to mount the flash drive, replacing the X as appropriate.
 
 ### Accessing Flash drive  <div id="usb-device-access"/>
-	Change the current directory to Flash drive.
+Change the current directory to Flash drive.
+
 		cd /media/usbmsc
 
-    List the content of the Flash drive:
+List the content of the Flash drive:
 	
 		ls
 
 ### Verify the Flash Drive <div id="usb-device-operations"/>
-To verify the Flash drive, copy a file to Flash drive. Read the file from Flash drive and compare with original file to determine the content is same/correct.
+To verify the Flash drive, copy a file to it, unmount and remount the drive and compare the stored file with the original to determine that the content is the same/correct.
 		cp /home/dummy.txt /media/usbmsc/
 		
 		umount /media/usbmsc
@@ -71,7 +72,7 @@ To verify the Flash drive, copy a file to Flash drive. Read the file from Flash 
 
    The diff command should show nothing (means copy successfully).
    
-   "*" -> Change the value after determining where the Flash drive mount.
+   Once sure of the drive identifier, use the above command to mount the thumb drive, replacing the X as appropriate.
   
 ### Disconnect the Flash Drive  <div id="usb-device-umount"/>
 

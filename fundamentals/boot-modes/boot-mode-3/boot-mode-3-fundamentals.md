@@ -1,7 +1,7 @@
 # PolarFire SoC Boot Mode 3 Fundamentals
 
 ## Overview
-Secure boot mode 3 uses the Elliptic Curve Digital Signature Algorithm (ECDSA) to authenticate the signature of a Secure Boot Image Certificate (SBIC) as part of booting the system. The PolarFire SoC RISC-V monitor and application processors will not be started and a tamper signaled to the FPGA fabric if authentication fails.
+Secure boot mode 3 implements Microchip supplied factory secure boot authentication of the eNVM content. It uses the Elliptic Curve Digital Signature Algorithm (ECDSA) to authenticate the signature of a Secure Boot Image Certificate (SBIC) as part of booting the system. The PolarFire SoC RISC-V monitor and application processors will not be started and a tamper signaled to the FPGA fabric if authentication fails.
 
 Secure boot mode 3 only supports authentication of the eNVM content. No encryption/decryption of the eNVM content is used.
 

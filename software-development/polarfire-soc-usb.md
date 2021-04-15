@@ -1,4 +1,4 @@
-# Working with PolarFire SoC Linux USB driver
+# Working with PolarFire SoC USB Linux driver
 
 - [Jumper setting](#jumper-setting)
 - [Working with a USB Flash Drive](#usb-flash)
@@ -11,7 +11,11 @@
 - [MSS USB hardware block configurations](#usb-spec)
 - [Known Issue](#issues)
 
-The USB functionality is available with [yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) and [buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) from the Microchip Public GIT server under polarfire-soc. 
+The PolarFire SoC FPGA devices contain one instance of a Universal Serial Bus (USB), which is a multipoint dual-role On-The-Go (OTG) controller. This USB controller, which is implemented as a hard ASIC block, complies with the USB 2.0 standard with OTG support.
+
+This document describes the steps to test the USB host on Icicle kit using a flash drive and webcam, USB specification, and known issues.
+
+The PolarFire SoC USB Linux driver is available with [yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) and [buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) from the Microchip Public GIT server under polarfire-soc. 
 
 ## Jumper setting <a name="jumper-setting"></a>
 Make sure the jumpers J15 and J17 are closed to use PolarFire SoC as USB Host.

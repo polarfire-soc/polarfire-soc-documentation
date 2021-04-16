@@ -1,7 +1,7 @@
 # PolarFire SoC Boot Mode 0 Fundamentals
 
 ## Overview
-PolarFire SoC boot mode 0 is used by blank devices or when debugging embedded software where code should not be executed on power on. Boot mode 0 puts the MSS in a mode where all harts execute a loop waiting for the debugger to connect through JTAG or for the device to be  programmed.
+PolarFire SoC boot mode 0 is used by blank devices or when debugging embedded software where code should not be executed on power up. Boot mode 0 puts the MSS in a mode where all harts execute a loop waiting for the debugger to connect through JTAG or for the device to be  programmed.
 
 Blank devices use boot mode 0. Boot mode 0 can also be useful when debugging low level software through JTAG in order to prevent the system state from being modified between the system being powered up and the debug session starting.
 

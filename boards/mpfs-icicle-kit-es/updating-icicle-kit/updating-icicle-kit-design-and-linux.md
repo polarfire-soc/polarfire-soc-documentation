@@ -37,14 +37,13 @@ The Icicle Kit jumper settings required to boot Linux are as follows:
 | --------- | -------- |
 |    J15    |   Open   |
 |    J17    |   Open   |
-|    J24    |   Open   |
+|    J24    |  Closed  |
 |    J28    |  Closed  |
 |    J31    |   Open   |
-|    J34    |  1 & 2   |
-|    J35    |  1 & 2   |
-|    J43    |  1 & 2   |
+|    J34    |  2 & 3   |
+|    J35    |  2 & 3   |
+|    J43    |  2 & 3   |
 |    J45    |  1 & 2   |
-|    J46    |  Closed  |
 
 ### FlashPro Jumpers
 

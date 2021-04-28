@@ -33,17 +33,17 @@ From release 2020.11, the SoC-FPGA programming files are identical for SD card a
 ## Jumper Settings
 The Icicle Kit jumper settings required to boot Linux are as follows:
 
-|   Jumper  |  Setting |
-| --------- | -------- |
-|    J15    |   Open   |
-|    J17    |   Open   |
-|    J24    |  Closed  |
-|    J28    |  Closed  |
-|    J31    |   Open   |
-|    J34    |  2 & 3   |
-|    J35    |  2 & 3   |
-|    J43    |  2 & 3   |
-|    J45    |  1 & 2   |
+|   Jumper  |  Setting | Description            |
+| --------- | -------- | -----------------------|
+|    J15    |   Open   | USB Device mode        |
+|    J17    |   Open   | USB Device mode        |
+|    J24    |  Closed  | Requierd fpr eFP6      |
+|    J28    |  Closed  | No external Reference provided for XCVR, hence grounding by closing it. |
+|    J31    |   Open   | optional, if external Vref for DDRx controller required, can be provided by populating J31|
+|    J34    |  2 & 3   | eMMC 1.8v              |
+|    J35    |  2 & 3   | eMMC 1.8v              |
+|    J43    |  2 & 3   | eMMC 1.8v              |
+|    J45    |  1 & 2   | Core voltage (VDD) set to 1.0|
 
 ### FlashPro Jumpers
 

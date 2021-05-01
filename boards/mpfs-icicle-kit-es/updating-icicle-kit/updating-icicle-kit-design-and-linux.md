@@ -35,22 +35,30 @@ The Icicle Kit jumper settings required to boot Linux are as follows:
 
 |   Jumper  |  Setting | Description            |
 | --------- | -------- | -----------------------|
-|    J15    |   Open   | USB Device mode        |
-|    J17    |   Open   | USB Device mode        |
-|    J24    |  Closed  | Requierd fpr eFP6      |
-|    J28    |  Closed  | No external Reference provided for XCVR, hence grounding by closing it. |
-|    J31    |   Open   | optional, if external Vref for DDRx controller required, can be provided by populating J31|
-|    J34    |  2 & 3   | eMMC 1.8v              |
-|    J35    |  2 & 3   | eMMC 1.8v              |
-|    J43    |  2 & 3   | eMMC 1.8v              |
-|    J45    |  1 & 2   | Core voltage (VDD) set to 1.0|
+|    J15    |   Open   | USB device mode selection. Open: USB client. Closed: USB host              |
+|    J17    |   Open   | USB device mode selection. Open: USB client. Closed: USB host              |
+|    J24    |  Closed  | Requierd for Embedded FlashPro6 (eFP6)      |
+|    J28    |  Closed  | Transceiver external reference clock. Closed: ground (no clock provided).  |
+|    J31    |   Open   | DDR controller reference voltage.                 |
+|           |          | Open: no external reference.                      |
+|           |          | Closed: External reference provided.              |
+|    J34    |  2 & 3   | Bank 4 reference voltage                          |
+|           |          | 1&2 = 3v3                                         |
+|           |          | 2&3 = 1v8                                         |
+|    J35    |  2 & 3   | Bank 4 I/O auxiliary supply voltage.              |
+|           |          | 1&2 = 3v3                                         |
+|           |          | 2&3 = 2v5                                         |
+|    J43    |  2 & 3   | U44 reference voltage                             |
+|           |          | 1&2 = 3v3                                         |
+|           |          | 2&3 = bank 4 reference voltage                    |
+|    J45    |  1 & 2   | Core voltage (VDD) set to 1.0 |
 
 ### FlashPro Jumpers
 
 |   Jumper  |  Description                                                         |
 | --------- | -------------------------------------------------------------------- |
 |    J9     |   Used to select between Embedded FlashPro6 and external FlashPro header.            |
-|           |     Closed: Embedded FlashPro6 connected to J33 micro USB port. |
+|           |     Closed: eFP6 connected to J33 micro USB port. |
 |           |     Open: External FlashPro connected to J23 header.              |
 |    J21    |   JTAG nTRST interface pull down enable. Leave open.                 |
 

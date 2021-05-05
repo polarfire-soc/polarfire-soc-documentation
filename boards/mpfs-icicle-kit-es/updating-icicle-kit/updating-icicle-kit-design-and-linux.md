@@ -29,9 +29,10 @@ Linux images are available as assets with each release of the Yocto build system
 **Note:**
 From release 2020.11, the SoC-FPGA programming files are identical for SD card and eMMC. This means Linux can be booted from either an SD card or eMMC using the HSS and Icicle Kit reference design release 2020.11 or greater.
 
-<a name="Jumpers"></a>
 ## Jumper Settings
 The Icicle Kit jumper settings required to boot Linux are as follows:
+
+![](./images/icicle_jumper_settings.jpg)
 
 |   Jumper  |  Setting | Description            |
 | --------- | -------- | -----------------------|

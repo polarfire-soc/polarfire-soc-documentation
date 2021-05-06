@@ -38,7 +38,7 @@ The Icicle Kit jumper settings required to boot Linux are as follows:
 | --------- | -------- | -----------------------|
 |    J15    |   Open   | USB device mode selection. Open: USB client. Closed: USB host              |
 |    J17    |   Open   | USB device mode selection. Open: USB client. Closed: USB host              |
-|    J24    |  Closed  | Requierd for Embedded FlashPro6 (eFP6)      |
+|    J24    |  Closed  | Required for Embedded FlashPro6 (eFP6)      |
 |    J28    |  Closed  | Transceiver external reference clock. Closed: ground (no clock provided).  |
 |    J31    |   Open   | DDR controller reference voltage.                 |
 |           |          | Open: no external reference.                      |

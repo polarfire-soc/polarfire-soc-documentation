@@ -47,39 +47,40 @@ eMMC or SD Tcl script:
 
 Click Run to generate the project.
 
-Select the `Design Flow` tab, and then run the `Generate FPGA Array
-Data` tool to synthesize the design. 
+Select the "`Design Flow`" tab, and then run the "`Generate FPGA Array
+Data`" tool to synthesize the design.
 
 This will take some time, but the next tool in the flow depends on the
-output of `Generate FPGA Array Data` and it won't run it automatically.
+output of "`Generate FPGA Array Data`" and it won't run it automatically.
 
 ![](images/image0002.png)
 
 ![](images/image0003.png)
 
-Open the `Configure Design Initialization Data and Memories` tool.
+Open the "`Configure Design Initialization Data and Memories`" tool.
 
 ![](images/image0004.png)
 
-Select the `SPI Flash` tab, and change the SPI Flash memory size to
+Select the "`SPI Flash`" tab, and change the SPI Flash memory size to
 1,048,576 KiB.
 
 ![](images/image0005.png)
 
-Click `Add`, and add a "Data Storage Client". Give your payload a name
-(I creatively used "payload"), select `Memory file` and click `...` to
-select your payload.hex ...
+Click "`Add`, and add a "`Data Storage Client`". Give your payload a
+meaningful and representative name (call it "payload" if you're stuck),
+select "`Memory file`" and click "`...`" to select your payload.hex image
+from earlier.
 
 ![](images/image0006.png)
 
 The Start address offset of 0x400 is important -- do not change that.
 
-Next, start the `Run PROGRAM_SPI_IMAGE Action` tool.
+Next, start the "`Run PROGRAM_SPI_IMAGE Action`" tool.
 
 ![](images/image0007.png)
 
 
-Click "Yes" to both the Warning dialog and the Information dialog
+Click "`Yes`" to both the Warning dialog and the Information dialog
 
 ![](images/image0008.png)
 

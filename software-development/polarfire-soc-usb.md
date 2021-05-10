@@ -1,6 +1,6 @@
 # Working with PolarFire SoC USB Linux driver
 
-- [Jumper setting](#jumper-setting)
+- [Jumper Settings](#jumper-settings)
 - [Working with a USB Flash Drive](#usb-flash)
 	- [Mounting the Flash Drive](#usb-device-mount)
 	- [Accessing Flash drive](#usb-device-access)
@@ -11,18 +11,16 @@
 - [MSS USB hardware block configurations](#usb-spec)
 - [Known Issue](#issues)
 
-The PolarFire SoC FPGA devices contain one instance of a Universal Serial Bus (USB), which is a multipoint dual-role On-The-Go (OTG) controller. This USB controller, which is implemented as a hard ASIC block, complies with the USB 2.0 standard with OTG support.
+The PolarFire SoC FPGA devices contain one instance of a Universal Serial Bus (USB) controller, which is a multipoint dual-role On-The-Go (OTG) controller. This USB controller, which is implemented as a hard ASIC block, complies with the USB 2.0 standard with OTG support.
 
-This document describes the steps to test the USB host on Icicle kit using a flash drive and webcam, USB specification, and known issues.
+This document describes the steps to test the USB host on the Icicle kit using a flash drive and a webcam. It also describes the required hardware configuration for the USB controller and some known issues.
 
 The PolarFire SoC USB Linux driver is available with [yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) and [buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) from the Microchip Public GIT server under polarfire-soc. 
 
-## Jumper setting <a name="jumper-setting"></a>
-Make sure the jumpers J15 and J17 are closed to use PolarFire SoC as USB Host.
+## Jumper Settings <a name="jumper-settings"></a>
+Before power up, make sure that Icicle Kit jumpers J15 and J17 are closed to use PolarFire SoC as a USB Host.
 
-The default jumper configuration shown [here](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) requires J15 and J17 to be open to act as a USB device. In this case PolarFire SoC will act as a USB host which requires J15 and J17 to be closed.
-
-To program the eMMC again, open the jumpers J15 and J17.
+Note: The default jumper configuration for the Icicle Kit, shown [here](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md), requires J15 and J17 to be open to act as a USB device. To program the eMMC again, open jumpers J15 and J17.
 
 ## Flash Drive <div id="usb-flash"/>
 After Linux has booted up on the Icicle Kit, connect a USB flash drive into the micro USB connector J16. The flash drive will then be enumerated. Log messages about the enumeration process can be retrieved using the following command:

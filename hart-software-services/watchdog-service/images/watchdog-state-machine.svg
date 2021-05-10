@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="333.74mm" height="199.01mm" version="1.1" viewBox="0 0 333.74 199.01" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <g id="lend4">
+   <path d="m2 1-2-1 2-1v2"/>
+  </g>
+  <marker id="mrkr4-14" class="st6" overflow="visible" orient="auto" refX="-12.08" v:arrowSize="2" v:arrowType="4" v:setback="12.08">
+   <use transform="scale(-6.04)" width="100%" height="100%" xlink:href="#lend4"/>
+  </marker>
+  <marker id="mrkr4-50" class="st12" overflow="visible" orient="auto" refX="-12.08" v:arrowSize="2" v:arrowType="4" v:setback="12.08">
+   <use transform="scale(-6.04)" width="100%" height="100%" xlink:href="#lend4"/>
+  </marker>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(79.935 20.973)">
+  <g transform="matrix(.35278 0 0 .35278 -86.285 -27.323)" color-interpolation-filters="sRGB" fill="none" fill-rule="evenodd" font-size="12px" stroke-linecap="square" stroke-miterlimit="3">
+   <g v:groupContext="foregroundPage" v:index="1" v:mID="0">
+    <v:userDefs>
+     <v:ud v:nameU="msvThemeOrder" v:val="VT0(0):26"/>
+    </v:userDefs>
+    <title>Page-1</title>
+    <v:pageProperties v:drawingScale="0.0393701" v:drawingUnits="24" v:pageScale="0.0393701" v:shadowOffsetX="8.50394" v:shadowOffsetY="-8.50394"/>
+    <v:layer v:index="0" v:name="Connector"/>
+    <g transform="translate(18.25 -134.05)" v:groupContext="group" v:mID="1">
+     <v:userDefs>
+      <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+     </v:userDefs>
+     <title>State</title>
+     <g v:groupContext="groupContent" v:mID="1">
+      <rect class="st1" y="311.57" width="378.42" height="288.54" rx="8.5039" ry="8.5039" fill="#625986" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+     </g>
+     <g transform="translate(0 -266.13)" v:groupContext="shape" v:mID="2">
+      <title>Sheet.2</title>
+      <desc>services/wdog/wdog_service.c</desc>
+      <v:userDefs>
+       <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+      </v:userDefs>
+      <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+      <v:textRect width="378.43" height="22.4037" cx="189.213" cy="588.903"/>
+      <path class="st2" d="m8.5 600.11h361.42a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.51h-361.42a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#625986" stroke="#625986" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      <text class="st3" x="112.26" y="592.5" fill="#ffffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>services/wdog/wdog_service.c</text>
+     </g>
+     <g v:groupContext="shape" v:mID="3">
+      <title>Sheet.3</title>
+      <v:userDefs>
+       <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+      </v:userDefs>
+      <path class="st4" d="m8.5 600.11h361.42a8.5039 8.5039-180 0 0 8.51-8.51v-249.12a8.5039 8.5039-180 0 0-8.51-8.51h-361.42a8.5039 8.5039-180 0 0-8.5 8.51v249.12a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#625986" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+     </g>
+    </g>
+    <g transform="translate(269.12 -257.61)" v:groupContext="shape" v:layerMember="0" v:mID="34">
+     <title>Dynamic connector</title>
+     <desc>exit / HSS_Boot_RestartCore()</desc>
+     <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+     <v:textRect width="107.8" height="17.6036" cx="173.608" cy="557.666"/>
+     <path class="st5" d="m0 600.11v-42.44h383.62" marker-end="url(#mrkr4-14)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+     <rect class="st7" x="124.62" y="552.87" width="97.98" height="9.5998" fill="#fff" v:rectContext="textBkgnd"/>
+     <text class="st8" x="124.62" y="560.07001" fill="#41719d" font-family="Calibri" font-size="8px" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>exit / HSS_Boot_RestartCore()</text>
+    </g>
+    <g transform="translate(42.344 -191.86)" v:groupContext="group" v:mID="35">
+     <title>Sheet.35</title>
+     <g transform="translate(0 -128.1)" v:groupContext="group" v:mID="9">
+      <v:userDefs>
+       <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+      </v:userDefs>
+      <title>State.9</title>
+      <g v:groupContext="groupContent" v:mID="9">
+       <rect class="st1" y="555.3" width="259.37" height="44.804" rx="8.5039" ry="8.5039" fill="#625986" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(0,-22.4)" v:groupContext="shape" v:mID="10">
+       <title>Sheet.10</title>
+       <desc>init</desc>
+       <v:userDefs>
+        <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+       </v:userDefs>
+       <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+       <v:textRect width="259.38" height="22.4037" cx="129.685" cy="588.903"/>
+       <path class="st2" d="m8.5 600.11h242.37a8.5039 8.5039-180 0 0 8.5-8.51v-5.39a8.5039 8.5039-180 0 0-8.5-8.51h-242.37a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#625986" stroke="#625986" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       <text class="st3" x="121.44" y="592.5" fill="#ffffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>init</text>
+      </g>
+      <g v:groupContext="shape" v:mID="11">
+       <title>Sheet.11</title>
+       <desc>entry / MSS_WD_configure(MSS_WDOG0_LO, ...)</desc>
+       <v:userDefs>
+        <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+       </v:userDefs>
+       <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+       <v:textRect width="259.38" height="22.4037" cx="129.685" cy="588.907"/>
+       <path class="st4" d="m8.5 600.11h242.37a8.5039 8.5039-180 0 0 8.5-8.51v-5.39a8.5039 8.5039-180 0 0-8.5-8.5h-242.37a8.5039 8.5039-180 0 0-8.5 8.5v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#625986" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       <text class="st9" x="4" y="592.51001" fill="#625986" font-family="Calibri" font-size="12px" v:langID="6153"><v:paragraph/><v:tabList/>entry / MSS_WD_configure(MSS_WDOG0_LO, ...)</text>
+      </g>
+     </g>
+     <g transform="translate(18.425 -11.299)" v:groupContext="group" v:mID="12">
+      <v:userDefs>
+       <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+      </v:userDefs>
+      <title>State.12</title>
+      <g v:groupContext="groupContent" v:mID="12">
+       <rect class="st1" y="555.3" width="70.866" height="44.804" rx="8.5039" ry="8.5039" fill="#625986" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(0,-22.4)" v:groupContext="shape" v:mID="13">
+       <title>Sheet.13</title>
+       <desc>idle</desc>
+       <v:userDefs>
+        <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+       </v:userDefs>
+       <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+       <v:textRect width="70.87" height="22.4037" cx="35.4331" cy="588.903"/>
+       <path class="st2" d="m8.5 600.11h53.86a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.51h-53.86a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#625986" stroke="#625986" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       <text class="st3" x="26.25" y="592.5" fill="#ffffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>idle</text>
+      </g>
+      <g v:groupContext="shape" v:mID="14">
+       <title>Sheet.14</title>
+       <v:userDefs>
+        <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+       </v:userDefs>
+       <path class="st4" d="m8.5 600.11h53.86a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.5h-53.86a8.5039 8.5039-180 0 0-8.5 8.5v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#625986" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+     </g>
+     <g transform="translate(137.48)" v:groupContext="group" v:mID="15">
+      <v:userDefs>
+       <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+      </v:userDefs>
+      <title>State.15</title>
+      <g v:groupContext="groupContent" v:mID="15">
+       <rect class="st1" y="534.36" width="178.58" height="65.748" rx="8.5039" ry="8.5039" fill="#625986" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(0 -43.344)" v:groupContext="shape" v:mID="16">
+       <title>Sheet.16</title>
+       <desc>monitoring</desc>
+       <v:userDefs>
+        <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+       </v:userDefs>
+       <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+       <v:textRect width="178.59" height="22.4037" cx="89.2913" cy="588.903"/>
+       <path class="st2" d="m8.5 600.11h161.58a8.5039 8.5039-180 0 0 8.5-8.51v-5.39a8.5039 8.5039-180 0 0-8.5-8.51h-161.58a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#625986" stroke="#625986" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       <text class="st3" x="61.509998" y="592.5" fill="#ffffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>monitoring</text>
+      </g>
+      <g v:groupContext="shape" v:mID="17">
+       <title>Sheet.17</title>
+       <desc>entry/check SCB exit / HSS_Boot_RestartCore()</desc>
+       <v:userDefs>
+        <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+       </v:userDefs>
+       <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+       <v:textRect width="178.59" height="36.8038" cx="89.2913" cy="575.163"/>
+       <path class="st4" d="m8.5 600.11h161.58a8.5039 8.5039-180 0 0 8.5-8.51v-26.34a8.5039 8.5039-180 0 0-8.5-8.5h-161.58a8.5039 8.5039-180 0 0-8.5 8.5v26.34a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#625986" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       <text class="st9" x="4" y="571.56" fill="#625986" font-family="Calibri" font-size="12px" v:langID="6153"><v:paragraph/><v:tabList/>entry/check SCB<v:newlineChar/><tspan class="st10" x="4" dy="1.2em" font-size="12px">exit / HSS_Boot_RestartCore()</tspan></text>
+      </g>
+     </g>
+     <g transform="translate(129.68 -128.1)" v:groupContext="shape" v:layerMember="0" v:mID="22">
+      <title>Dynamic connector.22</title>
+      <path class="st11" d="m0 600.11v36h-75.83v29.96" marker-end="url(#mrkr4-50)" stroke="#5c537e" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+     </g>
+     <g transform="translate(89.291 -40.374)" v:groupContext="shape" v:layerMember="0" v:mID="23">
+      <title>Dynamic connector.23</title>
+      <path class="st11" d="m0 606.78h36v0.83h6.15" marker-end="url(#mrkr4-50)" stroke="#5c537e" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+     </g>
+    </g>
+    <g transform="translate(658.77 -18.25)" v:groupContext="group" v:mID="75">
+     <title>Sheet.75</title>
+     <g v:groupContext="group" v:mID="37">
+      <v:userDefs>
+       <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+      </v:userDefs>
+      <title>Submachine state</title>
+      <g v:groupContext="groupContent" v:mID="37">
+       <rect class="st13" y="36.5" width="305.01" height="563.6" rx="8.5039" ry="8.5039" fill="#4271c6" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(0 -541.2)" v:groupContext="shape" v:mID="38">
+       <title>Sheet.38</title>
+       <desc>services/boot/hss_boot_service.c</desc>
+       <v:userDefs>
+        <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+       </v:userDefs>
+       <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+       <v:textRect width="305.01" height="22.4037" cx="152.504" cy="588.903"/>
+       <path class="st14" d="m8.5 600.11h288a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.51h-288a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#4271c6" stroke="#4271c6" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       <text class="st3" x="68.57" y="592.5" fill="#ffffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>services/boot/hss_boot_service.c</text>
+      </g>
+      <g v:groupContext="group" v:mID="39">
+       <v:userDefs>
+        <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+       </v:userDefs>
+       <title>Sheet.39</title>
+       <g v:groupContext="groupContent" v:mID="39">
+        <path class="st15" d="m8.5 600.11h288a8.5039 8.5039-180 0 0 8.51-8.51v-524.19a8.5039 8.5039-180 0 0-8.51-8.51h-288a8.5039 8.5039-180 0 0-8.5 8.51v524.19a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#4271c6" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+       <g transform="translate(277.37 -2.126)" v:groupContext="shape" v:mID="40">
+        <title>Sheet.40</title>
+        <path class="st16" d="m15.94 597.98h-6.37z" fill="#4271c6"/>
+        <g stroke="#4271c6" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5">
+         <path class="st17" d="m2.13 600.11h5.31a2.126 2.126-180 0 0 2.13-2.13 2.126 2.126-180 0 0-2.13-2.13h-5.31a2.126 2.126-180 0 0-2.13 2.13 2.126 2.126-180 0 0 2.13 2.13"/>
+         <path class="st17" d="m18.07 600.11h5.32a2.126 2.126-180 0 0 2.12-2.13 2.126 2.126-180 0 0-2.12-2.13h-5.32a2.126 2.126-180 0 0-2.13 2.13 2.126 2.126-180 0 0 2.13 2.13"/>
+         <path class="st17" d="m15.94 597.98h-6.37"/>
+        </g>
+       </g>
+      </g>
+     </g>
+     <g transform="translate(56.976 -35.433)" v:groupContext="group" v:mID="74">
+      <title>Sheet.74</title>
+      <g transform="translate(38.866 -437.09)" v:groupContext="group" v:mID="41">
+       <v:userDefs>
+        <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+       </v:userDefs>
+       <title>State.41</title>
+       <g v:groupContext="groupContent" v:mID="41">
+        <rect class="st18" y="555.3" width="70.866" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+       <g transform="translate(0,-22.4)" v:groupContext="shape" v:mID="42">
+        <title>Sheet.42</title>
+        <desc>boot_init</desc>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+        </v:userDefs>
+        <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+        <v:textRect width="70.87" height="22.4037" cx="35.4331" cy="588.903"/>
+        <path class="st19" d="m8.5 600.11h53.86a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.51h-53.86a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#5b9bd5" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+        <text class="st3" x="12.45" y="592.5" fill="#ffffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>boot_init</text>
+       </g>
+       <g v:groupContext="shape" v:mID="43">
+        <title>Sheet.43</title>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+        </v:userDefs>
+        <path class="st20" d="m8.5 600.11h53.86a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.5h-53.86a8.5039 8.5039-180 0 0-8.5 8.5v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+      </g>
+      <g transform="translate(43.786 -354.33)" v:groupContext="group" v:mID="44">
+       <v:userDefs>
+        <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+       </v:userDefs>
+       <title>State.44</title>
+       <g v:groupContext="groupContent" v:mID="44">
+        <g class="st21" transform="translate(2.124 2.124)" v:groupContext="shadow" v:shadowOffsetX="2.12399" v:shadowOffsetY="-2.12399" v:shadowType="1">
+         <rect class="st22" y="555.3" width="96.681" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" fill-opacity=".098" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".098"/>
+        </g>
+        <rect class="st18" y="555.3" width="96.681" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+       <g transform="translate(0,-22.4)" v:groupContext="shape" v:mID="45">
+        <title>Sheet.45</title>
+        <desc>boot_setup_pmp</desc>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+        </v:userDefs>
+        <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+        <v:textRect width="96.69" height="22.4037" cx="48.3403" cy="588.903"/>
+        <path class="st19" d="m8.5 600.11h79.68a8.5039 8.5039-180 0 0 8.5-8.51v-5.39a8.5039 8.5039-180 0 0-8.5-8.51h-79.68a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#5b9bd5" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+        <text class="st23" x="5.3600001" y="592.5" fill="#feffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>boot_setup_pmp</text>
+       </g>
+       <g v:groupContext="shape" v:mID="46">
+        <title>Sheet.46</title>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+        </v:userDefs>
+        <path class="st20" d="m8.5 600.11h79.68a8.5039 8.5039-180 0 0 8.5-8.51v-5.39a8.5039 8.5039-180 0 0-8.5-8.5h-79.68a8.5039 8.5039-180 0 0-8.5 8.5v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+      </g>
+      <g transform="translate(17.365 -286.44)" v:groupContext="group" v:mID="47">
+       <v:userDefs>
+        <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+       </v:userDefs>
+       <title>State.47</title>
+       <g v:groupContext="groupContent" v:mID="47">
+        <g class="st21" transform="translate(2.124 2.124)" v:groupContext="shadow" v:shadowOffsetX="2.12399" v:shadowOffsetY="-2.12399" v:shadowType="1">
+         <rect class="st22" y="555.3" width="149.52" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" fill-opacity=".098" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".098"/>
+        </g>
+        <rect class="st18" y="555.3" width="149.52" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+       <g transform="translate(0,-22.4)" v:groupContext="shape" v:mID="48">
+        <title>Sheet.48</title>
+        <desc>boot_setup_pmp_complete</desc>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+        </v:userDefs>
+        <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+        <v:textRect width="149.53" height="22.4037" cx="74.7606" cy="588.903"/>
+        <path class="st19" d="m8.5 600.11h132.52a8.5039 8.5039-180 0 0 8.5-8.51v-5.39a8.5039 8.5039-180 0 0-8.5-8.51h-132.52a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#5b9bd5" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+        <text class="st23" x="5.3600001" y="592.5" fill="#feffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>boot_setup_pmp_complete</text>
+       </g>
+       <g v:groupContext="shape" v:mID="49">
+        <title>Sheet.49</title>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+        </v:userDefs>
+        <path class="st20" d="m8.5 600.11h132.52a8.5039 8.5039-180 0 0 8.5-8.51v-5.39a8.5039 8.5039-180 0 0-8.5-8.5h-132.52a8.5039 8.5039-180 0 0-8.5 8.5v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+      </g>
+      <g transform="translate(81.386 -203.68)" v:groupContext="group" v:mID="50">
+       <v:userDefs>
+        <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+       </v:userDefs>
+       <title>State.50</title>
+       <g v:groupContext="groupContent" v:mID="50">
+        <g class="st21" transform="translate(2.124 2.124)" v:groupContext="shadow" v:shadowOffsetX="2.12399" v:shadowOffsetY="-2.12399" v:shadowType="1">
+         <rect class="st22" y="555.3" width="125.06" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" fill-opacity=".098" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".098"/>
+        </g>
+        <rect class="st18" y="555.3" width="125.06" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+       <g transform="translate(0,-22.4)" v:groupContext="shape" v:mID="51">
+        <title>Sheet.51</title>
+        <desc>boot_zero_init_chunks</desc>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+        </v:userDefs>
+        <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+        <v:textRect width="125.06" height="22.4037" cx="62.5289" cy="588.903"/>
+        <path class="st19" d="m8.5 600.11h108.05a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.51h-108.05a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#5b9bd5" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+        <text class="st23" x="5.3600001" y="592.5" fill="#feffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>boot_zero_init_chunks</text>
+       </g>
+       <g v:groupContext="shape" v:mID="52">
+        <title>Sheet.52</title>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+        </v:userDefs>
+        <path class="st20" d="m8.5 600.11h108.05a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.5h-108.05a8.5039 8.5039-180 0 0-8.5 8.5v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+      </g>
+      <g transform="translate(77.953 -135.79)" v:groupContext="group" v:mID="53">
+       <v:userDefs>
+        <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+       </v:userDefs>
+       <title>State.53</title>
+       <g v:groupContext="groupContent" v:mID="53">
+        <g class="st21" transform="translate(2.124 2.124)" v:groupContext="shadow" v:shadowOffsetX="2.12399" v:shadowOffsetY="-2.12399" v:shadowType="1">
+         <rect class="st22" y="555.3" width="131.09" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" fill-opacity=".098" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".098"/>
+        </g>
+        <rect class="st18" y="555.3" width="131.09" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+       <g transform="translate(0,-22.4)" v:groupContext="shape" v:mID="54">
+        <title>Sheet.54</title>
+        <desc>boot_download_chunks</desc>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+        </v:userDefs>
+        <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+        <v:textRect width="131.1" height="22.4037" cx="65.5465" cy="588.903"/>
+        <path class="st19" d="m8.5 600.11h114.09a8.5039 8.5039-180 0 0 8.5-8.51v-5.39a8.5039 8.5039-180 0 0-8.5-8.51h-114.09a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#5b9bd5" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+        <text class="st23" x="5.3600001" y="592.5" fill="#feffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>boot_download_chunks</text>
+       </g>
+       <g v:groupContext="shape" v:mID="55">
+        <title>Sheet.55</title>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+        </v:userDefs>
+        <path class="st20" d="m8.5 600.11h114.09a8.5039 8.5039-180 0 0 8.5-8.51v-5.39a8.5039 8.5039-180 0 0-8.5-8.5h-114.09a8.5039 8.5039-180 0 0-8.5 8.5v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+      </g>
+      <g transform="translate(106.3 -64.922)" v:groupContext="group" v:mID="56">
+       <v:userDefs>
+        <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+       </v:userDefs>
+       <title>State.56</title>
+       <g v:groupContext="groupContent" v:mID="56">
+        <g class="st21" transform="translate(2.124 2.124)" v:groupContext="shadow" v:shadowOffsetX="2.12399" v:shadowOffsetY="-2.12399" v:shadowType="1">
+         <rect class="st22" y="555.3" width="70.866" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" fill-opacity=".098" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".098"/>
+        </g>
+        <rect class="st18" y="555.3" width="70.866" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+       <g transform="translate(0,-22.4)" v:groupContext="shape" v:mID="57">
+        <title>Sheet.57</title>
+        <desc>boot_wait</desc>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+        </v:userDefs>
+        <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+        <v:textRect width="70.87" height="22.4037" cx="35.4331" cy="588.903"/>
+        <path class="st19" d="m8.5 600.11h53.86a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.51h-53.86a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#5b9bd5" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+        <text class="st23" x="9.71" y="592.5" fill="#feffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>boot_wait</text>
+       </g>
+       <g v:groupContext="shape" v:mID="58">
+        <title>Sheet.58</title>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+        </v:userDefs>
+        <path class="st20" d="m8.5 600.11h53.86a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.5h-53.86a8.5039 8.5039-180 0 0-8.5 8.5v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+      </g>
+      <g v:groupContext="group" v:mID="59">
+       <v:userDefs>
+        <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+       </v:userDefs>
+       <title>State.59</title>
+       <g v:groupContext="groupContent" v:mID="59">
+        <g class="st21" transform="translate(2.124 2.124)" v:groupContext="shadow" v:shadowOffsetX="2.12399" v:shadowOffsetY="-2.12399" v:shadowType="1">
+         <rect class="st22" y="555.3" width="70.866" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" fill-opacity=".098" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".098"/>
+        </g>
+        <rect class="st18" y="555.3" width="70.866" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+       <g transform="translate(0,-22.4)" v:groupContext="shape" v:mID="60">
+        <title>Sheet.60</title>
+        <desc>boot_error</desc>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+        </v:userDefs>
+        <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+        <v:textRect width="70.87" height="22.4037" cx="35.4331" cy="588.903"/>
+        <path class="st19" d="m8.5 600.11h53.86a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.51h-53.86a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#5b9bd5" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+        <text class="st23" x="8.0500002" y="592.5" fill="#feffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>boot_error</text>
+       </g>
+       <g v:groupContext="shape" v:mID="61">
+        <title>Sheet.61</title>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+        </v:userDefs>
+        <path class="st20" d="m8.5 600.11h53.86a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.5h-53.86a8.5039 8.5039-180 0 0-8.5 8.5v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+      </g>
+      <g transform="translate(162.99)" v:groupContext="group" v:mID="62">
+       <v:userDefs>
+        <v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(15):26"/>
+       </v:userDefs>
+       <title>State.62</title>
+       <g v:groupContext="groupContent" v:mID="62">
+        <g class="st21" transform="translate(2.124 2.124)" v:groupContext="shadow" v:shadowOffsetX="2.12399" v:shadowOffsetY="-2.12399" v:shadowType="1">
+         <rect class="st22" y="555.3" width="70.866" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" fill-opacity=".098" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".098"/>
+        </g>
+        <rect class="st18" y="555.3" width="70.866" height="44.804" rx="8.5039" ry="8.5039" fill="#5b9bd5" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+       <g transform="translate(0,-22.4)" v:groupContext="shape" v:mID="63">
+        <title>Sheet.63</title>
+        <desc>boot_idle</desc>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Title)"/>
+        </v:userDefs>
+        <v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+        <v:textRect width="70.87" height="22.4037" cx="35.4331" cy="588.903"/>
+        <path class="st19" d="m8.5 600.11h53.86a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.51h-53.86a8.5039 8.5039-180 0 0-8.5 8.51v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#5b9bd5" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+        <text class="st23" x="11.51" y="592.5" fill="#feffff" font-family="Calibri" font-size="12px" font-weight="bold" v:langID="6153"><v:paragraph v:horizAlign="1"/><v:tabList/>boot_idle</text>
+       </g>
+       <g v:groupContext="shape" v:mID="64">
+        <title>Sheet.64</title>
+        <v:userDefs>
+         <v:ud v:nameU="UmlRole" v:prompt="" v:val="VT4(Body)"/>
+        </v:userDefs>
+        <path class="st20" d="m8.5 600.11h53.86a8.5039 8.5039-180 0 0 8.51-8.51v-5.39a8.5039 8.5039-180 0 0-8.51-8.5h-53.86a8.5039 8.5039-180 0 0-8.5 8.5v5.39a8.5039 8.5039-180 0 0 8.5 8.51z" fill="#fff" stroke="#5b9bd5" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+       </g>
+      </g>
+      <g transform="translate(74.299 -437.09)" v:groupContext="shape" v:layerMember="0" v:mID="65">
+       <title>Dynamic connector.65</title>
+       <path class="st5" d="m0 600.11v9.08a8.9135 8.9135-180 0 0 8.91 8.92v0a8.9135 8.9135 0 0 1 8.92 8.91v5" marker-end="url(#mrkr4-14)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(85.039 -354.33)" v:groupContext="shape" v:layerMember="0" v:mID="66">
+       <title>Dynamic connector.66</title>
+       <path class="st5" d="m7.09 600.11v17.05" marker-end="url(#mrkr4-14)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(92.126 -286.44)" v:groupContext="shape" v:layerMember="0" v:mID="67">
+       <title>Dynamic connector.67</title>
+       <path class="st5" d="m0 600.11v9a9 9-180 0 0 9 9h32.81a9.9758 9.9758 0 0 1 9.98 9.97v3.94" marker-end="url(#mrkr4-14)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(150.79 -203.68)" v:groupContext="shape" v:layerMember="0" v:mID="68">
+       <title>Dynamic connector.68</title>
+       <path class="st5" d="m-6.88 600.11v10.66a0.20755 0.20755 0 0 1-0.20755 0.20755l-0.002452 0.00245a0.20755 0.20755-180 0 0-0.20755 0.20755l0.007548 5.9724" marker-end="url(#mrkr4-14)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(149.7 -135.79)" v:groupContext="shape" v:layerMember="0" v:mID="69">
+       <title>Dynamic connector.69</title>
+       <path class="st5" d="m-6.2 600.11v17.11a0.8835 0.8835 0 0 1-0.8835 0.8835l-0.006501 0.0065a0.8835 0.8835-180 0 0-0.8835 0.8835l0.003499 1.1365" marker-end="url(#mrkr4-14)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(177.16 -87.323)" v:groupContext="shape" v:layerMember="0" v:mID="70">
+       <title>Dynamic connector.70</title>
+       <path class="st5" d="m0 600.11h10.63a10.63 10.63 0 0 1 10.63 10.63v25.84" marker-end="url(#mrkr4-14)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(141.73 -64.922)" v:groupContext="shape" v:layerMember="0" v:mID="71">
+       <title>Dynamic connector.71</title>
+       <path class="st5" d="m0 600.11v21.26a21.26 21.26 0 0 1-21.26 21.25h-43.57" marker-end="url(#mrkr4-14)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(74.299 -437.09)" v:groupContext="shape" v:layerMember="0" v:mID="72">
+       <title>Dynamic connector.72</title>
+       <path class="st5" d="m0 600.11v9.97a9.9758 9.9758 0 0 1-9.98 9.98h-48.3a34.016 34.016-180 0 0-34.02 34.01v351.72a9 9-180 0 0 9 9h2.96" marker-end="url(#mrkr4-14)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+      <g transform="translate(92.126 -286.44)" v:groupContext="shape" v:layerMember="0" v:mID="73">
+       <title>Dynamic connector.73</title>
+       <path class="st5" d="m0 600.11v9a9 9 0 0 1-9 9h-13.68a34.016 34.016-180 0 0-34.01 34.01v183.58" marker-end="url(#mrkr4-14)" stroke="#5592c9" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>
+      </g>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+ <style type="text/css"><![CDATA[
+		.st1 {fill:#625986;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st2 {fill:#625986;stroke:#625986;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st3 {fill:#ffffff;font-family:Calibri;font-size:1.00001em;font-weight:bold}
+		.st4 {fill:#ffffff;stroke:#625986;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st5 {marker-end:url(#mrkr4-14);stroke:#5592c9;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st6 {fill:#5592c9;fill-opacity:1;stroke:#5592c9;stroke-opacity:1;stroke-width:0.16556291390728}
+		.st7 {fill:#ffffff;stroke:none;stroke-linecap:butt;stroke-width:7.2}
+		.st8 {fill:#41719d;font-family:Calibri;font-size:0.666664em}
+		.st9 {fill:#625986;font-family:Calibri;font-size:1.00001em}
+		.st10 {font-size:1em}
+		.st11 {marker-end:url(#mrkr4-50);stroke:#5c537e;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st12 {fill:#5c537e;fill-opacity:1;stroke:#5c537e;stroke-opacity:1;stroke-width:0.16556291390728}
+		.st13 {fill:#4271c6;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st14 {fill:#4271c6;stroke:#4271c6;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st15 {fill:#ffffff;stroke:#4271c6;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st16 {fill:#4271c6}
+		.st17 {stroke:#4271c6;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st18 {fill:#5b9bd5;stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st19 {fill:#5b9bd5;stroke:#5b9bd5;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st20 {fill:#ffffff;stroke:#5b9bd5;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.5}
+		.st21 {visibility:visible}
+		.st22 {fill:#5b9bd5;fill-opacity:0.098;stroke:#5b9bd5;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.098}
+		.st23 {fill:#feffff;font-family:Calibri;font-size:1.00001em;font-weight:bold}
+		.st24 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]></style>
+</svg>

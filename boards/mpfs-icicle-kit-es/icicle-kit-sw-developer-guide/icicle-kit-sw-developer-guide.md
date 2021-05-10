@@ -1,7 +1,5 @@
 # Icicle Kit Software Developer Guide
 
-[**Coming soon...**](https://www.crowdsupply.com/microchip/polarfire-soc-icicle-kit) 
-
 ## Connectors
 
 ![](./images/Icicle-Kit.PNG) 
@@ -14,7 +12,7 @@ Connect the Icicle Kit's *USB- UART Terminal* connector (J11) to your host compu
 
 ![](./images/terminals.png) 
 
-One terminal displays the Hart Software Service (HSS) boot messages. The second terminal displays the U-Boot and Linux boot messages and provides a Linux prompt. Login using user name "root". No password is required. Please note that "microchip" is used as password for some other Linux images.
+MMUART0 displays the Hart Software Service (HSS) boot messages and U-Boot messages. MMUART1 displays Linux boot messages and provides a Linux prompt. The default user name is "root". No password is required. If a password is requested at any stage "microchip" is used as default password.
 
 
 ## Reprogramming With The Latest Reference Design
@@ -24,5 +22,7 @@ The document [Updating PolarFire SoC Icicle Kit FPGA Design and Linux Image](htt
 [Polarfire-SoC Yocto Board Support Package](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) 
 
 [PolarFire SoC Buildroot Linux Software Development Kit](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) 
+
+[PolarFire SoC Icicle Kit Quick Start Guide](https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide#overview)
 
 [PolarFire SoC Icicle Kit Schematics (Preliminary)](https://www.microsemi.com/document-portal/doc_download/1244587-polarfire-soc-icicle-kit-schematics) 

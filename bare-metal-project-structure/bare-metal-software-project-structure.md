@@ -212,19 +212,17 @@ Synchronization of the embedded software and FPGA digital design flows is presen
 *board/**board-design-name**/fpga_design* folder of the software project.
 The XML design description file is used as input to a script located in *src/platform/soc_config_generator* to generate the content of the
 *boards/**board-design-name**/fpga_design_config* folder.
-To know more refer [Tool Flow](thttps://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/software-development/polarfire-soc-software-tool-flow.md#software-development-tool-flow).
-
 
 ![](./images/folder_structure_l6_config_gen.png)
 
-
 <a name="MSS-Configurator-and-Libero-project"></a>
+For more information on the Libero and the MSS Configurator too, pleaser refer [Tool Flow](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/software-development/polarfire-soc-software-tool-flow.md#tool-flow)
 ## MSS Configurator and Libero project
 ![](./images/folder_structure_l6_tcl_to_xml.png)
 
 <a name="Updating-the-platform"></a>
 ### Updating the platform
-The platform folder is intended to be updated from a git source code repository as a subtree or submodule.
+The platform folder is intended to be updated from a git source code repository as a subtree or submodule. For the latest PolarFire SoC platform released, refer [platform release page](https://github.com/polarfire-soc/platform/releases).
 
 #### Updating a custom project
 Updating the *platform* of a project  using a custom platform configuration should include doing a diff of the *platform_config_reference* with its previous version to identify new or obsolete configuration defines that need to be merged into the custom *platform_config* folder. Likewise, the *platform_config_reference* linker scripts must be reviewed for changes that need to be merged into the custom linker scripts.

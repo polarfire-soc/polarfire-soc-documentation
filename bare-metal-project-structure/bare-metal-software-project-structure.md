@@ -135,8 +135,8 @@ The *mss* folder contains the source code for PolarFire SoC MSS peripherals.
 The *fpga_ip* folder contains the source code for FPGA fabric soft-IP peripherals.
 
 <a name="off-chip-folder"></a>
-##### off-chip
-The *off-chip* folder contains the source code for peripherals that are external to the FPGA device, such as sensors or memory devices on the board, or peripherals connected to the board via expansion boards.
+##### off_chip
+The *off_chip* folder contains the source code for peripherals that are external to the FPGA device, such as sensors or memory devices on the board, or peripherals connected to the board via expansion boards.
 
 <a name="hal-folder"></a>
 #### hal

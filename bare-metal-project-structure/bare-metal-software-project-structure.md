@@ -18,7 +18,7 @@ This document provides an overview of how PolarFire&reg; SoC example software pr
         - [drivers](#drivers-folder)
           - [fpga_ip](#fpga-ip-folder)
           - [mss](#mss-folder)
-          - [off-chip](#off-chip-folder)
+          - [off_chip](#off-chip-folder)
         - [hal](#hal-folder)
         - [soc_config_generator](#soc-config-generator)
         - [mpfs_hal](#mpfs-hal-folder)

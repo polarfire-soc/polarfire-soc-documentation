@@ -15,8 +15,8 @@
 - [Using the HSS](#using-the-hss)
 	- [Configuring the HSS](#configuring-the-hss)
 	- [Build the HSS](#build-the-hss)
-		- [Building the HSS - use the existing SoftConsole Project](#building-hss)
-                - [Building the HSS - Create new project](#building-hss-new-project)
+		- [Building the HSS using SoftConsole](#building-hss-softconsole)
+		- [Building the HSS using command line tools](#building-hss-command-line)
 - [Using the MSS Configurator](#mss-configurator)
 	- [MSS Configuration XML Description](#mss-xml)
 - [Programming the eNVM](#programming-envm)
@@ -259,17 +259,10 @@ The HSS should be built in SoftConsole v2021.1 or greater or using the GNU tools
 - Import the contents of the repository into a SoftConsole Workspace as an existing project and build
 - Build the HSS using the included make files and a local RISC-V toolchain
 
-A workaround currently needed (for SoftConsole v2021.1) is to copy `python3\bin\python.exe` to `python3\bin\python3.exe` in the SoftConsole v2021.1 installation folder on Windows.
-
-#### Building the HSS - use the existing SoftConsole Project
-<a name="building-hss"></a>
+#### Building the HSS using SoftConsole
+<a name="building-hss-softconsole"></a>
 
 You can import the current HSS as an existing project into SoftConsole, and use the SoftConsole GUI to build/clean/debug.
-
-#### Building the HSS - Create new project
-<a name="building-hss-new-project"></a>
-
-To build the HSS by creating a new project from SoftConsole, use the following steps:
 
 1. Clone or download the HSS source code from GitHub
 
@@ -292,6 +285,39 @@ If a custom MSS configuration has been created the xml folder should be updated 
 5. Build the HSS "Default" build configuration:
 
 ![](./images/hss_build.PNG)
+
+A workaround currently needed (for SoftConsole v2021.1) is to copy `python3\bin\python.exe` to `python3\bin\python3.exe` in the SoftConsole v2021.1 installation folder on Windows.
+
+#### Building the HSS using command line tools
+<a name="building-hss-command-line"></a>
+
+To build the HSS for the Icicle kit using the command line on Linux:
+
+1. Clone or download the HSS source code from GitHub.
+
+2. Open a terminal.
+
+3. Change to the hss toplevel directory.
+
+4. Type `make BOARD=mpfs-icicle-kit-es`. If unspecified, the default `BOARD` will be set to `mpfs-icicle-kit-es`.
+
+To build the HSS for the Icicle Kit using the command line on Windows:
+
+1. Clone or download the HSS source code from GitHub .
+
+2. Open CMD.EXE.
+
+3. Ensure that the SoftConsole RISC-V tools, build tools and bundled python.exe are available in your path. Either edit your environment settings to add them persistently, or to set them temporarily from the console prompt, e.g. for SoftConsole v2021.1:
+
+```
+path c:\Microchip\SoftConsole-v2021.1\riscv-unknown-elf-gcc\bin;c:\Microchip\SoftConsole-v2021.1\python3;c:\Microchip\SoftConsole-v2021.1\build_tools\bin;%PATH%
+```
+
+3. Change to the HSS top-level directory.
+
+4. Type `make BOARD=mpfs-icicle-kit-es`. If unspecified, the default `BOARD` will be set to `mpfs-icicle-kit-es`.
+
+A workaround currently needed (for SoftConsole v2021.1) is to copy `python3\bin\python.exe` to `python3\bin\python3.exe` in the SoftConsole v2021.1 installation folder on Windows.
 
 ## Using the MSS Configurator
 <a name="mss-configurator"></a>

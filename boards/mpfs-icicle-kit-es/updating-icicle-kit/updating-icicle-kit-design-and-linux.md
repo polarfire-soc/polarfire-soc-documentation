@@ -8,10 +8,6 @@
 - [Programming the Linux Image](#Programming-Linux-Image)
     - [eMMC](#eMMC)
     - [SD Card](#SD-Card)
-        - [Linux Host](#Linux-Host)
-            - [Unmount any partitions from the SD card](#Unmount)
-            - [Copy the wic image to the SD card](#Copy-wic)
-        - [Windows Host](#Windows-Host)
 - [Tools and References](#Tools-References)
 
 This document provides links to files and instructions to provision an Icicle Kit to boot Linux. To achieve this:
@@ -92,70 +88,38 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 5. Type `usbdmsc` in the HSS command line interface. This will expose the eMMC as a mass storage device through the USB-OTG connector.
 6. Connect the J16 USB-OTG connector to your host PC. The eMMC content will be transfered to the Icicle Kit through this connection.
 7. The Icicle Kit should now appear as mass storage device/drive on your host PC.
-8. Use the same procedure to write the eMMC as the one for writing an SD-card depending whether your host PC uses [Windows](#Windows-Host) or [Linux](#Linux-Host).
+8. Use the same procedure to write the eMMC as the one for writing an [SD-card](#SD-Card).
 9. Once the Linux image is copied to the eMMC, press `CTRL+C` in the HSS command line interface, then type `boot` to boot the newly copied Linux image.
 
 <a name="SD-Card"></a>
 ### SD Card
-Put an SD card into the SD card reader of your host PC and use the instructions below depending on your host PC's operating system.
+Put an SD card into the SD card reader of your host PC and use the instructions below.
 
-<a name="Linux-Host"></a>
-#### Linux Host
+Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
 
-<a name="Unmount"></a>
-##### Unmount any partitions from the SD card
-Find out which partitions were mounted, if any, for the SD card. This can be done by using the following command before and after plugging the SD card into your host PC:
-```
-ls /dev/sd*
-```
+Download and install [balenaEtcher](https://www.balena.io/etcher/).
 
-Identify which new partitions appear after pluging in the SD card. For example:
-```
-/dev/sdc  /dev/sdc1  /dev/sdc2  /dev/sdc3
-```
-Use the following command to unmount the SD card replacing /dev/sdX with the drive letter found in the previous step. For example, "/dev/sd**c**?" from the example above.
-
-
-```
-sudo umount /dev/sdX?
-```
-
-<a name="Copy-wic"></a>
-##### Copy the wic image to the SD card
-Copy the Linux image of your choice to the SD card using the command below, replacing /dev/sdX with actual SD card drive name and &lt;linux-image&gt; with the name of the Linux image you downloaded from the table at the top of this document.
-
-**!!! You must be extremely careful when changing sdX as selecting the wrong target may damage your host PC!!!**
-
-```
-zcat <linux-image>.wic.gz | sudo dd of=/dev/sdX bs=512 iflag=fullblock oflag=direct conv=fsync status=progress
-```
-Once writing has completed, eject the SD-card from the host PC. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
-
-<a name="Windows-Host"></a>
-#### Windows Host
-Download and unzip the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
-
-Download and install [Win32DiskImager](https://sourceforge.net/projects/win32diskimager/).
-
-Start Win32DiskImager
+Start balenaEtcher
 
 ![](./images/start.png)
 
-Select the *Image File*.
+Select *Flash from file* to load the image file.
 
 ![](./images/select-file.png)
 
-Please note you need to change the *Disk Image* type to \*.*. You must select a file of type .wic (not .wic.gz)
 
-Select the *Device*.
+Select *Target*.
 
 ![](./images/select-device.png)
 
-Click *Write*.
+Click *Flash!*.
 
-![](./images/progress.png)
+![](./images/flash.png)
 
+##### SD Card
 Once writing has completed, eject the SD-card from the host PC. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
+##### eMMC
+Once writing has completed, remove the J16 USB-OTG connector from the host PC. Power cycle the board. You should see boot messages coming from the first two UARTs.
 
 <a name="Tools-References"></a>
 ## Tools and References

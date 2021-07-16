@@ -97,26 +97,25 @@ Put an SD card into the SD card reader of your host PC and use the instructions 
 
 Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
 
-Download and install [balenaEtcher](https://www.balena.io/etcher/).
+Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
 
-Start balenaEtcher
+Start USBImager
 
 ![](./images/start.png)
 
-Select *Flash from file* to load the image file.
+Select *Image file*.
 
 ![](./images/select-file.png)
 
 
-Select *Target*.
+Select the *Device*.
 
 ![](./images/select-device.png)
 
-Click *Flash!*.
+Click *Write*.
 
-![](./images/flash.png)
+![](./images/write.png)
 
-##### SD Card
 Once writing has completed, eject the SD-card from the host PC. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
 ##### eMMC
 Once writing has completed, remove the J16 USB-OTG connector from the host PC. Power cycle the board. You should see boot messages coming from the first two UARTs.
@@ -127,6 +126,8 @@ Once writing has completed, remove the J16 USB-OTG connector from the host PC. P
 
 **Note:** FlashPro Express is installed with Libero and does not need to be installed separately. If Libero is not installed FlashPro Express is bundled with the Programming and Debug Tools. FlashPro and FlashPro Express are different tools.
 
-[Win32DiskImager](https://sourceforge.net/projects/win32diskimager/)
+[USBImager](https://bztsrc.gitlab.io/usbimager/)
+
+[USBImager Manual] (https://gitlab.com/bztsrc/usbimager/-/blob/master/usbimager-manual.pdf)
 
 [FlashPro Express User Guides](https://www.microsemi.com/product-directory/programming/4977-flashpro#documents)

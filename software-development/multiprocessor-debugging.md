@@ -71,9 +71,9 @@ To debug the application, perform the following step:
 
 13. Click Debug.
 
-14. The Confirm Perspective Switch dialog box opens and click Switch. The debugger halts the execution at the u54_1 function as the breakpoint is set at u54_1.
+14. The Confirm Perspective Switch dialog box opens and click Switch. The debugger halts the execution at the u54_1 function.
 
-![](./images/halts_the_execution_at_e51_v2.png)
+![](./images/halts_the_execution_at_e51_v3.png)
   
 15. Right-click wherever breakpoint is required in the application code and select Add Breakpoint... as shown in the following figure. The breakpoints can be added in each hart application code. The breakpoints are used to pause the execution flow. The debugger switches between the hart source code files to halt the execution depending on the breakpoints set. 
 

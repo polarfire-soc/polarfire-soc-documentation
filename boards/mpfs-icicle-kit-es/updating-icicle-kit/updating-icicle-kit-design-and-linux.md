@@ -128,6 +128,6 @@ Once writing has completed, remove the J16 USB-OTG connector from the host PC. P
 
 [USBImager](https://bztsrc.gitlab.io/usbimager/)
 
-[USBImager Manual] (https://gitlab.com/bztsrc/usbimager/-/blob/master/usbimager-manual.pdf)
+[USBImager Manual](https://gitlab.com/bztsrc/usbimager/-/blob/master/usbimager-manual.pdf)
 
 [FlashPro Express User Guides](https://www.microsemi.com/product-directory/programming/4977-flashpro#documents)

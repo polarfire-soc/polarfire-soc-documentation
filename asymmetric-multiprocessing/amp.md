@@ -1,7 +1,7 @@
 
 # Asymmetric Multiprocessing (AMP)
 
-This page provides a brief introduction to Asymmetric Multiprocessing (AMP) concepts, as well as instructions on how to simultaneously run multiple operating systems or bare metal applications on the PolarFire SoC.
+This page provides a brief introduction to Asymmetric Multiprocessing (AMP) concepts, including instructions on how to run multiple operating systems or bare metal applications simultaneously on the PolarFire SoC.
 
 - [Introduction](#introduction)
 - [AMP on PolarFire SoC](#amp-overview)
@@ -14,7 +14,7 @@ This page provides a brief introduction to Asymmetric Multiprocessing (AMP) conc
 
 ## Introduction <a name="introduction"></a>
 
-Asymmetric Multiprocessing (AMP) is a type of multi-core software architecture that allows to run multiple operating systems or software contexts simultaneously and independently of each other. 
+Asymmetric Multiprocessing (AMP) is a type of multi-core software architecture that allows multiple operating systems or software contexts to run simultaneously and independently of each other.
 
 In an AMP system, it is possible to allocate hardware resources to a specific software context. These hardware resources include cores, peripherals and physical memory regions.
 
@@ -24,7 +24,7 @@ The PolarFire SoC can be configured to run up to two independent software contex
 
 The supported PolarFire SoC AMP software architecture is described below:
 
-- 1x E51 monitor core which is dedicated to run the Hart Software Services (HSS)
+- 1x E51 monitor core which is dedicated to running the Hart Software Services (HSS)
 
 - 4x U54 application cores which can be distributed between two independent software contexts
 
@@ -36,7 +36,7 @@ The hart software services (HSS) makes use of a HSS payload as part of the boot 
 
 A HSS payload is an image containing a header and one or more binary files that have been merged together to form the payload. 
 
-In an AMP configuration, the HSS payload should contain two binary files, one for each of the supported software contexts. For example, one of these binary files could be an ELF file containing a bare metal application or RTOS, and the other one a U-boot binary to load Linux OS.
+In an AMP configuration, the HSS payload should contain two binary files. One file for each of the supported software contexts, for example, one of these binary files could be an ELF file containing a bare metal application or RTOS. The other file is a U-boot binary to load Linux OS.
 
 When loading a payload, the HSS will copy the payload from non-volatile storage to DDR and then copy the binaries to the memory location(s) that were specified when the payload was generated.
 
@@ -52,7 +52,7 @@ The PolarFire SoC supports several AMP configurations including Linux + FreeRTOS
 
 Each of the configurations described above have different use cases and should be chosen based on application requirements such as real-time response, security and safety requirements.
 
-One of the most common approaches it to use a general purpose operating system such as Linux with a real-time operating system (RTOS) in order to have real-time constraints applications handled by the RTOS while having connectivity and Human Machine Interfaces (HMI) applications running from the Linux context. 
+One of the most common approaches is to use a general purpose operating system such as Linux with a real-time operating system (RTOS) in order to have real-time constraints applications handled by the RTOS while having connectivity and Human Machine Interfaces (HMI) applications running from the Linux context. 
 
 ### Linux + FreeRTOS configuration<a name="amp-linux-freertos"></a>
 
@@ -92,19 +92,19 @@ The table below describes the hardware resources assignment used in this demo:
 
 ### Building the Linux + FreeRTOS demo<a name="linux-freertos-build"></a>
 
-Pre-requisites: Before following the steps described in this section, make use you have the latest [Yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) or [Buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) build systems configured and setup in your system. Please refer to the README of each build system for further information.
+Pre-requisites: Before following the steps described in this section, make sure you have the latest [Yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) or [Buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) build systems configured and setup in your system. Please refer to the README of each build system for further information.
 
 #### Build Linux + FreeRTOS AMP demo using Yocto
 
-1. Use yocto bitbake command and set the icicle-kit-es-amp MACHINE and image required:
+1. Use the yocto bitbake command and set the icicle-kit-es-amp MACHINE and image required:
 
 ```bash
 MACHINE=icicle-kit-es-amp bitbake mpfs-dev-cli
 ```
 
-2. Copy the created Disk Image to flash device (USB mmc flash/SD/uSD)
+2. Copy the created Disk Image to a flash device (USB mmc flash/SD/uSD)
 
-> Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your usb flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!
+> Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your usb flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any system disks/partitions!
 > 
 ```bash
 cd yocto-dev/build
@@ -138,7 +138,7 @@ On connecting Icicle kit J11 to the host PC, you should see 4 COM port interface
 - 1 stop bit
 - no parity
 
-On startup, Linux console will show messages on COM port interface 1 and the FreeRTOS application will display messages on COM port interface 3.
+On startup, the Linux console will show messages on COM port interface 1 and the FreeRTOS application will display messages on COM port interface 3.
 
 ### RTOS/BM + RTOS/BM AMP Configuration <a name="amp-other-configs"></a>
 

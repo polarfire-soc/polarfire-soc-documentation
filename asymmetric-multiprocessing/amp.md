@@ -1,7 +1,7 @@
 
 # Asymmetric Multiprocessing (AMP)
 
-This page provides a brief introduction to Asymmetric Multiprocessing (AMP) concepts, including instructions on how to run multiple operating systems or bare metal applications simultaneously on the PolarFire SoC.
+This page provides a brief introduction to Asymmetric Multiprocessing (AMP) concepts, including instructions on how to run multiple operating systems or bare metal applications simultaneously on PolarFire SoC.
 
 - [Introduction](#introduction)
 - [AMP on PolarFire SoC](#amp-overview)
@@ -36,7 +36,7 @@ The hart software services (HSS) makes use of a HSS payload as part of the boot 
 
 A HSS payload is an image containing a header and one or more binary files that have been merged together to form the payload. 
 
-In an AMP configuration, the HSS payload should contain two binary files. One file for each of the supported software contexts, for example, one of these binary files could be an ELF file containing a bare metal application or RTOS. The other file is a U-boot binary to load Linux OS.
+In an AMP configuration, the HSS payload should contain two binary files, one for each of the supported software contexts. For example, one of these binary files could be an ELF file containing a bare metal application or RTOS, and the other one a U-boot binary to load Linux OS.
 
 When loading a payload, the HSS will copy the payload from non-volatile storage to DDR and then copy the binaries to the memory location(s) that were specified when the payload was generated.
 
@@ -96,7 +96,7 @@ Pre-requisites: Before following the steps described in this section, make sure 
 
 #### Build Linux + FreeRTOS AMP demo using Yocto
 
-1. Use the yocto bitbake command and set the icicle-kit-es-amp MACHINE and image required:
+1. Use the Yocto bitbake command and set the icicle-kit-es-amp MACHINE and image required:
 
 ```bash
 MACHINE=icicle-kit-es-amp bitbake mpfs-dev-cli

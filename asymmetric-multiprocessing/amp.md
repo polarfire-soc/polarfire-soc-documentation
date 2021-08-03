@@ -16,11 +16,13 @@ This page provides a brief introduction to Asymmetric Multiprocessing (AMP) conc
 
 Asymmetric Multiprocessing (AMP) is a type of multi-core software architecture that allows multiple operating systems or software contexts to run simultaneously and independently of each other.
 
-In an AMP system, it is possible to allocate hardware resources to a specific software context. These hardware resources include cores, peripherals and physical memory regions.
+In an AMP system, it is possible to allocate hardware resources to a specific software context. These hardware resources include processor cores, peripherals and physical memory regions.
 
 ## AMP on PolarFire SoC <a name="amp-overview"></a>
 
-The PolarFire SoC can be configured to run up to two independent software contexts. Each software context can have its own operating system, memory regions and hardware resources assigned.
+The PolarFire SoC contains a CPU Core Complex with with a single E51 core and four U54 application cores, where each of the cores has one harthware thread or hart.
+
+PolarFire SoC can be configured to run up to two independent software contexts. Each software context can have its own operating system, memory regions and hardware resources assigned.
 
 The supported PolarFire SoC AMP software architecture is described below:
 
@@ -28,7 +30,7 @@ The supported PolarFire SoC AMP software architecture is described below:
 
 - 4x U54 application cores which can be distributed between two independent software contexts
 
-The [hart software services](https://github.com/polarfire-soc/hart-software-services) (HSS) is a superloop monitor software running on the E51 processor. One of the many functions of the hart software services is to act as a first-stage bootloader as part of the boot service. Please refer to the  [AMP boot flow](#amp-boot-flow) section for further information on the boot process.
+The [Hart Software Services](https://github.com/polarfire-soc/hart-software-services) (HSS) is a superloop monitor software running on the E51 processor. One of the many functions of the HSS is to act as a first-stage bootloader as part of the boot service. Please refer to the  [AMP boot flow](#amp-boot-flow) section for further information on the boot process.
 
 ### AMP Boot Flow<a name="amp-boot-flow"></a>
 

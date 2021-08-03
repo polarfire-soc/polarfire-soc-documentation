@@ -88,27 +88,45 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 5. Type `usbdmsc` in the HSS command line interface. This will expose the eMMC as a mass storage device through the USB-OTG connector.
 6. Connect the J16 USB-OTG connector to your host PC. The eMMC content will be transfered to the Icicle Kit through this connection.
 7. The Icicle Kit should now appear as mass storage device/drive on your host PC.
-8. Follow the same procedure that is used below to [write to an SD-card](#SD-Card).
-9. Once writing has completed, remove the J16 USB-OTG connector from the host PC or press `CTRL+C` in the HSS command line interface . 
-10. Type `boot` to boot the newly copied Linux image.
+8. Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
+9. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
+10. Start USBImager 
+![](./images/start.png)
+
+11. Select *Image file*. 
+![](./images/select-file.png)
+
+12. Select the *Device*. 
+![](./images/select-device.png)
+
+13. Click *Write*. 
+![](./images/write.png)
+
+14. Once writing has completed, remove the J16 USB-OTG connector from the host PC or press `CTRL+C` in the HSS command line interface. 
+15. Type `boot` to boot the newly copied Linux image.
 
 <a name="SD-Card"></a>
 ### SD Card
-Put an SD card into the SD card reader of your host PC and use the instructions below.
+1. Put an SD card into the SD card reader of your host PC and use the instructions below.
 
-1. Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
+2. Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
 
-2. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
+3. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
 
-3. Start USBImager ![](./images/start.png)
+4. Start USBImager 
+![](./images/start.png)
 
-4. Select *Image file*. ![](./images/select-file.png)
+5. Select *Image file*. 
+![](./images/select-file.png)
 
-5. Select the *Device*. ![](./images/select-device.png)
+6. Select the *Device*. 
+![](./images/select-device.png)
 
-6. Click *Write*. ![](./images/write.png)
+7. Click *Write*. 
+![](./images/write.png)
 
-Once writing has completed, eject the SD-card from the host PC. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
+8. Once writing has completed, eject the SD-card from the host PC. 
+9. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
 
 <a name="Tools-References"></a>
 ## Tools and References

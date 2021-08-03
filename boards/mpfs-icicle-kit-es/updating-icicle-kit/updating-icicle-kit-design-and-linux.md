@@ -91,16 +91,20 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 8. Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
 9. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
 10. Start USBImager 
-![](./images/start.png)
+
+    ![](./images/start.png)
 
 11. Select *Image file*. 
-![](./images/select-file.png)
+
+    ![](./images/select-file.png)
 
 12. Select the *Device*. 
-![](./images/select-device.png)
+
+    ![](./images/select-device.png)
 
 13. Click *Write*. 
-![](./images/write.png)
+
+    ![](./images/write.png)
 
 14. Once writing has completed, remove the J16 USB-OTG connector from the host PC or press `CTRL+C` in the HSS command line interface. 
 15. Type `boot` to boot the newly copied Linux image.
@@ -114,16 +118,20 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 3. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
 
 4. Start USBImager 
-![](./images/start.png)
+
+    ![](./images/start.png)
 
 5. Select *Image file*. 
-![](./images/select-file.png)
+
+    ![](./images/select-file.png)
 
 6. Select the *Device*. 
-![](./images/select-device.png)
+
+    ![](./images/select-device.png)
 
 7. Click *Write*. 
-![](./images/write.png)
+
+    ![](./images/write.png)
 
 8. Once writing has completed, eject the SD-card from the host PC. 
 9. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.

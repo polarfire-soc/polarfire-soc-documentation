@@ -88,37 +88,27 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 5. Type `usbdmsc` in the HSS command line interface. This will expose the eMMC as a mass storage device through the USB-OTG connector.
 6. Connect the J16 USB-OTG connector to your host PC. The eMMC content will be transfered to the Icicle Kit through this connection.
 7. The Icicle Kit should now appear as mass storage device/drive on your host PC.
-8. Use the same procedure to write the eMMC as the one for writing an [SD-card](#SD-Card).
-9. Once the Linux image is copied to the eMMC, press `CTRL+C` in the HSS command line interface, then type `boot` to boot the newly copied Linux image.
+8. Follow the same procedure that is used below to [write to an SD-card](#SD-Card).
+9. Once writing has completed, remove the J16 USB-OTG connector from the host PC or press `CTRL+C` in the HSS command line interface . 
+10. Type `boot` to boot the newly copied Linux image.
 
 <a name="SD-Card"></a>
 ### SD Card
 Put an SD card into the SD card reader of your host PC and use the instructions below.
 
-Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
+1. Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
 
-Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
+2. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
 
-Start USBImager
+3. Start USBImager ![](./images/start.png)
 
-![](./images/start.png)
+4. Select *Image file*. ![](./images/select-file.png)
 
-Select *Image file*.
+5. Select the *Device*. ![](./images/select-device.png)
 
-![](./images/select-file.png)
-
-
-Select the *Device*.
-
-![](./images/select-device.png)
-
-Click *Write*.
-
-![](./images/write.png)
+6. Click *Write*. ![](./images/write.png)
 
 Once writing has completed, eject the SD-card from the host PC. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
-##### eMMC
-Once writing has completed, remove the J16 USB-OTG connector from the host PC. Power cycle the board. You should see boot messages coming from the first two UARTs.
 
 <a name="Tools-References"></a>
 ## Tools and References

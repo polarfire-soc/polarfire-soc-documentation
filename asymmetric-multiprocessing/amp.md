@@ -20,7 +20,7 @@ In an AMP system, it is possible to allocate hardware resources to a specific so
 
 ## AMP on PolarFire SoC <a name="amp-overview"></a>
 
-The PolarFire SoC contains a CPU Core Complex with with a single E51 core and four U54 application cores, where each of the cores has one harthware thread or hart.
+PolarFire SoC contains a CPU Core Complex with a single E51 core and four U54 application cores, where each of the cores has one hardware thread or hart.
 
 PolarFire SoC can be configured to run up to two independent software contexts. Each software context can have its own operating system, memory regions and hardware resources assigned.
 
@@ -113,7 +113,7 @@ cd yocto-dev/build
 zcat tmp-glibc/deploy/images/icicle-kit-es-amp/mpfs-dev-cli-icicle-kit-es-amp.wic.gz | sudo dd of=/dev/sdX bs=4096 iflag=fullblock oflag=direct conv=fsync status=progress
 ```
 
-The disk image flased to the device in the step above contains the following partitions:
+The disk image flashed to the device in the step above contains the following partitions:
 
 - Boot partition containing a fitImage (Linux kernel + Device Tree Blob) used by context A
 - HSS boot partition with a HSS payload containing the following binaries:

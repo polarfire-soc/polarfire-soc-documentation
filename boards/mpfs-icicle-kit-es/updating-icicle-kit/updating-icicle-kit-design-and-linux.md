@@ -133,7 +133,7 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 
     ![](./images/write.png)
 
-8. Once writing has completed, eject the SD-card from the host PC. 
+8. Once writing has completed, eject the SD card from the host PC. 
 9. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
 
 <a name="Tools-References"></a>

@@ -48,7 +48,7 @@ The Icicle Kit jumper settings required to boot Linux are as follows:
 |    J43    |  2 & 3   | U44 reference voltage                             |
 |           |          | 1&2 = 3v3                                         |
 |           |          | 2&3 = bank 4 reference voltage                    |
-|    J45    |  1 & 2   | Core voltage (VDD) set to 1.0 |
+|    J45    |  2 & 3   | Core voltage (VDD) set to 1.05v                   |
 
 ### FlashPro Jumpers
 

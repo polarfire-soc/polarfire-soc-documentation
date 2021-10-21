@@ -84,7 +84,7 @@ The main steps involved are:
 
 	4. If not using an SMP bare metal application. ensure that `MPFS_HAL_SHARED_MEM_ENABLED` is not defined.
 
-- If targetting the LIM, configure linker scripts appropriately - the default linker script should be adjusted if a bare metal application is going to target the LIM. This is due to the fact that that the HSS uses a region of the LIM starting at 0x8000000 and the default bare metal linker scripts also target 0x8000000. To solve this, the map file for the HSS can be consulted to determine the end address of the region used by the HSS. In practice a LIM start address of 0x8030000 for the bare metal application leaves sufficient space for the HSS.
+- Be especially careful if targetting the LIM to configure linker scripts appropriately: the default linker script should be adjusted if a bare metal application is going to target the LIM. This is due to the fact that that the HSS uses a region of the LIM starting at 0x08000000 and the default bare metal linker scripts also target 0x08000000. To resolve this, the map file for the HSS can be consulted to determine the end address of the region used by the HSS. Currently the HSS (plus OpenSBI) requires about 400KiB of LIM (0x60000), but this may change.
 
 ### Generating a payload with a bare metal application <a name="bare-metal-payload"></a>
 

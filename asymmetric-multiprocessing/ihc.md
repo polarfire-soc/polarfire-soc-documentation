@@ -21,16 +21,16 @@ Internally, the IHC consists in multiple interconnected instances of the followi
 ![ihc-overview](images/ihc-overview.png)
 ### Inter-hart Communication Channel (IHCC)
 
-PolarFire SoC provides up to ten inter-hart communication channels (IHCC) of which:
+The Icicle Kit Reference Design's AMP subsystem provides up to ten inter-hart communication channels (IHCC) of which:
 
 - Four are dedicated for communication between the monitor hart (E51) and applications harts (U54's) using the Hart Software Services (HSS) 
-- One is assigned communication between two software contexts at operating system level using the RPMsg protocol
+- One is assigned for communication between two software contexts at operating system level using the RPMsg protocol
 
-The six remaining channels are not used by the software. This free channels could be used to extend the inter-hart communication if required.
+The six remaining channels are not used by the software. These free channels could be used to extend the inter-hart communication if required.
 
 Each IHC channel is divided into two unidirectional subchannels that provide a signaling mechanism between a "sender" and a "receiver" hart. 
 
-Each subchannel consists in:
+Each subchannel consists of:
 
 - Up to four 32-bit "message out" write-only registers that can be used to send data to the receiving hart.
 
@@ -39,9 +39,9 @@ Each subchannel consists in:
 > The "message in" and "message out" registers could be used to send/receive small amounts of data such as a message ID, a numerical index, a custom control data structure, or a pointer to another location in memory (DDR, LIM, etc.)
 
 - Two associated interrupts:
-    - message present interrupt:  triggered when a message posted by the sending processor is available to be consumed on the receiving hart
+    - message present interrupt: set when a message posted by the sending processor is available to be consumed on the receiving hart
 
-    - acknowledge interrupt:  triggered when a message posted by the sending processor has been retrieved by the receiving hart
+    - acknowledge interrupt: set when a message posted by the sending processor has been retrieved by the receiving hart
 
 ![ihcc-zoom](images/ihcc-zoom.png)
 
@@ -53,12 +53,12 @@ The Inter-hart Communication Interrupt Aggregator (IHCIA) component has two main
 
 - Manages interrupts from several channels in order to group them on a hart-level basis
 
-- Provides a mechanism to quickly identify the source IHC channel that posted a message to a particular hart
+- Provides a mechanism to quickly identify the source IHC channel that sent an interrupt to a particular hart
 
 
 ![ihcia-zoomin](images/ihcia-zoom.png)
 
-The IHC contains five Inter-hart communication interrupt aggregators (IHCIA's), one for each of the five harts available in PolarFire SoC.
+The IHC subsystem contains five Inter-hart communication interrupt aggregators (IHCIA's), one for each of the five harts available in PolarFire SoC.
 
 ## IHC Subsystem Configuration <a name="ihc-config"></a>
 

@@ -6,7 +6,7 @@ This page provides a brief introduction to Asymmetric Multiprocessing (AMP) conc
 - [Introduction](#introduction)
 - [AMP on PolarFire SoC](#amp-overview)
     - [AMP boot flow](#amp-boot-flow)
-    - [Inter-hart communication (IHC)](#ipc)
+    - [Inter-Hart Communication (IHC)](#ipc)
 - [AMP Configurations](#amp-configs)
     - [Linux + FreeRTOS AMP configuration](#amp-linux-freertos)
         - [Building the AMP Linux + FreeRTOS demo](#linux-freertos-build)
@@ -46,13 +46,13 @@ In an AMP configuration, the HSS payload should contain two binary files, one fo
 
 When loading a payload, the HSS will copy the payload from non-volatile storage to DDR and then copy the binaries to the memory location(s) that were specified when the payload was generated.
 
-In addition to this, the HSS payload header describes which harts are associated with each payload as well as the the address that each hart should start executing from once the payload has been loaded into memory by the HSS.
+In addition to this, the HSS payload header describes which harts are associated with each payload as well as the address that each hart should start executing from once the payload has been loaded into memory by the HSS.
 
 ![amp-boot-flow](images/amp-boot-flow.png)
 
 For further information on [HSS payloads](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/software-development/hss-payloads.md), please refer to the HSS payload documentation page.
 
-### Inter-hart communication (IHC)<a name="ipc"></a>
+### Inter-Hart Communication (IHC)<a name="ipc"></a>
 
 Some AMP applications may require software contexts to be able to communicate and send messages between them. For example, a RTOS or bare metal-based application communicating with a Linux context, or two RTOS or bare metal applications sending messages between them.
 
@@ -70,7 +70,7 @@ One of the most common approaches is to use a general purpose operating system s
 
 
 
-### Linux + FreeRTOS configuration <a name="amp-linux-freertos"></a>
+### Linux + FreeRTOS Configuration <a name="amp-linux-freertos"></a>
 
 The Linux and FreeRTOS AMP configuration consists of a Linux OS running in one context and a FreeRTOS application running on the second context.
 
@@ -84,36 +84,36 @@ The image below shows a diagram of the Linux and FreeRTOS AMP configuration demo
 
 The table below describes the hardware resources assignment used in this demo:
 
-|                | Linux (Context A)           | FreeRTOS (Context B)        |
-|----------------|-----------------------------|-----------------------------|
-| Harts          | U54_1, U54_2, U54_3         | U54_4                       |
-| PDMA           | ✓                           |  -                          |
-| RTC            | ✓                           |  -                          |
-| USB            | ✓                           |  -                          |
-| eMMC/SD        | ✓                           |  -                          |
-| Serial         | MMUART 1-2-4                | MMUART 3                    |
-| Ethernet       | ✓                           |  -                          |
-| PCIE           | ✓                           |  -                          |
-| GPIO_2         | ✓                           |                             |
-| I2C1           | ✓                           |  -                          |
-| LSRAM          | ✓                           |  -                          |
-| DMA(FIC)       | ✓                           |  -                          |
-| CAN            | ✓                           |  -                          |
+|          | Linux (Context A)   | FreeRTOS (Context B) |
+|----------|---------------------|----------------------|
+| Harts    | U54_1, U54_2, U54_3 | U54_4                |
+| PDMA     | ✓                   | -                    |
+| RTC      | ✓                   | -                    |
+| USB      | ✓                   | -                    |
+| eMMC/SD  | ✓                   | -                    |
+| Serial   | MMUART 1-2-4        | MMUART 3             |
+| Ethernet | ✓                   | -                    |
+| PCIE     | ✓                   | -                    |
+| GPIO_2   | ✓                   |                      |
+| I2C1     | ✓                   | -                    |
+| LSRAM    | ✓                   | -                    |
+| DMA(FIC) | ✓                   | -                    |
+| CAN      | ✓                   | -                    |
 
 The table below describes the DDR memory layout used in this demo:
 
-|                | Linux (Context A)           | FreeRTOS (Context B)        |
-|----------------|-----------------------------|-----------------------------|
-| Main Memory    | 1.5 GB Total <br /><br /> Cached @ 0x8000_0000 (512 MB) <br /> <br /> Cached @ 0x10_0000_0000 (1GB)  | Cached @ 0xA200_0000 (4 MB)|
-| User space mappable buffers|  Cached @  0xa0000000 (32 MB) <br /><br /> Non Cached @ 0xc0000000 (128MB) <br /><br /> WCB  @ 0xd8000000 (128MB)|  -                          |
-| RPMsg vrings            |    Cached @ 0xA240_0000 (64 KB) |  Cached @ 0xA240_0000 (64 KB) |
-| RPMsg buffers            | Cached @ 0xA2410000 (256 KB) | Cached @ 0xA2410000 (256 KB) |
+|                             | Linux (Context A)                                                                                                | FreeRTOS (Context B)         |
+|-----------------------------|------------------------------------------------------------------------------------------------------------------|------------------------------|
+| Main Memory                 | 1.5 GB Total <br /><br /> Cached @ 0x8000_0000 (512 MB) <br /> <br /> Cached @ 0x10_0000_0000 (1GB)              | Cached @ 0xA200_0000 (4 MB)  |
+| User space mappable buffers | Cached @  0xa0000000 (32 MB) <br /><br /> Non Cached @ 0xc0000000 (128MB) <br /><br /> WCB  @ 0xd8000000 (128MB) | -                            |
+| RPMsg vrings                | Cached @ 0xA240_0000 (64 KB)                                                                                     | Cached @ 0xA240_0000 (64 KB) |
+| RPMsg buffers               | Cached @ 0xA2410000 (256 KB)                                                                                     | Cached @ 0xA2410000 (256 KB) |
 
-### Building the Linux + FreeRTOS demo<a name="linux-freertos-build"></a>
+### Building the Linux + FreeRTOS Demo<a name="linux-freertos-build"></a>
 
 Pre-requisites: Before following the steps described in this section, make sure you have the latest [Yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) or [Buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) build systems configured and setup in your system. Please refer to the README of each build system for further information.
 
-#### Build Linux + FreeRTOS AMP demo using Yocto
+#### Build Linux + FreeRTOS AMP Demo using Yocto
 
 1. Use the Yocto bitbake command and set the icicle-kit-es-amp MACHINE and image required:
 
@@ -138,7 +138,7 @@ The disk image flashed to the device in the step above contains the following pa
     - FreeRTOS ELF file used by context B
 - Linux Root Filesystem for context A
 
-#### Build Linux + FreeRTOS AMP demo using Buildroot
+#### Build Linux + FreeRTOS AMP Demo using Buildroot
 
 1. Build the image using the DEVKIT icicle-kit-es-amp option
 
@@ -154,9 +154,9 @@ The disk image generated by Buildroot contains the following partitions:
 - HSS boot partition with a HSS payload containing the following binaries:
     - U-boot binary used by context A
     - FreeRTOS ELF file used by context B
-- (optionally) a Linux Root Filesystem for context A
+- (optionally) A Linux Root Filesystem for context A
 
-### Running the Linux + FreeRTOS AMP demo on the Icicle Kit<a name="linux-freertos-run"></a>
+### Running the Linux + FreeRTOS AMP Demo on the Icicle Kit<a name="linux-freertos-run"></a>
 
 On connecting Icicle kit J11 to the host PC, you should see 4 COM port interfaces. To use this project, configure the COM port interface 1 and 3 as below:
 
@@ -167,7 +167,7 @@ On connecting Icicle kit J11 to the host PC, you should see 4 COM port interface
 
 On startup, the Linux console will show messages on COM port interface 1 and the FreeRTOS application will display a menu on COM port interface 3.
 
-The menu displayed on the FreeRTOS COM port allows to run several RPMsg applications included as part of the demo.
+The menu displayed on the FreeRTOS COM port allows the user to run several RPMsg applications included as part of the demo.
 
 For more information on how to use the RPMsg applications, please refer to the [RPMsg documentation](rpmsg.md) page.
 
@@ -175,7 +175,7 @@ For more information on how to use the RPMsg applications, please refer to the [
 
 The HSS payload generator can be used to create custom AMP configurations including RTOS + RTOS, RTOS + Bare metal or Bare metal + Bare metal.
 
-The RPMsg-FreeRTOS project included within the [PolarFire SoC AMP examples](https://github.com/polarfire-soc/polarfire-soc-amp-examples) repository allows to build a FreeRTOS + FreeRTOS AMP configuration demo with RPMsg communication.
+The RPMsg-FreeRTOS project included within the [PolarFire SoC AMP examples](https://github.com/polarfire-soc/polarfire-soc-amp-examples) repository allows a FreeRTOS + FreeRTOS AMP configuration demo to be built with RPMsg communication.
 
 For more information on how to build a FreeRTOS + FreeRTOS demo, please refer to the [FreeRTOS + FreeRTOS RPMsg Communication](rpmsg.md#rtos-rtos-demo) section in the PolarFire SoC RPMsg documentation page.
 

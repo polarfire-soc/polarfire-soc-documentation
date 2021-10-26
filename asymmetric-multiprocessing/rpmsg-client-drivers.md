@@ -28,7 +28,7 @@ CONFIG_SAMPLE_RPMSG_CLIENT=m
 
 
 ## RPMsg TTY client driver <a name="rpmsg-tty-driver"></a>
-Exposes a standard TTY interface (/dev/RPMSGX) on top of the RPMsg framework. Allows to read/write to the TTY device to send/receive messages from a remote software context.
+Exposes a standard TTY interface (/dev/RPMSGX) on top of the RPMsg framework. Allows reading/writing to the TTY device to send/receive messages from a remote software context.
 
 ### Enabling the RPMsg TTY client driver
 This driver is automatically configured in Yocto and Buildroot AMP machines using the following kernel configuration:
@@ -76,7 +76,7 @@ printf "Hello from Linux context\r\r" > /dev/ttyRPMSG4
 
 ## RPMsg Char client driver <a name="rpmsg-char-driver"></a>
 
-Exposes RPMsg endpoints to user-space processes (/dev/rpmsgX). Supports the creation of multiple endpoints within a single RPMsg channel by using an control interface (/dev/rpmsg_ctrlX).
+Exposes RPMsg endpoints to user-space processes (/dev/rpmsgX). Supports the creation of multiple endpoints within a single RPMsg channel by using a control interface (/dev/rpmsg_ctrlX).
 
 ### Enabling the RPMsg char driver
 This driver is automatically configured in Yocto and Buildroot AMP machines using the following kernel configuration:
@@ -87,9 +87,9 @@ CONFIG_RPMSG_CHAR=m
 
 ### Using the RPMsg char client driver
 
-An RPMsg ping-pong linux user-space application is provided as part of the [polarfire-soc-linux-examples](https://github.com/polarfire-soc/polarfire-soc-linux-examples) repository. These examples are also bundled in the PolarFire SoC Yocto and Buildroot images.
+A RPMsg ping-pong linux user space application is provided as part of the [polarfire-soc-linux-examples](https://github.com/polarfire-soc/polarfire-soc-linux-examples) repository. These examples are also bundled in the PolarFire SoC Yocto and Buildroot images.
 
-This rpmsg-pingpong application uses the RPMsg char driver to create an endpoint using an ioctl control interface (/dev/rpmsg_ctrlX) and exposes the endpoint to user-space by creating a /dev/rpmsgX device.
+This rpmsg-pingpong application uses the RPMsg char driver to create an endpoint using an ioctl control interface (/dev/rpmsg_ctrlX) and exposes the endpoint to the user space by creating a /dev/rpmsgX device.
 
 The application then uses this /dev/rpmsgX device to send chunks of data (payloads) of variable sizes to the remote software context. The remote side echoes the data back to the application which then validates the data returned.
 
@@ -110,7 +110,7 @@ root@icicle-kit-es-amp:~# ./rpmsg-pingpong
 ```
 For more information on how to build/run the rpmsg-pingpong linux example, please refer to the [polarfire-soc-linux-examples repository](https://github.com/polarfire-soc/polarfire-soc-linux-examples).
 
-5. The application should start sending/receiving messages. At the end a test report should be displayed in the Linux console:
+5. The application should start sending/receiving messages. At the end, a test report should be displayed in the Linux console:
 
 ```
  **************************************

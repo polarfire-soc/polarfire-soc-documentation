@@ -1,4 +1,4 @@
-# Mi-V Inter-hart Communication (IHC) Subsystem
+# Mi-V Inter-Hart Communication (IHC) Subsystem
 
 ## Table of Contents
 - [Introduction](#ihc-intro)
@@ -6,22 +6,21 @@
     - [Channel Allocation](#ihc-alloc)
     - [Layout](#ihc-layout)
 - [Associated Software](#ihc-software)
-    - [Hart Software Services (HSS)](#ihc-hss)
     - [Operating Systems](#ihc-os)
 
 ## Introduction <a name="ihc-intro"></a>
 
-The Inter-hart Communication (IHC) subsystem can be used to exchange data between harts in PolarFire SoC. It provides the ability to communicate and coordinate between harts through a non-blocking interrupt signaling mechanism. 
+The Inter-Hart Communication (IHC) subsystem can be used to exchange data between harts in PolarFire SoC. It provides the ability to communicate and coordinate between harts through a non-blocking interrupt signaling mechanism. 
 
-Internally, the IHC consists in multiple interconnected instances of the following components:
+Internally, the IHC subsystem consists of multiple interconnected instances of the following components:
 
-- **Inter-hart communication channels (IHCC)**
-- **Inter-hart communication interrupt aggregators (IHCIA)**
+- **Inter-Hart Communication channels (IHCC)**
+- **Inter-Hart Communication interrupt aggregators (IHCIA)**
 
 ![ihc-overview](images/ihc-overview.png)
-### Inter-hart Communication Channel (IHCC)
+### Inter-Hart Communication Channel (IHCC)
 
-The Icicle Kit Reference Design's AMP subsystem provides up to ten inter-hart communication channels (IHCC) of which:
+The Icicle Kit Reference Design's AMP subsystem provides ten Inter-Hart Communication channels (IHCC) of which:
 
 - Four are dedicated for communication between the monitor hart (E51) and applications harts (U54's) using the Hart Software Services (HSS) 
 - One is assigned for communication between two software contexts at operating system level using the RPMsg protocol
@@ -47,9 +46,9 @@ Each subchannel consists of:
 
 > Note: The purpose of this IHC is to provide a signaling mechanism between harts. Therefore, the actual data to be shared between software contexts should be located in a shared memory area which is not part of the IHC. Some examples of shared memory areas include DDR or LIM.
 
-### Inter-hart Communication Interrupt Aggregator (IHCIA)
+### Inter-Hart Communication Interrupt Aggregator (IHCIA)
 
-The Inter-hart Communication Interrupt Aggregator (IHCIA) component has two main purposes:
+The Inter-Hart Communication Interrupt Aggregator (IHCIA) component has two main purposes:
 
 - Manages interrupts from several channels in order to group them on a hart-level basis
 
@@ -58,7 +57,7 @@ The Inter-hart Communication Interrupt Aggregator (IHCIA) component has two main
 
 ![ihcia-zoomin](images/ihcia-zoom.png)
 
-The IHC subsystem contains five Inter-hart communication interrupt aggregators (IHCIA's), one for each of the five harts available in PolarFire SoC.
+The IHC subsystem contains five Inter-Hart Communication Interrupt Aggregators (IHCIA's), one for each of the five harts available in PolarFire SoC.
 
 ## IHC Subsystem Configuration <a name="ihc-config"></a>
 
@@ -68,7 +67,7 @@ This section provides an overview of the default IHC configuration provided in t
 
 The table below provides a list of all IHCC's available on PolarFire SoC, as well as the software associated with each of these channels:
 
-| Channel Name     | Software framework     |
+| Channel Name     | Software Framework     |
 |-------------     |------------------------|
 | E51<->U54_1      | HSS                    |
 | E51<->U54_2      | HSS                    |
@@ -81,7 +80,7 @@ The table below provides a list of all IHCC's available on PolarFire SoC, as wel
 | U54_3<->U54_4    | Unused                 |
 | U54_2<->U54_4    | Unused                 |
 
-Channels E51<->U54_1, E51<->U54_2, E51<->U54_3 and E51<->U54_4 are used to communicate the monitor hart (E51) with the application harts using the Hart Software Services. For more information on the IHC usage by the HSS, please refer to the [Associated Software](#ihc-hss) section within this page.
+Channels E51<->U54_1, E51<->U54_2, E51<->U54_3 and E51<->U54_4 are used to communicate the monitor hart (E51) with the application harts using the Hart Software Services.
 
 The U54_1 <-> U54_4 channel is assigned for context A to context B communication using the RPMsg protocol.
 
@@ -89,9 +88,11 @@ The above implies that the AMP configuration used should have at least U54_1 ass
 
 ### Layout <a name="ihc-layout"></a>
 
-This image below provides a simplified diagram representing the connection between the channels (IHCCs) and the IHCIAs which conform the IHC.
+This image below provides a simplified diagram representing the connection between the channels (IHCC's) and the IHCIA's of the IHC subsystem.
 
 ![ihc-basic-view](images/ihc-animation.gif)
+
+For further information on the IHC layout, please refer to the [Icicle Kit Reference Design](https://github.com/polarfire-soc/icicle-kit-reference-design) README.
 
 ## Associated Software <a name="ihc-software"></a>
 
@@ -115,9 +116,3 @@ For more information on the RPMsg framework, please refer to the [RPMsg](https:/
 #### Context B to Context A Communication 
 
 ![context-b-a](images/ihc-rpmsg-b-a.png)
-
-
-## Further Reading
-
-For further information on the IHC, including its API please refer to the [IHC user guide](https://bitbucket.microchip.com/projects/FPGA_BU_SOFT_IP_ES/repos/coreipc-internal/browse/.md-dev/md-out/core-ihcm-user-guide.md?at=refs%2Fheads%2Fwip).
-

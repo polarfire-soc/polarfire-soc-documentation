@@ -25,9 +25,9 @@ The Icicle Kit Reference Design's AMP subsystem provides ten Inter-Hart Communic
 - Four are dedicated for communication between the monitor hart (E51) and applications harts (U54's) using the Hart Software Services (HSS) 
 - One is assigned for communication between two software contexts at operating system level using the RPMsg protocol
 
-The six remaining channels are not used by the software. These free channels could be used to extend the inter-hart communication if required.
+The five remaining channels are not used by the software. These free channels could be used to extend the inter-hart communication if required.
 
-Each IHC channel is divided into two unidirectional subchannels that provide a signaling mechanism between a "sender" and a "receiver" hart. 
+Each IHCC is divided into two unidirectional subchannels that provide a signaling mechanism between a "sender" and a "receiver" hart.
 
 Each subchannel consists of:
 

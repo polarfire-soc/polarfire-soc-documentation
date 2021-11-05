@@ -88,22 +88,22 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 
 1. Connect the J11 USB-UART connector to your host PC. This is the micro-USB connector on the same side as the Ethernet connectors. This connection will give you access to 4 of the PolarFire SoC UARTs
 2. Open a terminal application to interact with the HSS through UART0. Settings are 115200 baud, 8 data bits, 1 stop bit, no parity, and no flow control.
-3. Power cycle the board.
-4. Type a key in the terminal application to stop the HSS from booting. This will give you access to the HSS command line interface.
-5. Type `usbdmsc` in the HSS command line interface. This will expose the eMMC as a mass storage device through the USB-OTG connector.
-6. Connect the J16 USB-OTG connector to your host PC. The eMMC content will be transfered to the Icicle Kit through this connection.
+3. Power on the board and a the Microchip logo will be displayed on MMUART0 as the HSS boots.
+4. Type a key in the terminal application to stop the HSS from booting. This will give you access to the HSS command line interface and a ">>" for input will be displayed in the terminal.
+5. Type `usbdmsc` in the HSS command line interface. If successful a message saying "Waiting for USB Host to connect" will be displayed.
+6. Connect the J16 USB-OTG connector to your host PC. The eMMC content will be transferred to the Icicle Kit through this connection.
 7. The Icicle Kit should now appear as mass storage device/drive on your host PC.
-8. Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
+8. Download the asset for the Linux image you want to program to the Icicle Kit from the [Linux image](#Linux-asset) section of this document.
 9. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
 10. Start USBImager
 
     ![](./images/start.png)
 
-11. Select *Image file*.
+11. Select the *Image file* that was downloaded in step 8. Note: Linux images are generated with a time stamp, assets from different releases will have different names.
 
     ![](./images/select-file.png)
 
-12. Select the *Device*.
+12. Select the target *Device* to program the image to.
 
     ![](./images/select-device.png)
 
@@ -111,14 +111,15 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 
     ![](./images/write.png)
 
-14. Once writing has completed, remove the J16 USB-OTG connector from the host PC or press `CTRL+C` in the HSS command line interface.
+14. Once writing has completed, unmount the drive from the host PC and press `CTRL+C` in the HSS command line interface. Disconnect the microUSB cable from J16 of the Icicle Kit.
 15. Type `boot` to boot the newly copied Linux image.
+16. HSS boot messages will appear on MMUART0 and the Linux boot will appear on MMUART1.
 
 <a name="SD-Card"></a>
 ### SD Card
 1. Put an SD card into the SD card reader of your host PC and use the instructions below.
 
-2. Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
+2. Download the asset for the Linux image you want to program to the Icicle Kit from the [Linux image](#Linux-asset) section of this document.
 
 3. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
 
@@ -126,7 +127,7 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 
     ![](./images/start.png)
 
-5. Select *Image file*.
+5. Select *Image file* that was downloaded in step 2. Note: Linux images are generated with a time stamp, assets from different releases will have different names.
 
     ![](./images/select-file.png)
 
@@ -139,7 +140,8 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
     ![](./images/write.png)
 
 8. Once writing has completed, eject the SD card from the host PC.
-9. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
+9. Insert it in the Icicle Kit's SD card slot and power on the board.
+10. HSS boot messages will appear on MMUART0 and the Linux boot will appear on MMUART1.
 
 <a name="Tools-References"></a>
 ## Tools and References

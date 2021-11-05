@@ -1,6 +1,8 @@
 # Updating PolarFire SoC  Icicle-Kit FPGA Design and Linux Image
 
-- [Programming Files and Linux Images Links](#Links)
+- [Programming Files](#Links)
+    - [FPGA fabric and eNVM](#FPGA-asset)
+    - [Linux image](#Linux-asset)
 - [Jumper Settings](#Jumpers)
 - [Serial Ports](#Serial-Ports)
 - [Linux Credentials](#Credentials)
@@ -15,15 +17,16 @@ This document provides links to files and instructions to provision an Icicle Ki
 - The on board eMMC or an SD card need to be programmed with a Linux image
 
 <a name="Links"></a>
-##  Programming Files and Linux Images Links
-All programming files and Linux images are now being provided as assets with each release of their respective repositories.
+## Programming Files
+The sections below link to programming files for the FPGA and eNVM along with images for Linux.
 
-Icicle Kit Reference Design programming files (including the HSS) are available as assets [here](https://github.com/polarfire-soc/icicle-kit-reference-design/releases).
+<a name="FPGA-asset"></a>
+###  FPGA fabric and eNVM
+A FlashPro Express programming job file is provided as an asset with the Icicle Kit Reference Design [releases](https://github.com/polarfire-soc/icicle-kit-reference-design/releases). This programming job file will program the FPGA fabric with the latest reference configuration and also program the eNVM with the latest HSS payload. The .zip file in the release assets should be downloaded and extracted to access the programming job file.
 
-Linux images are available as assets with each release of the Yocto build system [here](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases).
-
-**Note:**
-From release 2020.11, the SoC-FPGA programming files are identical for SD card and eMMC. This means Linux can be booted from either an SD card or eMMC using the HSS and Icicle Kit reference design release 2020.11 or greater.
+<a name="Linux-asset"></a>
+###  Linux image
+A minimal Linux image is provided as an asset with the Meta PoalrFire SoC Yocto BSP [releases](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases). This image can be programmed to eMMC or an SD card. The .wic.gz file in the release assets should be downloaded to program into storage using the steps outlined in the [Programming the Linux Image](#Programming-Linux-Image) section.
 
 ## Jumper Settings
 The Icicle Kit jumper settings required to boot Linux are as follows:
@@ -90,23 +93,23 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 7. The Icicle Kit should now appear as mass storage device/drive on your host PC.
 8. Download the zip file for the Linux image you want to program to the Icicle Kit from the links provided in the table of the top of this document.
 9. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
-10. Start USBImager 
+10. Start USBImager
 
     ![](./images/start.png)
 
-11. Select *Image file*. 
+11. Select *Image file*.
 
     ![](./images/select-file.png)
 
-12. Select the *Device*. 
+12. Select the *Device*.
 
     ![](./images/select-device.png)
 
-13. Click *Write*. 
+13. Click *Write*.
 
     ![](./images/write.png)
 
-14. Once writing has completed, remove the J16 USB-OTG connector from the host PC or press `CTRL+C` in the HSS command line interface. 
+14. Once writing has completed, remove the J16 USB-OTG connector from the host PC or press `CTRL+C` in the HSS command line interface.
 15. Type `boot` to boot the newly copied Linux image.
 
 <a name="SD-Card"></a>
@@ -117,23 +120,23 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 
 3. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
 
-4. Start USBImager 
+4. Start USBImager
 
     ![](./images/start.png)
 
-5. Select *Image file*. 
+5. Select *Image file*.
 
     ![](./images/select-file.png)
 
-6. Select the *Device*. 
+6. Select the *Device*.
 
     ![](./images/select-device.png)
 
-7. Click *Write*. 
+7. Click *Write*.
 
     ![](./images/write.png)
 
-8. Once writing has completed, eject the SD card from the host PC. 
+8. Once writing has completed, eject the SD card from the host PC.
 9. Insert it in the Icicle Kit's SD card slot and power cycle the board. You should see boot messages coming from the first two UARTs.
 
 <a name="Tools-References"></a>

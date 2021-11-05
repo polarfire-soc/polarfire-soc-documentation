@@ -66,7 +66,7 @@ The Icicle Kit jumper settings required to boot Linux are as follows:
 ## Serial Ports
 The Icicle Kit gives access to 4 serial ports via the J11 microUSB port, these are connected to MMUART0:3 respectively. A terminal emulator (e.g putty or teraterm) can be used to connect to the serial ports.
 
-The first two serial ports are used when booting Linux. MMUART0 displays the zero stage bootloader and U-Boot messages, MMUART1 displays Linux messages and a console. If you're unsure as to which COM port relates to which UART all should be connected and checked for startup messages. MMUART0 will always display HSS messages and MMUART 1 will always display the Linux console in the standard configuration.
+The first two serial ports are used when booting Linux. MMUART0 displays the zero stage bootloader and U-Boot messages, MMUART1 displays Linux messages and a console. If you're unsure as to which COM port relates to which MMUART all should be connected and checked for startup messages. MMUART0 will always display HSS messages and MMUART 1 will always display the Linux console in the standard configuration.
 
 The serial port settings are as follows: 115200 baud, 8-bit, no flow control.
 
@@ -87,8 +87,8 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 #### eMMC content update procedure
 
 1. Connect the J11 USB-UART connector to your host PC. This is the micro-USB connector on the same side as the Ethernet connectors. This connection will give you access to 4 of the PolarFire SoC UARTs
-2. Open a terminal application to interact with the HSS through UART0. Settings are 115200 baud, 8 data bits, 1 stop bit, no parity, and no flow control.
-3. Power on the board and a the Microchip logo will be displayed on MMUART0 as the HSS boots.
+2. Open a terminal application to interact with the HSS through MMUART0. Settings are 115200 baud, 8 data bits, 1 stop bit, no parity, and no flow control.
+3. Power on the board and the Microchip logo will be displayed on MMUART0 as the HSS boots.
 4. Type a key in the terminal application to stop the HSS from booting. This will give you access to the HSS command line interface and a ">>" for input will be displayed in the terminal.
 5. Type `usbdmsc` in the HSS command line interface. If successful a message saying "Waiting for USB Host to connect" will be displayed.
 6. Connect the J16 USB-OTG connector to your host PC. The eMMC content will be transferred to the Icicle Kit through this connection.

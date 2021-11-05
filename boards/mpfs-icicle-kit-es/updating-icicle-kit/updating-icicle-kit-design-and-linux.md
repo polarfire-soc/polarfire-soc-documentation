@@ -64,9 +64,11 @@ The Icicle Kit jumper settings required to boot Linux are as follows:
 
 <a name="Serial-Ports"></a>
 ## Serial Ports
-Please note that the first two serial ports available from the J11 USB-UART connector are used when booting Linux. The first UART displays zero stage bootloader and U-Boot messages, the second UART displays Linux messages and a console.
+The Icicle Kit gives access to 4 serial ports via the J11 microUSB port, these are connected to MMUART0:3 respectively. A terminal emulator (e.g putty or teraterm) can be used to connect to the serial ports.
 
-Serial ports settings: 115200 baud, 8-bit, no flow control.
+The first two serial ports are used when booting Linux. MMUART0 displays the zero stage bootloader and U-Boot messages, MMUART1 displays Linux messages and a console. If you're unsure as to which COM port relates to which UART all should be connected and checked for startup messages. MMUART0 will always display HSS messages and MMUART 1 will always display the Linux console in the standard configuration.
+
+The serial port settings are as follows: 115200 baud, 8-bit, no flow control.
 
 <a name="Credentials"></a>
 ## Linux Credentials

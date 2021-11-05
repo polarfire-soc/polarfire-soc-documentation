@@ -26,7 +26,7 @@ A FlashPro Express programming job file is provided as an asset with the Icicle 
 
 <a name="Linux-asset"></a>
 ###  Linux image
-A minimal Linux image is provided as an asset with the Meta PoalrFire SoC Yocto BSP [releases](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases). This image can be programmed to eMMC or an SD card. The .wic.gz file in the release assets should be downloaded to program into storage using the steps outlined in the [Programming the Linux Image](#Programming-Linux-Image) section.
+A minimal Linux image is provided as an asset with the Meta PolarFire SoC Yocto BSP [releases](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases). This image can be programmed to eMMC or an SD card. The .wic.gz file in the release assets should be downloaded to program into storage using the steps outlined in the [Programming the Linux Image](#Programming-Linux-Image) section.
 
 ## Jumper Settings
 The Icicle Kit jumper settings required to boot Linux are as follows:
@@ -77,6 +77,8 @@ You can login to the board using 'root' as user name, there is no password by de
 <a name="Programming-Design"></a>
 ## Programming The PolarFire SoC Design
 Please use FlashPro Express to program the PolarFire SoC design to the Icicle Kit.
+
+Instructions for programming a target using FlashPro Express can be found [here](https://onlinedocs.microchip.com/pr/GUID-BB497156-B848-40FC-B995-DF115EF2C226-en-US-1/index.html?GUID-9DDB79B6-A78C-46CE-A288-92C87FDB7063). There is also a video available which outlines the required steps [here](https://youtu.be/Foil5pIRBlM?list=PLtQdQmNK_0DTpi5IB0WcN84fDr_Crn47m&t=141).
 
 <a name="Programming-Linux-Image"></a>
 ## Programming the Linux Image

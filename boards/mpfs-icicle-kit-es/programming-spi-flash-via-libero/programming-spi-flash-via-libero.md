@@ -5,19 +5,23 @@
 
 This document provides a brief overview of the PolarFire SoC hardware features related to watchdog timers and suggested uses of these features.
 
-Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the detailed description of PolarFire SoC.
+Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide)
+for the detailed description of PolarFire SoC.
 
 
 # <a name="build-the-hss">Build the HSS</a>
-
-Disable eMMC/SD -- either by disabling *CONFIG_SERVICE_MMC* in the
-.config file, or by moving jumpers 34/ 43 (to move it back to 3v3, which
-won't work) -- otherwise the device will boot from eMMC.
 
 ```
 $ git clone ssh://git@bitbucket.microchip.com/fpga_pfsoc_es/hart-software-services.git
 $ cd hart-software-services
 $ cp boards/mpfs-icicle-kit-es/def_config .config
+```
+
+Edit .config and ensure that *CONFIG_SERVICE_SPI* is enabled in the .config file.
+
+Ensure that jumpers 34/43 on the Icicle kit are correctly set for 1v8 operation.
+
+```
 $ make
 ```
 
@@ -25,7 +29,7 @@ From either Buildroot or Yocto, you should have a payload.bin file which
 contains U-Boot. Convert this to HEX using
 
 ```
-$ bincopy convert -i binary -o hex payload.bin ~/payload.hex
+$ bincopy convert -i binary -o ihex payload.bin payload.hex
 ```
 
 If you don't have bincopy installed, install it with pip (or pip3,

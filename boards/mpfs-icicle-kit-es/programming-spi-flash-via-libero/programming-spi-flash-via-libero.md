@@ -3,10 +3,10 @@
 - [Build the HSS](#build-the-hss)
 - [Use Libero to program the SPI flash](#use-libero-to-program-the-spi-flash)
 
-This document provides a brief overview of the PolarFire SoC hardware features related to watchdog timers and suggested uses of these features.
+This document provides a brief overview of programming the SPI flash part on the Icicle kit with a HSS-compatible payload, and booting it via the HSS.
 
 Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide)
-for the detailed description of PolarFire SoC.
+for a detailed description of PolarFire SoC.
 
 
 # <a name="build-the-hss">Build the HSS</a>

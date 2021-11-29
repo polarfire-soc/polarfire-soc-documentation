@@ -18,7 +18,7 @@ The Remote Proccessor Messaging (RPMsg) is a protocol that is used to send and r
 There are multiple implementations of the RPMsg protocol:
 
 - [Linux RPMsg framework](https://www.kernel.org/doc/html/latest/staging/rpmsg.html)
-- [OpenAMP RPMsg framework](https://github.com/OpenAMP/open-amp) 
+- [OpenAMP RPMsg framework](https://github.com/OpenAMP/open-amp)
 - [RPMsg-lite framework](https://nxpmicro.github.io/rpmsg-lite/index.html)
 
 PolarFire SoC currently supports the RPMsg framework for Linux software contexts and the RPMsg-lite for RTOS/BM contexts.
@@ -44,7 +44,7 @@ Endpoints allow the user to bind multiple user callbacks within a single RPMsg c
 
 #### Media Access Control (MAC) Layer
 
-The Media Access Control (MAC) layer makes use of the VirtIO I/O virtualization framework to manage shared memory. 
+The Media Access Control (MAC) layer makes use of the VirtIO I/O virtualization framework to manage shared memory.
 
 The VirtIO layer uses a communication abstraction known as a "virtqueue" to transfer data to/from shared memory. Internally, virtqueues use a ring buffer mechanism known as a vring.
 
@@ -62,7 +62,7 @@ The Physical layer is composed of two basic hardware components: shared memory a
 
 With regards to shared memory, PolarFire SoC has some reserved memory area in DDR memory dedicated for inter-hart communication.
 
-In addition to this, PolarFire SoC provides a dedicated Inter-Hart Communication (IHC) subsystem that allows software contexts to communicate and coordinate with each other through  a non-blocking interrupt signaling mechanism. 
+In addition to this, PolarFire SoC provides a dedicated Inter-Hart Communication (IHC) subsystem that allows software contexts to communicate and coordinate with each other through  a non-blocking interrupt signaling mechanism.
 
 For more information on the IHC subsystem, please refer to the [IHC subsystem documentation](ihc.md) page.
 
@@ -83,7 +83,7 @@ On the Linux side, the RPmsg Framework relies on the interaction of following co
 
 - **VirtIO RPMsg bus driver**: VirtIO implementation used by the RPMsg protocol. Its implementation is based on a shared ring buffer (vring).
 
-- **RPMsg core driver**: implementation of the RPMsg layer in Linux. 
+- **RPMsg core driver**: implementation of the RPMsg layer in Linux.
 
 - **Rpmsg client driver** : a client driver that implements a specific service to communicate with the remote processor. Some of them may expose user space interfaces if needed. Some examples include the RPMsg TTY client driver and the RPMsg char driver.
 
@@ -138,9 +138,9 @@ To do this, it is necessary to build the RPMsg FreeRTOS project using both maste
 git clone https://github.com/polarfire-soc/polarfire-soc-amp-examples.git
 ```
 
-2. Open the `mpfs-rpmsg-freertos` project using SoftConsole
+2. Import the `mpfs-rpmsg-freertos` project into a SoftConsole workspace
 
-3. Build the project in remote mode by clicking the dropdown button next to the build button and select `Master`
+3. Build the project in master mode by clicking the dropdown button next to the build button and select `Master`
 
 ![sc_master_config](images/sc-master.png)
 
@@ -156,16 +156,17 @@ This should generate a Remote-Default folder with the output files resulting fro
 
 The RPMsg FreeRTOS project provides a tools/ folder with a sample HSS payload generator YAML file.
 
-5. To build a payload using the provided YAML file:
+5. Download the hss-payload-generator from the Hart Software Services [releases](https://github.com/polarfire-soc/hart-software-services/releases).
+
+6. Copy the payload generator into the top level folder of the project.
+
+7. Open a terminal in the top level folder of the project and execute the following:
 
 ```
 hss-payload-generator -c tools/hss-payload.yaml tools/payload.bin
 ```
 
-The latest version of the hss-payload-generator tool `hss-payload-generator.zip`  can be found in the hart software services [release page]() on github.
-
-
-6. Flash the generated payload in a non-volatile off chip memory such as eMMC or SD-card
+8. Flash the payload from the tools/ directory to eMMC or SD-card following the steps shown in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) document to program using USBImager or, for example, using dd on Linux:
 
 ```
 sudo dd if=payload.bin of=/dev/sdX
@@ -173,16 +174,12 @@ sudo dd if=payload.bin of=/dev/sdX
 > Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your USB flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!
 
 
-7. On power-on, the Icicle Kit should boot the HSS and start the application in each context.
+9. On power-on, the Icicle Kit should boot the HSS and start the application in each context.
 
-8. The FreeRTOS context with RPMsg in remote mode will display a menu on UART 1. Select between the list of available demos from the menu.
+10. The FreeRTOS context with RPMsg in remote mode will display a menu on UART 1. Select between the list of available demos from the menu.
 
-9. The FreeRTOS context with RPMsg in master mode will display the same menu as described in the step above on UART 3. Select the same demo as chosen on the step above.
+11. The FreeRTOS context with RPMsg in master mode will display the same menu as described in the step above on UART 3. Select the same demo as chosen on the step above.
 
 ![freertos_freertos_demo](images/freertos-freertos.png)
 
 For instance, the image on the right-hand side above, shows the RPMsg application menu when in remote mode. In this case, the option two was chosen to run the console demo. This same demo should be selected on the RPMsg master application to run the counterpart of the console demo on the master side.
-
-
-
-

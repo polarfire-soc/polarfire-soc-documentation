@@ -25,7 +25,7 @@ From either Buildroot or Yocto, you should have a payload.bin file which
 contains U-Boot. Convert this to HEX using
 
 ```
-$ bincopy convert -i binary -o ihex payload.bin ~/payload.hex
+$ bincopy convert -i binary -o hex payload.bin ~/payload.hex
 ```
 
 If you don't have bincopy installed, install it with pip (or pip3,

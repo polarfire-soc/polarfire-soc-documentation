@@ -175,9 +175,9 @@ For more information on how to use the RPMsg applications, please refer to the [
 
 The HSS payload generator can be used to create custom AMP configurations including RTOS + RTOS, RTOS + Bare metal or Bare metal + Bare metal.
 
-The RPMsg-FreeRTOS project included within the [PolarFire SoC AMP examples](https://github.com/polarfire-soc/polarfire-soc-amp-examples) repository allows a FreeRTOS + FreeRTOS AMP configuration demo to be built with RPMsg communication.
+The `mpfs-rpmsg-freertos` and `mpfs-rpmsg-bm` SoftConsole projects included within the [PolarFire SoC AMP examples](https://github.com/polarfire-soc/polarfire-soc-amp-examples) repository allow a FreeRTOS + BM, FreeRTOS + FreeRTOS or Bare Metal + Bare Metal AMP configuration demo to be built with RPMsg communication.
 
-For more information on how to build a FreeRTOS + FreeRTOS demo, please refer to the [FreeRTOS + FreeRTOS RPMsg Communication](rpmsg.md#rtos-rtos-demo) section in the PolarFire SoC RPMsg documentation page.
+For more information on how to build these demos, please refer to the [RPMsg on FreeRTOS/Bare Metal](rpmsg.md#rpmsg-rtos-intro) section in the PolarFire SoC RPMsg documentation page.
 
 
 

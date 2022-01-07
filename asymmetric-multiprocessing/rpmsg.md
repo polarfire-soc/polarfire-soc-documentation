@@ -8,7 +8,9 @@ This page provides a brief introduction to the Remote Processor Messaging (RPMsg
   - [RPMsg Linux Configuration](#rpmsg-linux-config)
   - [How to use the RPMsg Framework on Linux](#rpmsg-drivers)
 - [PolarFire SoC RPMsg on FreeRTOS/Bare Metal](#rpmsg-rtos-intro)
+  - [FreeRTOS + Bare Metal RPMsg Communication](#rtos-bm-demo)
   - [FreeRTOS + FreeRTOS RPMsg Communication](#rtos-rtos-demo)
+  - [Bare Metal + Bare Metal RPMsg Communication](#bm-bm-demo)
 
 
 ## Introduction to RPMsg <a name="rpmsg-intro"></a>
@@ -109,11 +111,11 @@ PolarFire SoC includes several client drivers which can be used to interact with
 
 ## PolarFire SoC RPMsg on FreeRTOS/Bare Metal  <a name="rpmsg-rtos-intro"></a>
 
-PolarFire SoC uses the RPMsg-lite implementation on RTOS and bare metal software contexts.
+PolarFire SoC uses the RPMsg-lite implementation on RTOS and bare metal (BM) software contexts.
 
-The [PolarFire SoC AMP examples](https://github.com/polarfire-soc/polarfire-soc-amp-examples) repository contains a FreeRTOS sample application that can be used to communicate with a remote software (i.e. Linux or another FreeRTOS context) using the RPMsg-lite framework.
+The [PolarFire SoC AMP examples](https://github.com/polarfire-soc/polarfire-soc-amp-examples) repository contains FreeRTOS and Bare metal sample projects that can be used to communicate with a remote software (i.e. Linux or another BM/FreeRTOS context) using the RPMsg-lite framework.
 
-This project contains two different build configurations:
+The projects contain two different build configurations:
 
 - **Remote Build Configuration**: Builds an application in RPMsg Remote mode.
 
@@ -123,8 +125,71 @@ Different combinations of operating systems can be supported in a master and rem
 
 - FreeRTOS (master) + FreeRTOS (remote)
 
+- FreeRTOS (master) + Bare Metal (remote)
+
+- Bare Metal (master) + Bare Metal (remote)
+
 - Linux (master) + FreeRTOS (remote)
 
+### FreeRTOS + Bare Metal RPMsg Communication  <a name="rtos-bm-demo"></a>
+
+This section focuses on how to get a FreeRTOS and a bare metal context to communicate with each other using RPMsg.
+
+To do this, it is necessary to build the RPMsg FreeRTOS and bare metal projects as shown in the following steps:
+
+1. Clone the PolarFire SoC AMP examples repository
+
+```
+git clone https://github.com/polarfire-soc/polarfire-soc-amp-examples.git
+```
+
+2. Import the `mpfs-rpmsg-freertos` and `mpfs-rpmsg-bm` projects into a SoftConsole workspace
+
+3. Build the mpfs-rpmsg-freertos project in master mode by clicking the dropdown button next to the build button and select `Master`
+
+<img src="images/sc-freertos-master.png" height="50%" width="50%">
+
+This should generate a Master-Default folder with the output files resulting from the compilation.
+
+4. Build the `mpfs-rpmsg-bm` project in remote mode by clicking the dropdown button next to the build button and select `Remote`
+
+
+<img src="images/sc-bm-remote.png" height="50%" width="50%">
+
+This should generate a Remote-Default folder with the output files resulting from the compilation.
+
+#### Generating the FreeRTOS + BM AMP Payload  <a name="amp-payloads"></a>
+
+The polarfire-soc-amp-examples repository provides a resources/ folder with a sample HSS payload generator YAML file to build the FreeRTOS + BM AMP demo.
+
+5. Download the hss-payload-generator from the Hart Software Services [releases](https://github.com/polarfire-soc/hart-software-services/releases).
+
+6. Copy the payload generator binary into the resources folder
+
+7. Open a terminal and execute the following commands:
+
+```
+cd polarfire-soc-amp-examples/resources
+hss-payload-generator -c hss-payload-freertos_bm.yaml payload.bin
+```
+
+8. Flash the payload from the tools/ directory to eMMC or SD-card following the steps shown in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) document to program using USBImager or, for example, using dd on Linux:
+
+```
+sudo dd if=payload.bin of=/dev/sdX
+```
+> Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your USB flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!
+
+
+9. On power-on, the Icicle Kit should boot the HSS and start the application in each context.
+
+10. The FreeRTOS context with RPMsg in master mode will display a menu on UART 1. Select between the list of available demos from the menu.
+
+11. The bare metal context with RPMsg in remote mode will display the same menu as described in the step above on UART 3. Select the same demo as chosen on the step above.
+
+![freertos_bm_demo](images/freertos-bm.png)
+
+For instance, the image on the right-hand side above, shows the RPMsg application menu when in remote mode. In this case, option two was chosen to run the console demo. This same demo should be selected on the RPMsg master application to run the counterpart of the console demo on the master side.
 
 ### FreeRTOS + FreeRTOS RPMsg Communication  <a name="rtos-rtos-demo"></a>
 
@@ -142,28 +207,29 @@ git clone https://github.com/polarfire-soc/polarfire-soc-amp-examples.git
 
 3. Build the project in master mode by clicking the dropdown button next to the build button and select `Master`
 
-![sc_master_config](images/sc-master.png)
+<img src="images/sc-freertos-master.png" height="50%" width="50%">
 
 This should generate a Master-Default folder with the output files resulting from the compilation.
 
 4. Build the project in remote mode by clicking the dropdown button next to the build button and select `Remote`
 
-![sc_remote_config](images/sc-remote.png)
+<img src="images/sc-freertos-remote.png" height="50%" width="50%">
 
 This should generate a Remote-Default folder with the output files resulting from the compilation.
 
-#### Generating the HSS AMP Payload  <a name="amp-payloads"></a>
+#### Generating the FreeRTOS + FreeRTOS AMP Payload  <a name="amp-payloads"></a>
 
-The RPMsg FreeRTOS project provides a tools/ folder with a sample HSS payload generator YAML file.
+The polarfire-soc-amp-examples repository provides a resources/ folder with a sample HSS payload generator YAML file to build the FreeRTOS + FreeRTOS AMP demo.
 
 5. Download the hss-payload-generator from the Hart Software Services [releases](https://github.com/polarfire-soc/hart-software-services/releases).
 
-6. Copy the payload generator into the top level folder of the project.
+6. Copy the payload generator binary into the resources folder
 
-7. Open a terminal in the top level folder of the project and execute the following:
+7. Open a terminal and execute the following commands:
 
 ```
-hss-payload-generator -c tools/hss-payload.yaml tools/payload.bin
+cd polarfire-soc-amp-examples/rresources
+hss-payload-generator -c hss-payload-freertos_freertos.yaml payload.bin
 ```
 
 8. Flash the payload from the tools/ directory to eMMC or SD-card following the steps shown in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) document to program using USBImager or, for example, using dd on Linux:
@@ -176,10 +242,70 @@ sudo dd if=payload.bin of=/dev/sdX
 
 9. On power-on, the Icicle Kit should boot the HSS and start the application in each context.
 
-10. The FreeRTOS context with RPMsg in remote mode will display a menu on UART 1. Select between the list of available demos from the menu.
+10. The FreeRTOS context with RPMsg in master mode will display a menu on UART 1. Select between the list of available demos from the menu.
 
-11. The FreeRTOS context with RPMsg in master mode will display the same menu as described in the step above on UART 3. Select the same demo as chosen on the step above.
+11. The FreeRTOS context with RPMsg in remote mode will display the same menu as described in the step above on UART 3. Select the same demo as chosen on the step above.
 
 ![freertos_freertos_demo](images/freertos-freertos.png)
 
-For instance, the image on the right-hand side above, shows the RPMsg application menu when in remote mode. In this case, the option two was chosen to run the console demo. This same demo should be selected on the RPMsg master application to run the counterpart of the console demo on the master side.
+For instance, the image on the right-hand side above, shows the RPMsg application menu when in remote mode. In this case, option two was chosen to run the console demo. This same demo should be selected on the RPMsg master application to run the counterpart of the console demo on the master side.
+
+
+### Bare Metal + Bare Metal RPMsg Communication  <a name="bm-bm-demo"></a>
+
+This section focuses on how to get two bare metal contexts to communicate with each other using RPMsg.
+
+To do this, it is necessary to build the RPMsg bare metal project using both master and remote build configurations as shown in the following steps:
+
+1. Clone the PolarFire SoC AMP examples repository
+
+```
+git clone https://github.com/polarfire-soc/polarfire-soc-amp-examples.git
+```
+
+2. Import the `mpfs-rpmsg-bm` project into a SoftConsole workspace
+
+3. Build the project in master mode by clicking the dropdown button next to the build button and select `Master`
+
+<img src="images/sc-bm-master.png" height="50%" width="50%">
+
+This should generate a Master-Default folder with the output files resulting from the compilation.
+
+4. Build the project in remote mode by clicking the dropdown button next to the build button and select `Remote`
+
+<img src="images/sc-bm-remote.png" height="50%" width="50%">
+
+This should generate a Remote-Default folder with the output files resulting from the compilation.
+
+#### Generating the BM + BM AMP Payload  <a name="amp-payloads"></a>
+
+The polarfire-soc-amp-examples repository provides a resources/ folder with a sample HSS payload generator YAML file to build the BM + BM AMP demo.
+
+5. Download the hss-payload-generator from the Hart Software Services [releases](https://github.com/polarfire-soc/hart-software-services/releases).
+
+6. Copy the payload generator binary into the resources folder
+
+7. Open a terminal and execute the following commands:
+
+```
+cd polarfire-soc-amp-examples/resources
+hss-payload-generator -c hss-payload-bm_bm.yaml payload.bin
+```
+
+8. Flash the payload from the tools/ directory to eMMC or SD-card following the steps shown in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) document to program using USBImager or, for example, using dd on Linux:
+
+```
+sudo dd if=payload.bin of=/dev/sdX
+```
+> Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your USB flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!
+
+
+9. On power-on, the Icicle Kit should boot the HSS and start the application in each context.
+
+10. The bare metal context with RPMsg in master mode will display a menu on UART 1. Select between the list of available demos from the menu.
+
+11. The bare metal context with RPMsg in remote mode will display the same menu as described in the step above on UART 3. Select the same demo as chosen on the step above.
+
+![bm_bm_demo](images/bm-bm.png)
+
+For instance, the image on the right-hand side above, shows the RPMsg application menu when in remote mode. In this case, option two was chosen to run the console demo. This same demo should be selected on the RPMsg master application to run the counterpart of the console demo on the master side.

@@ -3,17 +3,20 @@
 PolarFire SoC includes several client drivers which can be used to interact with a remote software context.
 
 - [RPMsg client sample driver](#rpmsg-client-sample-driver)
-- [RPMsg tty client driver](#rpmsg-tty-driver)
-- [RPMsg char client driver](#rpmsg-char-driver)
+- [RPMsg tty client driver](#rpmsg-tty-client-driver)
+- [RPMsg char client driver](#rpmsg-char-client-driver)
 
-## RPMsg client sample driver <a name="rpmsg-client-sample-driver"></a>
+<a name="rpmsg-client-sample-driver"></a>
+
+## RPMsg client sample driver
 
 A sample driver included in the Linux kernel that demonstrates how to communicate with another software context over the RPMsg bus.
 
 ### Enabling the RPMsg client sample driver
+
 This driver is automatically configured in Yocto and Buildroot AMP machines using the following kernel configuration:
 
-```
+```kconfig
 CONFIG_SAMPLES=y
 CONFIG_SAMPLE_RPMSG_CLIENT=m
 ```
@@ -26,14 +29,17 @@ CONFIG_SAMPLE_RPMSG_CLIENT=m
 
 ![rpmsg-client-demo](images/rpmsg-client-sample.gif)
 
+<a name="rpmsg-tty-client-driver"></a>
 
-## RPMsg TTY client driver <a name="rpmsg-tty-driver"></a>
+## RPMsg TTY client driver
+
 Exposes a standard TTY interface (/dev/RPMSGX) on top of the RPMsg framework. Allows reading/writing to the TTY device to send/receive messages from a remote software context.
 
 ### Enabling the RPMsg TTY client driver
+
 This driver is automatically configured in Yocto and Buildroot AMP machines using the following kernel configuration:
 
-```
+```kconfig
 CONFIG_RPMSG_MIV_TTY=m
 ```
 
@@ -45,43 +51,46 @@ To test the RPMsg client driver using the Linux + FreeRTOS AMP configuration dem
 2. At start-up, FreeRTOS context will display a menu. Press 2 in the serial terminal to run the console demo
 3. The Linux context should display the following message in the console:
 
-```
-virtio_rpmsg_bus virtio0: creating channel rpmsg-virtual-tty-channel
-Installed rpmsg tty driver!
-```
+    ```bash
+    virtio_rpmsg_bus virtio0: creating channel rpmsg-virtual-tty-channel
+    Installed rpmsg tty driver!
+    ```
 
-3. A new tty device should be registered in Linux. To verify this, run the command shown below:
+4. A new tty device should be registered in Linux. To verify this, run the command shown below:
 
-```
-root@icicle-kit-es-amp:~# ls /dev/ttyRPMSG*
+    ```bash
+    root@icicle-kit-es-amp:~# ls /dev/ttyRPMSG*
 
-/dev/ttyRPMSG4
-```
+    /dev/ttyRPMSG4
+    ```
 
-4. Configure the RPMsg tty port using the stty command:
+5. Configure the RPMsg tty port using the stty command:
 
-```
-stty -echo -F /dev/ttyRPMSG4
-```
+    ```bash
+    stty -echo -F /dev/ttyRPMSG4
+    ```
 
-5. Use the printf command to send a message to the FreeRTOS context:
+6. Use the printf command to send a message to the FreeRTOS context:
 
-```
-printf "Hello from Linux context\r\r" > /dev/ttyRPMSG4
-```
+    ```bash
+    printf "Hello from Linux context\r\r" > /dev/ttyRPMSG4
+    ```
 
-6. The message should be received and displayed on the FreeRTOS application.
+7. The message should be received and displayed on the FreeRTOS application.
 
 ![rpmsg-tty-demo](images/rpmsg-tty.gif)
 
-## RPMsg Char client driver <a name="rpmsg-char-driver"></a>
+<a name="rpmsg-char-client-driver"></a>
+
+## RPMsg Char client driver
 
 Exposes RPMsg endpoints to user-space processes (/dev/rpmsgX). Supports the creation of multiple endpoints within a single RPMsg channel by using a control interface (/dev/rpmsg_ctrlX).
 
 ### Enabling the RPMsg char driver
+
 This driver is automatically configured in Yocto and Buildroot AMP machines using the following kernel configuration:
 
-```
+```kconfig
 CONFIG_RPMSG_CHAR=m
 ```
 
@@ -97,27 +106,26 @@ The application then uses this /dev/rpmsgX device to send chunks of data (payloa
 2. At start-up, FreeRTOS context will display a menu. Press 1 in the serial terminal to run the ping pong demo
 3. The Linux context should display the following message in the console:
 
-```
-virtio_rpmsg_bus virtio0: creating channel rpmsg-amp-demo-channel
-```
+    ```bash
+    virtio_rpmsg_bus virtio0: creating channel rpmsg-amp-demo-channel
+    ```
 
 4. Build and run the mpfs-pingpong application provided in the /opt/microchip/amp directory:
 
-```
-root@icicle-kit-es-amp:~# cd /opt/microchip/amp/rpmsg-pingpong/
-root@icicle-kit-es-amp:~# make
-root@icicle-kit-es-amp:~# ./rpmsg-pingpong
-```
-For more information on how to build/run the rpmsg-pingpong linux example, please refer to the [polarfire-soc-linux-examples repository](https://github.com/polarfire-soc/polarfire-soc-linux-examples).
+    ```bash
+    root@icicle-kit-es-amp:~# cd /opt/microchip/amp/rpmsg-pingpong/
+    root@icicle-kit-es-amp:~# make
+    root@icicle-kit-es-amp:~# ./rpmsg-pingpong
+    ```
+
+    For more information on how to build/run the rpmsg-pingpong linux example, please refer to the [polarfire-soc-linux-examples repository](https://github.com/polarfire-soc/polarfire-soc-linux-examples).
 
 5. The application should start sending/receiving messages. At the end, a test report should be displayed in the Linux console:
 
-```
- **************************************
-
- Echo Test Round 0 Test Results: Error count = 0
-
- **************************************
-```
+    ```bash
+    **************************************
+    Echo Test Round 0 Test Results: Error count = 0
+    **************************************
+    ```
 
 ![rpmsg-pingpong-demo](images/rpmsg-pingpong.gif)

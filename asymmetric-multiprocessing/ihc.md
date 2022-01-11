@@ -1,16 +1,23 @@
 # Mi-V Inter-Hart Communication (IHC) Subsystem
 
 ## Table of Contents
-- [Introduction](#ihc-intro)
-- [Configuration](#ihc-config)
-    - [Channel Allocation](#ihc-alloc)
-    - [Layout](#ihc-layout)
-- [Associated Software](#ihc-software)
-    - [Operating Systems](#ihc-os)
 
-## Introduction <a name="ihc-intro"></a>
+- [Introduction](#introduction)
+  - [Inter-Hart Communication Channel (IHCC)](#inter-hart-communication-channel-ihcc)
+  - [Inter-Hart Communication Interrupt Aggregator (IHCIA)](#inter-hart-communication-interrupt-aggregator-ihcia)
+- [IHC Subsystem Configuration](#ihc-subsystem-configuration)
+  - [Channel Assignment](#channel-assignment)
+  - [Layout](#layout)
+- [Associated Software](#associated-software)
+  - [Operating Systems](#operating-systems)
+    - [Context A to Context B Communication](#context-a-to-context-b-communication)
+    - [Context B to Context A Communication](#context-b-to-context-a-communication)
 
-The Inter-Hart Communication (IHC) subsystem can be used to exchange data between harts in PolarFire SoC. It provides the ability to communicate and coordinate between harts through a non-blocking interrupt signaling mechanism. 
+<a name="introduction"></a>
+
+## Introduction
+
+The Inter-Hart Communication (IHC) subsystem can be used to exchange data between harts in PolarFire SoC. It provides the ability to communicate and coordinate between harts through a non-blocking interrupt signaling mechanism.
 
 Internally, the IHC subsystem consists of multiple interconnected instances of the following components:
 
@@ -18,11 +25,14 @@ Internally, the IHC subsystem consists of multiple interconnected instances of t
 - **Inter-Hart Communication interrupt aggregators (IHCIA)**
 
 ![ihc-overview](images/ihc-overview.png)
+
+<a name="inter-hart-communication-channel-ihcc"></a>
+
 ### Inter-Hart Communication Channel (IHCC)
 
 The Icicle Kit Reference Design's AMP subsystem provides ten Inter-Hart Communication channels (IHCC) of which:
 
-- Four are dedicated for communication between the monitor hart (E51) and applications harts (U54's) using the Hart Software Services (HSS) 
+- Four are dedicated for communication between the monitor hart (E51) and applications harts (U54's) using the Hart Software Services (HSS)
 - One is assigned for communication between two software contexts at operating system level using the RPMsg protocol
 
 The five remaining channels are not used by the software. These free channels could be used to extend the inter-hart communication if required.
@@ -38,13 +48,15 @@ Each subchannel consists of:
 > The "message in" and "message out" registers could be used to send/receive small amounts of data such as a message ID, a numerical index, a custom control data structure, or a pointer to another location in memory (DDR, LIM, etc.)
 
 - Two associated interrupts:
-    - message present interrupt: set when a message posted by the sending processor is available to be consumed on the receiving hart
+  - message present interrupt: set when a message posted by the sending processor is available to be consumed on the receiving hart
 
-    - acknowledge interrupt: set when a message posted by the sending processor has been retrieved by the receiving hart
+  - acknowledge interrupt: set when a message posted by the sending processor has been retrieved by the receiving hart
 
 ![ihcc-zoom](images/ihcc-zoom.png)
 
 > Note: The purpose of this IHC is to provide a signaling mechanism between harts. Therefore, the actual data to be shared between software contexts should be located in a shared memory area which is not part of the IHC. Some examples of shared memory areas include DDR or LIM.
+
+<a name="#inter-hart-communication-interrupt-aggregator-ihcia"></a>
 
 ### Inter-Hart Communication Interrupt Aggregator (IHCIA)
 
@@ -54,16 +66,19 @@ The Inter-Hart Communication Interrupt Aggregator (IHCIA) component has two main
 
 - Provides a mechanism to quickly identify the source IHC channel that sent an interrupt to a particular hart
 
-
 ![ihcia-zoomin](images/ihcia-zoom.png)
 
 The IHC subsystem contains five Inter-Hart Communication Interrupt Aggregators (IHCIA's), one for each of the five harts available in PolarFire SoC.
 
-## IHC Subsystem Configuration <a name="ihc-config"></a>
+<a name="ihc-subsystem-configuration"></a>
+
+## IHC Subsystem Configuration
 
 This section provides an overview of the default IHC configuration provided in the [Icicle Kit reference design](https://github.com/polarfire-soc/icicle-kit-reference-design).
 
-### Channel Assingment <a name="ihc-alloc"></a>
+<a name="channel-assignment></a>
+
+### Channel Assignment
 
 The table below provides a list of all IHCC's available on PolarFire SoC, as well as the software associated with each of these channels:
 
@@ -86,7 +101,9 @@ The U54_1 <-> U54_4 channel is assigned for context A to context B communication
 
 The above implies that the AMP configuration used should have at least U54_1 assigned to context A and U54_4 assigned to context B.
 
-### Layout <a name="ihc-layout"></a>
+<a name="layout"></a>
+
+### Layout
 
 This image below provides a simplified diagram representing the connection between the channels (IHCC's) and the IHCIA's of the IHC subsystem.
 
@@ -94,9 +111,13 @@ This image below provides a simplified diagram representing the connection betwe
 
 For further information on the IHC layout, please refer to the [Icicle Kit Reference Design](https://github.com/polarfire-soc/icicle-kit-reference-design) README.
 
-## Associated Software <a name="ihc-software"></a>
+<a name="associated-software"></a>
 
-### Operating Systems <a name="ihc-os"></a>
+## Associated Software
+
+<a name="operating-systems"></a>
+
+### Operating Systems
 
 The IHC is handled by Linux through the Linux mailbox framework and by RTOS/bare metal applications through the bare metal [Mi-V IHC driver]().
 
@@ -108,11 +129,14 @@ b) send/receive the ring buffer (vring) ID where the sender context posted a mes
 
 For more information on the RPMsg framework, please refer to the [RPMsg](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/asymmetric-multiprocessing/rpmsg.md) documentation page
 
-#### Context A to Context B Communication 
+<a name="context-a-to-context-b-communication"></a>
+
+#### Context A to Context B Communication
 
 ![context-a-b](images/ihc-rpmsg-a-b.png)
 
+<a name="context-b-to-context-a-communication"></a>
 
-#### Context B to Context A Communication 
+#### Context B to Context A Communication
 
 ![context-b-a](images/ihc-rpmsg-b-a.png)

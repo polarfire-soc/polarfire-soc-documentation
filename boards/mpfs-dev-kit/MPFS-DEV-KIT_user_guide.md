@@ -1,16 +1,19 @@
 # MPFS-DEV-KIT User Guide
 
 ## Overview
-The HiFive Unleashed Platform™ is purpose-built to emulate most of the functionality of the upcoming
-PolarFire SoC FPGA, which will be the industry’s first RISC-V based FPGA SoC.       
-This guide describes the MPFS-DEV-KIT, board setup, and the process for booting Linux on the HiFive Unleashed platform. 
 
-### HiFive Unleashed Platform (MPFS-DEV-KIT)   
+The HiFive Unleashed Platform™ is purpose-built to emulate most of the functionality of the upcoming
+PolarFire SoC FPGA, which will be the industry’s first RISC-V based FPGA SoC.  
+This guide describes the MPFS-DEV-KIT, board setup, and the process for booting Linux on the HiFive Unleashed platform.
+
+### HiFive Unleashed Platform (MPFS-DEV-KIT)
+
 The HiFive Unleashed Platform consists of the SiFive’s HiFive Unleashed kit and Microsemi’s HiFive
 Unleashed Expansion kit with their respective accessories. Microsemi's HiFive Unleashed Expansion
-board enables users to create a Linux system running on a RISC-V core complex, with a large FPGA fabric accessible through the memory map. The expansion board is shipped with a pre-configured bitstream enabling PCIe root port functionality.          
+board enables users to create a Linux system running on a RISC-V core complex, with a large FPGA fabric accessible through the memory map. The expansion board is shipped with a pre-configured bitstream enabling PCIe root port functionality.
 
 ## HiFive Unleashed Kit
+
 - One SiFive's HiFive Unleashed board
 - One power wall adapter 12 V
 - One USB-A to micro USB-B cable
@@ -23,6 +26,7 @@ board enables users to create a Linux system running on a RISC-V core complex, w
 SiFive’s HiFive Unleashed development kit is based on the Freedom U540-C000 chip, the first 4+1 multicore RISC-V Linux-capable SoC.
 
 ## SiFive Freedom U540 SoC
+
 - 8 GB DDR4 with ECC
 - Gigabit Ethernet port
 - 32 MB quad SPI flash from ISSI
@@ -32,6 +36,7 @@ SiFive’s HiFive Unleashed development kit is based on the Freedom U540-C000 ch
 ![HiFive Unleashed Block Diagram](images/hifive_block_diagram.png)
 
 The HiFive Unleashed Expansion board contains the following items:
+
 - 300K LE PolarFire FPGA in an FCG1152 package (MPF300TS-1FCG1152EES)
 - 24-lane PCIe switch
 - eMMC Nand Flash, uSD card slot
@@ -51,15 +56,17 @@ The HiFive Unleashed Expansion board contains the following items:
 ![HiFive Unleashed Expansion Board](images/HUEB.png)
 
 ## System Setup and Prerequisites
+
 Download and install the following development tools in the PC in order to design, simulate,
 and debug on the HiFive Unleashed Platform (MPFS-DEV-KIT).
 
 ### FlashPro and FlashPro Express Programming Tools
+
 The Microsemi FlashPro programming system is a combination of Microsemi's FlashPro software and a
 hardware programmer. Together, they provide in-system programming (ISP) for all FPGA families. The
 required programming and debug software is integrated with the Libero SoC PolarFire software. This
 software is also available as a standalone programmer for production programming. Visit [Microsemi's
-FlashPro page](https://www.microsemi.com/product-directory/programming/4977-flashpro#software) 
+FlashPro page](https://www.microsemi.com/product-directory/programming/4977-flashpro#software)
 to download the standalone programmer (if needed).
 
 | Software | Description | Hardware | Description  |
@@ -68,6 +75,7 @@ to download the standalone programmer (if needed).
 | FlashPro | Software for Windows | FlashPro4 | Hardware programmer for Windows |
 
 ### Firmware Versions
+
 The following table contains links to the .stp file, .job file and schematic for each
 release.
 
@@ -77,6 +85,7 @@ release.
 | Second release | [.stp Second Release](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1245017) | [.job Second Release](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1245018) | [Schematic](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244811) |
 
 ## Linux Build Systems
+
 The Linux image for the HiFive Unleashed Platform can be built using either the Buildroot or Yocto build systems. The table below contains links to these build systems.
 
 | Build System | Location                                                                                    |
@@ -85,12 +94,14 @@ The Linux image for the HiFive Unleashed Platform can be built using either the 
 | Yocto        | [Polarfire SoC Yocto SDK](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp)    |
 
 ### Polarfire SoC Buildroot SDK for the HiFive Unleashed Expansion Board
+
 The Polarfire SoC Buildroot SDK is based on the SiFive freedom-u-sdk with modifications to the
 device tree to support the HiFive Unleashed Expansion board. It also includes drivers for Microsemi
 PCIe, I2C, SPI, MMUART, and GPIO peripherals. See the build systems table above to download the Polarfire SoC Buildroot SDK.
 The build procedure is described in the Linux build system's README.
 
 ## Board Setup
+
 Follow the instructions to set up the HiFive Unleashed board.
 1. Switch off the power button (red button in the following figure) on the HiFive Unleashed board.
 Ensure the fan is plugged in.
@@ -104,7 +115,7 @@ more information on MSEL.
 ![DIP Switch Setting](images/HiFive_Unleashed_Board_DIP-Switch_setting.png)
 
 3. Insert an SD-card programmed with the bootloader and Linux. See the Linux build instructions in the Builroot/Yocto top level README for details on creating the content of this SD card.
- 
+
 ![SD Card](images/HiFive_Unleashed_Board_SD_Card.png)
 
 4. If available, connect the board to a network switch. The board will run DHCP on boot and start an
@@ -133,13 +144,17 @@ appear on the console in the host PC.
 ![Power Connections](images/HiFive_Unleashed_Platform_Power_Connections.jpg)
 
 11. After 30 seconds, an LED should begin to regularly blink a heartbeat on the HiFive Unleashed board.
-    
+
 ![LED Indicators](images/HiFive_Unleashed_Platform_LED_Indicators.jpg)
 
 ## Software Installation and Configuration
+
 The following steps explain the procedure to download the FPGA bitstream onto the PolarFire FPGA.
+
 ### Programming the FPGA Using FlashPro
+
 #### Windows Environment
+
 To program the PolarFire device with the .stp programming file (using FlashPro in Windows
 environment), perform the following steps. The link to the .stp file is given in Firmware Versions.
 1. Ensure that the jumper settings on the board are the same as those listed in Jumper Settings.
@@ -160,6 +175,7 @@ status is displayed.
 See the [FlashPro User Guide](https://www.microsemi.com/document-portal/doc_download/137626-flashpro-user-guide-for-polarfire) for more information.
 
 #### Linux Environment
+
 To program the PolarFire device with the .job programming file (using FlashPro5 programmer in Linux
 environment), perform the following steps. The link to the .job file can be found in Firmware Versions.
 1. Ensure that the jumper settings on the board are the same as those listed in Jumper Settings.
@@ -195,9 +211,11 @@ See the [FlashPro Express User Guide](https://www.microsemi.com/document-portal/
 |||||Close: 1K||100K pull down connected to TRSTB||
 
 ## Building and Loading the Linux Image
+
 For instructions on how to build and load a Linux image, see the Linux build instructions in the Buildroot/Yocto top level README.
 
-#### Linux Boot and Login Credentials
+### Linux Boot and Login Credentials
+
 The Linux boot process can be observed by connecting a serial terminal to the USB port on the HiFive
 Unleashed board. Settings are 115200 baud, 8 data bits, 1 stop bit, no parity, and no flow control.
 The root password is “microchip” for Buildroot & Yocto `mpfs-dev-cli`. No password is set for Yocto `core-image*`. The console should look similar to the following figure.
@@ -205,12 +223,15 @@ The root password is “microchip” for Buildroot & Yocto `mpfs-dev-cli`. No pa
 ![Console Image for Boot](images/Console_Image_for_Boot.png)
 
 ## FPGA Design in Libero
-The high-level block diagram for the Libero project implemented on the PolarFire FPGA is as seen in the following figure.         
+
+The high-level block diagram for the Libero project implemented on the PolarFire FPGA is as seen in the following figure.
 
 ![Libero Project Block Diagram](images/Libero_Project_Block_Diagram.png)
 
 More IPs are being ported on the HiFive Unleashed Platform and will be made available on request.
+
 ### Memory Map
+
 The IPs ported on the PolarFire FPGA are accessible from the RISC-V U540 memory map as listed in the
 following table. The interrupt number 42 is used for all the peripherals.
 
@@ -229,11 +250,12 @@ following table. The interrupt number 42 is used for all the peripherals.
 | Reserved | 4 KB | 0x2000105000 | 0x2000105fff | 4095 KB | Reserved |
 | Reserved | 4 KB | 0x2000106000 | 0x2000106fff | 4095 KB | Reserved |
 | SPI_0 | 4 KB | 0x2000107000 | 0x2000107fff | 4095 KB | SPI0 header |
-| Reserved | 4 KB | 0x2000108000 | 0x2000108fff | 4095 KB | Reserved | 
+| Reserved | 4 KB | 0x2000108000 | 0x2000108fff | 4095 KB | Reserved |
 | FIC (AXI) | 256 MB | 0x2010000000 | 0x201fffffff | 256 MB | To connect with user logic |
 | free space | --- | 0x2020000000 | 0x202fffffff | 256 MB |
 
 ### GPIO Implementation
+
 The GPIO implemented in the design is pinned out as a starting point for your custom design
 implementation. The details of the GPIO pinout is listed in the following table:
 
@@ -249,20 +271,26 @@ implementation. The details of the GPIO pinout is listed in the following table:
 | 7 | USB1 reset |
 
 ## Reference
+
 Visit the following links for further reference reading materials.
+
 ### Recommended Reading
-[RISC-V User-level ISA Specification](https://riscv.org/specifications/)     
-[RISC-V Draft Privileged ISA Specification](https://riscv.org/specifications/privileged-isa/)     
-[SiFive FU540-C000 User Manual](https://www.sifive.com/documentation/chips/freedom-u540-c000-manual/)     
-[TU0844 Libero SoC PolarFire v2.2 Design Flow Tutorial](https://www.microsemi.com/document-portal/doc_download/1243632-tu0844-libero-soc-polarfire-v2-2-design-flow-tutorial)     
-[HiFive Unleashed Getting Started Guide](https://www.microsemi.com/document-portal/doc_download/1243284-hifive-unleashed-getting-started-guide)     
-### Reference
-[PolarFire FPGA Documentation](https://www.microsemi.com/product-directory/fpgas/3854-polarfire-fpgas#documentation)     
-[Libero SoC PolarFire Documentation](https://www.microsemi.com/product-directory/design-resources/3863-libero-soc-polarfire#documents)     
-[FlashPro User Guide for PolarFire](https://www.microsemi.com/document-portal/doc_download/137626-flashpro-user-guide-for-polarfire)     
-[FlashPro Express User Guide for PolarFire](https://www.microsemi.com/document-portal/doc_download/137627-flashpro-express-user-guide-for-polarfire)     
-[PolarFire SoC Information](https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga)     
-[Schematics of MPFS-DEV-KIT](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244811)
+
+[RISC-V User-level ISA Specification](https://riscv.org/specifications/)  
+[RISC-V Draft Privileged ISA Specification](https://riscv.org/specifications/privileged-isa/)  
+[SiFive FU540-C000 User Manual](https://www.sifive.com/documentation/chips/freedom-u540-c000-manual/)  
+[TU0844 Libero SoC PolarFire v2.2 Design Flow Tutorial](https://www.microsemi.com/document-portal/doc_download/1243632-tu0844-libero-soc-polarfire-v2-2-design-flow-tutorial)  
+[HiFive Unleashed Getting Started Guide](https://www.microsemi.com/document-portal/doc_download/1243284-hifive-unleashed-getting-started-guide)  
+
+### Other References
+
+[PolarFire FPGA Documentation](https://www.microsemi.com/product-directory/fpgas/3854-polarfire-fpgas#documentation)  
+[Libero SoC PolarFire Documentation](https://www.microsemi.com/product-directory/design-resources/3863-libero-soc-polarfire#documents)  
+[FlashPro User Guide for PolarFire](https://www.microsemi.com/document-portal/doc_download/137626-flashpro-user-guide-for-polarfire)  
+[FlashPro Express User Guide for PolarFire](https://www.microsemi.com/document-portal/doc_download/137627-flashpro-express-user-guide-for-polarfire)  
+[PolarFire SoC Information](https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga)  
+[Schematics of MPFS-DEV-KIT](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244811)  
 
 ## Technical Support
-For technical queries, visit the [Microsemi SoC Customer Portal](https://soc.microsemi.com/Portal/Default.aspx), select “PolarFire SoC” under Product Family, “MPFSXXXX” under Device Family and type in the query. Microchip’s technical support team will create a ticket, address the query and track it to completion
+
+For technical queries, visit the [Microsemi SoC Customer Portal](https://soc.microsemi.com/Portal/Default.aspx), select “PolarFire SoC” under Product Family, “MPFSXXXX” under Device Family and type in the query. Microchip’s technical support team will create a ticket, address the query and track it to completion.

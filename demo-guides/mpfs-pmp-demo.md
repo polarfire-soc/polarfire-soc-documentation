@@ -25,8 +25,8 @@ Before running the user application, make sure to complete the following steps:
 
 * Setting up the jumpers on the Icicle Kit. Refer to the [link](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md#Jumpers).
 * Setting up the three Serial Terminal programs "Interface 0 (UART0), Interface 1 (UART1), and Interface 2 (UART2)" using extra-putty:
-	* Select the COM ports which are connected to the following interfaces: Silicon Labs Quad CP2108 USB to UART BRIDGE: Interface 0, Interface 1 and Interface 2. 
-	* Set Baud rate to “115200”, Set Data to 8-bit, Set Flow control to None.
+  * Select the COM ports which are connected to the following interfaces: Silicon Labs Quad CP2108 USB to UART BRIDGE: Interface 0, Interface 1 and Interface 2. 
+  * Set Baud rate to “115200”, Set Data to 8-bit, Set Flow control to None.
 * Use FlashPro Express to program the Icicle Kit with the PolarFire SoC Icicle Kit Reference Design job file. Download the pre-built programming job file [here](https://github.com/polarfire-soc/icicle-kit-reference-design/releases).
 
 ## Enabling PMP in MSS configurator tool and generate xml file:
@@ -34,8 +34,8 @@ Before running the user application, make sure to complete the following steps:
 * Extract the downloaded design. Go to the path icicle-kit-reference-design\script_support and open PF_SoC_MSS_Icicle_eMMC.cfg with MSS configurator tool.
 * In the PolarFire SoC MSS Configurator > Memory partitions and Protection tab > "Use processor PMP and AXI switch MPU configurations" tick the checkbox to enable PMP.
 * In the PolarFire SoC MSS Configurator > Memory Partition and Protection tab > Processor PMP tab, there are two contexts Context A and Context B. Each Context's associations with the U54 processor cores, peripherals and memory regions are configured here. Each peripheral and/or memory region can be protected with access permissions, such as, read, write and execute. The peripheral or memory regions can be enabled in either Context A or in Context B.
-	* U54_1 and U54_2 processor cores in Context A.
-	* U54_3 and U54_4 processor cores in Context B.
+  * U54_1 and U54_2 processor cores in Context A.
+  * U54_3 and U54_4 processor cores in Context B.
 * Save and generate ICICLE_MSS_mss_cfg.xml file.
 
 In this design, DDR_Cached_1GB_1 address 0x80000000 and size 2 MB is added to provide memory access (read, write, and execute permissions) for Context A. DDR_Cached_1GB_2 address 0x80200000 and size 2 MB is added to provide memory access (read, write, and execute permissions) for Context B as shown in the following figure. For more information about PMP see [PolarFire SoC Standalone MSS Configurator User Guide](https://www.microsemi.com/product-directory/soc-design-tools/5587-pfsoc-mss-configurator-tool#documents) and [PolarFire SoC FPGA MSS Technical Reference Manual](https://www.microsemi.com/document-portal/doc_download/1245725-polarfire-soc-fpga-mss-technical-reference-manual).

@@ -37,7 +37,7 @@ Note: The NIST P-384 curve is used for boot mode 3 ECDSA.
 
 ### Key Pair Generation
 >Note about mathematical notation: This document uses "." for scalar multiplication and "*" for elliptic curve point multiplication.
-	
+
 The signing side generates a private/public key pair by randomly selecting a number (d) within the order of the agreed upon elliptic curve. The private key (d) is then used in an elliptic curve point multiplication with the base point (G) to produce the public key (Q): Q = d * G.
 The private key is a scalar number. The public key is a point on the curve.
 

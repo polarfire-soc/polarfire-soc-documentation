@@ -2,10 +2,10 @@
 
 - [Jumper Settings](#jumper-settings)
 - [Working with a USB Flash Drive](#usb-flash)
-	- [Mounting the Flash Drive](#usb-device-mount)
-	- [Accessing Flash drive](#usb-device-access)
-	- [Verify the Flash Drive](#usb-device-operations)
-	- [Disconnect the Flash Drive](#usb-device-umount)
+  - [Mounting the Flash Drive](#usb-device-mount)
+  - [Accessing Flash drive](#usb-device-access)
+  - [Verify the Flash Drive](#usb-device-operations)
+  - [Disconnect the Flash Drive](#usb-device-umount)
 - [Working with a Webcam](#usb-webcam)
      - [Accessing a webcam](#usb-webcam-access)
 - [MSS USB hardware block configurations](#usb-spec)
@@ -25,38 +25,44 @@ Note: The default jumper configuration for the Icicle Kit, shown [here](https://
 ## Flash Drive <div id="usb-flash"/>
 After Linux has booted up on the Icicle Kit, connect a USB flash drive into the micro USB connector J16. The flash drive will then be enumerated. Log messages about the enumeration process can be retrieved using the following command:
 
-	$ dmesg | tail -10
+```sh
+$ dmesg | tail -10
+```
 
 Example USB enumeration log:
 
-	[   35.112927] usb 1-1: new high-speed USB device number 2 using musb-hdrc
-	[   35.294671] usb-storage 1-1:1.0: USB Mass Storage device detected
-	[   35.295826] scsi host0: usb-storage 1-1:1.0
-	[   36.364385] scsi 0:0:0:0: Direct-Access     SanDisk  Cruzer Blade     1.26 PQ: 0 ANSI: 6
-	[   36.371826] sd 0:0:0:0: [sda] 7821312 512-byte logical blocks: (4.00 GB/3.73 GiB)
-	[   36.372789] sd 0:0:0:0: [sda] Write Protect is off
-	[   36.373084] sd 0:0:0:0: [sda] Mode Sense: 43 00 00 00
-	[   36.373804] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
-	[   36.467142] sd 0:0:0:0: [sda] Attached SCSI removable disk
-	[   36.461102]  sda: sda1 sda2
-	
+  [   35.112927] usb 1-1: new high-speed USB device number 2 using musb-hdrc
+  [   35.294671] usb-storage 1-1:1.0: USB Mass Storage device detected
+  [   35.295826] scsi host0: usb-storage 1-1:1.0
+  [   36.364385] scsi 0:0:0:0: Direct-Access     SanDisk  Cruzer Blade     1.26 PQ: 0 ANSI: 6
+  [   36.371826] sd 0:0:0:0: [sda] 7821312 512-byte logical blocks: (4.00 GB/3.73 GiB)
+  [   36.372789] sd 0:0:0:0: [sda] Write Protect is off
+  [   36.373084] sd 0:0:0:0: [sda] Mode Sense: 43 00 00 00
+  [   36.373804] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+  [   36.467142] sd 0:0:0:0: [sda] Attached SCSI removable disk
+  [   36.461102]  sda: sda1 sda2
+
 
 ### Mounting the Flash Drive  <div id="usb-device-mount"/>
 The flash drive can be mounted in Linux using the following method
 
 Create a directory such as usbmsc inside media. This will be the mount point for the flash drive.
 
-	$ mkdir /media/usbmsc
+```sh
+$ mkdir /media/usbmsc
+```
 
 Idenitfy the flash drive on the Icicle kit, use dmesg to check what the drive identifier for the flash drive is.
 
-	$ dmesg | egrep "sd"
+```sh
+$ dmesg | egrep "sd"
+```
 
 The output should contain a line similar to one of the following lines:
 
-	[    4.013197] sd 0:0:0:0: [sda] 7821312 512-byte logical blocks: (4.00 GB/3.73 GiB)
-	[    4.124154]  sda: sda1 sda2 sda3
-	[    4.137143] sd 0:0:0:0: [sda] Attached SCSI removable disk
+  [    4.013197] sd 0:0:0:0: [sda] 7821312 512-byte logical blocks: (4.00 GB/3.73 GiB)
+  [    4.124154]  sda: sda1 sda2 sda3
+  [    4.137143] sd 0:0:0:0: [sda] Attached SCSI removable disk
 
 sdX is the drive identifier that should be used in the following commands, where X should be replaced with the specific character from the output of the previous command.
 For these examples the identifier sdX is used.
@@ -66,57 +72,74 @@ WARNING:
     The drive with the identifier `sda` is the default location for your operating system.        
     DO NOT pass this identifier to any of the commands listed here without being absolutely sure that your OS is not located here.       
     Check that the size of the card matches the dmesg output before continuing.     
-	
+  
 Once sure of the drive identifier, use the following command to mount the flash drive to the board, replacing the X as appropriate:
 
-	$ mount -t vfat /dev/sdX /media/usbmsc
+```sh
+$ mount -t vfat /dev/sdX /media/usbmsc
+```
 
 ### Accessing Flash drive  <div id="usb-device-access"/>
 Change the current directory to Flash drive.
 
-	$ cd /media/usbmsc
+```sh
+$ cd /media/usbmsc
+```
 
 List the content of the Flash drive:
-	
-	$ ls
+
+```sh  
+$ ls
+```
 
 ### Verify the Flash Drive <div id="usb-device-operations"/>
 To verify the Flash drive, copy a file to it, unmount the drive.
 
-	$ cp /home/dummy.txt /media/usbmsc/
-	$ umount /media/usbmsc
+```sh
+$ cp /home/dummy.txt /media/usbmsc/
+$ umount /media/usbmsc
+```
 
 Remove and reconnect the flash drive to the Icicle kit. Check the flash drive identifier (as mentioned in [Mounting the Flash Drive](#usb-device-mount)).
 Once sure of the drive identifier, use the below command to mount the flash drive, replacing the X as appropriate.
 
-	$ mount -t vfat /dev/sdX /media/usbmsc
-	
+
+```sh
+$ mount -t vfat /dev/sdX /media/usbmsc
+```
+  
 Next, read the dummy file from the flash drive and compare the stored file with the original to determine that the content is the same/correct using diff command.
 
-	$ cp /media/usbmsc/dummy.txt /home/dummy1.txt
-	$ diff /home/dummy.txt /home/dummy2.txt
+```sh
+$ cp /media/usbmsc/dummy.txt /home/dummy1.txt
+$ diff /home/dummy.txt /home/dummy2.txt
+```
 
-   The diff command should show nothing (means copy successfully).
+The diff command should show nothing (means copy successfully).
      
 ### Disconnect the Flash Drive  <div id="usb-device-umount"/>
 
 Issue the umount command to unmount the flash drive so it can safely be removed.
-   
-	$ umount /media/usbmsc
-   
+
+```sh
+$ umount /media/usbmsc
+```
+
 ## Working with a Webcam  <div id="usb-webcam"/>
 To work with USB video devices, such as webcams, the following packages need to be included in the yocto or buildroot build systems.
 
-	- yavta \ 
-	- libuvc \
-	- gstd \
-	- gstreamer1.0-plugins-good \
-	- v4l-utils \
+- yavta \ 
+- libuvc \
+- gstd \
+- gstreamer1.0-plugins-good \
+- v4l-utils \
 
 ### Accessing a webcam <div id="usb-webcam-access"/>
 Use the below command to capture an image from a webcam
 
-	$ v4l2-ctl --device /dev/video0 --set-fmt-video=width=640,height=480,pixelformat=MJPG --stream-mmap=3 --stream-count=100 --stream-to=stream.vid
+```sh
+$ v4l2-ctl --device /dev/video0 --set-fmt-video=width=640,height=480,pixelformat=MJPG --stream-mmap=3 --stream-count=100 --stream-to=stream.vid
+```
 
 ## MSS USB hardware block configurations: <div id="usb-spec"/>
 1. The MUSB code is configured to 5 transmit endpoints (TX EP) and 5 receive endpoints (RX EP),including control endpoint (EP0).

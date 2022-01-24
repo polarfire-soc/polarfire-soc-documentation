@@ -2,25 +2,25 @@
 
 - [Tools required to program a PolarFire SoC FPGA](#program-a-PolarFire-SoC-FPGA)
 - [Tool flow](#tool-flow)
-	- [FPGA tool flow](#fpga-tool-flow)
-	- [Software development tool flow](#software-tool-flow)
-	- [Full tool flow](#full-tool-flow)
+  - [FPGA tool flow](#fpga-tool-flow)
+  - [Software development tool flow](#software-tool-flow)
+  - [Full tool flow](#full-tool-flow)
 - [Potential starting points](#potential-starting-points)
-	- [FlashPro Express and provided Linux images](#fpe-linux)
-	- [FlashPro Express and bare metal or Linux flow](#fpe)
-	- [TCL design flow](#tcl-flow)
-	- [Full design flow](#full-flow)
+  - [FlashPro Express and provided Linux images](#fpe-linux)
+  - [FlashPro Express and bare metal or Linux flow](#fpe)
+  - [TCL design flow](#tcl-flow)
+  - [Full design flow](#full-flow)
 - [Using FlashPro Express](#FlashPro-Express)
 - [Using Libero SoC](#Libero-SoC)
 - [Using the HSS](#using-the-hss)
-	- [Configuring the HSS](#configuring-the-hss)
-	- [Build the HSS](#build-the-hss)
-		- [Building the HSS using SoftConsole](#building-hss-softconsole)
-		- [Building the HSS using command line tools](#building-hss-command-line)
+  - [Configuring the HSS](#configuring-the-hss)
+  - [Build the HSS](#build-the-hss)
+    - [Building the HSS using SoftConsole](#building-hss-softconsole)
+    - [Building the HSS using command line tools](#building-hss-command-line)
 - [Using the MSS Configurator](#mss-configurator)
-	- [MSS Configuration XML Description](#mss-xml)
+  - [MSS Configuration XML Description](#mss-xml)
 - [Programming the eNVM](#programming-envm)
-	- [Configuring PolarFire SoC boot mode tools](#boot-mode)
+  - [Configuring PolarFire SoC boot mode tools](#boot-mode)
 - [Programming eMMC and SD Cards](#emmc_SD)
 
 
@@ -34,27 +34,27 @@ This document describes:
 <a name="program-a-PolarFire-SoC-FPGA"></a>
 
 - Libero SoC v12.5 or greater
-	- Libero is required to run the FPGA flow. Libero is not required if you are using a FlashPro Express programming job file and do not intend to modify the FPGA design included. The MSS configurator and FlashPro Express can be installed separately to Libero when only using pre-built FPGA programming files.
-	- Libero bundles FlashPro Express and the PolarFire SoC MSS Configurator, if these tools are going to be used, the standalone versions do not need to be installed if Libero is also installed.
-	- A valid license is required to use Libero SoC, a free Silver license supports the MPFS250 part (this is the part on the Icicle Kit). More information and links to generate licenses can be found in the [licensing section](https://www.microsemi.com/product-directory/design-resources/1711-licensing) of the Microsemi website.
-	- Libero can be downloaded [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads).
+  - Libero is required to run the FPGA flow. Libero is not required if you are using a FlashPro Express programming job file and do not intend to modify the FPGA design included. The MSS configurator and FlashPro Express can be installed separately to Libero when only using pre-built FPGA programming files.
+  - Libero bundles FlashPro Express and the PolarFire SoC MSS Configurator, if these tools are going to be used, the standalone versions do not need to be installed if Libero is also installed.
+  - A valid license is required to use Libero SoC, a free Silver license supports the MPFS250 part (this is the part on the Icicle Kit). More information and links to generate licenses can be found in the [licensing section](https://www.microsemi.com/product-directory/design-resources/1711-licensing) of the Microsemi website.
+  - Libero can be downloaded [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads).
 - FlashPro Express v12.5 or greater
-	- FlashPro Express is used to program Microchip FPGAs using a programming job file exported by Libero SoC.
-	- Programming job files can contain the FPGA bitstream and several memory clients.
-	- This tool does not require a license.
-	- FlashPro Express is installed alongside Libero SoC, it can also be installed standalone with the "Program and Debug" tools.
-	- FlashPro Express replaced FlashPro as the Microchip standalone programming tool, FlashPro and FlashPro Express are two separate tools.
-	- The Program and Debug tools can be downloaded [here](https://www.microsemi.com/product-directory/programming/4977-flashpro#software).
+  - FlashPro Express is used to program Microchip FPGAs using a programming job file exported by Libero SoC.
+  - Programming job files can contain the FPGA bitstream and several memory clients.
+  - This tool does not require a license.
+  - FlashPro Express is installed alongside Libero SoC, it can also be installed standalone with the "Program and Debug" tools.
+  - FlashPro Express replaced FlashPro as the Microchip standalone programming tool, FlashPro and FlashPro Express are two separate tools.
+  - The Program and Debug tools can be downloaded [here](https://www.microsemi.com/product-directory/programming/4977-flashpro#software).
 - SoftConsole v6.4 or greater
-	- SoftConsole is Microchip's Eclipse based embedded software development IDE with support for RISC-V targets including PolarFire SoC.
-	- SoftConsole is available free of charge without a license.
-	- The Renode emulation platform is bundled with SoftConsole and supports Microchip soft RISC-V cores and PolarFire SoC.
-	- SoftConsole can be downloaded [here](https://www.microsemi.com/product-directory/design-tools/4879-softconsole#downloads).
+  - SoftConsole is Microchip's Eclipse based embedded software development IDE with support for RISC-V targets including PolarFire SoC.
+  - SoftConsole is available free of charge without a license.
+  - The Renode emulation platform is bundled with SoftConsole and supports Microchip soft RISC-V cores and PolarFire SoC.
+  - SoftConsole can be downloaded [here](https://www.microsemi.com/product-directory/design-tools/4879-softconsole#downloads).
 - PolarFire SoC MSS Configurator
-	- The MSS Configurator is used to generate MSS configuration XML files for the software flows and a Libero component for the FPGA flow.
-	- This tool does not require a license.
-	- The MSS Configurator is installed alongside Libero SoC, it can also be installed as a standalone tool.
-	- The standalone MSS Configurator can be downloaded [here](https://www.microsemi.com/product-directory/soc-design-tools/5587-pfsoc-mss-configurator-tool#downloads).
+  - The MSS Configurator is used to generate MSS configuration XML files for the software flows and a Libero component for the FPGA flow.
+  - This tool does not require a license.
+  - The MSS Configurator is installed alongside Libero SoC, it can also be installed as a standalone tool.
+  - The standalone MSS Configurator can be downloaded [here](https://www.microsemi.com/product-directory/soc-design-tools/5587-pfsoc-mss-configurator-tool#downloads).
 
 ## Tool flow
 <a name="tool-flow"></a>
@@ -170,13 +170,13 @@ FlashPro Express can be downloaded and installed standalone with the [Programmin
 FlashPro Express is also installed as part of a Libero installation and a shortcut is usually created, or else it can be launched from the following locations:
 - On Windows:
 
-		[Libero installation]/designer/bin/FPexpress.exe
-		[Program and Debug tool installation]/bin/FPExpress.exe
+    [Libero installation]/designer/bin/FPexpress.exe
+    [Program and Debug tool installation]/bin/FPExpress.exe
 
 - On Linux:
 
-		[Libero installation]/Libero/bin64/FPExpress
-		[Program and Debug tool installation]/Program_Debug_Tool/bin64/FPExpress
+    [Libero installation]/Libero/bin64/FPExpress
+    [Program and Debug tool installation]/Program_Debug_Tool/bin64/FPExpress
 
 FlashPro Express uses pre-generated bitstreams stored in a programming job file to program a target. Programming job files for the Icicle Kit can be found in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) document.
 
@@ -234,7 +234,7 @@ The default configurations for eMMC can be viewed by cloning the [HSS repository
 
 1. Copy the default configuration from
 
-		[hss_directory]/boards/icicle-kit-es/def_config
+    [hss_directory]/boards/icicle-kit-es/def_config
 
 to the top level `hss_directory`
 
@@ -243,7 +243,7 @@ to the top level `hss_directory`
 3. Open a terminal and enter:
 
 ```
-		make BOARD=icicle-kit-es config
+make BOARD=icicle-kit-es config
 ```
 
 4. This will display the default configuration for the Icicle Kit which can be modified as required:
@@ -280,7 +280,7 @@ You can import the current HSS as an existing project into SoftConsole, and use 
 
 If a custom MSS configuration has been created the xml folder should be updated with the configuration generated by the MSS Configurator:
 
-	[hss_directory]/boards/[target]/soc_fpga_design/xml
+  [hss_directory]/boards/[target]/soc_fpga_design/xml
 
 5. Build the HSS "Default" build configuration:
 
@@ -327,13 +327,13 @@ The MSS Configurator can be launched from shortcuts created during installation 
 
 - On Windows:
 
-		[Libero installation]/designer/bin64/pfsoc_mss.exe
-		[PolarFire SoC MSS Configurator installation]/MSS/bin64/pfsoc_mss.exe
+    [Libero installation]/designer/bin64/pfsoc_mss.exe
+    [PolarFire SoC MSS Configurator installation]/MSS/bin64/pfsoc_mss.exe
 
 - On Linux:
 
-		[Libero installation]/Libero/bin64/pfsoc_mss
-		[PolarFire SoC MSS Configurator installation]/MSS/bin64/pfsoc_mss
+    [Libero installation]/Libero/bin64/pfsoc_mss
+    [PolarFire SoC MSS Configurator installation]/MSS/bin64/pfsoc_mss
 
 ### MSS Configuration XML Description
 <a name="mss-xml"></a>
@@ -365,23 +365,23 @@ Depending on the tools installed by the user (Libero or Program and Debug tools)
 To do this edit the softconsole.cmd on Windows or softconsole.sh file on Linux - these files are found in the SoftConsole installation directory.
 Edit the line starting with:
 
-	if not defined FPGENPROG set FPGENPROG
+  if not defined FPGENPROG set FPGENPROG
 
 To match the path to the actual installation which is in:
 
 - On Windows:
 
-		[Libero installation]/designer/bin64/fpgenprog.exe
-		[Program and Debug tool installation]/Program_Debug_Tool/bin64/fpgenprog.exe
+    [Libero installation]/designer/bin64/fpgenprog.exe
+    [Program and Debug tool installation]/Program_Debug_Tool/bin64/fpgenprog.exe
 
 - On Linux:
 
-		[Libero installation]/Libero/bin64/fpgenprog
-		[Program and Debug tool installation]/Program_Debug_Tool/bin64/fpgenprog
+    [Libero installation]/Libero/bin64/fpgenprog
+    [Program and Debug tool installation]/Program_Debug_Tool/bin64/fpgenprog
 
 So for example a full updated tool path is:
 
-	if not defined FPGENPROG set FPGENPROG=C:\Microsemi\Libero_SoC_v12.5\Designer\bin64\fpgenprog.exe
+  if not defined FPGENPROG set FPGENPROG=C:\Microsemi\Libero_SoC_v12.5\Designer\bin64\fpgenprog.exe
 
 ## Programming eMMC and SD Cards
 <a name="emmc_SD"></a>

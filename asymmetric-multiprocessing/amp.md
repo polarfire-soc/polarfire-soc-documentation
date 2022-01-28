@@ -111,12 +111,12 @@ The table below describes the hardware resources assignment used in this demo:
 
 The table below describes the DDR memory layout used in this demo:
 
-|                             | Linux (Context A)                                                                                                | FreeRTOS (Context B)         |
-|-----------------------------|------------------------------------------------------------------------------------------------------------------|------------------------------|
-| Main Memory                 | 1.5 GB Total <br /><br /> Cached @ 0x8000_0000 (512 MB) <br /> <br /> Cached @ 0x10_0000_0000 (1GB)              | Cached @ 0xA200_0000 (4 MB)  |
-| User space mappable buffers | Cached @  0xa0000000 (32 MB) <br /><br /> Non Cached @ 0xc0000000 (128MB) <br /><br /> WCB  @ 0xd8000000 (128MB) | -                            |
-| RPMsg vrings                | Cached @ 0xA240_0000 (64 KB)                                                                                     | Cached @ 0xA240_0000 (64 KB) |
-| RPMsg buffers               | Cached @ 0xA2410000 (256 KB)                                                                                     | Cached @ 0xA2410000 (256 KB) |
+|                             | Linux (Context A)                                            | FreeRTOS (Context B)             |
+| --------------------------- | ------------------------------------------------------------ | -------------------------------- |
+| Main Memory                 | 1883.69 MB Total <br /><br /> Cached @ 0x10_0000_0000        | Cached @ 0x10_75BB_0000 (4 MB)   |
+| User space mappable buffers | Cached @  0x80000000 (32 MB) <br /><br /> Non Cached @ 0xc0000000 (128MB) <br /><br /> WCB  @ 0xd0000000 (128MB) | -                                |
+| RPMsg vrings                | Cached @ 0x10_75FB_0000 (64 KB)                              | Cached @ 0x10_75FB_0000 (64 KB)  |
+| RPMsg buffers               | Cached @ 0x10_75FC_0000 (256 KB)                             | Cached @ 0x10_75FC_0000 (256 KB) |
 
 <a name="building-the-linux--freertos-demo"></a>
 

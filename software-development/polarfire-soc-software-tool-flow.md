@@ -1,28 +1,28 @@
 # PolarFire SoC Software Tool Flow
 
-- [Tools required to program a PolarFire SoC FPGA](#program-a-PolarFire-SoC-FPGA)
-- [Tool flow](#tool-flow)
-  - [FPGA tool flow](#fpga-tool-flow)
-  - [Software development tool flow](#software-tool-flow)
-  - [Full tool flow](#full-tool-flow)
-- [Potential starting points](#potential-starting-points)
-  - [FlashPro Express and provided Linux images](#fpe-linux)
-  - [FlashPro Express and bare metal or Linux flow](#fpe)
-  - [TCL design flow](#tcl-flow)
-  - [Full design flow](#full-flow)
-- [Using FlashPro Express](#FlashPro-Express)
-- [Using Libero SoC](#Libero-SoC)
-- [Using the HSS](#using-the-hss)
-  - [Configuring the HSS](#configuring-the-hss)
-  - [Build the HSS](#build-the-hss)
-    - [Building the HSS using SoftConsole](#building-hss-softconsole)
-    - [Building the HSS using command line tools](#building-hss-command-line)
-- [Using the MSS Configurator](#mss-configurator)
-  - [MSS Configuration XML Description](#mss-xml)
-- [Programming the eNVM](#programming-envm)
-  - [Configuring PolarFire SoC boot mode tools](#boot-mode)
-- [Programming eMMC and SD Cards](#emmc_SD)
-
+- [PolarFire SoC Software Tool Flow](#polarfire-soc-software-tool-flow)
+  - [Tools required to program a PolarFire SoC FPGA](#tools-required-to-program-a-polarfire-soc-fpga)
+  - [Tool flow](#tool-flow)
+    - [FPGA tool flow](#fpga-tool-flow)
+    - [Software development tool flow](#software-development-tool-flow)
+    - [Full tool flow](#full-tool-flow)
+  - [Potential starting points](#potential-starting-points)
+    - [FlashPro Express and provided Linux images](#flashpro-express-and-provided-linux-images)
+    - [FlashPro Express and bare metal or Linux flow](#flashpro-express-and-bare-metal-or-linux-flow)
+    - [TCL design flow](#tcl-design-flow)
+    - [Full design flow](#full-design-flow)
+  - [Using FlashPro Express](#using-flashpro-express)
+  - [Using Libero SoC](#using-libero-soc)
+  - [Using the HSS](#using-the-hss)
+    - [Configuring the HSS](#configuring-the-hss)
+    - [Build the HSS](#build-the-hss)
+      - [Building the HSS using SoftConsole](#building-the-hss-using-softconsole)
+      - [Building the HSS using command line tools](#building-the-hss-using-command-line-tools)
+  - [Using the MSS Configurator](#using-the-mss-configurator)
+    - [MSS Configuration XML Description](#mss-configuration-xml-description)
+  - [Programming the eNVM](#programming-the-envm)
+    - [Configuring PolarFire SoC boot mode tools](#configuring-polarfire-soc-boot-mode-tools)
+  - [Programming eMMC and SD Cards](#programming-emmc-and-sd-cards)
 
 This document describes:
 
@@ -30,8 +30,9 @@ This document describes:
 - How to configure and build the Hart Software Services (HSS)
 - How to generate a Linux image for a target and program the target
 
+<a name="tools-required-to-program-a-polarfire-soc-fpga"></a>
+
 ## Tools required to program a PolarFire SoC FPGA
-<a name="program-a-PolarFire-SoC-FPGA"></a>
 
 - Libero SoC v12.5 or greater
   - Libero is required to run the FPGA flow. Libero is not required if you are using a FlashPro Express programming job file and do not intend to modify the FPGA design included. The MSS configurator and FlashPro Express can be installed separately to Libero when only using pre-built FPGA programming files.
@@ -56,25 +57,29 @@ This document describes:
   - The MSS Configurator is installed alongside Libero SoC, it can also be installed as a standalone tool.
   - The standalone MSS Configurator can be downloaded [here](https://www.microsemi.com/product-directory/soc-design-tools/5587-pfsoc-mss-configurator-tool#downloads).
 
-## Tool flow
 <a name="tool-flow"></a>
+
+## Tool flow
 
 There are several routes a designer can take depending on their end goal when developing for PolarFire SoC, this section outlines some possible methods of developing for PolarFire SoC.
 
-### FPGA tool flow
 <a name="fpga-tool-flow"></a>
+
+### FPGA tool flow
 
 When designing for an FPGA, a board's schematic files can be used to determine pin outs, for example [The Icicle Kit Schematics here](https://www.microsemi.com/existing-parts/parts/152514#resources).
 Design creation scripts are provided to aid the quick generation of a Linux capable design, FlashPro Express programming job files are also provided for those who don't want to use Libero - these will contain a bitstream matching the design created by the latest tag of the Icicle Kit reference design repository.
 
+<a name="software-development-tool-flow"></a>
+
 ### Software development tool flow
-<a name="software-tool-flow"></a>
 
 The default eMMC and SD card configurations for the PolarFire SoC MSS configurator used in the Icicle Kit reference design are provided along with the resulting XML. When designing software for bare metal, Linux, RTOS etc applications this XML can be used for development.
 Bare metal applications can be built using SoftConsole v6.4 and greater. Linux for PolarFire SoC can be built using Buildroot or Yocto on a variety of Linux operating systems and the readme for each build system should be consulted.
 
-### Full tool flow
 <a name="full-tool-flow"></a>
+
+### Full tool flow
 
 The image below shows the full development flow for PolarFire SoC for both the FPGA and software. Blue boxes are source files and green are output files that can be generated and are provided via GitHub for the user:
 
@@ -102,10 +107,12 @@ The different components of the tool flow are described below:
 - **Payload programming:** these are the methods of programming a HSS payload. For example the HSS can be used to program the eMMC using USB or YMODEM, an SD card can be programmed directly by the host PC.
 - **Target:** this is the PolarFire SoC device or board being programmed.
 
-## Potential starting points
 <a name="potential-starting-points"></a>
 
+## Potential starting points
+
 There are several starting points a user can choose with different levels of configurability, these could include for example:
+
 - [FlashPro Express and provided Linux images](#fpe-linux):
 
   Using this flow a user would program the FPGA fabric and eNVM using the provided FlashPro Express programming job file and then program the eMMC or SD card with a payload.
@@ -129,16 +136,18 @@ There are several starting points a user can choose with different levels of con
   They would then build and program the HSS (if being used) and a Linux image or bare metal application using the XML generated from their design and program the eMMC or SD card.
   There would be an opportunity to configure the contents of the FPGA fabric and, the Linux image or bare metal application.
 
+<a name="flashpro-express-and-provided-linux-images"></a>
+
 ### FlashPro Express and provided Linux images
-<a name="fpe-linux"></a>
 
 FlashPro Express files and Linux images are available for download from the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md#Links) document.
 FlashPro Express programming job files can be used to program the FPGA from a pre-generated design the Linux images are pre-built into payloads to be written to eMMC or SD cards by the user.
 
 ![](./images/tool_flow_fpexpress_linux.svg)
 
+<a name="flashpro-express-and-bare-metal-or-linux-flow"></a>
+
 ### FlashPro Express and bare metal or Linux flow
-<a name="fpe"></a>
 
 FlashPro Express programming job files are available for download from the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md#Links) document.
 They can be used to program the FPGA from a pre-generated design. XML for the designs is provided in the reference design [xml folder](https://github.com/polarfire-soc/icicle-kit-reference-design/tree/master/XML).
@@ -146,8 +155,9 @@ The user can then use the provided XML to run the bare metal or Linux flow they 
 
 ![](./images/tool_flow_fpexpress.svg)
 
+<a name="tcl-design-flow"></a>
+
 ### TCL design flow
-<a name="tcl-flow"></a>
 
 TCL scripts are available from board reference design repositories such as the [Icicle Kit Reference Design](https://github.com/polarfire-soc/icicle-kit-reference-design).
 These will generate a PolarFire SoC MSS Configurator component for the Libero design flow and generate XML for the bare metal and Linux design flows. The scripts will then import the MSS Configurator component into a Libero project so the user can configure the design, run the Libero design flow and program a target.
@@ -155,39 +165,47 @@ The user can then use generated or provided XML to run the bare metal or Linux f
 
 ![](./images/tool_flow_full.svg)
 
+<a name="full-design-flow"></a>
+
 ### Full design flow
-<a name="full-flow"></a>
 
 In this flow the user would configure an MSS component using the MSS configurator and import it into a Libero SoC design. The design should be configured and the Libero flow run.
 The XML generated by the MSS configurator can be used to run the bare metal or Linux flow desired, build the HSS and program the eNVM, setting the MSS boot mode to 1 and program the eMMC or SD card.
 
 ![](./images/tool_flow.svg)
 
+<a name="using-flashpro-express"></a>
+
 ## Using FlashPro Express
-<a name="FlashPro-Express"></a>
 
 FlashPro Express can be downloaded and installed standalone with the [Programming and Debug tools](https://www.microsemi.com/product-directory/programming/4977-flashpro#software).
 FlashPro Express is also installed as part of a Libero installation and a shortcut is usually created, or else it can be launched from the following locations:
+
 - On Windows:
 
+    ```text
     [Libero installation]/designer/bin/FPexpress.exe
     [Program and Debug tool installation]/bin/FPExpress.exe
+    ```
 
 - On Linux:
 
+    ```text
     [Libero installation]/Libero/bin64/FPExpress
     [Program and Debug tool installation]/Program_Debug_Tool/bin64/FPExpress
+    ```
 
 FlashPro Express uses pre-generated bitstreams stored in a programming job file to program a target. Programming job files for the Icicle Kit can be found in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) document.
 
 1. Create a new FP Express job:
 
-![](./images/fpexpress_job.PNG)
+    ![](./images/fpexpress_job.PNG)
 
 2. Select "Run Program Action" to program the target.
 
+<a name="using-libero-soc"></a>
+
 ## Using Libero SoC
-<a name="Libero-SoC"></a>
 
 Libero SoC V12.5 and above can be downloaded [here](https://www.microsemi.com/product-directory/design-resources/1750-libero-soc#downloads). A Libero license is required to use this tool, a free Silver license can be used with the Icicle Kit, available [here](https://www.microsemi.com/product-directory/design-resources/1711-licensing#overview).
 
@@ -208,8 +226,9 @@ The design flow can then be run from the left hand side:
 Running the flow as far as "Generate Bitstream" does not require a board to be connected to the host PC. Double clicking "Generate Bitstream" will run the full flow to that point, i.e individual items don't need to be selected.
 "Run PROGRAM Action" will program the target board using a FlashPro Programmer. Libero will open the generated bitstream and program the target. Once this is complete the FPGA will perform a soft reset and boot.
 
-## Using the HSS
 <a name="using-the-hss"></a>
+
+## Using the HSS
 
 The Hart Software Services (HSS) is used as a Zero Stage Boot Loader (ZSBL) in PolarFire SoC, it executes from eNVM and can be built in several configurations.
 It can be found in the [HSS repository](https://github.com/polarfire-soc/hart-software-services).
@@ -218,8 +237,9 @@ To boot the HSS, ensure its programmed into the eNVM and the PolarFire SoC syste
 The HSS will attempt to initialize an SD card, if no card is inserted, the HSS will attempt to initialize the eMMC. There will then be a count down waiting for a user input on UART0. If no key is pressed the HSS will load the payload from eMMC / SD, if a key is pressed the user can enter a service such as the USBDMSC for mounting and programming the eMMC.
 If a valid payload is found, its contents will be unpacked into its destination memory (LIM, DDR, fabric memory etc) and owner U54 harts will be taken out of WFI to run the payload.
 
-### Configuring the HSS
 <a name="configuring-the-hss"></a>
+
+### Configuring the HSS
 
 The HSS can be configured for settings and tools such as:
 
@@ -232,35 +252,34 @@ The HSS can be configured for settings and tools such as:
 
 The default configurations for eMMC can be viewed by cloning the [HSS repository](https://github.com/polarfire-soc/hart-software-services), as per the readme.
 
-1. Copy the default configuration from
-
-    [hss_directory]/boards/icicle-kit-es/def_config
-
-to the top level `hss_directory`
+1. Copy the default configuration from `[hss_directory]/boards/icicle-kit-es/def_config` to the top level `hss_directory`
 
 2. Rename the default configuration file in the top level `hss_directory` to `.config`.
 
 3. Open a terminal and enter:
 
-```
-make BOARD=icicle-kit-es config
-```
+    ```
+    make BOARD=icicle-kit-es config
+    ```
 
 4. This will display the default configuration for the Icicle Kit which can be modified as required:
 
-![](./images/hss_default.PNG)
+    ![](./images/hss_default.PNG)
 
 5. Enter "Q" to quit and save the configuration
 
-### Build the HSS
 <a name="build-the-hss"></a>
 
+### Build the HSS
+
 The HSS should be built in SoftConsole v2021.1 or greater or using the GNU tools built as part of the Linux flow. SoftConsole is available for download [here](https://www.microsemi.com/product-directory/design-tools/4879-softconsole#downloads). The HSS repository can be downloaded and either:
+
 - Import the contents of the repository into a SoftConsole Workspace as an existing project and build
 - Build the HSS using the included make files and a local RISC-V toolchain
 
+<a name="building-the-hss-using-softconsole"></a>
+
 #### Building the HSS using SoftConsole
-<a name="building-hss-softconsole"></a>
 
 You can import the current HSS as an existing project into SoftConsole, and use the SoftConsole GUI to build/clean/debug.
 
@@ -268,28 +287,31 @@ You can import the current HSS as an existing project into SoftConsole, and use 
 
 2. In SoftConsole select File -> Import and then select General/Existing Projects into Workspace:
 
-![](./images/sc_import.PNG)
+    ![](./images/sc_import.PNG)
 
 3. Navigate to the HSS repository and select finish to import the project:
 
-![](./images/import_project.PNG)
+    ![](./images/import_project.PNG)
 
 4. Place the HSS configuration file in the top level directory naming it solely ".config", the default configurations can be used from the boards folder for each target:
 
-![](./images/def_config.PNG)
+    ![](./images/def_config.PNG)
 
-If a custom MSS configuration has been created the xml folder should be updated with the configuration generated by the MSS Configurator:
+    If a custom MSS configuration has been created the xml folder should be updated with the configuration generated by the MSS Configurator:
 
-  [hss_directory]/boards/[target]/soc_fpga_design/xml
+    ```text
+    [hss_directory]/boards/[target]/soc_fpga_design/xml
+    ```
 
 5. Build the HSS "Default" build configuration:
 
-![](./images/hss_build.PNG)
+    ![](./images/hss_build.PNG)
 
 A workaround currently needed (for SoftConsole v2021.1) is to copy `python3\bin\python.exe` to `python3\bin\python3.exe` in the SoftConsole v2021.1 installation folder on Windows.
 
+<a name="building-the-hss-using-command-line-tools"></a>
+
 #### Building the HSS using command line tools
-<a name="building-hss-command-line"></a>
 
 To build the HSS for the Icicle kit using the command line on Linux:
 
@@ -309,18 +331,18 @@ To build the HSS for the Icicle Kit using the command line on Windows:
 
 3. Ensure that the SoftConsole RISC-V tools, build tools and bundled python.exe are available in your path. Either edit your environment settings to add them persistently, or to set them temporarily from the console prompt, e.g. for SoftConsole v2021.1:
 
-```
-path c:\Microchip\SoftConsole-v2021.1\riscv-unknown-elf-gcc\bin;c:\Microchip\SoftConsole-v2021.1\python3;c:\Microchip\SoftConsole-v2021.1\build_tools\bin;%PATH%
-```
+    ```text
+    path c:\Microchip\SoftConsole-v2021.1\riscv-unknown-elf-gcc\bin;c:\Microchip\SoftConsole-v2021.1\python3;c:\Microchip\SoftConsole-v2021.1\build_tools\bin;%PATH%
+    ```
 
-3. Change to the HSS top-level directory.
+4. Change to the HSS top-level directory.
 
-4. Type `make BOARD=mpfs-icicle-kit-es`. If unspecified, the default `BOARD` will be set to `mpfs-icicle-kit-es`.
+5. Type `make BOARD=mpfs-icicle-kit-es`. If unspecified, the default `BOARD` will be set to `mpfs-icicle-kit-es`.
 
 A workaround currently needed (for SoftConsole v2021.1) is to copy `python3\bin\python.exe` to `python3\bin\python3.exe` in the SoftConsole v2021.1 installation folder on Windows.
 
+<a name="using-the-mss-configurator"></a>
 ## Using the MSS Configurator
-<a name="mss-configurator"></a>
 
 The Microcrocessor Subsystem (MSS) is configured using the PolarFire SoC MSS Configurator. This software tool takes user inputs and generates an XML configuration file along with a Libero component.
 The MSS Configurator can be launched from shortcuts created during installation or:
@@ -335,14 +357,16 @@ The MSS Configurator can be launched from shortcuts created during installation 
     [Libero installation]/Libero/bin64/pfsoc_mss
     [PolarFire SoC MSS Configurator installation]/MSS/bin64/pfsoc_mss
 
+<a name="mss-configuration-xml-description"></a>
+
 ### MSS Configuration XML Description
-<a name="mss-xml"></a>
 
 The generated XML file contents are converted into header files by the [PolarFire SoC Configuration Generator](https://github.com/polarfire-soc/polarfire-soc-configuration-generator), which are used as part of the bare metal and HSS flows.
 These header files configure system settings such as clocks, MUX settings for MSS I/Os and DDR training configuration.
 
+<a name="programming-the-envm"></a>
+
 ## Programming the eNVM
-<a name="programming-envm"></a>
 
 If the eNVM needs to be programmed, for example with an updated HSS, bare metal application etc, SoftConsole can be used to do this.
 
@@ -356,8 +380,9 @@ The bare metal application(s) or Linux image(s) should be built into a payload a
 
 ![](./images/envm_program.PNG)
 
+<a name="configuring-polarfire-soc-boot-mode-tools"></a>
+
 ### Configuring PolarFire SoC boot mode tools
-<a name="boot-mode"></a>
 
 Programming the eNVM on PolarFire SoC parts requires the fpgenprog tool included with Libero Soc or FlashPro Express (installed as part of the Program and Debug tools). This tool is also included with the standalone Program and Debug tools.
 Depending on the tools installed by the user (Libero or Program and Debug tools) the default SoftConsole path to the fpgenprog tool may need to be updated as it targets the Program and Debug tools default install directory.
@@ -383,8 +408,9 @@ So for example a full updated tool path is:
 
   if not defined FPGENPROG set FPGENPROG=C:\Microsemi\Libero_SoC_v12.5\Designer\bin64\fpgenprog.exe
 
+<a name="programming-emmc-and-sd-cards"></a>
+
 ## Programming eMMC and SD Cards
-<a name="emmc_SD"></a>
 
 The eMMC and SD cards can be programmed using the HSS's "USBDMSC" service and a USB cable, for example connected to J16 on the Icicle Kit, on Windows using Win32DiskImager or using dd on Linux.
 

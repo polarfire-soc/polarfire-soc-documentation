@@ -17,7 +17,9 @@ This document describes:
 - How to build the HSS Payload Generator.
 - How to generate a payload for PolarFire SoC using the HSS Payload Generator.
 
-## HSS payloads <a name="payload-info"></a>
+<a name="payload-info"></a>
+
+## HSS payloads
 
 A HSS payload is an image containing a header and one or more binary files that have been merged together to form the payload. An image contains:
 
@@ -28,19 +30,27 @@ A HSS payload is an image containing a header and one or more binary files that 
 
 Payloads are stored in non-volatile off chip memory (e.g., eMMC) and loaded on boot. This allows applications larger than on-chip storage (eNVM) to be executed by the PolarFire SoC MSS. Payloads are typically used to load a large executable from eMMC or SD card to DDR memory. When loading a payload, the HSS will copy the payload from non-volatile storage to DDR and then copy this data to the memory location(s) that were specified when the payload was generated.
 
-## Role of the HSS Payload Generator <a name="info"></a>
+<a name="info"></a>
+
+## Role of the HSS Payload Generator
 
 The HSS Payload Generator creates a payload that will be copied from non-volatile memory to volatile memory by the HSS on system boot. It merges and compresses binary files and headers describing where the payload should be copied into a single HSS payload binary file.
 
-## Downloading the HSS Payload Generator <a name="download"></a>
+<a name="download"></a>
+
+## Downloading the HSS Payload Generator
 
 The HSS Payload Generator source code is bundled as a tool with the Hart Software Services, it's source code is available from the HSS repository on GitHub [here](https://github.com/polarfire-soc/hart-software-services/tree/master/tools/hss-payload-generator).
 
-### Pre-built executables <a name="executables"></a>
+<a name="executables"></a>
+
+### Pre-built executables
 
 Pre-compiled executables of the HSS Payload Generator for Windows and Linux are available as assets with the HSS repository releases [here](https://github.com/polarfire-soc/hart-software-services/releases).
 
-## Generating payloads <a name="payloads"></a>
+<a name="payloads"></a>
+
+## Generating payloads
 
 The HSS Payload Generator uses a configuration yaml file and command line arguments to configure the payload being built.
 
@@ -54,35 +64,39 @@ To generate a payload the following example command could be used:
 - `test/config.yaml` specifies that in this case the configuration file is in a sub-folder called `test` and called `config.yaml`.
 - `output.bin` specifies the name of the output payload file.
 
-### Generating a payload with a Linux image <a name="linux-payload"></a>
+<a name="linux-payload"></a>
+
+### Generating a payload with a Linux image
 
 The HSS Payload Generator is automatically cloned and run as part of the build process when Linux is built using the PolarFire SoC Buildroot SDK or the PolarFire SoC Yocto BSP
 
-### Configuring a bare metal application to be a payload <a name="config-bare-metal-payload"></a>
+<a name="config-bare-metal-payload"></a>
+
+### Configuring a bare metal application to be a payload
 
 A YouTube video is available showing the configuration of a bare metal application as a payload:
 
 [![Watch the video](https://img.youtube.com/vi/5Q3GZVD72GQ/0.jpg)](https://www.youtube.com/watch?v=5Q3GZVD72GQ&list=PL9B4edd-p2ahGOmnvJvFLvSID3N3-rJC6&index=2)
 
-The main steps involved are:
-- In the `mss_sw_config.h` file:
-  1. Ensure the `MPFS_HAL_FIRST_HART` define is set to a value greater than 0:
+The main steps involved are, in the `mss_sw_config.h` file:
 
-    - 0: Sets the E51 as the main hart of the system - as this is a payload the E51 will be running the HSS.
-    - 1: Sets U54_1 as the main hart of the system.
-    - 2: Sets U54_2 as the main hart of the system.
-    - 3: Sets U54_3 as the main hart of the system.
-    - 4: Sets U54_4 as the main hart of the system.
+1. Ensure the `MPFS_HAL_FIRST_HART` define is set to a value greater than 0:
+  - 0: Sets the E51 as the main hart of the system, as this is a payload the E51 will be running the HSS.
+  - 1: Sets U54_1 as the main hart of the system.
+  - 2: Sets U54_2 as the main hart of the system.
+  - 3: Sets U54_3 as the main hart of the system.
+  - 4: Sets U54_4 as the main hart of the system.
+2. Disable the `MPFS_HAL_HW_CONFIG` define - this define enables the configuration of MSS I/O MUXs and DDR training in the HAL, as this is a payload this configuration will already have been completed by the HSS.
+3. Ensure that `IMAGE_LOADED_BY_BOOTLOADER` define is set to 1.
+4. If not using an SMP bare metal application. ensure that `MPFS_HAL_SHARED_MEM_ENABLED` is not defined.
 
-  2. Disable the `MPFS_HAL_HW_CONFIG` define - this define enables the configuration of MSS I/O MUXs and DDR training in the HAL, as this is a payload this configuration will already have been completed by the HSS.
+Be especially careful if targetting the LIM to configure linker scripts appropriately: the default linker script should be adjusted if a bare metal application is going to target the LIM.
+This is due to the fact that that the HSS uses a region of the LIM starting at 0x08000000 and the default bare metal linker scripts also target 0x08000000.
+To resolve this, the map file for the HSS can be consulted to determine the end address of the region used by the HSS. Currently the HSS (plus OpenSBI) requires about 400KiB of LIM (0x60000), but this may change.
 
-  3. Ensure that `IMAGE_LOADED_BY_BOOTLOADER` define is set to 1.
+<a name="bare-metal-payload"></a>
 
-  4. If not using an SMP bare metal application. ensure that `MPFS_HAL_SHARED_MEM_ENABLED` is not defined.
-
-- Be especially careful if targetting the LIM to configure linker scripts appropriately: the default linker script should be adjusted if a bare metal application is going to target the LIM. This is due to the fact that that the HSS uses a region of the LIM starting at 0x08000000 and the default bare metal linker scripts also target 0x08000000. To resolve this, the map file for the HSS can be consulted to determine the end address of the region used by the HSS. Currently the HSS (plus OpenSBI) requires about 400KiB of LIM (0x60000), but this may change.
-
-### Generating a payload with a bare metal application <a name="bare-metal-payload"></a>
+### Generating a payload with a bare metal application
 
 Once the application has been built, the resulting ELF file can be used to generate the HSS payload. An example configuration yaml file is shown below:
 
@@ -114,7 +128,9 @@ The `bare-metal-app.elf` and `confg.yaml` files are in the same directory as the
 
 The third argument in the command line above, `output.bin` is used as the output filename for the generated payload.This file can be generated in a separate folder by providing a full or relative path.
 
-#### More detail on the use of OpenSBI <a name="opensbi"></a>
+<a name="opensbi"></a>
+
+#### More detail on the use of OpenSBI
 
 For PolarFire SoC, the RISC-V Supervisor Binary Interface (SBI) is the recommended interface between platform-specific firmware running in M-mode and a bootloader or a general-purpose OS executing in S-mode or HS-mode.
 

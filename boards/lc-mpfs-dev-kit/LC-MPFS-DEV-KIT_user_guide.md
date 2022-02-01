@@ -44,37 +44,30 @@ The build procedure is described in the Linux build system's README.
 
 The following instructions guide you through setting up the LC-MPFS-DEV-KIT.
 
-1. Switch off the power button on the LC-MPFS-DEV-KIT.
+1. Switch off the power button on the LC-MPFS-DEV-KIT.  
+      ![Power Button](images/Power_On.PNG)
 
-![Power Button](images/Power_On.PNG)
+2. Set the pins in the DIP switch to select MSEL of 1011 (MSEL2 = 0).  
+      ![DIP Switch Setting](images/DIP_Switch.PNG)
 
-2. Set the pins in the DIP switch to select MSEL of 1011 (MSEL2 = 0).
+      ```ascii
+            USB   LED    Mode Select                  Ethernet
+      +===|___|==****==+-+-+-+-+-+-+=================|******|====
+      |                | | | | |X| |                 |      |
+      |                | | | | | | |                 |      |
+      |        HFXSEL->|X|X|X|X| |X|                 |______|
+      |                +-+-+-+-+-+-+
+      |        RTCSEL-----/ 0 1 2 3 <--MSEL
+      |
+      ```
 
-```
-      USB   LED    Mode Select                  Ethernet
- +===|___|==****==+-+-+-+-+-+-+=================|******|====
- |                | | | | |X| |                 |      |
- |                | | | | | | |                 |      |
- |        HFXSEL->|X|X|X|X| |X|                 |______|
- |                +-+-+-+-+-+-+
- |        RTCSEL-----/ 0 1 2 3 <--MSEL
- |
-```
-
-![DIP Switch Setting](images/DIP_Switch.PNG)
-
-1. To prepare the SD-card programmed with the bootloader and Linux images, see the Linux build instructions in the Builroot/Yocto top level README for details on creating the content of this SD card.
-
-2. Insert the SD card into the SD card slot J10.
-3. Connect the micro USB cable from J7 to the Host PC. The USB connector has two serial interfaces: the higher index serial port is used for the Linux serial console and the lower index serial port is used for JTAG debug.
-
-![USB Connector](images/USB_Connector.PNG)
-
+3. To prepare the SD-card programmed with the bootloader and Linux images, see the Linux build instructions in the Builroot/Yocto top level README for details on creating the content of this SD card.
+4. Insert the SD card into the SD card slot J10.
+5. Connect the micro USB cable from J7 to the Host PC. The USB connector has two serial interfaces: the higher index serial port is used for the Linux serial console and the lower index serial port is used for JTAG debug.  
+      ![USB Connector](images/USB_Connector.PNG)
 6. The LC-MPFS-DEV-KIT is now configured as seen in Libero Block Diagram.
-7. Ensure the push-button is switched on, connect the power supply to the board, and slide the power switch SW3 as shown in the following figure.
-
-![Power on the Device](images/Power_On.PNG)
-
+7. Ensure the push-button is switched on, connect the power supply to the board, and slide the power switch SW3 as shown in the following figure.  
+      ![Power on the Device](images/Power_On.PNG)
 8. Configure the serial terminal in the Host PC for 115200 baud, 8 data bits, no stop bits, no parity, and no flow control. Push reset button (near the power button) on the LC-MPFS-DEV-KIT.
 
 ### Linux Boot and Login Credentials
@@ -102,24 +95,23 @@ Note: The power supply switch must be switched off while making the jumper conne
 3. Power on the board using the SW3 slide switch.
 4. On the host PC, launch the FlashPro Express software.
 5. Click New or select New Job Project from FlashPro Express Job from Project menu to create a new job project, as shown in the following figure.
-![New Flash Pro Project](images/fp-new.png)
+      ![New Flash Pro Project](images/fp-new.png)
 6. Enter the following in the New Job Project from FlashPro Express Job dialog box:
-- Programming job file: Click Browse, and navigate to the location where the .job file is located and select the file. The default location is `<download_folder>\mpf_ac466_eval\splash_df\Programming_Job`.
-- FlashPro Express job project location: Click Browse and navigate to the location where you want to save the project.  
-![New Flash Pro Project](images/fp-prompt.png)
-
+      Programming job file: Click Browse, and navigate to the location where the .job file is located and select the file. The default location is `<download_folder>\mpf_ac466_eval\splash_df\Programming_Job`.
+      FlashPro Express job project location: Click Browse and navigate to the location where you want to save the project.  
+      ![New Flash Pro Project](images/fp-prompt.png)
 7. Click OK. The required programming file is selected and ready to be programmed in the
 8. The FlashPro Express window appears as shown in the following Confirm that a programmer number appears in the Programmer field. If it does not, confirm the board connections and click Refresh/Rescan Programmers.  
-![Scanning and Running the Programmer](images/fp-program.png)
+      ![Scanning and Running the Programmer](images/fp-program.png)
 9. Click RUN. When the device is programmed successfully, a RUN PASSED status is displayed as shown in the following figure.  
-![Scanning and Running the Programmer](images/fp-programmed.png)
+      ![Scanning and Running the Programmer](images/fp-programmed.png)
 
 ### Linux Environment
 
 To program the PolarFire SoC device with the .job programming file (using FlashPro5 programmer in Linux environment), perform the following steps. The link to the .job file can be found in Software Versions.
 
 1. Ensure that the jumpers J13, J21, J28, and J31 are plugged in.
-Note: The power supply switch must be switched off while making the jumper connections.
+      Note: The power supply switch must be switched off while making the jumper connections.
 2. Connect the power supply cable to the J3 connector on the board.
 3. Connect the FlashPro5 to a PC USB port and to the connector J24 (FP4 header) of the board.
 4. Power on the board using the SW3 slide switch.
@@ -129,6 +121,7 @@ Note: The power supply switch must be switched off while making the jumper conne
 8. Save the FlashPro Express job project.
 9. Set the Programming Action in the dropdown menu to PROGRAM.
 10. Click RUN. Detailed individual programmer and device status information appears in the Programmer List. Your programmer status (PASSED or FAILED) appears in the Programmer Status Bar.
+
 See the [FlashPro Express User Guide](https://www.microsemi.com/document-portal/doc_download/137627-flashpro-express-user-guide-for-polarfire) for more information.
 
 ## Building and Loading the Linux Image

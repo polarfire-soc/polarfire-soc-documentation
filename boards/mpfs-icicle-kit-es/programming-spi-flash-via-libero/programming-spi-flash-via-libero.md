@@ -8,10 +8,11 @@ This document provides a brief overview of programming the SPI flash part on the
 Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide)
 for a detailed description of PolarFire SoC.
 
+<a name="build-the-hss"></a>
 
-# <a name="build-the-hss">Build the HSS</a>
+## Build the HSS
 
-```
+```shell
 $ git clone ssh://git@bitbucket.microchip.com/fpga_pfsoc_es/hart-software-services.git
 $ cd hart-software-services
 $ cp boards/mpfs-icicle-kit-es/def_config .config
@@ -21,25 +22,27 @@ Edit .config and ensure that *CONFIG_SERVICE_SPI* is enabled in the .config file
 
 Ensure that jumpers 34/43 on the Icicle kit are correctly set for 1v8 operation.
 
-```
+```shell
 $ make
 ```
 
 From either Buildroot or Yocto, you should have a payload.bin file which
 contains U-Boot. Convert this to HEX using
 
-```
+```shell
 $ bincopy convert -i binary -o ihex payload.bin payload.hex
 ```
 
 If you don't have bincopy installed, install it with pip (or pip3,
 whichever you have):
 
-```
+```shell
 $ sudo pip install bincopy
 ```
 
-# <a name="use-libero-to-program-the-spi-flash">Use Libero to program the SPI flash</a>
+<a name="use-libero-to-program-the-spi-flash"></a>
+
+## Use Libero to program the SPI flash
 
 Clone the Icicle Kit reference design (`git clone
  https://github.com/polarfire-soc/icicle-kit-reference-design.git`) and
@@ -82,7 +85,6 @@ The Start address offset of 0x400 is important -- do not change that.
 Next, start the "`Run PROGRAM_SPI_IMAGE Action`" tool.
 
 ![](images/image0007.png)
-
 
 Click "`Yes`" to both the Warning dialog and the Information dialog
 

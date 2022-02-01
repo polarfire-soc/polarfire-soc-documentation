@@ -102,50 +102,36 @@ The build procedure is described in the Linux build system's README.
 
 ## Board Setup
 
-Follow the instructions to set up the HiFive Unleashed board.
+Follow the instructions to set up the HiFive Unleashed board:
+
 1. Switch off the power button (red button in the following figure) on the HiFive Unleashed board.
-Ensure the fan is plugged in.
-
-![Power Button and Fan Connection](images/HiFive_Unleashed_board_Power_Button_and_Fan_Connection.JPG)
-
+        Ensure the fan is plugged in.  
+        ![Power Button and Fan Connection](images/HiFive_Unleashed_board_Power_Button_and_Fan_Connection.JPG)
 2. Set all pins in the DIP-switch block to the LEFT. The ON position=0; therefore, this sets MSEL to
-mode 1111. See the boot modes table in Section 4 of the [HiFive Unleashed Getting Started Guide](https://sifive.cdn.prismic.io/sifive%2Ffa3a584a-a02f-4fda-b758-a2def05f49f9_hifive-unleashed-getting-started-guide-v1p1.pdf) for
-more information on MSEL.
-
-![DIP Switch Setting](images/HiFive_Unleashed_Board_DIP-Switch_setting.png)
-
-3. Insert an SD-card programmed with the bootloader and Linux. See the Linux build instructions in the Builroot/Yocto top level README for details on creating the content of this SD card.
-
-![SD Card](images/HiFive_Unleashed_Board_SD_Card.png)
-
+        mode 1111. See the boot modes table in Section 4 of the [HiFive Unleashed Getting Started Guide](https://sifive.cdn.prismic.io/sifive%2Ffa3a584a-a02f-4fda-b758-a2def05f49f9_hifive-unleashed-getting-started-guide-v1p1.pdf) for more information on MSEL.  
+        ![DIP Switch Setting](images/HiFive_Unleashed_Board_DIP-Switch_setting.png)
+3. Insert an SD-card programmed with the bootloader and Linux. See the Linux build instructions in the Builroot/Yocto top level README for details on creating the content of this SD card.  
+        ![SD Card](images/HiFive_Unleashed_Board_SD_Card.png)
 4. If available, connect the board to a network switch. The board will run DHCP on boot and start an
-ssh server. The MAC address is 70:b3:d5:92:fX:XX, where X:XX is replaced by the board number
-converted to hexadecimal. For example, if the board is H5U-00063, then the last digits of the MAC
-address are 0:3f.
-
-![Ethernet](images/HiFive_Unleashed_Board_Ethernet.png)
-
+        ssh server. The MAC address is 70:b3:d5:92:fX:XX, where X:XX is replaced by the board number
+        converted to hexadecimal. For example, if the board is H5U-00063, then the last digits of the
+        MAC address are 0:3f.  
+        ![Ethernet](images/HiFive_Unleashed_Board_Ethernet.png)
 5. Connect the board through USB to the host PC. The USB connector has two serial interfaces: the first contains the Linux console running at 115200 baud and the second provides JTAG suitable for use with OpenOCD.
 6. On the HiFive Unleashed Expansion board, update the PolarFire FPGA with the FPGA bitstream
-provided. See the [Software Installation and Configuration section](#software-installation-and-configuration) for steps to program
-the FPGA.
+        provided. See the [Software Installation and Configuration section](#software-installation-and-configuration) for steps to program the FPGA.
 7. The HiFive Unleashed platform is now configured as seen in the [FPGA Design in Libero section](#fpga-design-in-libero).
 8. Plug-in the HiFive Unleashed board to the HiFive Unleashed Expansion board on the FMC connector.
-Push the power button ON on the HiFive Unleashed board.
-Note: Do not connect the power supply to the HiFive Unleashed board.
-
-![Power Button](images/HiFive_Unleashed_Platform.jpg)
-
+        Push the power button ON on the HiFive Unleashed board.
+        Note: Do not connect the power supply to the HiFive Unleashed board.
+        ![Power Button](images/HiFive_Unleashed_Platform.jpg)
 9. Connect the power supply to the HiFive Unleashed Expansion board in order to power the HiFive
-Unleashed board.
+        Unleashed board.
 10. Slide the HiFive Unleashed Expansion board’s power switch (SW3) on. Boot messages should now
-appear on the console in the host PC.
-
-![Power Connections](images/HiFive_Unleashed_Platform_Power_Connections.jpg)
-
+        appear on the console in the host PC.
+        ![Power Connections](images/HiFive_Unleashed_Platform_Power_Connections.jpg)
 11. After 30 seconds, an LED should begin to regularly blink a heartbeat on the HiFive Unleashed board.
-
-![LED Indicators](images/HiFive_Unleashed_Platform_LED_Indicators.jpg)
+        ![LED Indicators](images/HiFive_Unleashed_Platform_LED_Indicators.jpg)
 
 ## Software Installation and Configuration
 
@@ -157,8 +143,9 @@ The following steps explain the procedure to download the FPGA bitstream onto th
 
 To program the PolarFire device with the .stp programming file (using FlashPro in Windows
 environment), perform the following steps. The link to the .stp file is given in Firmware Versions.
+
 1. Ensure that the jumper settings on the board are the same as those listed in Jumper Settings.
-Note: The power supply switch must be switched off while making the jumper connections.
+        Note: The power supply switch must be switched off while making the jumper connections.
 2. Connect the power supply cable to the J3 connector on the board.
 3. Connect the FlashPro4 to a PC USB port and to the connector J24 (FP4 header) of the HiFive Unleashed Expansion board.
 4. Power on the board using the SW3 slide switch.
@@ -167,28 +154,30 @@ Note: The power supply switch must be switched off while making the jumper conne
 7. Click `Browse` and navigate to the location where you want to save the project.
 8. Select `Single Device` as the programming mode and click `OK` to save the project.
 9. Click `Configure Device`.
-10. Click `Browse`, and navigate to the location where the `HFU540_EXP_Bitstream_r20101.stp` file is
-located and select the file.
+10. Click `Browse`, and navigate to the location where the `HFU540_EXP_Bitstream_r20101.stp` file is located and select the file.
 11. Click `Open`. The required programming file is selected and ready to be programmed in the device.
-12 .Click `PROGRAM` to program the device. When the device is programmed successfully, a Run PASSED
-status is displayed.
+12. Click `PROGRAM` to program the device. When the device is programmed successfully, a Run PASSED
+        status is displayed.
+
 See the [FlashPro User Guide](https://www.microsemi.com/document-portal/doc_download/137626-flashpro-user-guide-for-polarfire) for more information.
 
 #### Linux Environment
 
 To program the PolarFire device with the .job programming file (using FlashPro5 programmer in Linux
 environment), perform the following steps. The link to the .job file can be found in Firmware Versions.
+
 1. Ensure that the jumper settings on the board are the same as those listed in Jumper Settings.
-Note: The power supply switch must be switched off while making the jumper connections.
+        Note: The power supply switch must be switched off while making the jumper connections.
 2. Connect the power supply cable to the J3 connector on the board.
 3. Connect the FlashPro5 to a PC USB port and to the connector J24 (FP4 header) of the HiFive Unleashed Expansion board.
 4. Power on the board using the SW3 slide switch.
 5. On the host PC, launch the FlashPro Express (FP Express) software.
 6. From the Project menu, choose Create Job Project from Programming Job.
-7. Click Browse to load the Programming Job File HFU540_EXP_Bitstream_r20102.job, and specify your FlashPro Express job project location. Click OK to continue.
-8.  Save the FlashPro Express job project.
-9.  Set the Programming Action in the dropdown menu to PROGRAM.
+7. Click Browse to load the Programming Job File HFU540_EXP_Bitstream_r20102.job, and specify your FlashPro Express job project location.       Click OK to continue.
+8. Save the FlashPro Express job project.
+9. Set the Programming Action in the dropdown menu to PROGRAM.
 10. Click RUN. Detailed individual programmer and device status information appears in the `Programmer List`. Your programmer status (PASSED or FAILED) appears in the `Programmer Status` Bar.
+
 See the [FlashPro Express User Guide](https://www.microsemi.com/document-portal/doc_download/137627-flashpro-express-user-guide-for-polarfire) for more information.
 
 | Switch | Ref | Section | Description | Definition | Default |

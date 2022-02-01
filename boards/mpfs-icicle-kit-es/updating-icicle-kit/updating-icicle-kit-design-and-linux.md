@@ -1,34 +1,40 @@
-# Updating PolarFire SoC  Icicle-Kit FPGA Design and Linux Image
+# Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image
 
-- [Programming Files](#Links)
-    - [FPGA fabric and eNVM](#FPGA-asset)
-    - [Linux image](#Linux-asset)
-- [Jumper Settings](#Jumpers)
-- [Serial Ports](#Serial-Ports)
-- [Linux Credentials](#Credentials)
-- [Programming The PolarFire SoC Design](#Programming-Design)
-- [Programming the Linux Image](#Programming-Linux-Image)
-    - [eMMC](#eMMC)
-    - [SD Card](#SD-Card)
-- [Tools and References](#Tools-References)
+- [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](#updating-polarfire-soc-icicle-kit-fpga-design-and-linux-image)
+  - [Programming Files](#programming-files)
+    - [FPGA fabric and eNVM](#fpga-fabric-and-envm)
+    - [Linux image](#linux-image)
+  - [Serial Ports](#serial-ports)
+  - [Linux Credentials](#linux-credentials)
+  - [Programming The PolarFire SoC Design](#programming-the-polarfire-soc-design)
+  - [Programming the Linux Image](#programming-the-linux-image)
+    - [eMMC](#emmc)
+    - [SD Card](#sd-card)
+  - [Tools and References](#tools-and-references)
 
 This document provides links to files and instructions to provision an Icicle Kit to boot Linux. To achieve this:
+
 - The PolarFire SoC Icicle Kit reference design, including the HSS boot loader must be programmed to the kit
 - The on board eMMC or an SD card need to be programmed with a Linux image
 
-<a name="Links"></a>
 ## Programming Files
+
 The sections below link to programming files for the FPGA and eNVM along with images for Linux.
 
-<a name="FPGA-asset"></a>
-###  FPGA fabric and eNVM
+<a name="fpga-fabric-and-envm"></a>
+
+### FPGA fabric and eNVM
+
 A FlashPro Express programming job file is provided as an asset with the Icicle Kit Reference Design [releases](https://github.com/polarfire-soc/icicle-kit-reference-design/releases). This programming job file will program the FPGA fabric with the latest reference configuration and also program the eNVM with the latest HSS payload. The .zip file in the release assets should be downloaded and extracted to access the programming job file.
 
-<a name="Linux-asset"></a>
-###  Linux image
+<a name="linux-image"></a>
+
+### Linux image
+
 A minimal Linux image is provided as an asset with the Meta PolarFire SoC Yocto BSP [releases](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases). This image can be programmed to eMMC or an SD card. The .wic.gz file in the release assets should be downloaded to program into storage using the steps outlined in the [Programming the Linux Image](#Programming-Linux-Image) section.
 
 ## Jumper Settings
+
 The Icicle Kit jumper settings required to boot Linux are as follows:
 
 ![](./images/icicle_jumper_settings.jpg)
@@ -64,28 +70,38 @@ The Icicle Kit jumper settings required to boot Linux are as follows:
 | J21    | JTAG nTRST interface pull down enable. Leave open.                      |
 | J24    | VBUS source. Leave closed.                                              |
 
-<a name="Serial-Ports"></a>
+<a name="serial-ports"></a>
+
 ## Serial Ports
+
 The Icicle Kit gives access to 4 serial ports via the J11 micro-USB port. These are connected to MMUART0:3 respectively. A terminal emulator (e.g putty or teraterm) can be used to connect to the serial ports.
 
 The first two serial ports are used when booting Linux. MMUART0 displays the zero stage bootloader and U-Boot messages, MMUART1 displays Linux messages and a console. If you're unsure about which COM port relates to which MMUART, all ports should be connected and checked for startup messages. MMUART0 will always display HSS messages and MMUART 1 will always display the Linux console in the standard configuration.
 
 The serial port settings are as follows: 115200 baud, 8-bit, no flow control.
 
-<a name="Credentials"></a>
+<a name="linux-credentials"></a>
+
 ## Linux Credentials
+
 You can login to the board using 'root' as user name, there is no password by default. If one is requested 'microchip' is used by default.
 
 <a name="Programming-Design"></a>
+
 ## Programming The PolarFire SoC Design
+
 Please use FlashPro Express to program the PolarFire SoC design to the Icicle Kit.
 
 Instructions for programming a target using FlashPro Express can be found [here](https://onlinedocs.microchip.com/pr/GUID-BB497156-B848-40FC-B995-DF115EF2C226-en-US-1/index.html?GUID-9DDB79B6-A78C-46CE-A288-92C87FDB7063). There is also a video available which outlines the required steps [here](https://youtu.be/Foil5pIRBlM?list=PLtQdQmNK_0DTpi5IB0WcN84fDr_Crn47m&t=141).
 
-<a name="Programming-Linux-Image"></a>
+<a name="programming-the-linux-image"></a>
+
 ## Programming the Linux Image
-<a name="eMMC"></a>
+
+<a name="emmc"></a>
+
 ### eMMC
+
 The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) using the `usbdmsc` command. The HSS `usbdmsc` command exposes the eMMC as a USB mass storage device through the Icicle Kit's USB-OTG J16 connector located beside the SD card slot.
 
 #### eMMC content update procedure
@@ -119,8 +135,10 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 15. Type `boot` to boot the newly copied Linux image.
 16. HSS boot messages will appear on MMUART0 and the Linux boot will appear on MMUART1.
 
-<a name="SD-Card"></a>
+<a name="sd-card"></a>
+
 ### SD Card
+
 1. Put an SD card into the SD card reader of your host PC and use the instructions below.
 
 2. Download the asset for the Linux image that you want to program to the Icicle Kit from the [Linux image](#Linux-asset) section of this document.
@@ -147,12 +165,14 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 9. Insert it in the Icicle Kit's SD card slot and power on the board.
 10. HSS boot messages will appear on MMUART0 and the Linux boot will appear on MMUART1. The expected HSS output for a successful boot from eMMC is shown below:
 
-![](./images/HSS-boot.png)
+    ![](./images/HSS-boot.png)
 
 11. To verify the Linux image that has been programmed the bundled webserver demo can be run. Instructions for running this demo can be found in the Icicle Kit Quick Start Guide [here](https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide#getting-started).
 
-<a name="Tools-References"></a>
+<a name="tools-and-references"></a>
+
 ## Tools and References
+
 [FlashPro Express Installer and Release Notes Download](https://www.microsemi.com/product-directory/programming/4977-flashpro#software)
 
 **Note:** FlashPro Express is installed with Libero and does not need to be installed separately. If Libero is not installed FlashPro Express is bundled with the Programming and Debug Tools. FlashPro and FlashPro Express are different tools.

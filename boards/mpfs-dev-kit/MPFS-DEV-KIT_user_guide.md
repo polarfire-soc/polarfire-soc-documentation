@@ -107,29 +107,39 @@ Follow the instructions to set up the HiFive Unleashed board:
 1. Switch off the power button (red button in the following figure) on the HiFive Unleashed board.
         Ensure the fan is plugged in.  
         ![Power Button and Fan Connection](images/HiFive_Unleashed_board_Power_Button_and_Fan_Connection.JPG)
+
 2. Set all pins in the DIP-switch block to the LEFT. The ON position=0; therefore, this sets MSEL to
         mode 1111. See the boot modes table in Section 4 of the [HiFive Unleashed Getting Started Guide](https://sifive.cdn.prismic.io/sifive%2Ffa3a584a-a02f-4fda-b758-a2def05f49f9_hifive-unleashed-getting-started-guide-v1p1.pdf) for more information on MSEL.  
         ![DIP Switch Setting](images/HiFive_Unleashed_Board_DIP-Switch_setting.png)
+
 3. Insert an SD-card programmed with the bootloader and Linux. See the Linux build instructions in the Builroot/Yocto top level README for details on creating the content of this SD card.  
         ![SD Card](images/HiFive_Unleashed_Board_SD_Card.png)
+
 4. If available, connect the board to a network switch. The board will run DHCP on boot and start an
         ssh server. The MAC address is 70:b3:d5:92:fX:XX, where X:XX is replaced by the board number
         converted to hexadecimal. For example, if the board is H5U-00063, then the last digits of the
         MAC address are 0:3f.  
         ![Ethernet](images/HiFive_Unleashed_Board_Ethernet.png)
+
 5. Connect the board through USB to the host PC. The USB connector has two serial interfaces: the first contains the Linux console running at 115200 baud and the second provides JTAG suitable for use with OpenOCD.
+
 6. On the HiFive Unleashed Expansion board, update the PolarFire FPGA with the FPGA bitstream
         provided. See the [Software Installation and Configuration section](#software-installation-and-configuration) for steps to program the FPGA.
+
 7. The HiFive Unleashed platform is now configured as seen in the [FPGA Design in Libero section](#fpga-design-in-libero).
+
 8. Plug-in the HiFive Unleashed board to the HiFive Unleashed Expansion board on the FMC connector.
         Push the power button ON on the HiFive Unleashed board.
-        Note: Do not connect the power supply to the HiFive Unleashed board.
+        Note: Do not connect the power supply to the HiFive Unleashed board.  
         ![Power Button](images/HiFive_Unleashed_Platform.jpg)
+
 9. Connect the power supply to the HiFive Unleashed Expansion board in order to power the HiFive
         Unleashed board.
+
 10. Slide the HiFive Unleashed Expansion board’s power switch (SW3) on. Boot messages should now
         appear on the console in the host PC.
         ![Power Connections](images/HiFive_Unleashed_Platform_Power_Connections.jpg)
+
 11. After 30 seconds, an LED should begin to regularly blink a heartbeat on the HiFive Unleashed board.
         ![LED Indicators](images/HiFive_Unleashed_Platform_LED_Indicators.jpg)
 

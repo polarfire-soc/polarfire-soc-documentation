@@ -65,9 +65,11 @@ The following instructions guide you through setting up the LC-MPFS-DEV-KIT.
 4. Insert the SD card into the SD card slot J10.
 5. Connect the micro USB cable from J7 to the Host PC. The USB connector has two serial interfaces: the higher index serial port is used for the Linux serial console and the lower index serial port is used for JTAG debug.  
       ![USB Connector](images/USB_Connector.PNG)
+
 6. The LC-MPFS-DEV-KIT is now configured as seen in Libero Block Diagram.
 7. Ensure the push-button is switched on, connect the power supply to the board, and slide the power switch SW3 as shown in the following figure.  
       ![Power on the Device](images/Power_On.PNG)
+
 8. Configure the serial terminal in the Host PC for 115200 baud, 8 data bits, no stop bits, no parity, and no flow control. Push reset button (near the power button) on the LC-MPFS-DEV-KIT.
 
 ### Linux Boot and Login Credentials
@@ -96,13 +98,16 @@ Note: The power supply switch must be switched off while making the jumper conne
 4. On the host PC, launch the FlashPro Express software.
 5. Click New or select New Job Project from FlashPro Express Job from Project menu to create a new job project, as shown in the following figure.
       ![New Flash Pro Project](images/fp-new.png)
+
 6. Enter the following in the New Job Project from FlashPro Express Job dialog box:
       Programming job file: Click Browse, and navigate to the location where the .job file is located and select the file. The default location is `<download_folder>\mpf_ac466_eval\splash_df\Programming_Job`.
       FlashPro Express job project location: Click Browse and navigate to the location where you want to save the project.  
       ![New Flash Pro Project](images/fp-prompt.png)
+
 7. Click OK. The required programming file is selected and ready to be programmed in the
 8. The FlashPro Express window appears as shown in the following Confirm that a programmer number appears in the Programmer field. If it does not, confirm the board connections and click Refresh/Rescan Programmers.  
       ![Scanning and Running the Programmer](images/fp-program.png)
+
 9. Click RUN. When the device is programmed successfully, a RUN PASSED status is displayed as shown in the following figure.  
       ![Scanning and Running the Programmer](images/fp-programmed.png)
 

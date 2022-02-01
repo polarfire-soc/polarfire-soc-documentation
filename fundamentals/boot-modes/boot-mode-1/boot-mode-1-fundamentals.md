@@ -1,9 +1,11 @@
 # PolarFire SoC Boot Mode 1
 
 ## Overview
+
 PolarFire SoC boot mode 1 is used where the Microprocessor Subsystem (MSS) harts start executing non-secured code from eNVM on power up.
 
 ## Boot Mode 1 Sequence
+
 On power up, the PolarFire SoC System Controller starts up and holds the MSS in reset until it has completed configuring the device. It executes ROM code which configures the Core Complex based on configuration data structures stored in its private Non-Volatile Memory (pNVM).
 
 In boot mode 1, the System Controller uses:
@@ -15,9 +17,9 @@ For boot mode 1, the System Controller:
 
 1. Reads the value of U_MSS_BOOTMODE and proceeds to the following step if boot mode is 1.
 2. Sets the content of the System Registers' reset vector register from the values found in U_MSS_BOOTCFG configuration data structure held in pNVM.
-3. Releases the Core Complex reset causing all harts to execute the code found in eNVM. 
+3. Releases the Core Complex reset causing all harts to execute the code found in eNVM.
 
-![](./images/boot-mode-1.png) 
+![](./images/boot-mode-1.png)
 
 Notes:
 

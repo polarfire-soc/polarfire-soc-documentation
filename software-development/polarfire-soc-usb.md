@@ -26,7 +26,7 @@ Before power up, make sure that Icicle Kit jumpers J15 and J17 are closed to use
 
 Note: The default jumper configuration for the Icicle Kit, shown [here](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md), requires J15 and J17 to be open to act as a USB device. To program the eMMC again, open jumpers J15 and J17.
 
-<div id="flash-drive"></a>
+<a name="flash-drive"></a>
 
 ## Flash Drive
 
@@ -51,7 +51,7 @@ Example USB enumeration log:
 [   36.461102]  sda: sda1 sda2
 ```
 
-<div id="mounting-the-flash-drive"></a>
+<a name="mounting-the-flash-drive"></a>
 
 ### Mounting the Flash Drive
 The flash drive can be mounted in Linux using the following method
@@ -91,7 +91,7 @@ Once sure of the drive identifier, use the following command to mount the flash 
 $ mount -t vfat /dev/sdX /media/usbmsc
 ```
 
-<div id="accessing-the-flash-drive"></a>
+<a name="accessing-the-flash-drive"></a>
 
 ### Accessing the Flash Drive
 Change the current directory to Flash drive.
@@ -106,7 +106,7 @@ List the content of the Flash drive:
 $ ls
 ```
 
-<div id="verify-the-flash-drive"></a>
+<a name="verify-the-flash-drive"></a>
 
 ### Verify the Flash Drive
 To verify the Flash drive, copy a file to it, unmount the drive.
@@ -132,7 +132,7 @@ $ diff /home/dummy.txt /home/dummy2.txt
 
 The diff command should show nothing (means copy successfully).
 
-<div id="disconnect-the-flash-drive"></a>
+<a name="disconnect-the-flash-drive"></a>
 
 ### Disconnect the Flash Drive
 
@@ -142,7 +142,7 @@ Issue the umount command to unmount the flash drive so it can safely be removed.
 $ umount /media/usbmsc
 ```
 
-<div id="working-with-a-webcam"></a>
+<a name="working-with-a-webcam"></a>
 
 ## Working with a Webcam
 
@@ -154,7 +154,7 @@ To work with USB video devices, such as webcams, the following packages need to 
 - gstreamer1.0-plugins-good \
 - v4l-utils \
 
-<div id="accessing-a-webcam"></a>
+<a name="accessing-a-webcam"></a>
 
 ### Accessing a webcam
 
@@ -164,7 +164,7 @@ Use the below command to capture an image from a webcam
 $ v4l2-ctl --device /dev/video0 --set-fmt-video=width=640,height=480,pixelformat=MJPG --stream-mmap=3 --stream-count=100 --stream-to=stream.vid
 ```
 
-<div id="usb-spec"></a>
+<a name="mss-usb-hardware-block-configurations"></a>
 
 ## MSS USB hardware block configurations
 
@@ -172,7 +172,7 @@ $ v4l2-ctl --device /dev/video0 --set-fmt-video=width=640,height=480,pixelformat
 2. The USB FIFO size is fixed to 8Kbytes which is shared by all endpoints.
 3. Support for high bandwidth isochronous (ISO) pipe is enabled endpoints for one endpoint i.e endpoint 4.
 
-<div id="issues"></a>
+<a name="known-issues"></a>
 
 ## Known Issues
 

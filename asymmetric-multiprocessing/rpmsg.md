@@ -178,13 +178,13 @@ To do this, it is necessary to build the RPMsg FreeRTOS and bare metal projects 
 
 3. Build the mpfs-rpmsg-freertos project in master mode by clicking the dropdown button next to the build button and select `Master`
 
-<img src="images/sc-freertos-master.png" height="50%" width="50%">
+    ![freertos-freertos-master](images/sc-freertos-master.png)
 
-This should generate a Master-Default folder with the output files resulting from the compilation.
+    This should generate a Master-Default folder with the output files resulting from the compilation.
 
 4. Build the `mpfs-rpmsg-bm` project in remote mode by clicking the dropdown button next to the build button and select `Remote`
 
-<img src="images/sc-bm-remote.png" height="50%" width="50%">
+    ![freertos-bm-remote](images/sc-bm-remote.png)
 
 This should generate a Remote-Default folder with the output files resulting from the compilation.
 
@@ -211,7 +211,7 @@ The polarfire-soc-amp-examples repository provides a resources/ folder with a sa
     sudo dd if=payload.bin of=/dev/sdX
     ```
 
-> Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your USB flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!
+    > Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your USB flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!
 
 5. On power-on, the Icicle Kit should boot the HSS and start the application in each context.
 
@@ -219,7 +219,7 @@ The polarfire-soc-amp-examples repository provides a resources/ folder with a sa
 
 7. The bare metal context with RPMsg in remote mode will display the same menu as described in the step above on UART 3. Select the same demo as chosen on the step above.
 
-![freertos_bm_demo](images/freertos-bm.png)
+    ![freertos_bm_demo](images/freertos-bm.png)
 
 For instance, the image on the right-hand side above, shows the RPMsg application menu when in remote mode. In this case, option two was chosen to run the console demo. This same demo should be selected on the RPMsg master application to run the counterpart of the console demo on the master side.
 
@@ -243,13 +243,13 @@ To do this, it is necessary to build the RPMsg FreeRTOS project using both maste
 
 3. Build the project in master mode by clicking the dropdown button next to the build button and select `Master`
 
-<img src="images/sc-freertos-master.png" height="50%" width="50%">
+    ![freertos_freertos_demo](images/sc-freertos-master.png)
 
-This should generate a Master-Default folder with the output files resulting from the compilation.
+    This should generate a Master-Default folder with the output files resulting from the compilation.
 
 4. Build the project in remote mode by clicking the dropdown button next to the build button and select `Remote`
 
-<img src="images/sc-freertos-remote.png" height="50%" width="50%">
+    ![freertos_freertos_demo](images/sc-freertos-remote.png)
 
 This should generate a Remote-Default folder with the output files resulting from the compilation.
 
@@ -276,7 +276,7 @@ The polarfire-soc-amp-examples repository provides a resources/ folder with a sa
     sudo dd if=payload.bin of=/dev/sdX
     ```
 
-> Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your USB flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!
+    > Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your USB flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!
 
 5. On power-on, the Icicle Kit should boot the HSS and start the application in each context.
 
@@ -284,7 +284,7 @@ The polarfire-soc-amp-examples repository provides a resources/ folder with a sa
 
 7. The FreeRTOS context with RPMsg in remote mode will display the same menu as described in the step above on UART 3. Select the same demo as chosen on the step above.
 
-![freertos_freertos_demo](images/freertos-freertos.png)
+    ![freertos_freertos_demo](images/freertos-freertos.png)
 
 For instance, the image on the right-hand side above, shows the RPMsg application menu when in remote mode. In this case, option two was chosen to run the console demo. This same demo should be selected on the RPMsg master application to run the counterpart of the console demo on the master side.
 
@@ -308,13 +308,13 @@ To do this, it is necessary to build the RPMsg bare metal project using both mas
 
 3. Build the project in master mode by clicking the dropdown button next to the build button and select `Master`
 
-<img src="images/sc-bm-master.png" height="50%" width="50%">
+    ![bm-bm-master](images/sc-bm-master.png)
 
-This should generate a Master-Default folder with the output files resulting from the compilation.
+    This should generate a Master-Default folder with the output files resulting from the compilation.
 
 4. Build the project in remote mode by clicking the dropdown button next to the build button and select `Remote`
 
-<img src="images/sc-bm-remote.png" height="50%" width="50%">
+    ![bm-bm-remote](images/sc-bm-remote.png)
 
 This should generate a Remote-Default folder with the output files resulting from the compilation.
 
@@ -341,7 +341,7 @@ The polarfire-soc-amp-examples repository provides a resources/ folder with a sa
     sudo dd if=payload.bin of=/dev/sdX
     ```
 
-> Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your USB flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!
+    > Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your USB flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!
 
 5. On power-on, the Icicle Kit should boot the HSS and start the application in each context.
 
@@ -349,6 +349,6 @@ The polarfire-soc-amp-examples repository provides a resources/ folder with a sa
 
 7. The bare metal context with RPMsg in remote mode will display the same menu as described in the step above on UART 3. Select the same demo as chosen on the step above.
 
-![bm_bm_demo](images/bm-bm.png)
+    ![bm_bm_demo](images/bm-bm.png)
 
 For instance, the image on the right-hand side above, shows the RPMsg application menu when in remote mode. In this case, option two was chosen to run the console demo. This same demo should be selected on the RPMsg master application to run the counterpart of the console demo on the master side.

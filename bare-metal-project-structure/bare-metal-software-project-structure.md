@@ -24,6 +24,9 @@ This document provides an overview of how PolarFire&reg; SoC example software pr
       - [hal](#hal)
       - [mpfs_hal](#mpfs_hal)
       - [platform_config_reference](#platform_config_reference)
+        - [drivers_config](#ref_drivers_config)
+        - [linker](#ref_linker)
+        - [mpfs_hal_config](#ref_mpfs_hal_config)
       - [soc_config_generator](#soc_config_generator)
   - [Project Types](#project-types)
     - [Generic projects](#generic-projects)
@@ -112,13 +115,13 @@ The *platform_config* folder is initially created from the *platform_config_refe
 
 <a name="drivers_config"></a>
 
-#### drivers_config
+#### platform_config/drivers_config
 
 This *drivers_config* folder contains configuration for the drivers found in */src/platform/drivers*. This folder is rarely required. When required, its use will be explained in the driver's documentation.
 
 <a name="linker"></a>
 
-#### linker
+#### platform_config/linker
 
 The *linker* folder contains linker script(s) specific to the project. It can be used where no linker script provided in the *platform/platform_config_refernce/linker* folder is suitable for the project or where one of these reference linker scripts needs to be modified to suit the project.
 
@@ -126,7 +129,7 @@ The use of this folder is only a suggestion. Nothing in the  bare metal software
 
 <a name="mpfs_hal_config"></a>
 
-#### mpfs_hal_config
+#### platform_config/mpfs_hal_config
 
 This *mpfs_hal_config* folder contains additional configuration of the MPFS HAL where the default MPFS HAL settings are not suitable for this specific project's application. For example, you might want to disable some hardware included in the base design and/or use only a subset of the available RISC-V harts for your application.
 
@@ -190,21 +193,21 @@ The *mpfs_hal* folder contains the PolarFire SoC Hardware Abstraction Layer (MPF
 
 As indicated by the name, the *platform_config_reference* folder is provided as a reference implementation of the *platform_config*. The *platform_config_reference* configures the *platform* to the default settings. You are advised not to edit the contents of this folder. Instead, refer to the **platform_config** section above to understand the process of customizing the *platform* for your application.
 
-<a name="drivers_config"></a>
+<a name="ref_drivers_config"></a>
 
-##### drivers_config
+##### platform_config_reference/drivers_config
 
 This *drivers_config* folder contains the default configuration of the drivers found in     */src/platform/drivers*. The content of this folder is rarely required. If required, its use will be explained in the driver's documentation. However, it is not recommended to modify them in place to avoid difficulties in applying future platform updates.
 
-<a name="linker"></a>
+<a name="ref_linker"></a>
 
-##### linker
+##### platform_config_reference/linker
 
 The *linker* folder contains example linker scripts providing the symbols required by the MPFS HAL to start-up the system and configure memory. These linker scripts can be copied to another location in the project outside of the *platform* folder and customized for your application. However, it is not recommended to modify them in place to avoid difficulties in applying future platform updates.
 
-<a name="mpfs_hal_config"></a>
+<a name="ref_mpfs_hal_config"></a>
 
-##### mpfs_hal_config
+##### platform_config_reference/mpfs_hal_config
 
 The *mpfs_hal_config* folder contains a set of header files containing the default configuration of the MPFS HAL. This default configuration includes the use of all processor cores and the configuration of all hardware blocks included in the microprocessor subsystem configuration selected in the MSS Configurator.
 

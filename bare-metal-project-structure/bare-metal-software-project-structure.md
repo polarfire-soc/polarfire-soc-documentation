@@ -12,9 +12,9 @@ This document provides an overview of how PolarFire&reg; SoC example software pr
         - [libero_tcl](#libero_tcl)
         - [design_description](#design_description)
     - [platform_config](#platform_config)
-      - [drivers_config](#drivers_config)
-      - [linker](#linker)
-      - [mpfs_hal_config](#mpfs_hal_config)
+      - [drivers_config](#platform_config/drivers_config)
+      - [linker](#platform_config/linker)
+      - [mpfs_hal_config](#platform_config/mpfs_hal_config)
     - [middleware](#middleware)
     - [platform](#platform)
       - [drivers](#drivers)
@@ -24,9 +24,9 @@ This document provides an overview of how PolarFire&reg; SoC example software pr
       - [hal](#hal)
       - [mpfs_hal](#mpfs_hal)
       - [platform_config_reference](#platform_config_reference)
-        - [drivers_config](#ref_drivers_config)
-        - [linker](#ref_linker)
-        - [mpfs_hal_config](#ref_mpfs_hal_config)
+        - [drivers_config](#platform_config_reference/drivers_config)
+        - [linker](#platform_config_reference/linker)
+        - [mpfs_hal_config](#platform_config_reference/mpfs_hal_config)
       - [soc_config_generator](#soc_config_generator)
   - [Project Types](#project-types)
     - [Generic projects](#generic-projects)
@@ -113,13 +113,13 @@ The *platform_config* folder is initially created from the *platform_config_refe
 
 ![](./images/folder_structure_l6_platform_config.png)
 
-<a name="drivers_config"></a>
+<a name="platform_config/drivers_config"></a>
 
 #### platform_config/drivers_config
 
 This *drivers_config* folder contains configuration for the drivers found in */src/platform/drivers*. This folder is rarely required. When required, its use will be explained in the driver's documentation.
 
-<a name="linker"></a>
+<a name="platform_config/linker"></a>
 
 #### platform_config/linker
 
@@ -127,7 +127,7 @@ The *linker* folder contains linker script(s) specific to the project. It can be
 
 The use of this folder is only a suggestion. Nothing in the  bare metal software project structure forces you to use such a folder. However, it is recommended that you keep modified reference linker scripts in a location outside of the *platform* folder.
 
-<a name="mpfs_hal_config"></a>
+<a name="platform_config/mpfs_hal_config"></a>
 
 #### platform_config/mpfs_hal_config
 
@@ -193,19 +193,19 @@ The *mpfs_hal* folder contains the PolarFire SoC Hardware Abstraction Layer (MPF
 
 As indicated by the name, the *platform_config_reference* folder is provided as a reference implementation of the *platform_config*. The *platform_config_reference* configures the *platform* to the default settings. You are advised not to edit the contents of this folder. Instead, refer to the **platform_config** section above to understand the process of customizing the *platform* for your application.
 
-<a name="ref_drivers_config"></a>
+<a name="platform_config_reference/drivers_config"></a>
 
 ##### platform_config_reference/drivers_config
 
 This *drivers_config* folder contains the default configuration of the drivers found in     */src/platform/drivers*. The content of this folder is rarely required. If required, its use will be explained in the driver's documentation. However, it is not recommended to modify them in place to avoid difficulties in applying future platform updates.
 
-<a name="ref_linker"></a>
+<a name="platform_config_reference/linker"></a>
 
 ##### platform_config_reference/linker
 
 The *linker* folder contains example linker scripts providing the symbols required by the MPFS HAL to start-up the system and configure memory. These linker scripts can be copied to another location in the project outside of the *platform* folder and customized for your application. However, it is not recommended to modify them in place to avoid difficulties in applying future platform updates.
 
-<a name="ref_mpfs_hal_config"></a>
+<a name="platform_config_reference/mpfs_hal_config"></a>
 
 ##### platform_config_reference/mpfs_hal_config
 

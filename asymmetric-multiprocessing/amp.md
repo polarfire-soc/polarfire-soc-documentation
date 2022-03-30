@@ -71,7 +71,7 @@ For more information on RPMsg protocol, please refer to the [PolarFire SoC RPMsg
 
 ## AMP Configurations
 
-PolarFire SoC supports several AMP configurations including Linux + FreeRTOS, Linux + Bare Metal, RTOS + Bare Metal or Bare Metal + Bare Metal.
+PolarFire SoC supports several AMP configurations including Linux + RTOS, Linux + Bare Metal, RTOS + Bare Metal or Bare Metal + Bare Metal.
 
 Each of the configurations described above have different use cases and should be chosen based on application requirements such as real-time response, security and safety requirements.
 

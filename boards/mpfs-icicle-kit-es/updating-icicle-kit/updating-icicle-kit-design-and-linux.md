@@ -10,6 +10,7 @@
   - [Programming the Linux Image](#programming-the-linux-image)
     - [eMMC](#emmc)
     - [SD Card](#sd-card)
+    - [External QSPI Flash Memory](#external-qspi-flash-memory)
   - [Tools and References](#tools-and-references)
 
 This document provides links to files and instructions to provision an Icicle Kit to boot Linux. To achieve this:
@@ -31,7 +32,13 @@ A FlashPro Express programming job file is provided as an asset with the Icicle 
 
 ### Linux image
 
-A minimal Linux image is provided as an asset with the Meta PolarFire SoC Yocto BSP [releases](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases). This image can be programmed to eMMC or an SD card. The .wic.gz file in the release assets should be downloaded to program into storage using the steps outlined in the [Programming the Linux Image](#Programming-Linux-Image) section.
+A minimal Linux image is provided as an asset with the Meta PolarFire SoC Yocto BSP [releases](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases).
+
+Linux images with a 'wic' file extension use a GUID partition table (GPT) and are suitable for programming to the eMMC or an SD card.
+
+The .wic.gz file in the release assets should be downloaded to program into storage using the steps outlined in the [eMMC](#emmc) or [SD](#sd-card) sections.
+
+Linux images with a 'mtdimg' extension are suitable for programming to an external QSPI flash memory device using the steps outlined in the [External QSPI Flash Memory](#external-qspi-flash-memory) section.
 
 ## Jumper Settings
 
@@ -168,6 +175,53 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
     ![](./images/HSS-boot.png)
 
 11. To verify the Linux image that has been programmed the bundled webserver demo can be run. Instructions for running this demo can be found in the Icicle Kit Quick Start Guide [here](https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide#getting-started).
+
+<a name="external-qspi-flash-memory"></a>
+
+### External QSPI Flash Memory
+
+The Icicle Kit supports booting Linux from QSPI by connecting an external QSPI flash memory to the Raspberry Pi 4 Interface (J26).
+
+For more information on the QSPI flash memory devices supported, please refer to the [booting from QSPI](https://github.com/polarfire-soc/polarfire-soc-documentation/tree/master/boards/mpfs-icicle-kit-es/booting-from-qspi/booting-from-qspi.md) documentation.
+
+The external QSPI flash memory can be programmed using the Hart Software Services (HSS) using the `usbdmsc` command. The HSS `usbdmsc` command exposes the QSPI flash memory as a USB mass storage device through the Icicle Kit's USB-OTG J16 connector located beside the SD card slot.
+
+1. Connect the J11 USB-UART connector to your host PC. This is the micro-USB connector on the same side as the Ethernet connectors. This connection will give you access to 4 of the PolarFire SoC UARTs
+2. Open a terminal application to interact with the HSS through MMUART0. Settings are 115200 baud, 8 data bits, 1 stop bit, no parity, and no flow control.
+3. Power on the board and the Microchip logo will be displayed on MMUART0 as the HSS boots.
+4. Type a key in the terminal application to stop the HSS from booting. This will give you access to the HSS command line interface and a ">>" for input will be displayed in the terminal.
+5. Type `qspi` to select QSPI as the boot source  and then type `usbdmsc` in the HSS command line interface. If successful, a message saying "Waiting for USB Host to connect" will be displayed.
+6. Connect the J16 USB-OTG connector to your host PC. The content will be transferred to the external QSPI flash memory through this connection.
+7. The Icicle Kit should now appear as mass storage device/drive on your host PC.
+8. Download the asset for the Linux image that you want to program to the Icicle Kit from the [Linux image](#Linux-asset) section of this document. The asset should have a `.mtdimg` file extension.
+9. Download and install [USBImager](https://bztsrc.gitlab.io/usbimager/).
+10. Start USBImager
+
+    ![](./images/start.png)
+
+11. Select the *Image file* that was downloaded in step 8. Note: Linux images are generated with a time stamp; assets from different releases will have different names.
+
+    ![](./images/select-file-flash.png)
+
+12. Select the target *Device* to program the image to.
+
+    ![](./images/select-device-flash.png)
+
+13. Click *Write*.
+
+    ![](./images/write-flash.png)
+
+14. Once writing has completed, unmount/eject the drive from the host PC and press `CTRL+C` in the HSS command line interface. Disconnect the micro-USB cable from J16 of the Icicle Kit.
+15. A progress bar will show up, indicating that the image is being transfered to the flash memory connected to the Icicle Kit.
+
+    ![](./images/transfer-flash-wait.png)
+
+16. Once the transfer has completed, the HSS console shoud look as shown in the image below
+
+    ![](./images/flash-transfer-complete.png)
+
+17. Type `boot` to boot the newly copied Linux image.
+18. HSS boot messages will appear on MMUART0 and the Linux boot will appear on MMUART1.
 
 <a name="tools-and-references"></a>
 

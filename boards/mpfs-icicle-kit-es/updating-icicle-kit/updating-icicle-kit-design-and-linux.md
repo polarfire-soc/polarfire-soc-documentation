@@ -109,7 +109,9 @@ Instructions for programming a target using FlashPro Express can be found [here]
 
 ### eMMC
 
-The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) using the `usbdmsc` command. The HSS `usbdmsc` command exposes the eMMC as a USB mass storage device through the Icicle Kit's USB-OTG J16 connector located beside the SD card slot.
+The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) using the `usbdmsc` command. The HSS `usbdmsc` command exposes the eMMC as a USB mass storage device through the Icicle Kit's USB-OTG J16 connector located beside the SD card slot. 
+
+If both QSPI and an MMC services are enabled in the HSS, you must specify the default device to be programmed before running the `usbdmsc` command. For example, to program the eMMC using USBDMSC service, you must select the `mmc` command before running `usbdmsc` command.
 
 #### eMMC content update procedure
 
@@ -117,7 +119,7 @@ The Icicle Kit's eMMC content is written by the Hart Software Services (HSS) usi
 2. Open a terminal application to interact with the HSS through MMUART0. Settings are 115200 baud, 8 data bits, 1 stop bit, no parity, and no flow control.
 3. Power on the board and the Microchip logo will be displayed on MMUART0 as the HSS boots.
 4. Type a key in the terminal application to stop the HSS from booting. This will give you access to the HSS command line interface and a ">>" for input will be displayed in the terminal.
-5. Type `usbdmsc` in the HSS command line interface. If successful, a message saying "Waiting for USB Host to connect" will be displayed.
+5. Type `mmc` to select mmc as a boot source and then `usbdmsc` in the HSS command line interface. If successful, a message saying "Waiting for USB Host to connect" will be displayed.
 6. Connect the J16 USB-OTG connector to your host PC. The eMMC content will be transferred to the Icicle Kit through this connection.
 7. The Icicle Kit should now appear as mass storage device/drive on your host PC.
 8. Download the asset for the Linux image that you want to program to the Icicle Kit from the [Linux image](#Linux-asset) section of this document.
@@ -184,7 +186,9 @@ The Icicle Kit supports booting Linux from QSPI by connecting an external QSPI f
 
 For more information on the QSPI flash memory devices supported, please refer to the [booting from QSPI](https://github.com/polarfire-soc/polarfire-soc-documentation/tree/master/boards/mpfs-icicle-kit-es/booting-from-qspi/booting-from-qspi.md) documentation.
 
-The external QSPI flash memory can be programmed using the Hart Software Services (HSS) using the `usbdmsc` command. The HSS `usbdmsc` command exposes the QSPI flash memory as a USB mass storage device through the Icicle Kit's USB-OTG J16 connector located beside the SD card slot.
+The external QSPI flash memory can be programmed using the Hart Software Services (HSS) using the `usbdmsc` command. The HSS `usbdmsc` command exposes the QSPI flash memory as a USB mass storage device through the Icicle Kit's USB-OTG J16 connector located beside the SD card slot. 
+
+If both QSPI and an MMC services are enabled in the HSS, you must specify the default device to be programmed before running the `usbdmsc` command. For example, to program the external QSPI flash memory using USBDMSC service, you must select the `qspi` command before running `usbdmsc` command.
 
 1. Connect the J11 USB-UART connector to your host PC. This is the micro-USB connector on the same side as the Ethernet connectors. This connection will give you access to 4 of the PolarFire SoC UARTs
 2. Open a terminal application to interact with the HSS through MMUART0. Settings are 115200 baud, 8 data bits, 1 stop bit, no parity, and no flow control.

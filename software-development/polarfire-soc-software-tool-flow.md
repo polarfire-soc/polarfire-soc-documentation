@@ -234,8 +234,16 @@ The Hart Software Services (HSS) is used as a Zero Stage Boot Loader (ZSBL) in P
 It can be found in the [HSS repository](https://github.com/polarfire-soc/hart-software-services).
 
 To boot the HSS, ensure its programmed into the eNVM and the PolarFire SoC system is configured to boot mode 1. On boot the MSS will boot from the eNVM and the HSS will start.
-The HSS will attempt to initialize an SD card, if no card is inserted, the HSS will attempt to initialize the eMMC. There will then be a count down waiting for a user input on UART0. If no key is pressed the HSS will load the payload from eMMC / SD, if a key is pressed the user can enter a service such as the USBDMSC for mounting and programming the eMMC.
-If a valid payload is found, its contents will be unpacked into its destination memory (LIM, DDR, fabric memory etc) and owner U54 harts will be taken out of WFI to run the payload.
+
+The HSS has a fallback mechanism that will attempt to boot from one or more other boot sources if a default boot source fails to initialize.
+
+By default, the sequence is as follows:
+
+The HSS will attempt to initialize the QSPI flash memory device. If no flash memory is connected, the HSS will attempt to initialize the SD card. If no card is inserted, the HSS will attempt to initialize the eMMC.
+
+There will then be a count down waiting for a user input on UART0. If no key is pressed, the HSS attempt to load a payload from any of the boot sources mentioned above. If a key is pressed the user can enter a service such as the USBDMSC for mounting and programming either the external QSPI flash memory or on-board eMMC.
+
+If both QSPI and an MMC services are enabled in the HSS, you must specify the default device to be programmed before running the `usbdmsc` command. For more information on how to use the usbdmsc command to program the on-board eMMC or an external QSPI flash memory device, please refer to the [Programming a Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md#programming-the-linux-image) documentation.
 
 <a name="configuring-the-hss"></a>
 

@@ -54,6 +54,7 @@ Example USB enumeration log:
 <a name="mounting-the-flash-drive"></a>
 
 ### Mounting the Flash Drive
+
 The flash drive can be mounted in Linux using the following method
 
 Create a directory such as usbmsc inside media. This will be the mount point for the flash drive.
@@ -79,8 +80,7 @@ The output should contain a line similar to one of the following lines:
 sdX is the drive identifier that should be used in the following commands, where X should be replaced with the specific character from the output of the previous command.
 For these examples the identifier sdX is used.
 
-WARNING:
-
+**WARNING:**
     The drive with the identifier `sda` is the default location for your operating system.  
     DO NOT pass this identifier to any of the commands listed here without being absolutely sure that your OS is not located here.  
     Check that the size of the card matches the dmesg output before continuing.  
@@ -94,6 +94,7 @@ $ mount -t vfat /dev/sdX /media/usbmsc
 <a name="accessing-the-flash-drive"></a>
 
 ### Accessing the Flash Drive
+
 Change the current directory to Flash drive.
 
 ```sh
@@ -109,6 +110,7 @@ $ ls
 <a name="verify-the-flash-drive"></a>
 
 ### Verify the Flash Drive
+
 To verify the Flash drive, copy a file to it, unmount the drive.
 
 ```sh

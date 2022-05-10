@@ -76,7 +76,7 @@ The IHC subsystem contains five Inter-Hart Communication Interrupt Aggregators (
 
 This section provides an overview of the default IHC configuration provided in the [Icicle Kit reference design](https://github.com/polarfire-soc/icicle-kit-reference-design).
 
-<a name="channel-assignment></a>
+<a name="channel-assignment"></a>
 
 ### Channel Assignment
 

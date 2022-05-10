@@ -40,6 +40,8 @@ The .wic.gz file in the release assets should be downloaded to program into stor
 
 Linux images with a 'mtdimg' extension are suitable for programming to an external QSPI flash memory device using the steps outlined in the [External QSPI Flash Memory](#external-qspi-flash-memory) section.
 
+When updating the Icicle Kit as shown in this section, make sure to keep both the Icicle Kit Reference Design and Linux image versions in sync by using the latest release assets.
+
 ## Jumper Settings
 
 The Icicle Kit jumper settings required to boot Linux are as follows:

@@ -12,18 +12,47 @@ for a detailed description of PolarFire SoC.
 
 ## Build the HSS
 
+Clone the Hart Software Services repository
+
 ```shell
-$ git clone ssh://git@bitbucket.microchip.com/fpga_pfsoc_es/hart-software-services.git
+$ git clone https://github.com/polarfire-soc/hart-software-services.git
+```
+
+Copy the default configuration for your board. For example:
+
+```shell
 $ cd hart-software-services
 $ cp boards/mpfs-icicle-kit-es/def_config .config
 ```
 
-Edit .config and ensure that *CONFIG_SERVICE_SPI* is enabled in the .config file.
+Edit the default HSS configuration using menuconfig command as shown below:
 
-Ensure that jumpers 34/43 on the Icicle kit are correctly set for 1v8 operation.
+```shell
+$ make menuconfig
+```
+
+After running the command shown above a configuration menu should pop-up.
+
+Navigate to the "Services" category
+
+![](images/image0010.png)
+
+Select the "Boot from System Controller SPI flash support" option by pressing the space/enter button
+
+![](images/image0011.png)
+
+Exit menuconfig by pressing the "Q" in the keyboard and save the configuration when prompted
+
+Build the HSS using the `make` command as shown below. Alternatively, build the HSS using Softconsole as shown [here](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/3b3b9bf76c9cca817f085de184263bec1805e601/software-development/polarfire-soc-software-tool-flow.md#building-the-hss-using-softconsole).
 
 ```shell
 $ make
+```
+
+Flash the HSS to your board from the command line using the command shown below. Alternatively, use the SoftConsole GUI as shown in the [Programming the eNVM](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/3b3b9bf76c9cca817f085de184263bec1805e601/software-development/polarfire-soc-software-tool-flow.md#programming-the-envm) documentation.
+
+```shell
+$ make program
 ```
 
 From either Buildroot or Yocto, you should have a payload.bin file which
@@ -48,7 +77,7 @@ Clone the Icicle Kit reference design (`git clone
  https://github.com/polarfire-soc/icicle-kit-reference-design.git`) and
 Open Libero. Either click `Project→Execute Script` (or press CTRL-u)
 to get the `Execute Script` dialog, and click "..." to select either
-eMMC or SD Tcl script:
+the Icicle Kit reference design Tcl script:
 
 ![](images/image0001.png)
 

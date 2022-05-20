@@ -31,7 +31,7 @@ Edit the default HSS configuration using menuconfig command as shown below:
 $ make menuconfig
 ```
 
-After running the command shown above a configuration menu should pop-up.
+After running the command shown above, a configuration menu should pop-up.
 
 Navigate to the "Services" category
 

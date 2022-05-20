@@ -76,8 +76,8 @@ $ sudo pip install bincopy
 Clone the Icicle Kit reference design (`git clone
  https://github.com/polarfire-soc/icicle-kit-reference-design.git`) and
 Open Libero. Either click `Project→Execute Script` (or press CTRL-u)
-to get the `Execute Script` dialog, and click "..." to select either
-the Icicle Kit reference design Tcl script:
+to get the `Execute Script` dialog, and click "..." to select the
+Icicle Kit reference design Tcl script:
 
 ![](images/image0001.png)
 

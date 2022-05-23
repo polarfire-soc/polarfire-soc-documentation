@@ -158,7 +158,7 @@ Set the value of the WayEnable to the number of ways you want enabled as cache m
 
 Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value.
 
-#### Scratchpad Memory
+#### L2 Scratchpad Memory
 
 Cache ways enabled as cache using the WayEnable register can be further configured to be accessible through the the Zero Device memory address range as a general purpose scratchpad memory by careful manipulation of the WayMask registers.
 
@@ -172,7 +172,7 @@ The algorithm for setting up scratchpad memory is detailed in the L2 Cache Contr
 
 Note: The _WayMasks Registers_ in the diagram above is the logical OR of all 15 WayMask registers. This diagram assumes that all WayMask registers contain the same value. Using different values for WayMask registers allows fine-grained control over which L2 masters can evist from specific ways. This can be used for tuning system performance.
 
-#### Master Affinity
+#### L2 Master Affinity
 
 The WayMask control registers can be used to control an L2 master's affinity to specific cache ways. The examples above all assumed that all WayMask registers had the same value. We can partition the enabled cache ways between masters, allowing more cache for a set of masters than others based on system performance requirements or preventing performance interference from a system's task associated with a specific master.
 

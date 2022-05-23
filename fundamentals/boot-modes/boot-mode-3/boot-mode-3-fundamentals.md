@@ -48,13 +48,17 @@ The ECDSA signature is generated using a secret random number (k). This random n
 
 The ECDSA signature is made up of two scalar values (integers): (r) and (s). The value of (r) is the x-axis of the point on the curve computed by point multiplication of the base point (G) by the secret random number (k):
 
-*(x,y) = k * G*  
-*r = x*
+```text
+(x,y) = k * G
+r = x
+```
 
 The (s) part fo the signature is computed using the hash (z) of the message to sign, the private key (d) and the secret random number (k):
 
-*z = hash of message*  
-*s = (z + r.d)k ^-1^*
+```text
+z = hash of message
+s = (z + r.d)k ^-1^
+```
 
 The (s) part of the signature is designed such that it can be used to reconstruct the value of (r) using the public key (Q) and the hash of the message (z).
 
@@ -62,16 +66,20 @@ The (s) part of the signature is designed such that it can be used to reconstruc
 
 The certificate authentication is performed using the agreed curve and base point (G) by computing the signature check value (r') from the hash of the message (z), the (s) part of the signature and the public key (Q) using the following equations:
 
-*u~1~ = z.s^-1^*  
-*u~2 ~= r.s^-1^*  
-*(x, y) = (u~1~ \* G) + (u~2~ \* Q)*  
-*r' = x*
+```text
+u~1~ = z.s^-1^  
+u~2 ~= r.s^-1^
+(x, y) = (u~1~ \* G) + (u~2~ \* Q)
+r' = x
+```
 
 The authentication is successful if the computed value (r') matches the (r) value of the certificate's signature.
 
 The magic of ECDSA is the ability of the authenticating side to recompute the same point (P) on the curve using the hash of the message (z), the signature (s) and the public key as the signing side using the random number (k) and the curve's base point (G).
 
-*(x,y) = (u~1~ \* G) + (u~2~ \* Q) = k \* G*  
+```text
+(x,y) = (u~1~ * G) + (u~2~ * Q) = k * G
+```
 
 Please refer to the [ECDSA Wikipedia page](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) for a more detailed explanation of the correctness of the algorithm.
 

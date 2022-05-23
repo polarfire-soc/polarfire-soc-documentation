@@ -152,7 +152,7 @@ The module's output will generate incrementing data to benchmark the performance
 ### Hardware Configuration
 
 The hardware configuration for the demonstration is shown in the following diagram, displaying the connections that are made using only the 'AXI4_STREAM_DEMO' flag.
-In this configuration, the DMA Controller directs data to memory based on the address specified in the stream descriptor created by the bare metal application. 
+In this configuration, the DMA Controller directs data to memory based on the address specified in the stream descriptor created by the bare metal application.
 Non-cached DDR is the default memory destination.
 
 ![Software Config](./images/mpfs-axi4-stream-demo/mpfs-axi-stream-demo_hardware_bd.svg)

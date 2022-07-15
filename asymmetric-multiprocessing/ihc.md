@@ -127,7 +127,7 @@ a) notify a 'remote' software context that a message has been posted in a ring b
 
 b) send/receive the ring buffer (vring) ID where the sender context posted a message
 
-For more information on the RPMsg framework, please refer to the [RPMsg](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/asymmetric-multiprocessing/rpmsg.md) documentation page
+For more information on the RPMsg framework, please refer to the [RPMsg](https://mi-v-ecosystem.github.io/redirects/asymmetric-multiprocessing_rpmsg) documentation page
 
 <a name="context-a-to-context-b-communication"></a>
 

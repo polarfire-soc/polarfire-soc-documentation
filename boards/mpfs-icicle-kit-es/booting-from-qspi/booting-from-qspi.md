@@ -38,7 +38,7 @@ In regards to QSPI the Hart Software Services (HSS) can be used to:
 <a name="using-usbdmsc-service"></a>
 ### Using USBDMSC service
 
-The external QSPI flash memory can be programmed using the HSS's USBDMSC service by connecting the Icicle Kit to the host PC. For more information on how to program a Linux image to a QSPI flash memory please refer to the [Updating the Icicle Kit Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) documentation.
+The external QSPI flash memory can be programmed using the HSS's USBDMSC service by connecting the Icicle Kit to the host PC. For more information on how to program a Linux image to a QSPI flash memory please refer to the [Updating the Icicle Kit Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) documentation.
 
 <a name="boot-sequence"></a>
 
@@ -47,6 +47,3 @@ The external QSPI flash memory can be programmed using the HSS's USBDMSC service
 The HSS will attempt to initialize the QSPI flash memory device. If no flash memory is connected, the HSS will attempt to initialize the SD card. If no card is inserted, the HSS will attempt to initialize the eMMC.
 
 If a valid payload is found in any of the boot sources mentioned above, its contents will be unpacked into its destination memory (LIM, DDR, fabric memory etc) and owner U54 harts will be taken out of WFI to run the payload.
-
-
-

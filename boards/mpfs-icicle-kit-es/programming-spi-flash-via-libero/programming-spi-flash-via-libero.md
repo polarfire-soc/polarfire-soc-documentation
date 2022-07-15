@@ -43,13 +43,13 @@ Select the "Boot from System Controller SPI flash support" option by pressing th
 
 Exit menuconfig by pressing the "Q" in the keyboard and save the configuration when prompted
 
-Build the HSS using the `make` command as shown below. Alternatively, build the HSS using Softconsole as shown [here](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/3b3b9bf76c9cca817f085de184263bec1805e601/software-development/polarfire-soc-software-tool-flow.md#building-the-hss-using-softconsole).
+Build the HSS using the `make` command as shown below. Alternatively, build the HSS using Softconsole as shown in the "Building the HSS using SoftConsole" section of this [document](https://mi-v-ecosystem.github.io/redirects/software-development_polarfire-soc-software-tool-flow).
 
 ```shell
 $ make
 ```
 
-Flash the HSS to your board from the command line using the command shown below. Alternatively, use the SoftConsole GUI as shown in the [Programming the eNVM](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/3b3b9bf76c9cca817f085de184263bec1805e601/software-development/polarfire-soc-software-tool-flow.md#programming-the-envm) documentation.
+Flash the HSS to your board from the command line using the command shown below. Alternatively, use the SoftConsole GUI as shown in the "Programming the eNVM" section of this [document](https://mi-v-ecosystem.github.io/redirects/software-development_polarfire-soc-software-tool-flow).
 
 ```shell
 $ make program

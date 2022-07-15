@@ -24,7 +24,7 @@ The PolarFire SoC USB Linux driver is available with [yocto](https://github.com/
 
 Before power up, make sure that Icicle Kit jumpers J15 and J17 are closed to use PolarFire SoC as a USB Host.
 
-Note: The default jumper configuration for the Icicle Kit, shown [here](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md), requires J15 and J17 to be open to act as a USB device. To program the eMMC again, open jumpers J15 and J17.
+Note: The default jumper configuration for the Icicle Kit, shown [here](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux), requires J15 and J17 to be open to act as a USB device. To program the eMMC again, open jumpers J15 and J17.
 
 <a name="flash-drive"></a>
 

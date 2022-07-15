@@ -16,7 +16,7 @@ MMUART0 displays the Hart Software Service (HSS) boot messages and U-Boot messag
 
 ## Reprogramming With The Latest Reference Design
 
-The document [Updating PolarFire SoC Icicle Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md)  provides links to the FPGA programming files and pre-built Linux images for the Icicle Kit's reference design.
+The document [Updating PolarFire SoC Icicle Kit FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux)  provides links to the FPGA programming files and pre-built Linux images for the Icicle Kit's reference design.
 
 ## Reference
 

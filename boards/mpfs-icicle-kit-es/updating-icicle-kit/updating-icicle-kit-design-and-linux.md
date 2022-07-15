@@ -186,7 +186,7 @@ If both QSPI and an MMC services are enabled in the HSS, you must specify the de
 
 The Icicle Kit supports booting Linux from QSPI by connecting an external Winbond W25N01GVZEIG QSPI NAND flash memory  to the Raspberry Pi 4 Interface (J26).
 
-For more information on the QSPI flash memory devices supported, please refer to the [booting from QSPI](https://github.com/polarfire-soc/polarfire-soc-documentation/tree/master/boards/mpfs-icicle-kit-es/booting-from-qspi/booting-from-qspi.md) documentation.
+For more information on the QSPI flash memory devices supported, please refer to the [booting from QSPI](https://mi-v-ecosystem.github.io/redirects/booting-from-qspi_booting-from-qspi) documentation.
 
 The external QSPI flash memory can be programmed using the Hart Software Services (HSS) using the `usbdmsc` command. The HSS `usbdmsc` command exposes the QSPI flash memory as a USB mass storage device through the Icicle Kit's USB-OTG J16 connector located beside the SD card slot.
 

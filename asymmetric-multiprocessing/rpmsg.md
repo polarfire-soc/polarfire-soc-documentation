@@ -205,7 +205,7 @@ The polarfire-soc-amp-examples repository provides a resources/ folder with a sa
     hss-payload-generator -c hss-payload-freertos_bm.yaml payload.bin
     ```
 
-4. Flash the payload from the tools/ directory to eMMC or SD-card following the steps shown in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) document to program using USBImager or, for example, using dd on Linux:
+4. Flash the payload from the tools/ directory to eMMC or SD-card following the steps shown in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) document to program using USBImager or, for example, using dd on Linux:
 
     ```bash
     sudo dd if=payload.bin of=/dev/sdX
@@ -270,7 +270,7 @@ The polarfire-soc-amp-examples repository provides a resources/ folder with a sa
     hss-payload-generator -c hss-payload-freertos_freertos.yaml payload.bin
     ```
 
-4. Flash the payload from the tools/ directory to eMMC or SD-card following the steps shown in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) document to program using USBImager or, for example, using dd on Linux:
+4. Flash the payload from the tools/ directory to eMMC or SD-card following the steps shown in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) document to program using USBImager or, for example, using dd on Linux:
 
     ```bash
     sudo dd if=payload.bin of=/dev/sdX
@@ -335,7 +335,7 @@ The polarfire-soc-amp-examples repository provides a resources/ folder with a sa
     hss-payload-generator -c hss-payload-bm_bm.yaml payload.bin
     ```
 
-4. Flash the payload from the tools/ directory to eMMC or SD-card following the steps shown in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) document to program using USBImager or, for example, using dd on Linux:
+4. Flash the payload from the tools/ directory to eMMC or SD-card following the steps shown in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) document to program using USBImager or, for example, using dd on Linux:
 
     ```bash
     sudo dd if=payload.bin of=/dev/sdX

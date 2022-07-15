@@ -140,7 +140,7 @@ There are several starting points a user can choose with different levels of con
 
 ### FlashPro Express and provided Linux images
 
-FlashPro Express files and Linux images are available for download from the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md#Links) document.
+FlashPro Express files and Linux images are available for download from the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) document.
 FlashPro Express programming job files can be used to program the FPGA from a pre-generated design the Linux images are pre-built into payloads to be written to eMMC or SD cards by the user.
 
 ![](./images/tool_flow_fpexpress_linux.svg)
@@ -149,7 +149,7 @@ FlashPro Express programming job files can be used to program the FPGA from a pr
 
 ### FlashPro Express and bare metal or Linux flow
 
-FlashPro Express programming job files are available for download from the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md#Links) document.
+FlashPro Express programming job files are available for download from the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) document.
 They can be used to program the FPGA from a pre-generated design. XML for the designs is provided in the reference design [xml folder](https://github.com/polarfire-soc/icicle-kit-reference-design/tree/master/XML).
 The user can then use the provided XML to run the bare metal or Linux flow they desire and program the external memory (i.e eMMC or SD). The provided FlashPro Express programming job files will program the FPGA fabric and the eNVM and then set the boot mode to 1.
 
@@ -195,7 +195,7 @@ FlashPro Express is also installed as part of a Libero installation and a shortc
     [Program and Debug tool installation]/Program_Debug_Tool/bin64/FPExpress
     ```
 
-FlashPro Express uses pre-generated bitstreams stored in a programming job file to program a target. Programming job files for the Icicle Kit can be found in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md) document.
+FlashPro Express uses pre-generated bitstreams stored in a programming job file to program a target. Programming job files for the Icicle Kit can be found in the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) document.
 
 1. Create a new FP Express job:
 
@@ -249,7 +249,7 @@ There will then be a count down waiting for a user input on the HSS UART console
 
 If both QSPI and an MMC services are enabled in the HSS, you must specify the default device to be programmed before running the `usbdmsc` command. For example, to program the eMMC using USBDMSC service, you must use the `mmc` command before running usbdmsc command. To program the external QSPI flash memory, use the `qspi` command before running usbdmsc.
 
-Please refer to the [Programming a Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md#programming-the-linux-image) documentation for more information on how to use the usbdmsc command to program the eMMC or an external QSPI flash memory device.
+Please refer to the [Programming a Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) documentation for more information on how to use the usbdmsc command to program the eMMC or an external QSPI flash memory device.
 
 <a name="configuring-the-hss"></a>
 
@@ -430,4 +430,4 @@ The eMMC and SD cards can be programmed using the HSS's "USBDMSC" service and a 
 
 SD cards can also be programmed directly on Windows using Win32DiskImager or using dd on Linux.
 
-Instructions for programming the eMMC and SD cards with HSS payloads can be found in the [Programming the Linux Image](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/boards/mpfs-icicle-kit-es/updating-icicle-kit/updating-icicle-kit-design-and-linux.md#Programming-Linux-Image) document.
+Instructions for programming the eMMC and SD cards with HSS payloads can be found in the "Programming the Linux Image" section of this [document](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux).

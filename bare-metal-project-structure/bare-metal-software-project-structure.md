@@ -277,7 +277,7 @@ The XML design description file is used as input to a script located in *src/pla
 
 ## MSS Configurator and Libero project
 
-For more information on the Libero and MSS Configurator tools, pleaser refer to the [Tool Flow](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/software-development/polarfire-soc-software-tool-flow.md#tool-flow)
+For more information on the Libero and MSS Configurator tools, pleaser refer to the [Tool Flow](https://mi-v-ecosystem.github.io/redirects/software-development_polarfire-soc-software-tool-flow)
 
 ![](./images/folder_structure_l6_tcl_to_xml.png)
 

@@ -55,7 +55,7 @@ In addition to this, the HSS payload header describes which harts are associated
 
 ![amp-boot-flow](images/amp-boot-flow.png)
 
-For further information on [HSS payloads](https://github.com/polarfire-soc/polarfire-soc-documentation/blob/master/software-development/hss-payloads.md), please refer to the HSS payload documentation page.
+For further information on [HSS payloads](https://mi-v-ecosystem.github.io/redirects/software-development_hss-payloads), please refer to the HSS payload documentation page.
 
 <a name="inter-hart-communication-ihc"></a>
 
@@ -214,7 +214,3 @@ The HSS payload generator can be used to create custom AMP configurations includ
 The `mpfs-rpmsg-freertos` and `mpfs-rpmsg-bm` SoftConsole projects included within the [PolarFire SoC AMP examples](https://github.com/polarfire-soc/polarfire-soc-amp-examples) repository allow a FreeRTOS + BM, FreeRTOS + FreeRTOS or Bare Metal + Bare Metal AMP configuration demo to be built with RPMsg communication.
 
 For more information on how to build these demos, please refer to the [RPMsg on FreeRTOS/Bare Metal](rpmsg.md#rpmsg-rtos-intro) section in the PolarFire SoC RPMsg documentation page.
-
-
-
-

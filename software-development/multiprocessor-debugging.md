@@ -29,7 +29,7 @@ Before debugging the user application, ensure to complete the following steps:
 
 To debug the application, perform the following step:
 
-1. Clone or download the [polarfire-soc-bare-metal-examples](https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples) project as shown in the following figure and extract the same on the host PC.
+1. Clone or download the [polarfire-soc-bare-metal-examples](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-bare-metal-examples) project as shown in the following figure and extract the same on the host PC.
 
     ![](./images/download_project.png)
 

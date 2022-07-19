@@ -20,7 +20,7 @@ The document [Updating PolarFire SoC Icicle Kit FPGA Design and Linux Image](htt
 
 ## Reference
 
-[Polarfire-SoC Yocto Board Support Package](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp)  
-[PolarFire SoC Buildroot Linux Software Development Kit](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk)  
+[Polarfire-SoC Yocto Board Support Package](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp)
+[PolarFire SoC Buildroot Linux Software Development Kit](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-buildroot-sdk)
 [PolarFire SoC Icicle Kit Quick Start Guide](https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide#overview)  
 [PolarFire SoC Icicle Kit Schematics (Preliminary)](https://www.microsemi.com/document-portal/doc_download/1244587-polarfire-soc-icicle-kit-schematics)

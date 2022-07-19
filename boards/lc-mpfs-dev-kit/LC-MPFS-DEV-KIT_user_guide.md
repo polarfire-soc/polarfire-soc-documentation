@@ -28,10 +28,10 @@ The latest revisions of the FPGA programming files are available [here](http://s
 
 The Linux image for the HiFive Unleashed Platform can be built using either the Buildroot or Yocto build systems. The table below contains links to these build systems.
 
-| Build System | Location                                                                                    |
-| ------------ | ------------------------------------------------------------------------------------------- |
-| Buildroot    | [Polarfire SoC Buildroot SDK](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) |
-| Yocto        | [Polarfire SoC Yocto SDK](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp)    |
+| Build System | Location                                                                                                   |
+| ------------ | ---------------------------------------------------------------------------------------------------------- |
+| Buildroot    | [Polarfire SoC Buildroot SDK](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-buildroot-sdk) |
+| Yocto        | [Polarfire SoC Yocto SDK](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp)    |
 
 ### Polarfire SoC Buildroot SDK for the HiFive Unleashed Expansion Board
 

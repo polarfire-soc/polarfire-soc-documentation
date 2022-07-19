@@ -37,7 +37,7 @@ The supported PolarFire SoC AMP software architecture is described below:
 
 - 4x U54 application cores which can be distributed between two independent software contexts
 
-The [Hart Software Services](https://github.com/polarfire-soc/hart-software-services) (HSS) is a superloop monitor software running on the E51 processor. One of the many functions of the HSS is to act as a first-stage bootloader as part of the boot service. Please refer to the  [AMP boot flow](#amp-boot-flow) section for further information on the boot process.
+The [Hart Software Services](https://mi-v-ecosystem.github.io/redirects/repo-hart-software-services) (HSS) is a superloop monitor software running on the E51 processor. One of the many functions of the HSS is to act as a first-stage bootloader as part of the boot service. Please refer to the  [AMP boot flow](#amp-boot-flow) section for further information on the boot process.
 
 <a name="amp-boot-flow"></a>
 
@@ -83,7 +83,7 @@ One of the most common approaches is to use a general purpose operating system s
 
 The Linux and FreeRTOS/Bare Metal AMP configuration consists of a Linux OS running in one context and a FreeRTOS application running on the second context, or running Linux in one context and a bare metal application on the second context.
 
-The PolarFire SoC [Yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) and [Buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) build environments provide an Icicle Kit AMP machine which can be used to build a Linux + FreeRTOS/BM AMP configuration demo.
+The PolarFire SoC [Yocto](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp) and [Buildroot](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-buildroot-sdk) build environments provide an Icicle Kit AMP machine which can be used to build a Linux + FreeRTOS/BM AMP configuration demo.
 
 The demo runs Linux on harts 1-2-3 and a FreeRTOS or Bare metal AMP application on hart 4. The demo contains several applications to send/receive messages between Linux and FreeRTOS using the RPMsg framework.
 
@@ -122,7 +122,7 @@ The table below describes the DDR memory layout used in this demo:
 
 ### Building the Linux + FreeRTOS/Bare Metal Demo
 
-Pre-requisites: Before following the steps described in this section, make sure you have the latest [Yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) or [Buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) build systems configured and setup in your system. Please refer to the README of each build system for further information.
+Pre-requisites: Before following the steps described in this section, make sure you have the latest [Yocto](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp) or [Buildroot](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-buildroot-sdk) build systems configured and setup in your system. Please refer to the README of each build system for further information.
 
 <a name="build-linux--freertos--bm-amp-demo-using-yocto"></a>
 #### Build Linux + FreeRTOS/Bare Metal AMP Demo using Yocto
@@ -211,6 +211,6 @@ For more information on how to use the RPMsg applications, please refer to the [
 
 The HSS payload generator can be used to create custom AMP configurations including RTOS + RTOS, RTOS + Bare metal or Bare metal + Bare metal.
 
-The `mpfs-rpmsg-freertos` and `mpfs-rpmsg-bm` SoftConsole projects included within the [PolarFire SoC AMP examples](https://github.com/polarfire-soc/polarfire-soc-amp-examples) repository allow a FreeRTOS + BM, FreeRTOS + FreeRTOS or Bare Metal + Bare Metal AMP configuration demo to be built with RPMsg communication.
+The `mpfs-rpmsg-freertos` and `mpfs-rpmsg-bm` SoftConsole projects included within the [PolarFire SoC AMP examples](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-amp-examples) repository allow a FreeRTOS + BM, FreeRTOS + FreeRTOS or Bare Metal + Bare Metal AMP configuration demo to be built with RPMsg communication.
 
 For more information on how to build these demos, please refer to the [RPMsg on FreeRTOS/Bare Metal](rpmsg.md#rpmsg-rtos-intro) section in the PolarFire SoC RPMsg documentation page.

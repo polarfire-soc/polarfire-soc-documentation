@@ -8,7 +8,7 @@ Please refer to the Microsemi [website](https://www.microsemi.com/product-direct
 
 Supported boards include:
 
-- [PolarFire SoC Icicle Kit](https://github.com/polarfire-soc/polarfire-soc-documentation/tree/master/boards/mpfs-icicle-kit-es)
+- [PolarFire SoC Icicle Kit](https://mi-v-ecosystem.github.io/redirects/boards-mpfs-icicle-kit-es)
 - [HiFive Unleashed with Expansion Board](https://mi-v-ecosystem.github.io/redirects/mpfs-dev-kit_MPFS-DEV-KIT_user_guide)
 - [LC-MPFS-DEV-KIT](https://mi-v-ecosystem.github.io/redirects/lc-mpfs-dev-kit_LC-MPFS-DEV-KIT_user_guide)
 

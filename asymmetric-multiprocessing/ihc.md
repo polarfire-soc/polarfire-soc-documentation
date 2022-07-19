@@ -109,7 +109,7 @@ This image below provides a simplified diagram representing the connection betwe
 
 ![ihc-basic-view](images/ihc-animation.gif)
 
-For further information on the IHC layout, please refer to the [Icicle Kit Reference Design](https://github.com/polarfire-soc/icicle-kit-reference-design) README.
+For further information on the IHC layout, please refer to the [Icicle Kit Reference Design](https://mi-v-ecosystem.github.io/redirects/repo-icicle-kit-reference-design) README.
 
 <a name="associated-software"></a>
 

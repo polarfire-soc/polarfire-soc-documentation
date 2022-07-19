@@ -15,7 +15,7 @@ The project has two configurations:
 Both configurations can be generated using the Icicle Kit Reference Design Tcl script by passing arguments in the "Execute Script" dialogue in Libero Soc.
 The `AXI4_STREAM_DEMO`, or `AXI4_STREAM_DEMO` and `BFM_SIMULATION` arguments must be passed to the script dialogue to generate the hardware or simulation configurations respectively.
 
-Further information on the Icicle Kit Reference Design Generation Tcl Scripts is available on the following [GitHub repository](https://github.com/polarfire-soc/icicle-kit-reference-design).
+Further information on the Icicle Kit Reference Design Generation Tcl Scripts is available on the following [GitHub repository](https://mi-v-ecosystem.github.io/redirects/repo-icicle-kit-reference-design).
 
 The project consists of a data source, the `AXI4_STREAM_DATA_GENERATOR` module, which is connected to a fabric DMA Controller using an AXI4-Stream interface.
 The DMA Controller directs data it receives to memory, based on a stream descriptor stored in shared memory.

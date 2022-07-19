@@ -118,7 +118,7 @@ The application then uses this /dev/rpmsgX device to send chunks of data (payloa
     root@icicle-kit-es-amp:~# ./rpmsg-pingpong
     ```
 
-    For more information on how to build/run the rpmsg-pingpong linux example, please refer to the [polarfire-soc-linux-examples repository](https://github.com/polarfire-soc/polarfire-soc-linux-examples).
+    For more information on how to build/run the rpmsg-pingpong linux example, please refer to the [polarfire-soc-linux-examples repository](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-linux-examples).
 
 5. The application should start sending/receiving messages. At the end, a test report should be displayed in the Linux console:
 

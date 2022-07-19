@@ -16,7 +16,7 @@ The PolarFire SoC FPGA devices contain one instance of a Universal Serial Bus (U
 
 This document describes the steps to test the USB host on the Icicle kit using a flash drive and a webcam. It also describes the required hardware configuration for the USB controller and some known issues.
 
-The PolarFire SoC USB Linux driver is available with [yocto](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) and [buildroot](https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk) from the Microchip Public GIT server under polarfire-soc.
+The PolarFire SoC USB Linux driver is available with [yocto](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp) and [buildroot](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-buildroot-sdk) from the Microchip Public GIT server under polarfire-soc.
 
 <a name="jumper-settings"></a>
 

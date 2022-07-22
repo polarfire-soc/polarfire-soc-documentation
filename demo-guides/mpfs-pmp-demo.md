@@ -73,7 +73,7 @@ Program the eNVM with the updated HSS using SoftConsole with bootmode1 option.
 The HSS Payload Generator is used to create a formatted payload image from application elf files for the HSS bootloader on PolarFire SoC.  
 In this demo, the payload generator takes mpfs-pmp-app-u54-1.elf and mpfs-pmp-app-u54-3.elf as input files and generates the payload.bin file.
 
-**Payload generator tool** Refer to the [link](https://github.com/polarfire-soc/hart-software-services/tree/master/tools/hss-payload-generator)
+**Payload generator tool** Refer to the [link](https://mi-v-ecosystem.github.io/redirects/tool-hss-payload-generator)
 
 **hss-payload-generator Binaries** download from [here](https://mi-v-ecosystem.github.io/redirects/releases-hart-software-services).
 
@@ -93,7 +93,7 @@ payloads:
 
 ### Command to generate payload.bin file
 
-Download mpfs-pmp-app SoftConsole projects from [here](https://github.com/polarfire-soc/polarfire-soc-bare-metal-examples/tree/main/applications/mpfs-pmp-demo) and build.
+Download mpfs-pmp-app SoftConsole projects from [here](https://mi-v-ecosystem.github.io/redirects/demo-mpfs-pmp-demo) and build.
 
 Copy the mpfs-pmp-app-u54-1.elf, mpfs-pmp-app-u54-3.elf and config.yaml to the directory where hss-payload-generator.exe is located and execute the hss-payload-generator command, as follows.
 

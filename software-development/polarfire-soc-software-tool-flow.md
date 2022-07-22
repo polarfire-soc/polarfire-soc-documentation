@@ -150,7 +150,7 @@ FlashPro Express programming job files can be used to program the FPGA from a pr
 ### FlashPro Express and bare metal or Linux flow
 
 FlashPro Express programming job files are available for download from the [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) document.
-They can be used to program the FPGA from a pre-generated design. XML for the designs is provided in the reference design [xml folder](https://github.com/polarfire-soc/icicle-kit-reference-design/tree/master/XML).
+They can be used to program the FPGA from a pre-generated design. XML for the designs is provided in the reference design [xml folder](https://mi-v-ecosystem.github.io/redirects/repo-icicle-kit-reference-design).
 The user can then use the provided XML to run the bare metal or Linux flow they desire and program the external memory (i.e eMMC or SD). The provided FlashPro Express programming job files will program the FPGA fabric and the eNVM and then set the boot mode to 1.
 
 ![](./images/tool_flow_fpexpress.svg)

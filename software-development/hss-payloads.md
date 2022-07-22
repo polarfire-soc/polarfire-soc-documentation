@@ -40,7 +40,7 @@ The HSS Payload Generator creates a payload that will be copied from non-volatil
 
 ## Downloading the HSS Payload Generator
 
-The HSS Payload Generator source code is bundled as a tool with the Hart Software Services, it's source code is available from the HSS repository on GitHub [here](https://github.com/polarfire-soc/hart-software-services/tree/master/tools/hss-payload-generator).
+The HSS Payload Generator source code is bundled as a tool with the Hart Software Services, it's source code is available from the HSS repository on GitHub [here](https://mi-v-ecosystem.github.io/redirects/tool-hss-payload-generator).
 
 <a name="executables"></a>
 

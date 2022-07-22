@@ -280,7 +280,7 @@ Setting this to an appropriate address for your DDR address space – for exampl
 
 The HSS payload generator tool uses a YAML configuration file to create a formatted payload image for the HSS.
 
-The configuration file is used to map the ELF binaries or binary blobs to the individual application harts (U54s). See the HSS payload generator [documentation](https://github.com/polarfire-soc/hart-software-services/blob/master/tools/hss-payload-generator/README.md) for more details on the configuration file format and the HSS payload generator tool.
+The configuration file is used to map the ELF binaries or binary blobs to the individual application harts (U54s). See the HSS payload generator [documentation](https://mi-v-ecosystem.github.io/redirects/tool-hss-payload-generator) for more details on the configuration file format and the HSS payload generator tool.
 
 When using the cached 32-bit DDR address space, this configuration file should set appropriate hart-entry-points and exec-addr values in this YAML file. This should be an address starting at 0x8000_0000.
 

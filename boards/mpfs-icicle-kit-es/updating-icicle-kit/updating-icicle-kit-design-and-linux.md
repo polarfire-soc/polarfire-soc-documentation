@@ -26,13 +26,13 @@ The sections below link to programming files for the FPGA and eNVM along with im
 
 ### FPGA fabric and eNVM
 
-A FlashPro Express programming job file is provided as an asset with the Icicle Kit Reference Design [releases](https://github.com/polarfire-soc/icicle-kit-reference-design/releases). This programming job file will program the FPGA fabric with the latest reference configuration and also program the eNVM with the latest HSS payload. The .zip file in the release assets should be downloaded and extracted to access the programming job file.
+A FlashPro Express programming job file is provided as an asset with the Icicle Kit Reference Design [releases](https://mi-v-ecosystem.github.io/redirects/releases-icicle-kit-reference-design). This programming job file will program the FPGA fabric with the latest reference configuration and also program the eNVM with the latest HSS payload. The .zip file in the release assets should be downloaded and extracted to access the programming job file.
 
 <a name="linux-image"></a>
 
 ### Linux image
 
-A minimal Linux image is provided as an asset with the Meta PolarFire SoC Yocto BSP [releases](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp/releases).
+A minimal Linux image is provided as an asset with the Meta PolarFire SoC Yocto BSP [releases](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp).
 
 Linux images with a 'wic' file extension use a GUID partition table (GPT) and are suitable for programming to the eMMC or an SD card.
 

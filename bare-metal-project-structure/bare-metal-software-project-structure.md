@@ -285,7 +285,7 @@ For more information on the Libero and MSS Configurator tools, pleaser refer to 
 
 ### Updating the platform
 
-The platform folder is intended to be updated from a git source code repository as a subtree or submodule. For the latest PolarFire SoC platform released, refer to the [platform release page](https://github.com/polarfire-soc/platform/releases).
+The platform folder is intended to be updated from a git source code repository as a subtree or submodule. For the latest PolarFire SoC platform released, refer to the [platform release page](https://mi-v-ecosystem.github.io/redirects/releases-platform).
 
 <a name="updating-a-custom-project"></a>
 

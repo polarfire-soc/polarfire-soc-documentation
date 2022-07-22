@@ -140,7 +140,7 @@ PolarFire SoC includes several client drivers which can be used to interact with
 
 PolarFire SoC uses the RPMsg-lite implementation on RTOS and bare metal (BM) software contexts.
 
-The [PolarFire SoC AMP examples](https://github.com/polarfire-soc/polarfire-soc-amp-examples) repository contains FreeRTOS and Bare metal sample projects that can be used to communicate with a remote software (i.e. Linux or another BM/FreeRTOS context) using the RPMsg-lite framework.
+The [PolarFire SoC AMP examples](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-amp-examples) repository contains FreeRTOS and Bare metal sample projects that can be used to communicate with a remote software (i.e. Linux or another BM/FreeRTOS context) using the RPMsg-lite framework.
 
 The projects contain two different build configurations:
 
@@ -194,7 +194,7 @@ This should generate a Remote-Default folder with the output files resulting fro
 
 The polarfire-soc-amp-examples repository provides a resources/ folder with a sample HSS payload generator YAML file to build the FreeRTOS + BM AMP demo.
 
-1. Download the hss-payload-generator from the Hart Software Services [releases](https://github.com/polarfire-soc/hart-software-services/releases).
+1. Download the hss-payload-generator from the Hart Software Services [releases](https://mi-v-ecosystem.github.io/redirects/releases-hart-software-services).
 
 2. Copy the payload generator binary into the resources folder
 
@@ -259,7 +259,7 @@ This should generate a Remote-Default folder with the output files resulting fro
 
 The polarfire-soc-amp-examples repository provides a resources/ folder with a sample HSS payload generator YAML file to build the FreeRTOS + FreeRTOS AMP demo.
 
-1. Download the hss-payload-generator from the Hart Software Services [releases](https://github.com/polarfire-soc/hart-software-services/releases).
+1. Download the hss-payload-generator from the Hart Software Services [releases](https://mi-v-ecosystem.github.io/redirects/releases-hart-software-services).
 
 2. Copy the payload generator binary into the resources folder
 
@@ -324,7 +324,7 @@ This should generate a Remote-Default folder with the output files resulting fro
 
 The polarfire-soc-amp-examples repository provides a resources/ folder with a sample HSS payload generator YAML file to build the BM + BM AMP demo.
 
-1. Download the hss-payload-generator from the Hart Software Services [releases](https://github.com/polarfire-soc/hart-software-services/releases).
+1. Download the hss-payload-generator from the Hart Software Services [releases](https://mi-v-ecosystem.github.io/redirects/releases-hart-software-services).
 
 2. Copy the payload generator binary into the resources folder
 

@@ -46,7 +46,7 @@ The HSS Payload Generator source code is bundled as a tool with the Hart Softwar
 
 ### Pre-built executables
 
-Pre-compiled executables of the HSS Payload Generator for Windows and Linux are available as assets with the HSS repository releases [here](https://github.com/polarfire-soc/hart-software-services/releases).
+Pre-compiled executables of the HSS Payload Generator for Windows and Linux are available as assets with the HSS repository releases [here](https://mi-v-ecosystem.github.io/redirects/releases-hart-software-services).
 
 <a name="payloads"></a>
 

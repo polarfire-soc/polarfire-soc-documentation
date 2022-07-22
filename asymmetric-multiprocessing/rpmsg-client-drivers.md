@@ -96,7 +96,7 @@ CONFIG_RPMSG_CHAR=m
 
 ### Using the RPMsg char client driver
 
-A RPMsg ping-pong linux user space application is provided as part of the [polarfire-soc-linux-examples](https://github.com/polarfire-soc/polarfire-soc-linux-examples) repository. These examples are also bundled in the PolarFire SoC Yocto and Buildroot images.
+A RPMsg ping-pong linux user space application is provided as part of the [polarfire-soc-linux-examples](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-linux-examples) repository. These examples are also bundled in the PolarFire SoC Yocto and Buildroot images.
 
 This rpmsg-pingpong application uses the RPMsg char driver to create an endpoint using an ioctl control interface (/dev/rpmsg_ctrlX) and exposes the endpoint to the user space by creating a /dev/rpmsgX device.
 

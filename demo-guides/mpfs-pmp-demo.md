@@ -32,11 +32,11 @@ Before running the user application, make sure to complete the following steps:
 * Setting up the three Serial Terminal programs "Interface 0 (UART0), Interface 1 (UART1), and Interface 2 (UART2)" using extra-putty:
   * Select the COM ports which are connected to the following interfaces: Silicon Labs Quad CP2108 USB to UART BRIDGE: Interface 0, Interface 1 and Interface 2.
   * Set Baud rate to “115200”, Set Data to 8-bit, Set Flow control to None.
-* Use FlashPro Express to program the Icicle Kit with the PolarFire SoC Icicle Kit Reference Design job file. Download the pre-built programming job file [here](https://github.com/polarfire-soc/icicle-kit-reference-design/releases).
+* Use FlashPro Express to program the Icicle Kit with the PolarFire SoC Icicle Kit Reference Design job file. Download the pre-built programming job file [here](https://mi-v-ecosystem.github.io/redirects/releases-icicle-kit-reference-design).
 
 ## Enabling PMP in the MSS configurator tool and generate xml file
 
-* Download the icicle-kit-reference-design from [here](https://github.com/polarfire-soc/icicle-kit-reference-design/releases).
+* Download the icicle-kit-reference-design from [here](https://mi-v-ecosystem.github.io/redirects/releases-icicle-kit-reference-design).
 * Extract the downloaded design. Go to the path icicle-kit-reference-design\script_support and open PF_SoC_MSS_Icicle_eMMC.cfg with MSS configurator tool.
 * In the PolarFire SoC MSS Configurator > Memory partitions and Protection tab > "Use processor PMP and AXI switch MPU configurations" tick the checkbox to enable PMP.
 * In the PolarFire SoC MSS Configurator > Memory Partition and Protection tab > Processor PMP tab, there are two contexts Context A and Context B. Each Context's associations with the U54 processor cores, peripherals and memory regions are configured here. Each peripheral and/or memory region can be protected with access permissions, such as, read, write and execute. The peripheral or memory regions can be enabled in either Context A or in Context B.
@@ -59,7 +59,7 @@ The HSS initializes clocks, memory and peripherals. It also copies the payload.b
 
 ### Complete the following steps to update the HSS
 
-* Download the hart-software-services from [here](https://github.com/polarfire-soc/hart-software-services/releases).
+* Download the hart-software-services from [here](https://mi-v-ecosystem.github.io/redirects/releases-hart-software-services).
 * Replace the existing xml file in the HSS source path (boards/mpfs-icicle-kit-es/soc_fpga_design/xml/) with the PMP enabled ICICLE_MSS_mss_cfg.xml file.
 * In the SoftConsole workspace, HSS source code directory, open the .config file and add CONFIG_SERVICE_YMODEM=y to enable ymodem command. Ymodem command is used to load payload.bin using serial terminal(extra-puTTY).
 * Rebuild the HSS source [HSS Build instructions here](https://mi-v-ecosystem.github.io/redirects/software-development_polarfire-soc-software-tool-flow)
@@ -75,7 +75,7 @@ In this demo, the payload generator takes mpfs-pmp-app-u54-1.elf and mpfs-pmp-ap
 
 **Payload generator tool** Refer to the [link](https://github.com/polarfire-soc/hart-software-services/tree/master/tools/hss-payload-generator)
 
-**hss-payload-generator Binaries** download from [here](https://github.com/polarfire-soc/hart-software-services/releases).
+**hss-payload-generator Binaries** download from [here](https://mi-v-ecosystem.github.io/redirects/releases-hart-software-services).
 
 ### Config File
 

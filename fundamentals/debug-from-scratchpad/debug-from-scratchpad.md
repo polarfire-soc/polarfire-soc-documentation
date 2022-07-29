@@ -96,20 +96,20 @@ There are two main reasons that we run from L2 scratchpad and not LIM:
 
 Make sure to clean, build and program the modified HSS to the eNVM
 
-1.  	Rename an existing `.config` file from the top level HSS project directory
-       (if present) so there is a backup of the existing configuration (if the
-       standard HSS configuration is being built this step can be skipped). This
-       can be done using the terminal view in SoftConsole using the `move`
-        command on Windows or `mv` on Linux:
+1.  Rename an existing `.config` file from the top level HSS project directory
+    (if present) so there is a backup of the existing configuration (if the
+    standard HSS configuration is being built this step can be skipped). This
+    can be done using the terminal view in SoftConsole using the `move`
+    command on Windows or `mv` on Linux:
 
 ![configure_hss_0](./images/configure_hss_0.PNG)
 
-2.  	Copy the `def_config` from the `boards/[target]` folder to the top level
-      HSS project directory and modify the following:
+2.  Copy the `def_config` from the `boards/[target]` folder to the top level
+    HSS project directory and modify the following:
 
-       Ensure that `CONFIG_SKIP_DDR=y` is present. Also ensure that
-       `CONFIG_BOOT_SERVICE=y` is not present, and instead there is a line that
-       explicitly mentions `# CONFIG_SERVICE_BOOT` is not set, for example:
+    Ensure that `CONFIG_SKIP_DDR=y` is present. Also ensure that
+    `CONFIG_BOOT_SERVICE=y` is not present, and instead there is a line that
+    explicitly mentions `# CONFIG_SERVICE_BOOT` is not set, for example:
 
 
         # CONFIG_SKIP_DDR is not set

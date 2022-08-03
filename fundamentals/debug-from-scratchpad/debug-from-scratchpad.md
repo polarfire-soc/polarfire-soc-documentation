@@ -1,21 +1,22 @@
 # Debugging Bare Metal Applications From L2 scratchpad
 
 ## Index
--   [Introduction](#Introduction)
-    -   [Methodology](#Methodology)
-    -   [The HSS](#The-HSS)
-        -   [HSS startup](#HSS-startup)
--   [Configuring a reduced HSS to set up the L2 scratchpad](#Configuring-a-reduced-HSS-to-set-up-the-L2-scratchpad)
-    -   [Using SoftConsole to configure a reduced HSS](#Using-SoftConsole-to-configure-a-reduced-HSS)
-    -   [Using the command line to configure a reduced HSS](#Using-the-command-line-to-configure-a-reduced-HSS)
--   [Configuring a bare metal application to execute from L2 scratchpad](#Configuring-a-bare-metal-application-to-execute-from-L2-scratchpad)
-    -   [Creating a custom linker script for L2 scratchpad applications](#Creating-a-custom-linker-script-for-L2-scratchpad-applications)
--   [Debugging bare metal applications executing from L2 scratchpad](#Debugging-bare-metal-applications-executing-from-L2-scratchpad)
-    -   [Debugging a bare metal application executing from L2 scratchpad](#Debugging-a-bare-metal-application-executing-from-L2-scratchpad)
-        -   [Creating an L2 scratchpad debug configuration](#Creating-an-L2-scratchpad-debug-configuration)
-        -   [Starting the debug session](#Starting-the-debug-session)
-    -   [Debugging the hss-l2scratch.elf using SoftConsole](#Debgging-the-hss-l2scratch.elf-using-SoftConsole)
-    -   [Debugging the hss-l2scratch.elf using the command line](#Debgging-the-hss-l2scratch.elf-the-using-command-line)
+
+- [Introduction](#Introduction)
+  - [Methodology](#Methodology)
+  - [The HSS](#The-HSS)
+    - [HSS startup](#HSS-startup)
+- [Configuring a reduced HSS to set up the L2 scratchpad](#Configuring-a-reduced-HSS-to-set-up-the-L2-scratchpad)
+  - [Using SoftConsole to configure a reduced HSS](#Using-SoftConsole-to-configure-a-reduced-HSS)
+  - [Using the command line to configure a reduced HSS](#Using-the-command-line-to-configure-a-reduced-HSS)
+- [Configuring a bare metal application to execute from L2 scratchpad](#Configuring-a-bare-metal-application-to-execute-from-L2-scratchpad)
+  - [Creating a custom linker script for L2 scratchpad applications](#Creating-a-custom-linker-script-for-L2-scratchpad-applications)
+- [Debugging bare metal applications executing from L2 scratchpad](#Debugging-bare-metal-applications-executing-from-L2-scratchpad)
+  - [Debugging a bare metal application executing from L2 scratchpad](#Debugging-a-bare-metal-application-executing-from-L2-scratchpad)
+    - [Creating an L2 scratchpad debug configuration](#Creating-an-L2-scratchpad-debug-configuration)
+      - [Starting the debug session](#Starting-the-debug-session)
+    - [Debugging the hss-l2scratch.elf using SoftConsole](#Debgging-the-hss-l2scratch.elf-using-SoftConsole)
+    - [Debugging the hss-l2scratch.elf using the command line](#Debgging-the-hss-l2scratch.elf-the-using-command-line)
 
 <a name="Introduction"></a>
 ## Introduction
@@ -45,27 +46,27 @@ when it starts running then DDR training is required in the reduced HSS.
 The following methodology is used to debug an application from the L2 scratchpad
  memory:
 
-1.  Build a version of the Hart Software Services to configure the L2
-scratchpad but not boot
+1. Build a version of the Hart Software Services to configure the L2
+  scratchpad but not boot
 
-2.  Program the modified HSS to eNVM and start up
+2. Program the modified HSS to eNVM and start up
 
-3.  Build the bare metal application under test in a "Loaded by bootloader
-configuration" so it performs no system configuration on startup
+3. Build the bare metal application under test in a "Loaded by bootloader
+  configuration" so it performs no system configuration on startup
 
-4.  Download the application to be debugged to the L2 scratchpad using the
-debugger without resetting the target
+4. Download the application to be debugged to the L2 scratchpad using the
+  debugger without resetting the target
 
-5.  Debug as normal
+5. Debug as normal
 
 <a name="The-HSS"></a>
 ### The HSS
 
 The HSS is built in two parts:
 
--   `hss-l2scratch.elf`, which contains the run-time HSS code itself
--   `hss-envm-wrapper.hex`, which includes a small decompressor, and the
-`hss-l2scratch.elf` converted to a binary and compressed using DEFLATE.
+- `hss-l2scratch.elf`, which contains the run-time HSS code itself
+- `hss-envm-wrapper.hex`, which includes a small decompressor, and the
+   `hss-l2scratch.elf` converted to a binary and compressed using DEFLATE.
 
 It is possible to debug and step through the `hss-l2scratch.elf` using the
 methodology in this document.
@@ -83,10 +84,10 @@ orchestrated from `envm-wrapper/envm-wrapper_crt.S`.
 
 There are two main reasons that we run from L2 scratchpad and not LIM:
 
--   Scratchpad supports Atomic instructions, which OpenSBI uses to sequence
+- Scratchpad supports Atomic instructions, which OpenSBI uses to sequence
   booting
 
--   Scratchpad is slightly faster than LIM
+- Scratchpad is slightly faster than LIM
 
 <a name="Configuring-a-reduced-HSS-to-set-up-the-L2-scratchpad"></a>
 ## Configuring a reduced HSS to set up the L2 scratchpad
@@ -96,64 +97,64 @@ There are two main reasons that we run from L2 scratchpad and not LIM:
 
 Make sure to clean, build and program the modified HSS to the eNVM
 
-1.  Rename an existing `.config` file from the top level HSS project directory
+1. Rename an existing `.config` file from the top level HSS project directory
     (if present) so there is a backup of the existing configuration (if the
     standard HSS configuration is being built this step can be skipped). This
     can be done using the terminal view in SoftConsole using the `move`
     command on Windows or `mv` on Linux:
 
-![configure_hss_0](./images/configure_hss_0.PNG)
+    ![configure_hss_0](./images/configure_hss_0.PNG)
 
-2.  Copy the `def_config` from the `boards/[target]` folder to the top level
+2. Copy the `def_config` from the `boards/[target]` folder to the top level
     HSS project directory and modify the following:
 
     Ensure that `CONFIG_SKIP_DDR=y` is present. Also ensure that
     `CONFIG_BOOT_SERVICE=y` is not present, and instead there is a line that
     explicitly mentions `# CONFIG_SERVICE_BOOT` is not set, for example:
 
+    ```ruby
+    # CONFIG_SKIP_DDR is not set
+    CONFIG_SERVICE_BOOT=y
+    ```
 
-        # CONFIG_SKIP_DDR is not set
-        CONFIG_SERVICE_BOOT=y
+    There should be no other mentions of either `CONFIG_SKIP_DDR` or
+    `CONFIG_SERVICE_BOOT` in the `.config file` at this point.
+     The modifications are shown below:
 
+    ![configure_hss_1](./images/configure_hss_1.PNG)
 
-There should be no other mentions of either `CONFIG_SKIP_DDR` or
-`CONFIG_SERVICE_BOOT` in the `.config file` at this point.
- The modifications are shown below:
+3. If the GUI configuration was not used rename `def_config` to `.config` by
+  right clicking on `def_config` and selecting rename
 
-![configure_hss_1](./images/configure_hss_1.PNG)
+4. If an application is being debugged from the L2 scratchpad that is not the
+  HSS, for example a payload intended to be booted by the HSS, updated XML will
+  need to be generated using the MSS configurator to allocate more than the
+  default 512k of the L2 to the scratchpad.
 
-3.  If the GUI configuration was not used rename `def_config` to `.config` by
-right clicking on `def_config` and selecting rename
+5. Import the updated XML to the `boards/[target]/soc_fpga_design/xml`
+  directory. Ensure the updated XML name matches the XML used in the `.config`
+  file.
 
-4.  If an application is being debugged from the L2 scratchpad that is not the
-HSS, for example a payload intended to be booted by the HSS, updated XML will
-need to be generated using the MSS configurator to allocate more than the
-default 512k of the L2 to the scratchpad.
+6. Right click on the hart-software-services project folder and select
+  `Clean Project`
 
-5.  Import the updated XML to the `boards/[target]/soc_fpga_design/xml`
-directory. Ensure the updated XML name matches the XML used in the `.config`
-file.
+7. Build the HSS using the `Default` build configuration
 
-6.  Right click on the hart-software-services project folder and select
- `Clean Project`
+    ![configure_hss_2](./images/configure_hss_2.PNG)
 
-7.  Build the HSS using the `Default` build configuration
+8. Program the HSS to the eNVM using the SoftConsole `PolarFire SoC program
+  non-secure boot mode 1` external tool configuration
 
-![configure_hss_2](./images/configure_hss_2.PNG)
+    ![configure_hss_3](./images/configure_hss_3.PNG)
 
-8.  Program the HSS to the eNVM using the SoftConsole `PolarFire SoC program
-non-secure boot mode 1` external tool configuration
+    When configured like this, the HSS will start running from eNVM on a power-cycle
+    or reset, setup L2 Scratch, jump to its runtime code but then idle.
 
-![configure_hss_3](./images/configure_hss_3.PNG)
+    ![HSS-boot](./images/hss-skip-ddr-no-boot.gif)
 
-When configured like this, the HSS will start running from eNVM on a power-cycle
- or reset, setup L2 Scratch, jump to its runtime code but then idle.
-
-![HSS-boot](./images/hss-skip-ddr-no-boot.gif)
-
-At this point, as long as the SoC isn’t reset or power-cycled, it is possible
-to attach a debugger and download an ELF that targets L2 scratchpad, and to
-natively debug from it (set/remove breakpoints, step, run, etc.).
+    At this point, as long as the SoC isn’t reset or power-cycled, it is possible
+    to attach a debugger and download an ELF that targets L2 scratchpad, and to
+    natively debug from it (set/remove breakpoints, step, run, etc.).
 
 <a name="Using-the-command-line-to-configure-a-reduced-HSS"></a>
 ### Using the command line to configure a reduced HSS
@@ -162,9 +163,10 @@ In the `.config file`, ensure that `CONFIG_SKIP_DDR=y` is present. Also ensure
 that `CONFIG_BOOT_SERVICE=y` is not present, and instead there is a line that
 explicitly mentions `# CONFIG_SERVICE_BOOT is not set`, for example:
 
-
-    CONFIG_SKIP_DDR=y
-    # CONFIG_SERVICE_BOOT is not set
+```ruby
+# CONFIG_SKIP_DDR is not set
+CONFIG_SERVICE_BOOT=y
+```
 
 There should be no other mentions of either `CONFIG_SKIP_DDR` or
 `CONFIG_SERVICE_BOOT` in the `.config` file at this point.
@@ -178,9 +180,11 @@ matches the XML used in the `.config` file.
 
 Make sure to clean, build and program the modified HSS to the eNVM:
 
-    $ make clean
-    $ make
-    $ make program
+```ruby
+$ make clean
+$ make
+$ make program
+```
 
 When configured like this, the HSS will start running from eNVM on a power-cycle
  or reset, setup L2 Scratch, jump to its runtime code but then idle.
@@ -203,9 +207,9 @@ to run from the L2 scratchpad.
 No default linker script is supplied to debug or run from the L2 scratchpad. To
 debug or run code from this location:
 
-1.  It is assumed that the reduced HSS will be used to pre-configure the system
+1. It is assumed that the reduced HSS will be used to pre-configure the system
 
-2.  A custom linker script will be created to ensure that the bare metal
+2. A custom linker script will be created to ensure that the bare metal
     application does not conflict with the memory used by the HSS. I.e the HSS
     occupies the first 512K of L2 scratchpad, targeting a bare metal application
     will overwrite the HSS memory and would fail to boot if used as a payload.
@@ -217,44 +221,51 @@ It is recommended that the linker script to target L2 scratchpad is based off
 the `mpfs-ddr-loaded-by-boot-loader.ld` linker script provided with the MPFS
 HAL. To modify this linker script to target the L2 scratchpad:
 
-1.  Create a copy of the `mpfs-ddr-loaded-by-boot-loader.ld` linker script
-named `mpfs-scratchpad-loaded-by-boot-loader.ld`
+1. Create a copy of the `mpfs-ddr-loaded-by-boot-loader.ld` linker script
+  named `mpfs-scratchpad-loaded-by-boot-loader.ld`
 
-2.  Update the `scratchpad(rwx)    : ORIGIN = 0x0A000000, LENGTH = 256k` field.
--   Ensure the `ORIGIN` value is set to an appropriate start address that it
-doesn't conflict with the HSS. By default the HSS reserves 512K of L2 scratchpad
-so `ORIGIN = 0x0A040000` would be acceptable.
--   The `LENGTH` field should also be updated to reflect the amount of L2
-scratchpad memory available to the application. For example if a total L2
-scratchpad size of 640K was configured, 128K would be available to the
-application so `LENGTH = 128K` would be acceptable.
+2. Update the `scratchpad(rwx)    : ORIGIN = 0x0A000000, LENGTH = 256k` field.
 
-2.  In this linker script replace any entries locating code in
-`ddr_cached_32bit` with `scratchpad`
--   I.e all :
+    a. Ensure the `ORIGIN` value is set to an appropriate start address that it0
+      doesn't conflict with the HSS. By default the HSS reserves 512K of L2 scratchpad
+      so `ORIGIN = 0x0A040000` would be acceptable.
 
-    `} > ddr_cached_32bit`
+    b. The `LENGTH` field should also be updated to reflect the amount of L2
+      scratchpad memory available to the application. For example if a total L2
+      scratchpad size of 640K was configured, 128K would be available to the
+      application so `LENGTH = 128K` would be acceptable.
+
+3. In this linker script replace any entries locating code in
+  `ddr_cached_32bit` with `scratchpad`
+
+    I.e all:
+
+    ```ruby
+    } > ddr_cached_32bit
+    ```
 
     entries should become:
 
-    `} > scratchpad`
+    ```ruby
+    } > scratchpad
+    ```
 
-3.  In the:
+4. In the:
 
     `Project properties -> C/C++ Build -> Settings`
 
     view select `Manage Configurations` and then `New...` to create a new build
     configuration.
 
-![create_new_build_configuration_0](./images/create_new_build_configuration_0.PNG)
+    ![create_new_build_configuration_0](./images/create_new_build_configuration_0.PNG)
 
-4.  Name the build configuration `Scratchpad-Debug` (or an appropriate name) and
+5. Name the build configuration `Scratchpad-Debug` (or an appropriate name) and
    provide a description. Copy the build settings from the existing
    `DDR-Release` build configuration.
 
-![create_new_build_configuration_0](./images/create_new_build_configuration_1.PNG)
+    ![create_new_build_configuration_0](./images/create_new_build_configuration_1.PNG)
 
-5.  In the:
+6. In the:
 
     `Project properties -> C/C++ Build -> Settings` -> `Tool Settings -> GNU RISC-V
     Cross C Linker -> General`
@@ -263,19 +274,19 @@ application so `LENGTH = 128K` would be acceptable.
     the chosen linker script to point to the
     `mpfs-scratchpad-loaded-by-boot-loader.ld` linker script created in step 1.
 
-![update_linker_script_0](./images/update_linker_script_0.PNG)
+    ![update_linker_script_0](./images/update_linker_script_0.PNG)
 
 <a name="Debugging-bare-metal-applications-executing-from-L2-scratchpad"></a>
 ## Debugging bare metal applications executing from L2 scratchpad
 
 This section is broken up into 3 sections:
 
-1.  [Debugging a bare metal application executing from L2 scratchpad](#Debugging-a-bare-metal-application-executing-from-L2-scratchpad) (for example from the PolarFire
+1. [Debugging a bare metal application executing from L2 scratchpad](#Debugging-a-bare-metal-application-executing-from-L2-scratchpad) (for example from the PolarFire
   SoC Bare Metal Examples repository)
 
-2.  [Debugging the hss-l2scratch.elf using SoftConsole](#Debgging-the-hss-l2scratch.elf-using-SoftConsole)
+2. [Debugging the hss-l2scratch.elf using SoftConsole](#Debgging-the-hss-l2scratch.elf-using-SoftConsole)
 
-3.  [Debugging the hss-l2scratch.elf using the command line](#Debgging-the-hss-l2scratch.elf-the-using-command-line)
+3. [Debugging the hss-l2scratch.elf using the command line](#Debgging-the-hss-l2scratch.elf-the-using-command-line)
 
 <a name="Debugging-a-bare-metal-application-executing-from-L2-scratchpad"></a>
 ### Debugging a bare metal application executing from L2 scratchpad
@@ -283,9 +294,11 @@ This section is broken up into 3 sections:
 All bare metal applications from the PolarFire SoC Bare Metal Examples
 repository include 3 debug configurations:
 
-1.  `[project name] hw all-harts debug`
-2.  `[project name] hw all-harts attach`
-3.  `[project name] renode all-harts debug`
+1. `[project name] hw all-harts debug`
+
+2. `[project name] hw all-harts attach`
+
+3. `[project name] renode all-harts debug`
 
 A new debug configuration will need to be created for L2 scratchpad debug.
 
@@ -294,17 +307,17 @@ A new debug configuration will need to be created for L2 scratchpad debug.
 
 In the "Debug Configurations" view:
 
-1.  Duplicate the `[project name] hw all-harts debug` configuration and name the
-new configuration `[project name] hw all-harts debug-from-scratchpad`
+1. Duplicate the `[project name] hw all-harts debug` configuration and name the
+  new configuration `[project name] hw all-harts debug-from-scratchpad`
 
-![create_new_debug_configuration_0](./images/create_new_debug_configuration_0.PNG)
+    ![create_new_debug_configuration_0](./images/create_new_debug_configuration_0.PNG)
 
-2.  In the `Startup` tab disable the `Initial Reset.` option (this will prevent
+2. In the `Startup` tab disable the `Initial Reset.` option (this will prevent
   the configured L2 scratchpad being reset)
 
-![create_new_debug_configuration_1](./images/create_new_debug_configuration_1.PNG)
+    ![create_new_debug_configuration_1](./images/create_new_debug_configuration_1.PNG)
 
-3.  Apply the changes
+3. Apply the changes
 
 <a name="Starting-the-debug-session"></a>
 #### Starting the debug session
@@ -318,22 +331,22 @@ clicking `Debug`. The application can now be debugged as normal.
 <a name="Debgging-the-hss-l2scratch.elf-using-SoftConsole"></a>
 ### Debugging the hss-l2scratch.elf using SoftConsole
 
-1.  Restore the original HSS build configuration which was backed up in [Using
-SoftConsole to configure a reduced HSS](#Using-SoftConsole-to-configure-a-reduced-HSS)
-step 1 above by deleting the modified `.config` file and restoring from the
-original file
+1. Restore the original HSS build configuration which was backed up in [Using
+  SoftConsole to configure a reduced HSS](#Using-SoftConsole-to-configure-a-reduced-HSS)
+  step 1 above by deleting the modified `.config` file and restoring from the
+  original file
 
-![configure_hss_4](./images/configure_hss_4.PNG)
+    ![configure_hss_4](./images/configure_hss_4.PNG)
 
-2.  Clean the HSS and rebuild
+2. Clean the HSS and rebuild
 
-3.  Launch the included hart-software-services debug configuration from the
+3. Launch the included hart-software-services debug configuration from the
   SoftConsole Debug Configurations (note this debug configuration is set up to
   not perform an initial reset on connection and simply download the application
    binary and start the debug session, this preserves the scratchpad
    configuration from the reduced HSS)
 
-![debug_hss_0](./images/debug_hss_0.PNG)
+    ![debug_hss_0](./images/debug_hss_0.PNG)
 
 <a name="Debgging-the-hss-l2scratch.elf-the-using-command-line"></a>
 ### Debugging the hss-l2scratch.elf using the command line
@@ -344,35 +357,47 @@ and rebuild the HSS to ensure that the version you’ll be debugging will boot a
 will train DDR. Ensure that `CONFIG_SERVICE_BOOT=y` and `# CONFIG_SKIP_DDR` is
 not set are in the .config file:
 
-    # CONFIG_SKIP_DDR is not set
-    CONFIG_SERVICE_BOOT=y
+```ruby
+# CONFIG_SKIP_DDR is not set
+CONFIG_SERVICE_BOOT=y
+```
 
 There should be no other mentions of either `CONFIG_SKIP_DDR` or
 `CONFIG_SERVICE_BOOT` in the `.config` file at this point.
 
 Make sure to clean and build the modified HSS:
 
-    $ make clean
-    $ make
+```ruby
+$ make clean
+$ make
+```
 
 In a terminal window, start OpenOCD manually:
 
-    ${SC_INSTALL_DIR}/openocd/bin/openocd  -c "set DEVICE MPFS" -f board/microsemi-riscv.cfg -c init
+```ruby
+${SC_INSTALL_DIR}/openocd/bin/openocd  -c "set DEVICE MPFS" -f board/microsemi-riscv.cfg -c init
+```
 
 Next, in a separate terminal, run gdb and load an image as follows:
 
-    ${SC_INSTALL_DIR}/riscv-unknown-elf-gcc/bin/riscv64-unknown-elf-gdb
+```ruby
+${SC_INSTALL_DIR}/riscv-unknown-elf-gcc/bin/riscv64-unknown-elf-gdb
+```
 
 Finally, at the (gdb) prompt, load the hss-l2scratch.elf image:
 
-    target remote localhost:3333
-    file Default/hss-l2scratch.elf
-    load Default/hss-l2scratch.elf
-    layout split
-    thread apply all set $pc=_start
+```ruby
+target remote localhost:3333
+file Default/hss-l2scratch.elf
+load Default/hss-l2scratch.elf
+layout split
+thread apply all set $pc=_start
+```
 
 At this point you can set any breakpoints etc. and start it running.
 For example:
 
-    break hss_main
-    continue
+```ruby
+break hss_main
+continue
+```

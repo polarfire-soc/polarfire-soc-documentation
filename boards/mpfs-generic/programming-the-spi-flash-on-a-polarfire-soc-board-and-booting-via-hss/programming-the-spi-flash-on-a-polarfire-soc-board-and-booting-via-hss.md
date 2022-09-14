@@ -1,12 +1,42 @@
-# PolarFire SoC: Programming the SPI Flash on the Icicle Kit and Booting via HSS
+# Programming the SPI Flash on a PolarFire SoC Board and Booting via HSS
 
-- [Build the HSS](#build-the-hss)
-- [Use Libero to program the SPI flash](#use-libero-to-program-the-spi-flash)
+## Table of Contents
 
-This document provides a brief overview of programming the SPI flash part on the Icicle kit with a HSS-compatible payload, and booting it via the HSS.
+- [Programming the SPI Flash on a PolarFire SoC Board and Booting via HSS](#programming-the-spi-flash-on-a-polarfire-soc-board-and-booting-via-hss)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Requirements](#requirements)
+    - [Tested on](#tested-on)
+    - [Pre-Requisites](#pre-requisites)
+  - [Build the HSS](#build-the-hss)
+  - [Use Libero to program the SPI flash](#use-libero-to-program-the-spi-flash)
+
+<a name="introduction"></a>
+
+## Introduction
+
+This document provides a brief overview of programming the System Controller SPI flash part on a PolarFire SoC board with a HSS-compatible payload, and booting it via the HSS.
 
 Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide)
 for a detailed description of PolarFire SoC.
+
+<a name="requirements"></a>
+
+## Requirements
+
+A PolarFire SoC board with a SPI part connected to System Controller SPI flash interface is required to follow the steps outlined in this document.
+
+<a name="tested-on"></a>
+
+### Tested on
+
+The steps outlined in this document have been tested on a PolarFire SoC Icicle Kit.
+
+<a name="pre-requisites"></a>
+
+### Pre-Requisites
+
+Ensure you are using the latest version of the Icicle Kit Reference Design when following these steps.
 
 <a name="build-the-hss"></a>
 

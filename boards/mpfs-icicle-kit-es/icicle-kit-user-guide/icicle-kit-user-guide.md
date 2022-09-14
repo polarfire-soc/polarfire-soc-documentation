@@ -101,6 +101,8 @@ Linux images for the Icicle Kit are available from the releases section of the [
 
 ## References
 
-[PolarFire SoC Icicle Kit Quick Start Guide](https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide#overview)  
+[PolarFire SoC Icicle Kit Quick Start Guide](https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide#overview)
+
 [PolarFire SoC Icicle Kit Schematics](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/ReferenceManuals/mpfs-icicle-kit-es-schematics.pdf)
+
 [PolarFire SoC Icicle Kit Product Page](https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT-ES)

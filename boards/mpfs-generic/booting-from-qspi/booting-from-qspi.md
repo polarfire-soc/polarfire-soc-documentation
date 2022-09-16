@@ -6,8 +6,11 @@
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Requirements](#requirements)
-    - [Tested on](#tested-on)
-    - [Pre-Requisites](#pre-requisites)
+  - [Tested on](#tested-on)
+  - [Pre-Requisites](#pre-requisites)
+    - [Using a Winbond W25N01GV NAND flash memory](#using-a-winbond-w25n01gv-nand-flash-memory)
+    - [Using a Micron (MT25Q) NOR flash memory](#using-a-micron-mt25q-nor-flash-memory)
+  - [Building a Linux image for a NAND or NOR flash memory device](#building-a-linux-image-for-a-nand-or-nor-flash-memory-device)
   - [Programming the external QSPI flash memory using the HSS](#programming-the-external-qspi-flash-memory-using-the-hss)
     - [Using USBDMSC service](#using-usbdmsc-service)
   - [Boot Sequence](#boot-sequence)
@@ -22,50 +25,83 @@ This document provides a brief overview of programming an external QSPI Flash me
 
 ## Requirements
 
-The following flash memory devices have been tested with PolarFire SoC:
+The following flash memory devices are officially supported on PolarFire SoC:
 
-- Winbond W25N01GVZEIG/IT NAND Flash Memory
-  - This part is available on a Mikroe [Flash 5 click board](https://www.mikroe.com/flash-5-click)
-  - Depending on the PolarFire SoC board being used the QSPI I/O may be routed via the FPGA fabric to a Raspberry Pi interface, in this case a [Pi 3 Click Shield](https://www.mikroe.com/pi-3-click-shield) will also be required to mount the Flash 5 click board.
+| Manufacturer | Part No. | Type | Density       |
+|--------------|----------|------|---------------|
+| Winbond      | W25N01GV | NAND | 1Gb (128MB)   |
+| Micron       | MT25QL256| NOR  | 256Mb (32MB)  |
+
+Depending on the PolarFire SoC board being used the QSPI I/Os may be routed via the FPGA fabric to a Raspberry Pi interface, in this case an adapter daughter board may be required to connect a QSPI flash. See the individual sections below for more information.
 
 <a name="tested-on"></a>
 
-### Tested on
+## Tested on
 
-The steps outlined below have been tested with the Winbond memory mentioned above on the PolarFire SoC Icicle Kit.
+The steps outlined below have been tested with the supported memories mentioned above on the PolarFire SoC Icicle Kit.
 
-The Icicle Kit Reference Design routes QSPI I/O through the FPGA fabric which means a Pi 3 Click Shield is also required.
+The Icicle Kit Reference Design routes QSPI I/O through the FPGA fabric which means either a Pi 3 Click Shield or a PMOD HAT Adapter will also required depending on the interface of the memory.
+See the individual sections below for more infomation.
 
 <a name="pre-requisites"></a>
 
-### Pre-Requisites
+## Pre-Requisites
+
+<a name="Using-a-Winbond-W25N01GV-NAND-flash-memory"></a>
+
+### Using a Winbond W25N01GV NAND flash memory
 
 Ensure you are using:
 
-- Icicle Kit reference design v2022.03 or later
+- Icicle Kit reference design v2022.09 or later with the standard configuration.
 
-The Winbond NAND flash memory mentioned above can be connected to the Icicle Kit by using a Mikroe [Flash 5 click board](https://www.mikroe.com/flash-5-click) and a [Pi 3 Click shield](https://www.mikroe.com/pi-3-click-shield) as follows:
+The Winbond W25N01GV NAND flash memory can be connected to the Icicle Kit by using a Mikroe [Flash 5 click board](https://www.mikroe.com/flash-5-click) and a [Pi 3 Click shield](https://www.mikroe.com/pi-3-click-shield) as follows:
 
 - Connect the Flash 5 Click board to slot 1 on the Pi 3 click shield
 
-- Connect the Pi 3 click shield to the Icicle Kit using the Raspberry Pi 4 Interface (J26)
+- Connect the Pi 3 click shield to the Icicle Kit using the Raspberry PI 4 Interface (J26)
 
 - Make sure J46 jumper is closed on the Icicle Kit
+
+<a name="Using-a-Micron-MT25Q-NOR-flash-memory"></a>
+
+### Using a Micron (MT25Q) NOR flash memory
+
+Ensure you are using:
+
+- Icicle Kit reference design v2022.09 or later with the "MICRON_QSPI" configuration.
+
+The Micron MT25QL256 NOR flash memory can be connected to the Icicle Kit by using a [Digilent Pmod SF3](https://digilent.com/reference/pmod/pmodsf3/start) and a [Pmod HAT Adapter](https://digilent.com/shop/pmod-hat-adapter-pmod-expansion-for-raspberry-pi) as follows:
+
+- Connect the Pmod SF3 to slot JA on the Pmod HAT adapter
+
+- Connect the Pmod HAT adapter to the Icicle Kit using the Raspberry PI 4 Interface (J26)
+
+- Make sure J46 jumper is closed on the Icicle Kit
+
+<a name="Building-a-Linux-image-for-a-NAND-or-NOR-flash-memory-device"></a>
+
+## Building a Linux image for a NAND or NOR flash memory device
+
+The [Microchip PolarFire SoC Yocto BSP](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) layer allows building a minimal Linux image that can be programmed to the officially supported NAND and NOR flash memory devices.
+
+Linux images that are suitable for programming to a NAND or NOR memory device have a `.nand.mtdimg` or `.nor.mtdimg` file extension respectively. These images can be programmed to the QSPI flash memory using the HSS.
 
 <a name="programming-the-external-QSPI-flash-memory-using-the-HSS"></a>
 
 ## Programming the external QSPI flash memory using the HSS
 
-In regards to QSPI the Hart Software Services (HSS) can be used to:
+The Hart Software Services (HSS) can be used to:
 
-- Write an HSS payload or Linux image to the QSPI flash memory
-- Boot from QSPI by reading an HSS payload located in the QSPI flash memory
+- Write a HSS payload or Linux image to the officially supported QSPI flash memory devices
+- Boot from QSPI by reading a HSS payload located in the QSPI flash memory
 
 <a name="using-usbdmsc-service"></a>
 
 ### Using USBDMSC service
 
-An external QSPI flash memory can be programmed using the HSS's USBDMSC service. For more information on how to program a Linux image to a QSPI flash memory please refer to the [Updating a PolarFire SoC FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) documentation.
+An external QSPI flash memory can be programmed using the HSS's USBDMSC service.
+For more information on how to program a Linux image to a QSPI flash memory please refer to the [Updating a PolarFire SoC FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) documentation.
 
 <a name="boot-sequence"></a>
 

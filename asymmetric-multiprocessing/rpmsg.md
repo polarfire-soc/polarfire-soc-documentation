@@ -104,13 +104,16 @@ The RPMsg-lite framework for RTOS/bare metal applications supports Master and Re
 
 On the Linux side, the RPmsg Framework relies on the interaction of following components:
 
-- **VirtIO RPMsg bus driver**: VirtIO implementation used by the RPMsg protocol. Its implementation is based on a shared ring buffer (vring).
+- **Remoteproc core drivers**: Framework that allows to start, stop and load firmware to the remote AMP context.
+  This framework also adds rpmsg support for sharing messages with a remote AMP by using the Linux remoteproc virtio driver.
+
+- **Remoteproc virtio core driver**: VirtIO implementation used by the RPMsg protocol. Its implementation is based on a shared ring buffer (vring).
 
 - **RPMsg core driver**: implementation of the RPMsg layer in Linux.
 
 - **Rpmsg client driver** : a client driver that implements a specific service to communicate with the remote processor. Some of them may expose user space interfaces if needed. Some examples include the RPMsg TTY client driver and the RPMsg char driver.
 
-- **Mi-V RPMsg driver**: RPMsg platform driver for Mi-V SoCs.
+- **Mi-V Remoteproc driver**: Remoteproc platform driver for Mi-V SoCs.
 
 - **Mi-V Inter-Hart communication (IHC) driver**: Linux driver that interacts with the Mi-V Inter-Hart Communication (IHC) subsystem.
 
@@ -120,9 +123,9 @@ On the Linux side, the RPmsg Framework relies on the interaction of following co
 
 ### RPMsg Linux Kernel Configuration
 
-To enable the RPMsg Framework on PolarFire SoC using Linux, the `CONFIG_RPMSG_MIV` kernel configuration must be activated.
+The RPMsg framework is automatically enabled when the remote `MIV_REMOTEPROC` configuration is enabled.
 
-This option is already configured in the PolarFire SoC Yocto and Buildroot environments when using the AMP machine.
+This option is already configured in the PolarFire SoC Yocto and Buildroot build systems when using the AMP machine.
 
 <a name="how-to-use-the-rpmsg-framework-on-linux"></a>
 

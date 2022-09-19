@@ -6,6 +6,8 @@ This page provides a brief introduction to Asymmetric Multiprocessing (AMP) conc
   - [Introduction](#introduction)
   - [AMP on PolarFire SoC](#amp-on-polarfire-soc)
     - [AMP Boot Flow](#amp-boot-flow)
+      - [AMP Early Boot Flow](#amp-early-boot-flow)
+      - [AMP Late Boot Flow](#amp-late-boot-flow)
     - [Inter-Hart Communication (IHC)](#inter-hart-communication-ihc)
   - [AMP Configurations](#amp-configurations)
     - [Linux + FreeRTOS/Bare Metal(BM) Configuration](#linux--freertos--baremetal-configuration)
@@ -49,13 +51,36 @@ A HSS payload is an image containing a header and one or more binary files that 
 
 In an AMP configuration, the HSS payload should contain two binary files, one for each of the supported software contexts. For example, one of these binary files could be an ELF file containing a bare metal application or RTOS, and the other one a U-boot binary to load Linux OS.
 
-When loading a payload, the HSS will copy the payload from non-volatile storage to DDR and then copy the binaries to the memory location(s) that were specified when the payload was generated.
+<a name="amp-early-boot-flow"></a>
 
-In addition to this, the HSS payload header describes which harts are associated with each payload as well as the address that each hart should start executing from once the payload has been loaded into memory by the HSS.
+### AMP Early Boot Flow
 
-![amp-boot-flow](images/amp-boot-flow.png)
+By default, the HSS will copy the payload from non-volatile storage to DDR and then copy the binaries to the memory location(s) that were specified when the payload was generated.
+
+The HSS payload header describes which harts are associated with each payload as well as the address that each hart should start executing from once the payload has been loaded into memory by the HSS.
+
+![amp-early-boot-flow](images/amp-early-boot-flow.png)
 
 For further information on [HSS payloads](https://mi-v-ecosystem.github.io/redirects/software-development_hss-payloads), please refer to the HSS payload documentation page.
+
+<a name="amp-late-boot-flow"></a>
+
+### AMP Late Attach Boot Flow
+
+This mode can be used to control the Life Cycle Management (LCM) of the remote AMP context from the master context using the Remoteproc framework. This allows:
+
+- Controlling the remote processor execution (start, stop, etc.)
+- Loading the ELF firmware in the remote processor memory
+- Parsing a firmware resource table to set associated resources such as inter-hart communication using RPMsg framework.
+
+It is worth mentioning that Remoteproc functionality is currently supported by Linux (master context) to control the life cycle of the remote context (Bare Metal/FreeRTOS).
+
+![amp-late-boot-flow](images/amp-late-boot-flow.png)
+
+In this boot flow, the HSS payload generator YAML configuration file has the skip_autoboot flag set to true in the RTOS/BM entry.
+This will indicate the HSS to do the basic setup of the AMP context (OpenSBI domain registration, PMP setup, etc.). However, it won't load the ELF file to memory or start the application execution. The harts within the context will remain idle until the application (either a FreeRTOS or BM application) gets loaded and started by another entity, such as remoteproc from a Linux master context.
+
+More details on this framework are available in the remoteproc framework documentation [page](https://mi-v-ecosystem.github.io/redirects/asymmetric-multiprocessing_remoteproc).
 
 <a name="inter-hart-communication-ihc"></a>
 
@@ -113,10 +138,10 @@ The table below describes the DDR memory layout used in this demo:
 
 |                             | Linux (Context A)                                            | FreeRTOS/BM (Context B)          |
 | --------------------------- | ------------------------------------------------------------ | -------------------------------- |
-| Main Memory                 | 1883.69 MB Total <br /><br /> Cached @ 0x10_0000_0000        | Cached @ 0x10_75BB_0000 (4 MB)   |
-| User space mappable buffers | Cached @  0x80000000 (32 MB) <br /><br /> Non Cached @ 0xc0000000 (128MB) <br /><br /> WCB  @ 0xd0000000 (128MB) | -                                |
-| RPMsg vrings                | Cached @ 0x10_75FB_0000 (64 KB)                              | Cached @ 0x10_75FB_0000 (64 KB)  |
-| RPMsg buffers               | Cached @ 0x10_75FC_0000 (256 KB)                             | Cached @ 0x10_75FC_0000 (256 KB) |
+| Main Memory                 | 1883.69 MB Total <br /><br /> Cached @ 0x10_0000_0000        | Cached @ 0x8100_0000 (4 MB)   |
+| User space mappable buffers | Cached @  0x8000_0000 (16 MB) <br /><br /> Non Cached @ 0xc000_0000 (128MB) <br /><br /> WCB  @ 0xd000_0000 (128MB) | -                                |
+| RPMsg vrings                | Cached @ 0x8140_0000 (64 KB)                              | Cached @ 0x8140_0000 (64 KB)  |
+| RPMsg buffers               | Cached @ 0x8141_0000 (256 KB)                             | Cached @ 0x8141_0000 (256 KB) |
 
 <a name="building-the-linux--freertos--bm-demo"></a>
 

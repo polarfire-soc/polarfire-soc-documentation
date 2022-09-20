@@ -8,6 +8,7 @@
   - [Requirements](#requirements)
   - [Tested on](#tested-on)
   - [Pre-Requisites](#pre-requisites)
+    - [Hart Software Services Configuration](#hart-software-services-configuration)
     - [Using a Winbond W25N01GV NAND flash memory](#using-a-winbond-w25n01gv-nand-flash-memory)
     - [Using a Micron (MT25Q) NOR flash memory](#using-a-micron-mt25q-nor-flash-memory)
   - [Building a Linux image for a NAND or NOR flash memory device](#building-a-linux-image-for-a-nand-or-nor-flash-memory-device)
@@ -27,10 +28,12 @@ This document provides a brief overview of programming an external QSPI Flash me
 
 The following flash memory devices are officially supported on PolarFire SoC:
 
-| Manufacturer | Part No. | Type | Density       |
-|--------------|----------|------|---------------|
-| Winbond      | W25N01GV | NAND | 1Gb (128MB)   |
-| Micron       | MT25QL256| NOR  | 256Mb (32MB)  |
+| Manufacturer  | Part No. | Type | Density       |
+|---------------|----------|------|---------------|
+| Winbond       | W25N01GV | NAND | 1Gb (128MB)   |
+| Micron*       | MT25QL256| NOR  | 256Mb (32MB)  |
+
+*Micron QSPI is only supported by the Meta PolarFire SoC Yocto BSP.
 
 Depending on the PolarFire SoC board being used the QSPI I/Os may be routed via the FPGA fabric to a Raspberry Pi interface, in this case an adapter daughter board may be required to connect a QSPI flash. See the individual sections below for more information.
 
@@ -47,6 +50,22 @@ See the individual sections below for more infomation.
 
 ## Pre-Requisites
 
+<a name="hart-software-services-configuration"></a>
+
+### Hart Software Services Configuration
+
+From release v2022.09 the HSS will no longer support booting from QSPI in the default build.
+This means that the configuration option `SERVICE_QSPI` must be enabled in the HSS configuration to boot from QSPI flash.
+
+- If the Winbond W25N01GV QSPI flash is being used `SERVICE_QSPI_WINBOND_W25N01GV` must also be enabled in the build.
+
+- If the Micron MQ25T QSPI flash is being used `SERVICE_QSPI_MICRON_MQ25T` must also be enabled in the build.
+
+Note: if you are using a reference design job file for a development kit, these job files bundle a HSS eNVM client.
+This means you must first program the FPGA job to the target board and then update the HSS using the boot mode programmer in SoftConsole.
+Alternatively the FPGA design can be generated in Libero SoC and a custom HSS build added as an eNVM client in the Libero design flow.
+For more information refer to the [PolarFire SoC Software Tool Flow](https://mi-v-ecosystem.github.io/redirects/software-development_polarfire-soc-software-tool-flow) documentation.
+
 <a name="Using-a-Winbond-W25N01GV-NAND-flash-memory"></a>
 
 ### Using a Winbond W25N01GV NAND flash memory
@@ -54,6 +73,7 @@ See the individual sections below for more infomation.
 Ensure you are using:
 
 - Icicle Kit reference design v2022.09 or later with the standard configuration.
+- A HSS built with `SERVICE_QSPI` and `SERVICE_QSPI_WINBOND_W25N01GV` enabled.
 
 The Winbond W25N01GV NAND flash memory can be connected to the Icicle Kit by using a Mikroe [Flash 5 click board](https://www.mikroe.com/flash-5-click) and a [Pi 3 Click shield](https://www.mikroe.com/pi-3-click-shield) as follows:
 
@@ -70,6 +90,7 @@ The Winbond W25N01GV NAND flash memory can be connected to the Icicle Kit by usi
 Ensure you are using:
 
 - Icicle Kit reference design v2022.09 or later with the "MICRON_QSPI" configuration.
+- A HSS built with `SERVICE_QSPI` and `SERVICE_QSPI_MICRON_MQ25T` enabled.
 
 The Micron MT25QL256 NOR flash memory can be connected to the Icicle Kit by using a [Digilent Pmod SF3](https://digilent.com/reference/pmod/pmodsf3/start) and a [Pmod HAT Adapter](https://digilent.com/shop/pmod-hat-adapter-pmod-expansion-for-raspberry-pi) as follows:
 

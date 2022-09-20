@@ -85,7 +85,7 @@ Connect the Icicle Kit's *USB- UART Terminal* connector (J11) to your host compu
 
 ![](./images/icicle-kit-terminals.png)
 
-MMUART0 displays the Hart Software Service (HSS) boot messages and U-Boot messages. MMUART1 displays Linux boot messages and provides a Linux prompt. The default user name is "root". No password is required. If a password is requested at any stage "microchip" is used as default password.
+MMUART0 displays the Hart Software Service (HSS) boot messages. MMUART1 displays U-Boot messages, Linux boot messages and provides a Linux prompt. The default user name is "root". No password is required. If a password is requested at any stage "microchip" is used as default password.
 
 <a name="updating"></a>
 

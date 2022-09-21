@@ -83,7 +83,7 @@ The board is pre-programmed with a reference design booting Linux from eMMC.
 
 Connect the Icicle Kit's *USB- UART Terminal* connector (J11) to your host computer. Use the terminal software of your choice (Putty ExtraPutty, minicom, screen) to open serial connections to the four UARTs available though the J11 USB connector. **Serial port settings: 115220 baud, no flow control, no parity**. Power cycle the board. This should result in boot messages appearing on two of the serials ports.
 
-![](./images/icicle-kit-terminals.png)
+![](./images/icicle-kit-terminals.gif)
 
 MMUART0 displays the Hart Software Service (HSS) boot messages. MMUART1 displays U-Boot messages, Linux boot messages and provides a Linux prompt. The default user name is "root". No password is required. If a password is requested at any stage "microchip" is used as default password.
 

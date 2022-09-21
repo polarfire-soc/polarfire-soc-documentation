@@ -10,7 +10,7 @@
   - [Pre-Requisites](#pre-requisites)
     - [Hart Software Services Configuration](#hart-software-services-configuration)
     - [Using a Winbond W25N01GV NAND flash memory](#using-a-winbond-w25n01gv-nand-flash-memory)
-    - [Using a Micron (MT25Q) NOR flash memory](#using-a-micron-mt25q-nor-flash-memory)
+    - [Using a Micron MT25QL256 NOR flash memory](#using-a-micron-mt25ql256-nor-flash-memory)
   - [Building a Linux image for a NAND or NOR flash memory device](#building-a-linux-image-for-a-nand-or-nor-flash-memory-device)
   - [Programming the external QSPI flash memory using the HSS](#programming-the-external-qspi-flash-memory-using-the-hss)
     - [Using USBDMSC service](#using-usbdmsc-service)
@@ -58,22 +58,24 @@ From release v2022.09 the HSS will no longer support booting from QSPI in the de
 This means that the configuration option `SERVICE_QSPI` must be enabled in the HSS configuration to boot from QSPI flash.
 
 - If the Winbond W25N01GV QSPI flash is being used `SERVICE_QSPI_WINBOND_W25N01GV` must also be enabled in the build.
+  - The HSS includes an example configuration file in the boards/mpfs-icicle-kit-es/def_config_examples/ directory called `def_config_emmc_qspi-winbond` with the Winbond QSPI flash enabled.
 
 - If the Micron MQ25T QSPI flash is being used `SERVICE_QSPI_MICRON_MQ25T` must also be enabled in the build.
+  - The HSS includes an example configuration file in the boards/mpfs-icicle-kit-es/def_config_examples/ directory called `def_config_emmc_qspi-micron` with the Micron QSPI flash enabled.
 
 Note: if you are using a reference design job file for a development kit, these job files bundle a HSS eNVM client.
 This means you must first program the FPGA job to the target board and then update the HSS using the boot mode programmer in SoftConsole.
 Alternatively the FPGA design can be generated in Libero SoC and a custom HSS build added as an eNVM client in the Libero design flow.
 For more information refer to the [PolarFire SoC Software Tool Flow](https://mi-v-ecosystem.github.io/redirects/software-development_polarfire-soc-software-tool-flow) documentation.
 
-<a name="Using-a-Winbond-W25N01GV-NAND-flash-memory"></a>
+<a name="using-a-winbond-w25n01gv-nand-flash-memory"></a>
 
 ### Using a Winbond W25N01GV NAND flash memory
 
 Ensure you are using:
 
 - Icicle Kit reference design v2022.09 or later with the standard configuration.
-- A HSS built with `SERVICE_QSPI` and `SERVICE_QSPI_WINBOND_W25N01GV` enabled.
+- A HSS built with `SERVICE_QSPI` and `SERVICE_QSPI_WINBOND_W25N01GV` enabled or built using the `def_config_emmc_qspi-winbond` configuration file.
 
 The Winbond W25N01GV NAND flash memory can be connected to the Icicle Kit by using a Mikroe [Flash 5 click board](https://www.mikroe.com/flash-5-click) and a [Pi 3 Click shield](https://www.mikroe.com/pi-3-click-shield) as follows:
 
@@ -83,14 +85,14 @@ The Winbond W25N01GV NAND flash memory can be connected to the Icicle Kit by usi
 
 - Make sure J46 jumper is closed on the Icicle Kit
 
-<a name="Using-a-Micron-MT25Q-NOR-flash-memory"></a>
+<a name="using-a-micron-mt25ql256-nor-flash-memory"></a>
 
-### Using a Micron (MT25Q) NOR flash memory
+### Using a Micron MT25QL256 NOR flash memory
 
 Ensure you are using:
 
 - Icicle Kit reference design v2022.09 or later with the "MICRON_QSPI" configuration.
-- A HSS built with `SERVICE_QSPI` and `SERVICE_QSPI_MICRON_MQ25T` enabled.
+- A HSS built with `SERVICE_QSPI` and `SERVICE_QSPI_MICRON_MQ25T` enabled or built using the `def_config_emmc_qspi-micron` configuration file..
 
 The Micron MT25QL256 NOR flash memory can be connected to the Icicle Kit by using a [Digilent Pmod SF3](https://digilent.com/reference/pmod/pmodsf3/start) and a [Pmod HAT Adapter](https://digilent.com/shop/pmod-hat-adapter-pmod-expansion-for-raspberry-pi) as follows:
 
@@ -100,7 +102,7 @@ The Micron MT25QL256 NOR flash memory can be connected to the Icicle Kit by usin
 
 - Make sure J46 jumper is closed on the Icicle Kit
 
-<a name="Building-a-Linux-image-for-a-NAND-or-NOR-flash-memory-device"></a>
+<a name="building-a-linux-image-for-a-nand-or-nor-flash-memory-device"></a>
 
 ## Building a Linux image for a NAND or NOR flash memory device
 
@@ -108,7 +110,7 @@ The [Microchip PolarFire SoC Yocto BSP](https://github.com/polarfire-soc/meta-po
 
 Linux images that are suitable for programming to a NAND or NOR memory device have a `.nand.mtdimg` or `.nor.mtdimg` file extension respectively. These images can be programmed to the QSPI flash memory using the HSS.
 
-<a name="programming-the-external-QSPI-flash-memory-using-the-HSS"></a>
+<a name="programming-the-external-qspi-flash-memory-using-the-hss"></a>
 
 ## Programming the external QSPI flash memory using the HSS
 

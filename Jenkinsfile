@@ -1,3 +1,3 @@
-@Library('automated-testing-library-test') _
+@Library('automated-testing-library') _
 pipelineDocCheck()
 

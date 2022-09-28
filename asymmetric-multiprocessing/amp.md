@@ -187,20 +187,14 @@ The disk image flashed to the device in the step above contains the following pa
 
 #### Build Linux + FreeRTOS/Bare Metal AMP Demo using Buildroot
 
-1. Build the image using the DEVKIT icicle-kit-es-amp and set the AMP_DEMO variable to `freertos` for a Linux+FreeRTOS demo or to `bm` for a Linux+ Bare Metal demo.
+1. Build the image using the DEVKIT icicle-kit-es-amp and set the `BR2_PACKAGE_MCHP_AMP_CONTEXT_B` variable to `mpfs-rpmsg-freertos` for a Linux+FreeRTOS demo or to `mpfs-rpmsg-bm` for a Linux+Bare Metal demo. This variable is set in the file `conf/icicle-kit-es-amp/buildroot_initramfs_config`.
 
-    Note: If no `AMP_DEMO` variable is set when building in AMP mode, the Linux+FreeRTOS will be set as default.
+    Note: If the `BR2_PACKAGE_MCHP_AMP_CONTEXT_B` variable is not set when building in AMP mode, the Linux+FreeRTOS will be set as default.
 
-    For a Linux+FreeRTOS demo:
-
-    ```bash
-    make all DEVKIT=icicle-kit-es-amp AMP_DEMO=freertos
-    ```
-
-    For a Linux+Bare metal demo:
+    Build the image:
 
     ```bash
-    make all DEVKIT=icicle-kit-es-amp AMP_DEMO=bm
+    make all DEVKIT=icicle-kit-es-amp
     ```
 
 2. Load the image onto the target as shown in the PolarFire SoC Buildroot SDK [README](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-buildroot-sdk).

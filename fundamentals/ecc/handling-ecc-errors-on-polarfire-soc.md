@@ -5,24 +5,24 @@
 - [Handling ECC errors on PolarFire SoC](#handling-ecc-errors-on-polarfire-soc)
   - [Table of contents](#table-of-contents)
   - [Introduction](#introduction)
-    - [ECC description](#ecc-description)
+    - [ECC Description](#ecc-description)
   - [ECC on PolarFire SoC](#ecc-on-polarfire-soc)
-    - [Recieving ECC errors](#recieving-ecc-errors)
+    - [Recieving ECC Errors](#recieving-ecc-errors)
       - [ECC Interrupts](#ecc-interrupts)
-    - [Handling ECC errors](#handling-ecc-errors)
-    - [On chip memories](#on-chip-memories)
-      - [On chip memories ECC](#on-chip-memories-ecc)
-        - [L1 cache ECC errors](#l1-cache-ecc-errors)
-        - [L2 cache ECC errors](#l2-cache-ecc-errors)
-        - [PCIe ECC errors](#pcie-ecc-errors)
-        - [Fabric ECC errors](#fabric-ecc-errors)
-    - [Off chip memories](#off-chip-memories)
+    - [Handling ECC Errors](#handling-ecc-errors)
+    - [On-Chip Memories](#on-chip-memories)
+      - [On-Chip Memories ECC](#on-chip-memories-ecc)
+        - [L1 Cache ECC Errors](#l1-cache-ecc-errors)
+        - [L2 Cache ECC Errors](#l2-cache-ecc-errors)
+        - [PCIe ECC Errors](#pcie-ecc-errors)
+        - [Fabric ECC Errors](#fabric-ecc-errors)
+    - [Off-Chip Memory](#off-chip-memory)
       - [DDR ECC](#ddr-ecc)
-    - [MSS peripherals ECC](#mss-peripherals-ecc)
-      - [Enabling MSS peripheral ECC interrupts](#enabling-mss-peripheral-ecc-interrupts)
-      - [Handling MSS peripheral ECC interrupts](#handling-mss-peripheral-ecc-interrupts)
-      - [MSS peripheral correctable errors](#mss-peripheral-correctable-errors)
-      - [MSS peripheral un-correctable errors](#mss-peripheral-un-correctable-errors)
+    - [ECC Support in MSS Peripherals](#ecc-support-in-mss-peripherals)
+      - [Enabling ECC Interrupts from MSS Peripherals](#enabling-ecc-interrupts-from-mss-peripherals)
+      - [Handling ECC Interrupts from MSS Peripherals](#handling-ecc-interrupts-from-mss-peripherals)
+      - [Correctable ECC Errors on MSS Peripherals](#correctable-ecc-errors-on-mss-peripherals)
+      - [Un-Correctable ECC Errors on MSS Peripherals](#un-correctable-ecc-errors-on-mss-peripherals)
 
 <a name="introduction"></a>
 
@@ -32,7 +32,7 @@ This document will outline the configuration of Error Correcting Codes (ECC) on 
 
 <a name="ecc-description"></a>
 
-### ECC description
+### ECC Description
 
 Error Correction Code (ECC) is a method of protecting data from single bit and double bit errors.
 A single bit error (also known as correctable error) occurs when a bit in a memory location is flipped (either from 1 to 0 or from 0 to 1).
@@ -58,7 +58,7 @@ ECC is available for all memories susceptable to bit flips and certain periphera
 
 <a name="recieving-ecc-errors"></a>
 
-### Recieving ECC errors
+### Recieving ECC Errors
 
 ECC errors are generated on a parity mismatch. An interrupt will be raised if an ECC error is detected.
 There are different interrupts for different types of ECC error and the different memories / peripherals where they can be found.
@@ -67,7 +67,7 @@ There are different interrupts for different types of ECC error and the differen
 
 #### ECC Interrupts
 
-The table below lists the different interrupts associated with ECC and their PLIC and local interrupt numbering:
+The table below lists the different interrupts associated with ECC along with their PLIC and local interrupt numbering:
 
 | Interrupt name                  | Description                                                                         | PLIC IRQ number | Local IRQ number | Local IRQ on hart |
 |---------------------------------|-------------------------------------------------------------------------------------|-----------------|------------------|-------------------|
@@ -77,17 +77,17 @@ The table below lists the different interrupts associated with ECC and their PLI
 | L2 cache data uncorrectable     | An uncorrectable double bit error has been detected in L2 cache data                | 4               |                  |                   |
 | peripheral_ecc_error            | An uncorrectable double bit error has been detected in a peripheral                 | 78              | 14               | E51               |
 | peripheral_ecc_correct          | A single bit correctable error has been detected and corrected in a peripheral      | 79              | 13               | E51               |
-| BEU hart 0                      | A BEU event has occurred on the E51                                                 | 182             | *                | E51               |
-| BEU hart 1                      | A BEU event has occurred on the U54_1                                               | 183             | *                | U54_1             |
-| BEU hart 2                      | A BEU event has occurred on the U54_2                                               | 184             | *                | U54_2             |
-| BEU hart 3                      | A BEU event has occurred on the U54_3                                               | 185             | *                | U54_3             |
-| BEU hart 4                      | A BEU event has occurred on the U54_4                                               | 186             | *                | U54_4             |
+| BEU hart 0                      | A BEU event has occurred on the E51                                                 | 182             | Trap, see below  | E51               |
+| BEU hart 1                      | A BEU event has occurred on the U54_1                                               | 183             | Trap, see below  | U54_1             |
+| BEU hart 2                      | A BEU event has occurred on the U54_2                                               | 184             | Trap, see below  | U54_2             |
+| BEU hart 3                      | A BEU event has occurred on the U54_3                                               | 185             | Trap, see below  | U54_3             |
+| BEU hart 4                      | A BEU event has occurred on the U54_4                                               | 186             | Trap, see below  | U54_4             |
 
-*The BEU local interrupt has a different behaviour to the standard local interrupts, it will present as a trap with `MCAUSE` of 128.
+Note: the BEU local interrupt has a different behaviour to the standard local interrupts, it will present as a trap with `MCAUSE` of 128.
 
 <a name="handling-ecc-errors"></a>
 
-### Handling ECC errors
+### Handling ECC Errors
 
 Depdending on the ECC error that has occured users may want to take corrective / preventative action to stop bad data from propagating through the system.
 
@@ -110,9 +110,9 @@ If the HSS detects a double bit error it will restart the affected context.
 
 <a name="on-chip-memories"></a>
 
-### On chip memories
+### On-Chip Memories
 
-There are several on chip memories available that are susceptable to bit flips and are therefore protected by ECC:
+There are several on-chip memories available that are susceptable to bit flips and are therefore protected by ECC:
 
 - L1 cache (I-cache, D-cache, I-TIM, D-TIM)
 - L2 cache (LIM, Scratchpad, cache)
@@ -121,9 +121,9 @@ There are several on chip memories available that are susceptable to bit flips a
 
 <a name="on-chip-memories-ecc"></a>
 
-#### On chip memories ECC
+#### On-Chip Memories ECC
 
-ECC is enabled by default for on chip memory and is constantly running.
+ECC is enabled by default for on-chip memory and is constantly running.
 ECC errors will only be acknowledged by the MSS if the interrupt assocaited with the ECC error is enabled.
 
 For example, a single bit ECC error could occur in the L2 LIM, the corrected data will be returned and written back.
@@ -131,7 +131,7 @@ The only way to know this error has occured instantly is to enable the L2 Cache 
 
 <a name="l1-cache-ecc-errors"></a>
 
-##### L1 cache ECC errors
+##### L1 Cache ECC Errors
 
 ECC errors for the L1 cache on each hart are reported in the Bus Error Unit (BEU) for the hart.
 The BEU is described in the PolarFire SoC Technical Reference Manual.
@@ -148,7 +148,7 @@ Single bit errors are automatically corrected and written back to memory while d
 
 <a name="l2-cache-ecc-errors"></a>
 
-##### L2 cache ECC errors
+##### L2 Cache ECC Errors
 
 The L2 cache has several interrupts available on the PLIC:
 
@@ -167,7 +167,7 @@ Single bit errors are automatically corrected and written back to memory while d
 
 <a name="pcie-ecc-errors"></a>
 
-##### PCIe ECC errors
+##### PCIe ECC Errors
 
 By default PCIe ECC errors are masked by the controller.
 The PolarFire PCIe controller can report ECC errors internally and raise an interrupt to the MSS when one is detected.
@@ -175,7 +175,7 @@ The PolarFire SoC Linux PCIe driver can return a count of the number of ECC erro
 
 <a name="fabric-ecc-errors"></a>
 
-##### Fabric ECC errors
+##### Fabric ECC Errors
 
 SRAMs (LSRAM and uSRAM) in the FPGA fabric are protected by ECC.
 Each component will have output ECC flags when ECC is enabled.
@@ -187,11 +187,11 @@ ECC error flags from fabric memories should be connected to the "F2M" interrupts
 There is no handling mechanism in the HSS or in provided software for these memories as they are not static.
 If users would like to add checking of fabric memories for ECC they will need to configure their own interrupt handlers for this purpose.
 
-<a name="off-chip-memories"></a>
+<a name="off-chip-memory"></a>
 
-### Off chip memories
+### Off-Chip Memory
 
-The off chip memory that will be discussed in this document is DDR.
+The off-chip memory that will be discussed in this document is DDR.
 
 <a name="ddr-ecc"></a>
 
@@ -211,9 +211,9 @@ If a single bit error is detected the DDR controller will automatically write ba
 
 If a double bit error is detected an error will be generated in the BEU, this will result in a trap on the hart reading from DDR.
 
-<a name="mss-peripherals-ecc"></a>
+<a name="ecc-support-in-mss-peripherals"></a>
 
-### MSS peripherals ECC
+### ECC Support in MSS Peripherals
 
 Several peripherals on PolarFire SoC support ECC. These are:
 
@@ -225,31 +225,31 @@ Several peripherals on PolarFire SoC support ECC. These are:
 - CAN0
 - CAN1
 
-<a name="enabling-mss-peripheral-ecc-interrupts"></a>
+<a name="enabling-ecc-interrupts-from-mss-peripherals"></a>
 
-#### Enabling MSS peripheral ECC interrupts
+#### Enabling ECC Interrupts from MSS Peripherals
 
 By default peripheral ECC interrupts are disabled - there are two steps to enable these interrupts:
 
 1. Set the bit corresponding to the peripheral in the "EDAC_INTEN_CR" register (see the PolarFire SoC Register Map for more information). Note: there are two bits for each peripheral, for example "MMC_1E" is for single bit errors in MMC and "MMC_2E" is for double bit errors in MMC.
 2. Enable the "peripheral_ecc_error" and / or "peripheral_ecc_correct" interrupts on the PLIC. Note: there is a single interrupt that will assert for all ECC peripherals, see the section below for more details.
 
-<a name="handling-mss-peripheral-ecc-interrupts"></a>
+<a name="handling-ecc-interrupts-from-mss-peripherals"></a>
 
-#### Handling MSS peripheral ECC interrupts
+#### Handling ECC Interrupts from MSS Peripherals
 
-<a name="mss-peripheral-correctable-errors"></a>
+<a name="correctable-ecc-errors-on-mss-peripherals"></a>
 
-#### MSS peripheral correctable errors
+#### Correctable ECC Errors on MSS Peripherals
 
 When the correable error bit for a peripheral is set in the "EDAC_INTEN_CR" register and the "peripheral_ecc_correct" interrupt is enabled on the PLIC, if a correctable ECC error is detected in the peripheral the "peripheral_ecc_correct" interrupt will assert.
 When this happens the "EDAC_SR" register should be read to determine which peripheral has triggered the ECC event.
 The ECC correctable interrupt can be cleared by writing 1 to any bits set in the "EDAC_SR" register.
 Each peripheral also has an individual count register to highlight the number of correctable ECC errors that have occured on that peripheral.
 
-<a name="mss-peripheral-un-correctable-errors"></a>
+<a name="un-correctable-ecc-errors-on-mss-peripherals"></a>
 
-#### MSS peripheral un-correctable errors
+#### Un-Correctable ECC Errors on MSS Peripherals
 
 When the un-correable error bit for a peripheral is set in the "EDAC_INTEN_CR" register and the "peripheral_ecc_error" interrupt is enabled on the PLIC, if an un-correctable ECC error is detected in the peripheral the "peripheral_ecc_error" interrupt will assert.
 When this happens the "EDAC_SR" register should be read to determine which peripheral has triggered the ECC event.

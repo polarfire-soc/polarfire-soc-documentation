@@ -31,9 +31,9 @@ The following flash memory devices are officially supported on PolarFire SoC:
 | Manufacturer  | Part No. | Type | Density       |
 |---------------|----------|------|---------------|
 | Winbond       | W25N01GV | NAND | 1Gb (128MB)   |
-| Micron*       | MT25QL256| NOR  | 256Mb (32MB)  |
+| Micron*       | MT25QL256| NOR | 256Mb (32MB)   |
 
-*Micron QSPI is only supported by the Meta PolarFire SoC Yocto BSP.
+*Micron QSPI is only supported in the Meta PolarFire SoC Yocto BSP and Microchip Buildroot External.
 
 Depending on the PolarFire SoC board being used the QSPI I/Os may be routed via the FPGA fabric to a Raspberry Pi interface, in this case an adapter daughter board may be required to connect a QSPI flash. See the individual sections below for more information.
 
@@ -106,9 +106,9 @@ The Micron MT25QL256 NOR flash memory can be connected to the Icicle Kit by usin
 
 ## Building a Linux image for a NAND or NOR flash memory device
 
-The [Microchip PolarFire SoC Yocto BSP](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) layer allows building a minimal Linux image that can be programmed to the officially supported NAND and NOR flash memory devices.
+The [Microchip PolarFire SoC Yocto BSP](https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp) layer and [Microchip Buildroot External](https://mi-v-ecosystem.github.io/redirects/repo-microchip-buildroot-external) allow users to build a minimal Linux image that can be programmed to the officially supported NAND and NOR flash memory devices.
 
-Linux images that are suitable for programming to a NAND or NOR memory device have a `.nand.mtdimg` or `.nor.mtdimg` file extension respectively. These images can be programmed to the QSPI flash memory using the HSS.
+Linux images created using the PolarFire SoC Yocto BSP layer and named per the `<image>-<machine>-<timestamp>.<flash-type>.mtdimg` format, for example, `core-image-minimal-mtdutils-icicle-kit-es-yyyyMMddHHmmSS.nand.mtdimg` or `core-image-minimal-mtdutils-icicle-kit-es-yyyyMMddHHmmSS.nor.mtdimg` are suitable for programming to a QSPI flash device using the HSS. For Microchip Buildroot External, images with the name `nand.img` or `nor.img` are used instead.
 
 <a name="programming-the-external-qspi-flash-memory-using-the-hss"></a>
 

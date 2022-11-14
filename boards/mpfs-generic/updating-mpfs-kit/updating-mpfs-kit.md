@@ -61,13 +61,13 @@ The .zip file in the release assets should be downloaded and extracted to access
 
 ### Linux image
 
-A minimal Linux image is provided as an asset with the Meta PolarFire SoC Yocto BSP [releases](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp) for different development kits.
+The [Meta PolarFire SoC Yocto BSP](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp) and [Microchip Buildroot External](https://mi-v-ecosystem.github.io/redirects/repo-microchip-buildroot-external) repositories allow users to create a minimal Linux image for several development kits. Alternatively, a pre-built minimal Linux image is provided as an asset in the Meta PolarFire SoC Yocto BSP releases [page](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp).
 
-Linux images with a '.wic', or ".wic.gz", file extension use a GUID partition table (GPT) and are suitable for programming to the eMMC or an SD card.
+Linux images with a '.wic' or ".wic.gz" file extension use a GUID partition table (GPT) and are suitable for programming to the eMMC or an SD card. For Microchip Buildroot External, an image with the name `sdcard.img` is use instead. For more information on how to program any of these images into storage, plese refer to the steps outlined in the [eMMC](#emmc) or [SD](#sd-card-content-update-procedure) sections.
 
-The ".wic.gz" file in the release assets should be downloaded and extracted to program into storage using the steps outlined in the [eMMC](#emmc) or [SD](#sd-card-content-update-procedure) sections.
+Linux images created using the PolarFire SoC Yocto BSP layer and named per the `<image>-<machine>-<timestamp>.<flash-type>.mtdimg` format, for example, `core-image-minimal-mtdutils-icicle-kit-es-yyyyMMddHHmmSS.nand.mtdimg` or `core-image-minimal-mtdutils-icicle-kit-es-yyyyMMddHHmmSS.nor.mtdimg` are suitable for programming to a QSPI flash device using the HSS. For Microchip Buildroot External, images with the name `nand.img` or `nor.img` are used instead.
 
-Linux images with a ".mtdimg" extension are suitable for programming to an external QSPI flash memory device using the steps outlined in the [External QSPI Flash Memory](#external-qspi-flash-memory) section.
+For more information on how to program images to QSPI flash devices, please follow the steps outlined in the [External QSPI Flash Memory](#external-qspi-flash-memory) section.
 
 When updating a kit as shown in this section, make sure to keep both the reference design and Linux image versions in sync by using the latest release assets.
 
@@ -94,13 +94,13 @@ If both QSPI and MMC services are enabled in the HSS, you must specify the defau
 5. Type `mmc` to select mmc as a boot source and then `usbdmsc` in the HSS command line interface. If successful, a message saying "Waiting for USB Host to connect" will be displayed.
 6. Connect the USB-OTG connector to your host PC. The eMMC content will be transferred to the kit through this connection.
 7. The eMMC should now appear as mass storage device/drive on your host PC.
-8. Download the asset for the Linux image that you want to program to the kit from the Meta PolarFire SoC Yocto BSP [releases](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp).
-9. Extract the image so it has the ".wic" extension - compressed images, i.e with the ".wic.gz" extension should not be programmed as this can cause issues at boot time.
+8. Download the asset for the Linux image that you want to program to the kit from the Meta PolarFire SoC Yocto BSP [releases](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp) or use [Microchip Buildroot External](https://mi-v-ecosystem.github.io/redirects/repo-microchip-buildroot-external) to create a `sdcard.img` image.
+9. If using an image generated with the Meta PolarFire SoC Yocto BSP, please extract the image so it has the ".wic" extension - compressed images, i.e with the ".wic.gz" extension should not be programmed as this can cause issues at boot time.
 10. Launch USBImager
 
     ![](./images/start.png)
 
-11. Select the *Image file* that was extracted in step 9. Note: Linux images are generated with a time stamp; assets from different releases will have different names.
+11. Select the *Image file* you would like to program to the eMMC. Note: Linux images are generated with a time stamp; assets from different releases will have different names.
 
     ![](./images/select-file.png)
 
@@ -122,15 +122,15 @@ If both QSPI and MMC services are enabled in the HSS, you must specify the defau
 
 1. Put an SD card into the SD card reader of your host PC and use the instructions below.
 
-2. Download the asset for the Linux image that you want to program to the kit from the Meta PolarFire SoC Yocto BSP [releases](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp).
+2. Download the asset for the Linux image that you want to program to the kit from the Meta PolarFire SoC Yocto BSP [releases](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp) or use the [Microchip Buildroot External](https://mi-v-ecosystem.github.io/redirects/repo-microchip-buildroot-external) to create a `sdcard.img` image.
 
-3. Extract the image so it has the ".wic" extension - compressed images, i.e with the ".wic.gz" extension should not be programmed as this can cause issues at boot time.
+3. If using an image generated from the Meta PolarFire SoC Yocto BSP, extract the image so it has the ".wic" extension - compressed images, i.e with the ".wic.gz" extension should not be programmed as this can cause issues at boot time.
 
 4. Launch USBImager
 
     ![](./images/start.png)
 
-5. Select *Image file* that was extracted in step 3. Note: Linux images are generated with a time stamp, assets from different releases will have different names.
+5. Select *Image file* that was extracted in step 3. Note: Yocto Linux images are generated with a time stamp, assets from different releases will have different names.
 
     ![](./images/select-file.png)
 
@@ -173,12 +173,12 @@ If both QSPI and an MMC services are enabled in the HSS, you must specify the de
 5. Type `qspi` to select QSPI as the boot source  and then type `usbdmsc` in the HSS command line interface. If successful, a message saying "Waiting for USB Host to connect" will be displayed.
 6. Connect the USB-OTG connector to your host PC. The content will be transferred to the external QSPI flash memory through this connection.
 7. The QSPI flash connected to the kit should now appear as mass storage device/drive on your host PC.
-8. Download the asset for the Linux image that you want to program to the kit from the Meta PolarFire SoC Yocto BSP [releases](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp). The asset should have a `.mtdimg` file extension.
+8. Download the asset for the Linux image that you want to program to the kit from the Meta PolarFire SoC Yocto BSP [releases](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp). The asset should have a `.mtdimg` file extension. Alternatively, create a "nand.img" or "nor.img" image using [Microchip Buildroot External](https://mi-v-ecosystem.github.io/redirects/repo-microchip-buildroot-external).
 9. Launch USBImager
 
     ![](./images/start.png)
 
-10. Select the *Image file* that was downloaded in step 8. Note: Linux images are generated with a time stamp; assets from different releases will have different names.
+10. Select the *Image file* that was downloaded in step 8. Note: Yocto Linux images are generated with a time stamp; assets from different releases will have different names.
 
     ![](./images/select-file-flash.png)
 

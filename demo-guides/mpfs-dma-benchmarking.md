@@ -11,24 +11,25 @@
   - [PDMA Theoretical Performance](#pdma-theoretical-performance)
   - [Results L2-LIM](#results-l2-lim)
     - [Source: L2-LIM, Destination: L2-LIM](#source-l2-lim-destination-l2-lim)
-      - [Source: L2-LIM, Destination: Scratchpad](#source-l2-lim-destination-scratchpad)
-      - [Source: L2-LIM, Destination: Cached DDR](#source-l2-lim-destination-cached-ddr)
-      - [Source: L2-LIM, Destination: Non-Cached DDR](#source-l2-lim-destination-non-cached-ddr)
+    - [Source: L2-LIM, Destination: Scratchpad](#source-l2-lim-destination-scratchpad)
+    - [Source: L2-LIM, Destination: Cached DDR](#source-l2-lim-destination-cached-ddr)
+    - [Source: L2-LIM, Destination: Non-Cached DDR](#source-l2-lim-destination-non-cached-ddr)
   - [Results Scratchpad Memory](#results-scratchpad-memory)
     - [Source: Scratchpad, Destination: L2-LIM](#source-scratchpad-destination-l2-lim)
-      - [Source: Scratchpad, Destination: Scratchpad](#source-scratchpad-destination-scratchpad)
-      - [Source: Scratchpad, Destination: Cached DDR](#source-scratchpad-destination-cached-ddr)
-      - [Source: Scratchpad, Destination: Non-Cached DDR](#source-scratchpad-destination-non-cached-ddr)
+    - [Source: Scratchpad, Destination: Scratchpad](#source-scratchpad-destination-scratchpad)
+    - [Source: Scratchpad, Destination: Cached DDR](#source-scratchpad-destination-cached-ddr)
+    - [Source: Scratchpad, Destination: Non-Cached DDR](#source-scratchpad-destination-non-cached-ddr)
   - [Results Cached DDR](#results-cached-ddr)
     - [Source: Cached DDR, Destination: L2-LIM](#source-cached-ddr-destination-l2-lim)
-      - [Source: Cached DDR, Destination: Scratchpad](#source-cached-ddr-destination-scratchpad)
-      - [Source: Cached DDR, Destination: Cached DDR](#source-cached-ddr-destination-cached-ddr)
-      - [Source: Cached DDR, Destination: Non-Cached DDR](#source-cached-ddr-destination-non-cached-ddr)
+    - [Source: Cached DDR, Destination: Scratchpad](#source-cached-ddr-destination-scratchpad)
+    - [Source: Cached DDR, Destination: Cached DDR](#source-cached-ddr-destination-cached-ddr)
+    - [Source: Cached DDR, Destination: Non-Cached DDR](#source-cached-ddr-destination-non-cached-ddr)
   - [Results Non-Cached DDR](#results-non-cached-ddr)
     - [Source: Non-Cached DDR, Destination: L2-LIM](#source-non-cached-ddr-destination-l2-lim)
-      - [Source: Non-Cached DDR, Destination: Scratchpad](#source-non-cached-ddr-destination-scratchpad)
-      - [Source: Non-Cached DDR, Destination: Cached DDR](#source-non-cached-ddr-destination-cached-ddr)
-      - [Source: Non-Cached DDR, Destination: Non-Cached DDR](#source-non-cached-ddr-destination-non-cached-ddr)
+    - [Source: Non-Cached DDR, Destination: Scratchpad](#source-non-cached-ddr-destination-scratchpad)
+    - [Source: Non-Cached DDR, Destination: Cached DDR](#source-non-cached-ddr-destination-cached-ddr)
+    - [Source: Non-Cached DDR, Destination: Non-Cached DDR](#source-non-cached-ddr-destination-non-cached-ddr)
+  - [Appendix 1: Impact on L2 Cache configuration](#appendix-1-impact-on-l2-cache-configuration)
 
 ## Introduction
 
@@ -179,7 +180,7 @@ source and destination pair:
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
 | Size (MB)            | 0.26   | 0.26       | 0.26       | 0.26                 | 0.26                     | 0.26                     |
 | Rate (MB/s)          | 2206   | 2384       | 2389       | 1366                 | 1524                     | 1530                     |
-| % of Theoretical Max | 40%    | 50%        | 50%        | 28%                  | 32%                      | 32%                      |
+| % of Theoretical Max | 46%    | 50%        | 50%        | 28%                  | 32%                      | 32%                      |
 
 ### Source: L2-LIM, Destination: Cached DDR
 
@@ -211,7 +212,7 @@ source and destination pair:
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
 | Size (MB)            | 0.26   | 0.26       | 0.26       | 0.26                 | 0.26                     | 0.26                     |
 | Rate (MB/s)          | 2124   | 2382       | 2382       | 970                  | 1008                     | 1009                     |
-| % of Theoretical Max | 44%    | 50%        | 50%        | 20%                  | 20%                      | 21%                      |
+| % of Theoretical Max | 44%    | 50%        | 50%        | 20%                  | 21%                      | 21%                      |
 
 ### Source: Scratchpad, Destination: Scratchpad
 
@@ -230,8 +231,8 @@ source and destination pair:
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
 | Size (MB)            | 0.5    | 0.5        | 0.5        | 0.5                  | 0.5                      | 0.5                      |
-| Rate (MB/s)          | 3744   | 3785       | 3799       | 1841                 | 1780                     | 1786                     |
-| % of Theoretical Max | 78%    | 79%        | 79%        | 38%                  | 37%                      | 37%                      |
+| Rate (MB/s)          | 3744   | 3785       | 3799       | 1841                 | 1850                     | 1786                     |
+| % of Theoretical Max | 78%    | 79%        | 79%        | 38%                  | 39%                      | 37%                      |
 
 ### Source: Scratchpad, Destination: Non-Cached DDR
 
@@ -262,8 +263,8 @@ source and destination pair:
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
 | Size (MB)            | 0.5    | 0.5        | 0.5        | 0.5                  | 0.5                      | 0.5                      |
-| Rate (MB/s)          | 3805   | 3805       | 3808       | 1842                 | 1793                     | 1802                     |
-| % of Theoretical Max | 79%    | 79%        | 79%        | 38%                  | 37%                      | 38%                      |
+| Rate (MB/s)          | 3805   | 3805       | 3808       | 1842                 | 1850                     | 1802                     |
+| % of Theoretical Max | 79%    | 79%        | 79%        | 39%                  | 38%                      | 37%                      |
 
 ### Source: Cached DDR, Destination: Cached DDR
 
@@ -284,18 +285,14 @@ and [Non-Cached DDR to Cached DDR](#source-non-cached-ddr-destination-cached-ddr
 benchmarks the entire cache is used only as either the source or the destination,
 as such the performance begins to degrade at &#8776; 0.512MB.
 
-The L2 Cache can be configured to allocate more space for use with the Cached DDR.
-The current L2 Cache configuration has 4 cache ways that are unallocated to Scratchpad
-memory or L2-LIM, and are therefore useable by the cached DDR.
-In all the L2-Cache is made up of 15 cache ways, of 0.128MB each.
-To modify the L2-Cache configuration edit the MSS configuration file that is included
-with the application, in the `src/boards/icicle-kit-es/mss_configuration` folder.
+For a full discussion of the impact of the L2-Cache configuration on the performance
+of Cached DDR see the following section, [Appendix 1: Impact on L2 Cache configuration](#appendix-1-impact-on-l2-cache-configuration).
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | ------ | :--------- | :--------- | -------------------- | :----------------------- | :----------------------- |
 | Size (MB)            | 1      | 1          | 1          | 1                    | 1                        | 1                        |
-| Rate (MB/s)          | 3780   | 3790       | 3786       | 1779                 | 295                      | 1732                     |
-| % of Theoretical Max | 79%    | 79%        | 79%        | 37%                  | 6%                       | 36%                      |
+| Rate (MB/s)          | 3780   | 3790       | 3786       | 1779                 | 1793                     | 1732                     |
+| % of Theoretical Max | 79%    | 79%        | 79%        | 37%                  | 37%                      | 36%                      |
 
 ### Source: Cached DDR, Destination: Non-Cached DDR
 
@@ -304,8 +301,9 @@ with the application, in the `src/boards/icicle-kit-es/mss_configuration` folder
 The drop off in performance at &#8776; 0.512MB is due to the cache becoming full,
 as the PDMA can transfer data faster than the cache can clear data from DDR memory.
 More cache space can be allocated to the L2-Cache using the MSS Configurator.
+
 For a full discussion of the impact of the L2-Cache configuration on the performance
-of Cached DDR see the following section, [Source: Cached DDR, Destination: Cached DDR](#source-cached-ddr-destination-cached-ddr).
+of Cached DDR see the following section, [Appendix 1: Impact on L2 Cache configuration](#appendix-1-impact-on-l2-cache-configuration).
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM  Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------ | :----------------------- | :----------------------- |
@@ -343,7 +341,7 @@ The drop off in performance at &#8776; 0.512MB is due to the cache becoming full
 as the PDMA can transfer data to the cache faster than the cache can write data to
 DDR memory. More cache space can be allocated to the L2-Cache using the MSS Configurator.
 For a full discussion of the impact of the L2-Cache configuration on the performance
-of Cached DDR see the following section, [Source: Cached DDR, Destination: Cached DDR](#source-cached-ddr-destination-cached-ddr).
+of Cached DDR see the following section, [Appendix 1: Impact on L2 Cache configuration](#appendix-1-impact-on-l2-cache-configuration).
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -358,5 +356,35 @@ of Cached DDR see the following section, [Source: Cached DDR, Destination: Cache
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
 | Size (MB)            | 1      | 1          | 1          | 1                    | 1                        | 1                        |
-| Rate (MB/s)          | 453    | 453        | 490        | 245                  | 246                      | 246                      |
-| % of Theoretical Max | 19%    | 19%        | 15%        | 10%                  | 10%                      | 10%                      |
+| Rate (MB/s)          | 453    | 453        | 459        | 245                  | 246                      | 246                      |
+| % of Theoretical Max | 19%    | 19%        | 19%        | 10%                  | 10%                      | 10%                      |
+
+## Appendix 1: Impact on L2 Cache configuration
+
+![L2 Cache Configuration](images/mpfs-dma-benchmarking/l2-cache_config.png)
+
+The above figure graphs the performance of the PDMA when transferring data to Cached
+DDR for 4 different configurations of the L2 Cache.
+
+For all of the above transfers Cached DDR is used as both the transfer source and
+destination, as such the cache memory available for each is half the total size of
+L2 Cache.
+
+The drop off in performance of PDMA transfers occur when the available L2 Cache
+memory fills up.
+The cache becomes full because the PDMA can transfer data to the cache  faster than
+the data in the cache can be written to DDR memory.
+
+The performance begins to degrade once the data being transferred is &#8776; 102%
+the size of the available cache space. In the above figure, this is most apparent
+with larger cache configurations of 1.536 MB and 1.024 MB.
+
+The L2 Cache can be configured to change how much space is allocated to each of
+L2 LIM, Scratchpad Memory or L2 Cache, which is the cache used for the Cached DDR.
+The default L2 Cache configuration for this project, has 4 cache ways of 0.128 MB
+each, totalling 0.512 MB allocated for use as L2 Cache. The remainder is allocated
+between Scratchpad and LIM memory.
+In all the L2-Cache is made up of 16 cache ways, totalling 2.048MB of cached memory.
+
+To modify the L2-Cache configuration edit the MSS configuration file that is included
+with the application, in the `src/boards/icicle-kit-es/mss_configuration` folder.

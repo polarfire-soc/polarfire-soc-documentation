@@ -235,6 +235,8 @@ The MPFS HAL DDR initialization routine can be used when required.
 There are no direct DDR ECC interrupts on PolarFire SoC.
 
 If a single bit error is detected the DDR controller will automatically write back corrected data to memory.
+The `CFG_ECC_1BIT_INT_THRESH` and `STAT_INT_ECC_1BIT_THRESH` can be used to monitor single bit errors.
+When ECC is enabled and the `CFG_ECC_1BIT_INT_THRESH` register has a value between 0 and 0xFE, if the number of accrued ECC errors equals the value in the `CFG_ECC_1BIT_INT_THRESH` register an error will be generated in the BEU and bit zero of the `STAT_INT_ECC_1BIT_THRESH` register will be set.
 
 If a double bit error is detected an error will be generated in the BEU, this will result in a trap on the hart reading from DDR.
 

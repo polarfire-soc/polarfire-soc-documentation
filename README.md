@@ -1,40 +1,50 @@
-# PolarFire SoC Documentation
+# PolarFire SoC Documentation Index
 
-The boards folder contains instructions and links related to the programming of different PolarFire SoC targets to boot Linux.
+- Applications And Demos
+  - [MPFS AXI4 Stream Demo](./applications-and-demos/mpfs-axi4-stream-demo.md)
+    - [MPFS PMP Demo](./applications-and-demos/mpfs-pmp-demo.md)
+    - [MPFS SEV H264 Demo](./applications-and-demos/mpfs-sev-h264-demo.md)
 
-Please refer to the Microsemi [website](https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga#resources) for information on PolarFire SoC and device families.
+    - Asymmetric Multiprocessing
+      - [AMP](./applications-and-demos/asymmetric-multiprocessing/amp.md)
+        - [IHC](./applications-and-demos/asymmetric-multiprocessing/ihc.md)
+        - [Remoteproc](./applications-and-demos/asymmetric-multiprocessing/remoteproc.md)
+        - [RPMSG Client Drivers](./applications-and-demos/asymmetric-multiprocessing/rpmsg-client-drivers.md)
+        - [RPMSG](./applications-and-demos/asymmetric-multiprocessing/rpmsg.md)
 
-## Supported boards
+- Bare Metal Embedded Software
+  - [Bare Metal Software Project Structure](./bare-metal-embedded-software/bare-metal-software-project-structure.md)
 
-Supported boards include:
+- How To
+  - [Booting From QSPI](./how-to/booting-from-qspi.md)
+  - [Debug From Scratchpad](./how-to/debug-from-scratchpad.md)
+  - [Multiprocessor Debugging](./how-to/multiprocessor-debugging.md)
+  - [Programming The SPI Flash On A PolarFire SoC Board And Booting Via HSS](./how-to/programming-the-spi-flash-on-a-polarfire-soc-board-and-booting-via-hss.md)
 
-- [PolarFire SoC Icicle Kit](https://mi-v-ecosystem.github.io/redirects/boards-mpfs-icicle-kit-es)
-- [HiFive Unleashed with Expansion Board](https://mi-v-ecosystem.github.io/redirects/mpfs-dev-kit_MPFS-DEV-KIT_user_guide)
-- [LC-MPFS-DEV-KIT](https://mi-v-ecosystem.github.io/redirects/lc-mpfs-dev-kit_LC-MPFS-DEV-KIT_user_guide)
+- HSS And U-Boot
+  - [HSS Payloads](./hss-and-u-boot/hss-payloads.md)
+  - [Secure Boot](./hss-and-u-boot/secure-boot.md)
+  - [Watchdog Service](./hss-and-u-boot/watchdog-service.md)
 
-## Icicle Kit
+- Knowledge Base
+  - [MPFS DMA Benchmarking](./knowledge-base/mpfs-dma-benchmarking.md)
+  - [MPFS Memory Configuration](./knowledge-base/mpfs-memory-configuration.md)
+  - [MPFS Memory Hierarchy](./knowledge-base/mpfs-memory-hierarchy.md)
+  - [PolarFire SoC Software Tool Flow](./knowledge-base/polarfire-soc-software-tool-flow.md)
 
-The repository contains supporting documentation for the Icicle Kit.
+  - Boot Modes
+    - [Boot Mode 0 Fundamentals](./knowledge-base/boot-modes/boot-mode-0-fundamentals.md)
+    - [Boot Mode 1 Fundamentals](./knowledge-base/boot-modes/boot-mode-1-fundamentals.md)
+    - [Boot Mode 2 Fundamentals](./knowledge-base/boot-modes/boot-mode-2-fundamentals.md)
+    - [Boot Mode 3 Fundamentals](./knowledge-base/boot-modes/boot-mode-3-fundamentals.md)
+    - [Boot Modes Fundamentals](./knowledge-base/boot-modes/boot-modes-fundamentals.md)
 
-The [Updating PolarFire SoC Icicle-Kit FPGA Design and Linux Image](https://mi-v-ecosystem.github.io/redirects/updating-icicle-kit_updating-icicle-kit-design-and-linux) document provides:
+- Linux Drivers And Build Systems
+  - [PolarFire SoC USB](./linux-drivers-and-build-systems/polarfire-soc-usb.md)
 
-- FlashPro Express programming files for the FPGA fabric and eNVM
-- Linux images for SD card and eMMC targets
-- The required jumper configuration for the board
-- Programming instructions for the eMMC and SD card
-
-The [Icicle Kit Software Developer Guide](https://mi-v-ecosystem.github.io/redirects/icicle-kit-sw-developer-guide_icicle-kit-sw-developer-guide) document provides:
-
-- A board diagram highlighting features
-- Out of the box boot instructions for booting Linux
-
-The Icicle Kit Quick Start Guide can be found [here](https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide#overview%22)
-
-### Libero tool licenses
-
-The following steps can be followed to generate or renew your silver libero license at **no additional cost**.
-
-1. A free silver license, which supports the PolarFire SoC FPGA on an Icicle Kit, can be generated [here](http://soc.microsemi.com/Portal/DPortal.aspx?v=24).
-2. Choose a “Libero Silver 1 Year Node-lock License for Windows” or a “Libero Silver 1 Year Node-lock License for Linux" depending on your OS.
-
-If you require a multi-seat floating license, raise a support request at our portal [here](https://soc.microsemi.com/Portal/Default.aspx).
+- Reference Designs Fpga And Development Kits
+  - [Icicle Kit User Guide](./reference-designs-fpga-and-development-kits/icicle-kit-user-guide.md)
+  - [LC MPFS Dev Kit User Guide](./reference-designs-fpga-and-development-kits/lc-mpfs-dev-kit-user-guide.md)
+  - [MPFS Dev Kit User Guide](./reference-designs-fpga-and-development-kits/mpfs-dev-kit-user-guide.md)
+  - [SEV Kit User Guide](./reference-designs-fpga-and-development-kits/sev-kit-user-guide.md)
+  - [Updating MPFS Kit](./reference-designs-fpga-and-development-kits/updating-mpfs-kit.md)

@@ -7,10 +7,10 @@
 
     - Asymmetric Multiprocessing
       - [AMP](./applications-and-demos/asymmetric-multiprocessing/amp.md)
-        - [IHC](./applications-and-demos/asymmetric-multiprocessing/ihc.md)
-        - [Remoteproc](./applications-and-demos/asymmetric-multiprocessing/remoteproc.md)
-        - [RPMSG Client Drivers](./applications-and-demos/asymmetric-multiprocessing/rpmsg-client-drivers.md)
-        - [RPMSG](./applications-and-demos/asymmetric-multiprocessing/rpmsg.md)
+      - [IHC](./applications-and-demos/asymmetric-multiprocessing/ihc.md)
+      - [Remoteproc](./applications-and-demos/asymmetric-multiprocessing/remoteproc.md)
+      - [RPMSG Client Drivers](./applications-and-demos/asymmetric-multiprocessing/rpmsg-client-drivers.md)
+      - [RPMSG](./applications-and-demos/asymmetric-multiprocessing/rpmsg.md)
 
 - Bare Metal Embedded Software
   - [Bare Metal Software Project Structure](./bare-metal-embedded-software/bare-metal-software-project-structure.md)

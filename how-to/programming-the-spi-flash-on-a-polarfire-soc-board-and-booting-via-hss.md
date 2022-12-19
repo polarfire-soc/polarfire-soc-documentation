@@ -17,7 +17,7 @@
 
 This document provides a brief overview of programming the System Controller SPI flash part on a PolarFire SoC board with a HSS-compatible payload, and booting it via the HSS.
 
-Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide)
+Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/ReferenceManuals/PolarFire_SoC_FPGA_MSS_Technical_Reference_Manual_VC.pdf)
 for a detailed description of PolarFire SoC.
 
 <a name="requirements"></a>

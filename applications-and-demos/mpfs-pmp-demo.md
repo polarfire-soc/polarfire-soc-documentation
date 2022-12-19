@@ -51,7 +51,7 @@ In this design:
 
 ![](./images/mpfs-pmp-demo/mss.jpg)
 
-For more information about PMP see [PolarFire SoC Standalone MSS Configurator User Guide](https://www.microsemi.com/product-directory/soc-design-tools/5587-pfsoc-mss-configurator-tool#documents) and [PolarFire SoC FPGA MSS Technical Reference Manual](https://www.microsemi.com/document-portal/doc_download/1245725-polarfire-soc-fpga-mss-technical-reference-manual).
+For more information about PMP see [PolarFire SoC Standalone MSS Configurator User Guide](https://onlinedocs.microchip.com/pr/GUID-BC096324-C726-48DB-8987-EF2BBC748A73-en-US-7/index.html?GUID-8F623149-225E-4A84-8BC9-3142A409FAD4) and [PolarFire SoC FPGA MSS Technical Reference Manual](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/ReferenceManuals/PolarFire_SoC_FPGA_MSS_Technical_Reference_Manual_VC.pdf).
 
 ## Updating HSS with PMP enabled xml
 

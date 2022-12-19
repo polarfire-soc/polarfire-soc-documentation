@@ -276,18 +276,18 @@ Visit the following links for further reference reading materials.
 ### Recommended Reading
 
 [RISC-V User-level ISA Specification](https://riscv.org/specifications/)  
-[RISC-V Draft Privileged ISA Specification](https://riscv.org/specifications/privileged-isa/)  
+[RISC-V Draft Privileged ISA Specification](https://github.com/riscv/riscv-isa-manual/releases/download/Priv-v1.12/riscv-privileged-20211203.pdf)  
 [SiFive FU540-C000 User Manual](https://www.sifive.com/documentation/chips/freedom-u540-c000-manual/)  
 [TU0844 Libero SoC PolarFire v2.2 Design Flow Tutorial](https://www.microsemi.com/document-portal/doc_download/1243632-tu0844-libero-soc-polarfire-v2-2-design-flow-tutorial)  
-[HiFive Unleashed Getting Started Guide](https://www.microsemi.com/document-portal/doc_download/1243284-hifive-unleashed-getting-started-guide)  
+[HiFive Unleashed Getting Started Guide](https://static.dev.sifive.com/pdfjs-1.9.426-dist/web/viewer.html?file=https://static.dev.sifive.com/HiFive-Unleashed-Getting-Started-Guide-v1p1.pdf)  
 
 ### Other References
 
-[PolarFire FPGA Documentation](https://www.microsemi.com/product-directory/fpgas/3854-polarfire-fpgas#documentation)  
-[Libero SoC PolarFire Documentation](https://www.microsemi.com/product-directory/design-resources/3863-libero-soc-polarfire#documents)  
+[PolarFire FPGA Documentation](https://www.microchip.com/en-us/products/fpgas-and-plds/fpgas/polarfire-fpgas)  
+[Libero SoC PolarFire Documentation](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/fpga/libero-software-later-versions)  
 [FlashPro User Guide for PolarFire](https://www.microsemi.com/document-portal/doc_download/137626-flashpro-user-guide-for-polarfire)  
-[FlashPro Express User Guide for PolarFire](https://www.microsemi.com/document-portal/doc_download/137627-flashpro-express-user-guide-for-polarfire)  
-[PolarFire SoC Information](https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga)  
+[FlashPro Express User Guide for PolarFire](https://www.microchip.com/en-us/products/fpgas-and-plds/fpga-and-soc-design-tools/programming-and-debug/flashpro-and-flashpro-express#Documentation)  
+[PolarFire SoC Information](https://www.microchip.com/en-us/products/fpgas-and-plds/system-on-chip-fpgas/polarfire-soc-fpgas)  
 [Schematics of MPFS-DEV-KIT](http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=1244811)  
 
 ## Technical Support

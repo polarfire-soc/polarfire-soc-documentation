@@ -2,7 +2,7 @@
 
 This document provides a brief overview of the PolarFire SoC hardware features related to memory hierarchy and suggested uses of these features.
 
-Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the detailed description of PolarFire SoC.
+Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/ReferenceManuals/PolarFire_SoC_FPGA_MSS_Technical_Reference_Manual_VC.pdf) for the detailed description of PolarFire SoC.
 
 ## Overview
 
@@ -62,7 +62,7 @@ The L2 cache is a 16-way set associative cache. It is made up of 4 banks, each b
 
 ![Cache Structure](./images/mpfs-memory-hierarchy/cache-lim-scratchpad-cache-structure.png)
 
-Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the detailed description of the L2 cache hardware.
+Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/ReferenceManuals/PolarFire_SoC_FPGA_MSS_Technical_Reference_Manual_VC.pdf) for the detailed description of the L2 cache hardware.
 
 The address of the memory accessed through the cache is used to determine which bank and set combination will be used to store the 64 byte block accessed from the backing memory. The backing memory is typically external DDR memory.
 The index of the way that will be used within the set is determined based on the current content and previous use of the various ways within the set.
@@ -100,7 +100,7 @@ The L2 memory is configured through a small number of configuration registers th
 | 0x0201_0868 | WayMask13   | U54_4 DCache master way mask register                                           |
 | 0x0201_0870 | WayMask14   | U54_4 ICache  master way mask register                                          |
 
-Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide) for the complete register descriptions.
+Please refer to the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/ReferenceManuals/PolarFire_SoC_FPGA_MSS_Technical_Reference_Manual_VC.pdf) for the complete register descriptions.
 
 #### Way Enable Register
 
@@ -166,7 +166,7 @@ Once configured, you will see that WayMask registers are used to prevent evictio
 
 The scratchpad configuration algorithm’s general method is to use one master, say Master S, to prevent eviction from the ways we want to use as scratchpad. To do this Master “S” forces the ways content (located in the cache way) to be mapped to the Zero Device address range by writing to the Zero Device. Master "S" then prevents itself from affecting the content of the cache way that is being mapped to the zero device by unmasking its own access to the cache way being used as a scratchpad.
 
-The algorithm for setting up scratchpad memory is detailed in the L2 Cache Controller section of the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://www.microsemi.com/document-portal/doc_download/1244570-ug0880-polarfire-soc-fpga-microprocessor-subsystem-mss-user-guide). You can also refer to the bare metal library's MPFS-HAL implementation for a working example.
+The algorithm for setting up scratchpad memory is detailed in the L2 Cache Controller section of the [PolarFire SoC Microprocessor Subsystem (MSS) User Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/ReferenceManuals/PolarFire_SoC_FPGA_MSS_Technical_Reference_Manual_VC.pdf). You can also refer to the bare metal library's MPFS-HAL implementation for a working example.
 
 ![Scratchpad](./images/mpfs-memory-hierarchy/cache-lim-scratchpad-scratchpad.png)
 

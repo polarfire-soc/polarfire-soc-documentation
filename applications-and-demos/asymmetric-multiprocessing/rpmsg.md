@@ -28,9 +28,9 @@ The Remote Processor Messaging (RPMsg) is a protocol that is used to send and re
 
 There are multiple implementations of the RPMsg protocol:
 
-- [Linux RPMsg framework](https://www.kernel.org/doc/html/latest/staging/rpmsg.html)
-- [OpenAMP RPMsg framework](https://github.com/OpenAMP/open-amp)
-- [RPMsg-lite framework](https://nxpmicro.github.io/rpmsg-lite/index.html)
+- [Linux RPMsg framework](https://mi-v-ecosystem.github.io/redirects/linux-kernel-doc-rpmsg)
+- [OpenAMP RPMsg framework](https://mi-v-ecosystem.github.io/redirects/repo-openamp)
+- [RPMsg-lite framework](https://mi-v-ecosystem.github.io/redirects/repo-rpmsg-lite)
 
 PolarFire SoC currently supports the RPMsg framework for Linux software contexts and the RPMsg-lite for RTOS/BM contexts.
 

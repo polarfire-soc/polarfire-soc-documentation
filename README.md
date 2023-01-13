@@ -30,6 +30,7 @@
   - [Linux Boot Authentication](./how-to/linux-boot-authentication.md)
   - [Multiprocessor Debugging](./how-to/multiprocessor-debugging.md)
   - [Programming The SPI Flash On A PolarFire SoC Board And Booting Via HSS](./how-to/programming-the-spi-flash-on-a-polarfire-soc-board-and-booting-via-hss.md)
+  - [Re-programming the FPGA from Linux](./how-to/re-programming-the-fpga-from-linux.md)
 
 - HSS And U-Boot
   - [HSS Payloads](./hss-and-u-boot/hss-payloads.md)

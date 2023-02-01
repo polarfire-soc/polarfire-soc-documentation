@@ -138,10 +138,11 @@ The table below describes the DDR memory layout used in this demo:
 
 |                             | Linux (Context A)                                            | FreeRTOS/BM (Context B)          |
 | --------------------------- | ------------------------------------------------------------ | -------------------------------- |
-| Main Memory                 | 1883.69 MB Total <br /><br /> Cached @ 0x10_0000_0000        | Cached @ 0x8100_0000 (4 MB)   |
-| User space mappable buffers | Cached @  0x8000_0000 (16 MB) <br /><br /> Non Cached @ 0xc000_0000 (128MB) <br /><br /> WCB  @ 0xd000_0000 (128MB) | -                                |
-| RPMsg vrings                | Cached @ 0x8140_0000 (64 KB)                              | Cached @ 0x8140_0000 (64 KB)  |
-| RPMsg buffers               | Cached @ 0x8141_0000 (256 KB)                             | Cached @ 0x8141_0000 (256 KB) |
+| Main Memory                 | Cached: <br /><br />  0x8000_0000 (64 MiB), 0x8A00_0000 (128 MiB) and 0x10_2200_0000 (1504 MiB) <br /><br /> Non-cached: <br /><br /> 0xC400_0000 (96 MiB) and 0x14_1200_0000 (256 MiB) | Cached @ 0x91C0_0000 (1 MiB)   |
+| User space mappable buffers | Cached @  0x8800_0000 (32 MiB) <br /><br /> Non-cached @ 0xC800_0000 (32MiB) <br /><br /> WCB  @ 0xD800_0000 (32MiB) | -                                |
+| RPMsg vrings                | Cached @ 0x91D0_0000 (64 KiB)                              | Cached @ 0x91D0_0000 (64 KiB)  |
+| RPMsg buffers               | Cached @ 0x91D1_0000 (256 KiB)                             | Cached @ 0x91D1_0000 (256 KiB) |
+| Remoteproc resource table   | Cached @ 0x91D5_0000 (4 KiB)                               | Cached @ 0x91D5_0000 (4 KiB)   |
 
 <a name="building-the-linux--freertos--bm-demo"></a>
 

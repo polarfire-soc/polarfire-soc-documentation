@@ -46,5 +46,5 @@
   - [Icicle Kit User Guide](./reference-designs-fpga-and-development-kits/icicle-kit-user-guide.md)
   - [LC MPFS Dev Kit User Guide](./reference-designs-fpga-and-development-kits/lc-mpfs-dev-kit-user-guide.md)
   - [MPFS Dev Kit User Guide](./reference-designs-fpga-and-development-kits/mpfs-dev-kit-user-guide.md)
-  - [SEV Kit User Guide](./reference-designs-fpga-and-development-kits/sev-kit-user-guide.md)
+  - [MPFS Video Kit User Guide](./reference-designs-fpga-and-development-kits/mpfs-video-kit-user-guide.md)
   - [Updating MPFS Kit](./reference-designs-fpga-and-development-kits/updating-mpfs-kit.md)

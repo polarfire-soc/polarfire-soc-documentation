@@ -3,7 +3,7 @@
 - Applications And Demos
   - [MPFS AXI4 Stream Demo](./mpfs-axi4-stream-demo.md)
   - [MPFS PMP Demo](./mpfs-pmp-demo.md)
-  - [MPFS SEV H264 Demo](./mpfs-sev-h264-demo.md)
+  - [MPFS Video kit H264 Demo](./mpfs-video-kit-h264-demo.md)
 
   - Asymmetric Multiprocessing
     - [AMP](./asymmetric-multiprocessing/amp.md)

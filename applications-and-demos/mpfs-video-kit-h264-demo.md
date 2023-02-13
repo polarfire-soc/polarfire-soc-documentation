@@ -15,6 +15,10 @@
     - [Alter How Much VLC Caches the Video](#alter-how-much-vlc-caches-the-video)
     - [Configuration of FFMPEG video  decoder parameters](#configuration-of-ffmpeg-video-decoder-parameters)
     - [Configuration of Video output module to the Windows GDI output module](#configuration-of-video-output-module-to-the-windows-gdi-output-module)
+  - [On Screen Display(Overlay) Controls](#on-screen-displayoverlay-controls)
+    - [Horizontal Position](#horizontal-position)
+    - [Vertical Position](#vertical-position)
+    - [OSD disable](#osd-disable)
   - [Updating the Video kit with latest images](#updating-the-video-kit-with-latest-images)
 
 <a name="description"></a>
@@ -32,6 +36,10 @@ The demo captures live stream from a camera on a PolarFire SoC Video kit and per
 Users can view the webserver by entering the IP address of the kit in a web browser. The webpage on the browser allows the user to control streaming of the live video from the Video kit to the connected system.
 After the user initiates the stream on the webpage, the application running on the MSS reads a compressed stream of data from the fabric and sends encoded H.264 RTP ethernet packets to the IP address of the system which initiated the stream.
 Users can play the video stream on a computer using applications such as VLC Media Player, Gstreamer or FFPlay. The webpage allows users to download an SDP file that can be passed on to the video player (VLC, Gstreamer, FFplay) after streaming is initiated.
+
+Below block diagram explains the H.264 frame generation
+
+![](./images/mpfs-video-kit-h264-demo/high_level_block_diagram.png)
 
 <a name="requirements"></a>
 
@@ -196,6 +204,52 @@ Follow the steps below to configure static IP addresses:
 ### Running the demo using static IP address
 
 To run the H264 demo using the static IP address follow the steps provided in [Quick Start Guide](https://onlinedocs.microchip.com/v2/literature/DS50003455?version=latest&redirect=true).
+
+<a name="on-screen-displayoverlay-controls"></a>
+
+### On Screen Display(Overlay) Controls
+
+The OSD (On Screen Display) feature overlays the amount of compression achieved in the encoding, in the form of: "COMPRESSION RATIO r" into the image frame, where r is the value of the ratio.
+Each character in this text is 16x16 pixels, stored in the ROM. The text is displayed at the location specified by the input coordinates.
+The encoding compression ratio is calculated by the driver dynamically and fed to the Fabric. The Fabric logic outputs RGB frame with the text added in the specified coordinates of the frame.
+This feature is optional, and by default enabled.
+
+<a name="horizontal-position"></a>
+
+#### Horizontal Position
+
+The user can change the OSD's horizontal position by changing the osdx-position using the following command:
+
+   ```text
+   v4l2-ctl -d /dev/video0 --set-ctrl=osdx_position=675
+   ```
+
+<a name="vertical-position"></a>
+
+#### Vertical Position
+
+The user can change the OSD's vertical position by changing the osdy-position using the following command:
+
+   ```text
+   v4l2-ctl -d /dev/video0 --set-ctrl=osdy_position=675
+   ```
+
+<a name="osd-disable"></a>
+
+#### OSD disable
+
+OSD feature is optional and can be disabled by the user. It is enabled by default.
+To disable the OSD feature, set the osd_enable control to "0"
+
+   ```text
+   v4l2-ctl -d /dev/video0 --set-ctrl=osd_enable=0
+   ```
+
+To enable the OSD feature, set the osd_enable control to "1"
+
+   ```text
+   v4l2-ctl -d /dev/video0 --set-ctrl=osd_enable=1
+   ```
 
 <a name="updating-the-video-kit-with-latest-images"></a>
 

@@ -173,7 +173,7 @@ Pre-requisites: Before following the steps described in this section, make sure 
 
 ```bash
 cd yocto-dev/build
-zcat tmp-glibc/deploy/images/icicle-kit-es-amp/mpfs-dev-cli-icicle-kit-es-amp.wic.gz | sudo dd of=/dev/sdX bs=4096 iflag=fullblock oflag=direct conv=fsync status=progress
+bmaptool copy tmp-glibc/deploy/images/icicle-kit-es-amp/mpfs-dev-cli-icicle-kit-es-amp.wic dev/sdX
 ```
 
 The disk image flashed to the device in the step above contains the following partitions:

@@ -228,7 +228,7 @@ A FlashPro Express programming job file is provided as an asset with each releas
 2. Extract the image using a file archiver such as 7-Zip on Windows. Alternatively, if using Linux, the image can be extracted using the following command:
 
     ```bash
-    unxz jammy-preinstalled-server-riscv64+icicle.img.xz
+    unxz ubuntu-22.04.2-preinstalled-server-riscv64+icicle.img.xz
     ```
 
 3. Program the image extracted in the step above to either the on-board eMMC or an SD card.
@@ -239,7 +239,7 @@ A FlashPro Express programming job file is provided as an asset with each releas
     Alternatively, if using Linux, the image can be programmed using from using the `dd` command:
 
     ```bash
-    sudo dd if=jammy-preinstalled-server-riscv64+icicle.img of=/dev/sdX bs=1M conv=fsync
+    sudo dd if=ubuntu-22.04.2-preinstalled-server-riscv64+icicle.img of=/dev/sdX bs=1M conv=fsync
     ```
 
     You will have to replace /dev/sdX by the actual device name of your SD card. Please, be especially cautious not to overwrite the wrong drive as this cannot be undone.

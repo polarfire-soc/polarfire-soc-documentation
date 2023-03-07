@@ -215,13 +215,15 @@ If both QSPI and an MMC services are enabled in the HSS, you must specify the de
 
 ### Ubuntu Server Image
 
-An Ubuntu preinstalled server image is available for the Icicle Kit on the official Ubuntu website.
+An Ubuntu preinstalled server image is available for the Icicle Kit on the official [Ubuntu website](https://ubuntu.com/download/risc-v).
 
 This section describes how to program an Ubuntu server image to an SD card or on-board eMMC on the Icicle Kit.
 
 Before proceeding with the steps below, make sure you are using the latest Icicle Kit Reference Design.
 
 A FlashPro Express programming job file is provided as an asset with each release of a Icicle Kit Reference Design. For more information, please refer to the [Icicle Kit Reference Design GitHub release page](https://mi-v-ecosystem.github.io/redirects/releases-icicle-kit-reference-design).
+
+For information on how to program a FLash Pro Express programming job file to the Icicle Kit, please refer to the "Using FlashPro Express" section in the [PolarFire SoC Software Tool Flow](https://mi-v-ecosystem.github.io/redirects/software-development_polarfire-soc-software-tool-flow) documentation.
 
 1. Download the preinstalled Ubuntu server image for the Icicle Kit. For Ubuntu 22.04.2 (Jammy Jellyfish), the image is available on the [Ubuntu Releases site](https://mi-v-ecosystem.github.io/redirects/icicle-kit-ubuntu-server-image)
 

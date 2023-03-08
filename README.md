@@ -26,6 +26,7 @@
 - How To
   - [Booting From QSPI](./how-to/booting-from-qspi.md)
   - [Debug From Scratchpad](./how-to/debug-from-scratchpad.md)
+  - [Linux Boot Authentication](./how-to/linux-boot-authentication.md)
   - [Multiprocessor Debugging](./how-to/multiprocessor-debugging.md)
   - [Programming The SPI Flash On A PolarFire SoC Board And Booting Via HSS](./how-to/programming-the-spi-flash-on-a-polarfire-soc-board-and-booting-via-hss.md)
 

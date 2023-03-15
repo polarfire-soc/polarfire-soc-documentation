@@ -1,7 +1,6 @@
 # Knowledge Base Index
 
 - Knowledge Base
-  - [MPFS DMA Benchmarking](./mpfs-dma-benchmarking.md)
   - [MPFS Memory Configuration](./mpfs-memory-configuration.md)
   - [MPFS Memory Hierarchy](./mpfs-memory-hierarchy.md)
   - [PolarFire SoC Software Tool Flow](./polarfire-soc-software-tool-flow.md)

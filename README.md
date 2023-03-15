@@ -15,6 +15,14 @@
 - Bare Metal Embedded Software
   - [Bare Metal Software Project Structure](./bare-metal-embedded-software/bare-metal-software-project-structure.md)
 
+- Benchmarks
+  - DMA Benchmarking
+    - [PolarFire SoC DMA Benchmarking Overview](./benchmarks/dma-benchmarking/Readme.md)
+    - Benchmarking Results
+      - [MSS PDMA Benchmarking](./benchmarks/dma-benchmarking/benchmarking-results/mss-pdma-benchmarking.md)
+      - [Fabric DMA Benchmarking](./benchmarks/dma-benchmarking/benchmarking-results/fabric-dma-benchmarking.md)
+      - [Concurrent DMA Benchmarking](./benchmarks/dma-benchmarking/benchmarking-results/concurrent-dma-benchmarking.md)
+
 - How To
   - [Booting From QSPI](./how-to/booting-from-qspi.md)
   - [Debug From Scratchpad](./how-to/debug-from-scratchpad.md)
@@ -27,7 +35,6 @@
   - [Watchdog Service](./hss-and-u-boot/watchdog-service.md)
 
 - Knowledge Base
-  - [MPFS DMA Benchmarking](./knowledge-base/mpfs-dma-benchmarking.md)
   - [MPFS Memory Configuration](./knowledge-base/mpfs-memory-configuration.md)
   - [MPFS Memory Hierarchy](./knowledge-base/mpfs-memory-hierarchy.md)
   - [PolarFire SoC Software Tool Flow](./knowledge-base/polarfire-soc-software-tool-flow.md)

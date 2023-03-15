@@ -118,7 +118,7 @@ single source.
 PolarFire MSS Detailed Block Diagram. PolarFire SoC MSS Technical Reference
 Manual, page 11.
 
-![MSS Detailed Block Diagram](./images/mpfs-dma-benchmarking/pfsoc-mss-detailed-block-diagram.png)
+![MSS Detailed Block Diagram](./images/mpfs-pdma-benchmarking/pfsoc-mss-detailed-block-diagram.png)
 
 The theoretical maximum rate of a transfer is determined by the width of the bus
 connecting a memory source and destination to the PDMA, and by the processor
@@ -164,7 +164,7 @@ source and destination pair:
 
 ### Source: L2-LIM, Destination: L2-LIM
 
-![Source: L2-LIM, Destination: L2-LIM](./images/mpfs-dma-benchmarking/l2-lim-l2-lim.png)
+![Source: L2-LIM, Destination: L2-LIM](./images/mpfs-pdma-benchmarking/l2-lim-l2-lim.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -174,7 +174,7 @@ source and destination pair:
 
 ### Source: L2-LIM, Destination: Scratchpad
 
-![Source: L2-LIM, Destination: Scratchpad](./images/mpfs-dma-benchmarking/l2-lim-scratchpad.png)
+![Source: L2-LIM, Destination: Scratchpad](./images/mpfs-pdma-benchmarking/l2-lim-scratchpad.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -184,7 +184,7 @@ source and destination pair:
 
 ### Source: L2-LIM, Destination: Cached DDR
 
-![Source: L2-LIM, Destination: Cached DDR](./images/mpfs-dma-benchmarking/l2-lim-cached-ddr.png)
+![Source: L2-LIM, Destination: Cached DDR](./images/mpfs-pdma-benchmarking/l2-lim-cached-ddr.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -194,7 +194,7 @@ source and destination pair:
 
 ### Source: L2-LIM, Destination: Non-Cached DDR
 
-![Source: L2-LIM, Destination: Non-Cached DDR](./images/mpfs-dma-benchmarking/l2-lim-non-cached-ddr.png)
+![Source: L2-LIM, Destination: Non-Cached DDR](./images/mpfs-pdma-benchmarking/l2-lim-non-cached-ddr.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -206,7 +206,7 @@ source and destination pair:
 
 ### Source: Scratchpad, Destination: L2-LIM
 
-![Source: Scratchpad, Destination: L2-LIM](./images/mpfs-dma-benchmarking/scratchpad-l2-lim.png)
+![Source: Scratchpad, Destination: L2-LIM](./images/mpfs-pdma-benchmarking/scratchpad-l2-lim.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -216,7 +216,7 @@ source and destination pair:
 
 ### Source: Scratchpad, Destination: Scratchpad
 
-![Source: Scratchpad, Destination: Scratchpad](./images/mpfs-dma-benchmarking/scratchpad-scratchpad.png)
+![Source: Scratchpad, Destination: Scratchpad](./images/mpfs-pdma-benchmarking/scratchpad-scratchpad.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -226,7 +226,7 @@ source and destination pair:
 
 ### Source: Scratchpad, Destination: Cached DDR
 
-![Source: Scratchpad, Destination: Cached DDR](./images/mpfs-dma-benchmarking/scratchpad-cached-ddr.png)
+![Source: Scratchpad, Destination: Cached DDR](./images/mpfs-pdma-benchmarking/scratchpad-cached-ddr.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -236,7 +236,7 @@ source and destination pair:
 
 ### Source: Scratchpad, Destination: Non-Cached DDR
 
-![Source: Scratchpad, Destination: Non-Cached DDR](./images/mpfs-dma-benchmarking/scratchpad-non-cached-ddr.png)
+![Source: Scratchpad, Destination: Non-Cached DDR](./images/mpfs-pdma-benchmarking/scratchpad-non-cached-ddr.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -248,7 +248,7 @@ source and destination pair:
 
 ### Source: Cached DDR, Destination: L2-LIM
 
-![Source: Cached DDR, Destination: L2-LIM](./images/mpfs-dma-benchmarking/cached-ddr-l2-lim.png)
+![Source: Cached DDR, Destination: L2-LIM](./images/mpfs-pdma-benchmarking/cached-ddr-l2-lim.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -258,7 +258,7 @@ source and destination pair:
 
 ### Source: Cached DDR, Destination: Scratchpad
 
-![Source: Cached DDR, Destination: Scratchpad](./images/mpfs-dma-benchmarking/cached-ddr-scratchpad.png)
+![Source: Cached DDR, Destination: Scratchpad](./images/mpfs-pdma-benchmarking/cached-ddr-scratchpad.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -268,7 +268,7 @@ source and destination pair:
 
 ### Source: Cached DDR, Destination: Cached DDR
 
-![Source: Cached DDR, Destination: Cached DDR](./images/mpfs-dma-benchmarking/cached-ddr-cached-ddr.png)
+![Source: Cached DDR, Destination: Cached DDR](./images/mpfs-pdma-benchmarking/cached-ddr-cached-ddr.png)
 
 The drop off in performance that occurs in the above graph at &#8776; 0.256MB is
 due to the L2 cache becoming full.
@@ -296,7 +296,7 @@ of Cached DDR see the following section, [Appendix 1: Impact on L2 Cache configu
 
 ### Source: Cached DDR, Destination: Non-Cached DDR
 
-![Cached DDR, Destination: Non-Cached DDR](./images/mpfs-dma-benchmarking/cached-ddr-non-cached-ddr.png)
+![Cached DDR, Destination: Non-Cached DDR](./images/mpfs-pdma-benchmarking/cached-ddr-non-cached-ddr.png)
 
 The drop off in performance at &#8776; 0.512MB is due to the cache becoming full,
 as the PDMA can transfer data faster than the cache can clear data from DDR memory.
@@ -315,7 +315,7 @@ of Cached DDR see the following section, [Appendix 1: Impact on L2 Cache configu
 
 ### Source: Non-Cached DDR, Destination: L2-LIM
 
-![Non-Cached DDR, Destination: L2-LIM](./images/mpfs-dma-benchmarking/non-cached-ddr-l2-lim.png)
+![Non-Cached DDR, Destination: L2-LIM](./images/mpfs-pdma-benchmarking/non-cached-ddr-l2-lim.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -325,7 +325,7 @@ of Cached DDR see the following section, [Appendix 1: Impact on L2 Cache configu
 
 ### Source: Non-Cached DDR, Destination: Scratchpad
 
-![Source: Non-Cached DDR, Destination: Scratchpad](./images/mpfs-dma-benchmarking/non-cached-ddr-scratchpad.png)
+![Source: Non-Cached DDR, Destination: Scratchpad](./images/mpfs-pdma-benchmarking/non-cached-ddr-scratchpad.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -335,7 +335,7 @@ of Cached DDR see the following section, [Appendix 1: Impact on L2 Cache configu
 
 ### Source: Non-Cached DDR, Destination: Cached DDR
 
-![Source: Non-Cached DDR, Destination: Cached DDR](./images/mpfs-dma-benchmarking/non-cached-ddr-cached-ddr.png)
+![Source: Non-Cached DDR, Destination: Cached DDR](./images/mpfs-pdma-benchmarking/non-cached-ddr-cached-ddr.png)
 
 The drop off in performance at &#8776; 0.512MB is due to the cache becoming full,
 as the PDMA can transfer data to the cache faster than the cache can write data to
@@ -351,7 +351,7 @@ of Cached DDR see the following section, [Appendix 1: Impact on L2 Cache configu
 
 ### Source: Non-Cached DDR, Destination: Non-Cached DDR
 
-![Source: Non-Cached DDR, Destination: Non-Cached DDR](./images/mpfs-dma-benchmarking/non-cached-ddr-non-cached-ddr.png)
+![Source: Non-Cached DDR, Destination: Non-Cached DDR](./images/mpfs-pdma-benchmarking/non-cached-ddr-non-cached-ddr.png)
 
 | Executing From:      | L2-LIM | Scratchpad | Cached DDR | L2-LIM + Force Order | Scratchpad + Force Order | Cached DDR + Force Order |
 | :------------------- | :----- | :--------- | :--------- | :------------------- | :----------------------- | :----------------------- |
@@ -361,7 +361,7 @@ of Cached DDR see the following section, [Appendix 1: Impact on L2 Cache configu
 
 ## Appendix 1: Impact on L2 Cache configuration
 
-![L2 Cache Configuration](./images/mpfs-dma-benchmarking/l2-cache-config.png)
+![L2 Cache Configuration](./images/mpfs-pdma-benchmarking/l2-cache-config.png)
 
 The above figure graphs the performance of the PDMA when transferring data to Cached
 DDR for 4 different configurations of the L2 Cache.

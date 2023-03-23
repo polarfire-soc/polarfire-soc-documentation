@@ -39,7 +39,7 @@ Users can play the video stream on a computer using applications such as VLC Med
 
 Below block diagram explains the H.264 frame generation
 
-![](./images/mpfs-video-kit-h264-demo/high_level_block_diagram.png)
+![](./images/mpfs-video-kit-h264-demo/high-level-block-diagram.png)
 
 <a name="requirements"></a>
 

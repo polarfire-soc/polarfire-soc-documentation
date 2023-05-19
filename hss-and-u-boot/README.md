@@ -2,5 +2,6 @@
 
 - HSS And U-Boot
   - [HSS Payloads](./hss-payloads.md)
+  - [Profiling](./hss-and-u-boot/profiling.md)
   - [Secure Boot](./secure-boot.md)
   - [Watchdog Service](./watchdog-service.md)

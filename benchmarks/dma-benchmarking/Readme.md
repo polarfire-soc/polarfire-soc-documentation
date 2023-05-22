@@ -11,7 +11,7 @@
   - [F-DMA Performance Overview](#f-dma-performance-overview)
     - [Note on F-DMA FPGA Fabric Transfers](#note-on-f-dma-fpga-fabric-transfers)
   - [Concurrent DMA Benchmarking](#concurrent-dma-benchmarking)
-  - [Note on Impact of L2 Cache configuration](#note-on-impact-of-l2-cache-configuration)
+  - [Impact of L2 Cache configuration](#impact-of-l2-cache-configuration)
 
 ## Introduction
 
@@ -23,20 +23,20 @@ factors impacting DMA performance.
 
 Please refer to the following documents for a full set of results relating to each DMA controller:
 
-- [P-DMA Benchmarking Results][P-DMA Benchmarking Results]: discusses the performance of the Platform
+- [P-DMA Benchmarking Results][1]: discusses the performance of the Platform
   DMA (P-DMA) Controller located in the MSS Core Complex.
-- [CoreAXI4DMAController Benchmarking Results][CoreAXI4DMAController Benchmarking Results]: discusses
+- [CoreAXI4DMAController Benchmarking Results][2]: discusses
   the performance of the CoreAXI4DMAController (F-DMA) located in the FPGA fabric.
-- [Concurrent Benchmarking Results][Concurrent Benchmarking Results]: discusses the performance results
+- [Concurrent Benchmarking Results][3]: discusses the performance results
   of using the P-DMA and the F-DMA to perform data transfers concurrently.
 
 The results presented in these documents can be generated using the
-[DMA benchmarking baremetal project][DMA benchmarking baremetal project].
+[DMA benchmarking baremetal project][4].
 
-[P-DMA Benchmarking Results]: https://mi-v-ecosystem.github.io/redirects/polarfire-soc/benchmarks/mss-pdma-benchmarking
-[CoreAXI4DMAController Benchmarking Results]: https://mi-v-ecosystem.github.io/redirects/polarfire-soc/benchmarks/fabric-dma-benchmarking
-[Concurrent Benchmarking Results]: https://mi-v-ecosystem.github.io/redirects/polarfire-soc/benchmarks/concurrent-dma-benchmarking
-[DMA benchmarking baremetal project]: https://mi-v-ecosystem.github.io/redirects/polarfire-soc-bare-metal-examples-applications-benchmarks-dma_benchmarking-mpfs-dma-benchmarking
+[1]: <https://mi-v-ecosystem.github.io/redirects/polarfire-soc/benchmarks/mss-pdma-benchmarking>
+[2]: <https://mi-v-ecosystem.github.io/redirects/polarfire-soc/benchmarks/fabric-dma-benchmarking>
+[3]: <https://mi-v-ecosystem.github.io/redirects/polarfire-soc/benchmarks/concurrent-dma-benchmarking>
+[4]: <https://mi-v-ecosystem.github.io/redirects/polarfire-soc-bare-metal-examples-applications-benchmarks-dma_benchmarking-mpfs-dma-benchmarking>
 
 ### Background
 
@@ -88,7 +88,7 @@ and can generate PLIC interrupts on various events during DMA transfer.
 
 The following table shows the peak transfer rate of the P-DMA transferring data between a selection of
 the memory combinations when executing the program from each of the 3 possible memory locations.
-A full set of results are available in the [P-DMA Benchmarking Results][P-DMA Benchmarking Results] document.
+A full set of results are available in the [P-DMA Benchmarking Results][1] document.
 
 | **Memory Source:** | **Memory Destination:** | **Peak Rate, Executing from: Cached DDR** | **Peak Rate, Executing from: Scratchpad** | **Peak Rate, Executing from: L2-LIM** |
 | ------------------ | ----------------------- | ----------------------------------------- | ----------------------------------------- | ------------------------------------- |
@@ -145,7 +145,7 @@ descriptor and stream descriptor support.
 
 The following table shows the peak performance of the F-DMA transferring data between every source-destination
 combination when executing the program from each of the 3 possible memory locations.
-Additional results data is available in the [F-DMA Benchmarking Results][F-DMA Benchmarking Results]
+Additional results data is available in the [F-DMA Benchmarking Results][2]
 document.
 
 | **Memory Source:** | **Memory Destination:** | **Peak Rate (Cached DDR)** | **Peak Rate (Scratchpad)** | **Peak Rate (L2-LIM)** |
@@ -156,8 +156,6 @@ document.
 | **Non-Cached DDR** | Non-Cached DDR          | 6968 Mb/s                  | 6968 Mb/s                  | 6968 Mb/s              |
 | **FPGA Fabric**    | Cached DDR              | 7520 Mb/s                  | 7456 Mb/s                  | 7448 Mb/s              |
 | **FPGA Fabric**    | Non-Cached DDR          | 7488 Mb/s                  | 7400 Mb/s                  | 7408 Mb/s              |
-****
-[F-DMA Benchmarking Results]: https://mi-v-ecosystem.github.io/redirects/polarfire-soc/benchmarks/fabric-dma-benchmarking
 
 ### Note on F-DMA FPGA Fabric Transfers
 
@@ -172,7 +170,7 @@ The F-DMA then transfers the streamed data to DDR memory over its AXI4 Master DM
 
 The following table shows the peak transfer rate for a selection of the concurrent F-DMA & P-DMA transfers,
 the full set of results are available in the
-[Concurrent Benchmarking Results][Concurrent Benchmarking Results] document.
+[Concurrent Benchmarking Results][3] document.
 
 | **#** | **Executing From:** | **F-DMA: Source** | **F-DMA: Destination** | **P-DMA: Source** | **P-DMA: Destination** | **F-DMA: Individual Peak Transfer Rate (Mb/s)** | **F-DMA: Concurrent Peak Transfer Rate (Mb/s)** | **F-DMA: Concurrent Performance Difference** | **P-DMA: Individual Peak Transfer Rate (Mb/s)** | **P-DMA: Concurrent Peak Transfer Rate (Mb/s)** | **P-DMA: Concurrent Performance Difference** |
 | ----- | ------------------- | ----------------- | ---------------------- | ----------------- | ---------------------- | ----------------------------------------------- | ----------------------------------------------- | -------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | -------------------------------------------- |
@@ -191,8 +189,8 @@ such as row #1; F-DMA: Cached DDR to Cached DDR & P-DMA: Cached DDR to Cached DD
 However, the performance impact to both DMA controllers can be mitigated by changing even one of the
 source or destination memories used by either DMA controller.
 
-Compare the case of row #1; F-DMA: FPGA Fabric to Cached DDR & P-DMA: Cached DDR to Cached DDR, and row
-\#4; where both DMA controllers are transferring data between Cached DDR.
+Compare the case of row #1; F-DMA: FPGA Fabric to Cached DDR & P-DMA: Cached DDR to Cached DDR, and
+row #4; where both DMA controllers are transferring data between Cached DDR.
 As a result of changing the F-DMA memory source (column 2) to be the FPGA Fabric; the F-DMA transfer
 rate reduction is now 1\%, down from 30\%, and the reduction in P-DMA performance is down to 20\%, from
 76\%.

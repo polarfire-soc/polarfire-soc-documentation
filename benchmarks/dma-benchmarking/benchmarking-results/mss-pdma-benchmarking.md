@@ -97,7 +97,7 @@ Non-Cached DDR is accessible over the 128-bit TileLink bus and a 64-bit AXI4 bus
 The L2 Cache and AXI4 buses are clocked at a rate that is half the frequency of the CPU cores,
 using the default setting of the MSS Configurator which is 300MHz.
 
-Please refer to the [PolarFire SoC Technical Reference Manual][PolarFire SoC Technical Reference Manual]
+Please refer to the [PolarFire SoC Technical Reference Manual][1]
 for further information on the P-DMA.
 
 Using the above figures, the theoretical performance of the P-DMA when transferring between each of the
@@ -115,7 +115,7 @@ The below table summarises the theoretical maximum performance for every source 
 | **Cached DDR**         | 38400 Mb/s | 38400 Mb/s     | 38400 Mb/s     | 19200 Mb/s         |
 | **Non-Cached DDR**     | 19200 Mb/s | 19200 Mb/s     | 19200 Mb/s     | 19200 Mb/s         |
 
-[PolarFire SoC Technical Reference Manual]: https://onlinedocs.microchip.com/pr/GUID-0E320577-28E6-4365-9BB8-9E1416A0A6E4-en-US-4/index.html
+[1]: <https://onlinedocs.microchip.com/pr/GUID-0E320577-28E6-4365-9BB8-9E1416A0A6E4-en-US-4/index.html>
 
 ## Results L2-LIM
 
@@ -272,7 +272,7 @@ cache is used only as either the source or the destination,
 as such the performance begins to degrade at ~; 0.512MB.
 
 A full discussion of the impact of the L2 Cache configuration on the performance of transfers to Cached
-DDR is provided in the [DMA benchmarking overview readme document][DMA benchmarking overview readme document].
+DDR is provided in the [DMA benchmarking overview readme document][2].
 
 | **Executing From**              | **Transfer Size (Mb)** | **Peak Rate (Mb/s)** | **% of Theoretical Max Rate** |
 | ------------------------------- | ---------------------- | -------------------- | ----------------------------- |
@@ -283,7 +283,7 @@ DDR is provided in the [DMA benchmarking overview readme document][DMA benchmark
 | **Scratchpad**                  | 1.993                  | 30320                | 79%                           |
 | **Scratchpad + Force Ordering** | 2.091                  | 14344                | 37%                           |
 
-[DMA benchmarking overview readme document]: https://mi-v-ecosystem.github.io/redirects/polarfire-soc/benchmarks/Readme
+[2]: <https://mi-v-ecosystem.github.io/redirects/polarfire-soc/benchmarks/Readme>
 
 ### Source: Cached DDR, Destination: Non-Cached DDR
 
@@ -294,7 +294,7 @@ as the P-DMA can transfer data faster than the cache can clear data from DDR mem
 More cache space can be allocated to the L2 Cache using the MSS Configurator.
 
 A full discussion of the impact of the L2 Cache configuration on the performance of transfers to Cached
-DDR is provided in the [DMA benchmarking overview readme document][DMA benchmarking overview readme document].
+DDR is provided in the [DMA benchmarking overview readme document][2].
 
 | **Executing From**              | **Transfer Size (Mb)** | **Peak Rate (Mb/s)** | **% of Theoretical Max Rate** |
 | ------------------------------- | ---------------------- | -------------------- | ----------------------------- |
@@ -341,7 +341,7 @@ The drop off in performance at ~; 0.512MB is due to the cache becoming full,
 as the P-DMA can transfer data to the cache faster than the cache can write data to DDR memory.
 More cache space can be allocated to the L2 Cache using the MSS Configurator.
 A full discussion of the impact of the L2 Cache configuration on the performance of transfers to Cached
-DDR is provided in the [DMA benchmarking overview readme document][DMA benchmarking overview readme document].
+DDR is provided in the [DMA benchmarking overview readme document][2].
 
 | **Executing From**              | **Transfer Size (Mb)** | **Peak Rate (Mb/s)** | **% of Theoretical Max Rate** |
 | ------------------------------- | ---------------------- | -------------------- | ----------------------------- |

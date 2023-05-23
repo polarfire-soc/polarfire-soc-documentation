@@ -117,6 +117,3 @@ Two distinct SHA-384 hash values are used to authenticate the User Boot Loader:
 The signature is generated from the SBIC's hash (z), the user private key and a random number using the ECDSA algorithm. The generated signature is made up of two parts (r) and (s). Signature part (s) is used during the signature check to recompute the (r) part of the signature using the hash (z) of the SBIC content and the public key (Q). Authentication succeeds if the recomputed (r') matches the (r) part of the SBIC's signature.
 
 >Note: Private key management is not covered by this document. A solution for private key management will be provided at a later date.
-
-
-

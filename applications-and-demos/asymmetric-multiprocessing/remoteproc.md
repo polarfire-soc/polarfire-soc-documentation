@@ -241,7 +241,3 @@ The default device tree configuration provided in the [Icicle Kit AMP device tre
 - vring and buffers required for RPMsg communication between Linux and the remote context (FreeRTOS/BM)
 
 The [Mi-V Remoteproc bindings](https://mi-v-ecosystem.github.io/redirects/linux4microchip-bindings-microchip-miv-remoteproc) documentation deals with all required and optional device tree properties for remoteproc.
-
-
-
-

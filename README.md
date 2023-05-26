@@ -17,7 +17,7 @@
 
 - Benchmarks
   - DMA Benchmarking
-    - [PolarFire SoC DMA Benchmarking Overview](./benchmarks/dma-benchmarking/Readme.md)
+    - [PolarFire SoC DMA Benchmarking Overview](./benchmarks/dma-benchmarking/README.md)
     - Benchmarking Results
       - [MSS PDMA Benchmarking](./benchmarks/dma-benchmarking/benchmarking-results/mss-pdma-benchmarking.md)
       - [Fabric DMA Benchmarking](./benchmarks/dma-benchmarking/benchmarking-results/fabric-dma-benchmarking.md)

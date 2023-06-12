@@ -15,6 +15,7 @@
     - [Alter How Much VLC Caches the Video](#alter-how-much-vlc-caches-the-video)
     - [Configuration of FFMPEG video  decoder parameters](#configuration-of-ffmpeg-video-decoder-parameters)
     - [Configuration of Video output module to the Windows GDI output module](#configuration-of-video-output-module-to-the-windows-gdi-output-module)
+  - [Test pattern generator Controls](#test-pattern-generator-controls)
   - [On Screen Display(Overlay) Controls](#on-screen-displayoverlay-controls)
     - [Horizontal Position](#horizontal-position)
     - [Vertical Position](#vertical-position)
@@ -249,6 +250,36 @@ To enable the OSD feature, set the osd_enable control to "1"
 
    ```text
    v4l2-ctl -d /dev/video0 --set-ctrl=osd_enable=1
+   ```
+
+<a name="test-pattern-generator-controls"></a>
+
+### Test Pattern Generator
+
+The test pattern generator will configure the camera (imx334) to get known patterns like vertical or horizontal color bars instead of live video.
+
+#### Enable test pattern generator with vertical color bars
+
+The user can configure the camera (imx334) with vertical color bar test pattern by using the following command:
+
+   ```text
+   v4l2-ctl -d /dev/v4l-subdev0 --set-ctrl=test_pattern=1
+   ```
+
+#### Enable test pattern generator with horizontal color bars
+
+The user can configure the camera (imx334) with horizontal color bar test pattern by using the following command:
+
+   ```text
+   v4l2-ctl -d /dev/v4l-subdev0 --set-ctrl=test_pattern=2
+   ```
+
+#### Disable test pattern generator
+
+The user can disable the camera (imx334) test pattern generator by using the following command:
+
+   ```text
+   v4l2-ctl -d /dev/v4l-subdev0 --set-ctrl=test_pattern=0
    ```
 
 <a name="updating-the-video-kit-with-latest-images"></a>

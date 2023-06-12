@@ -2,6 +2,7 @@
 
 - Applications And Demos
   - [MPFS AXI4 Stream Demo](./applications-and-demos/mpfs-axi4-stream-demo.md)
+  - [MPFS OPC-UA Industrial Edge Demo](./applications-and-demos/mpfs-opcua-industrial-edge-demo.md)
   - [MPFS PMP Demo](./applications-and-demos/mpfs-pmp-demo.md)
   - [MPFS Video kit H264 Demo](./applications-and-demos/mpfs-video-kit-h264-demo.md)
 

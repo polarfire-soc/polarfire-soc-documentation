@@ -20,6 +20,7 @@
     - [Horizontal Position](#horizontal-position)
     - [Vertical Position](#vertical-position)
     - [OSD disable](#osd-disable)
+    - [OSD Text Color](#osd-text-color)
   - [Updating the Video kit with latest images](#updating-the-video-kit-with-latest-images)
 
 <a name="description"></a>
@@ -250,6 +251,29 @@ To enable the OSD feature, set the osd_enable control to "1"
 
    ```text
    v4l2-ctl -d /dev/video0 --set-ctrl=osd_enable=1
+   ```
+
+<a name="osd-text-color"></a>
+
+#### OSD Text Color
+
+The color of the OSD text can be customized using RGB values.  
+Each color red, green or blue has a 256 color combinations.  
+The color of OSD text can be represented as 0xrrggbb.  
+The OSD text can be modified using a 24 bit value (0xrrggbb) to get total 16M color combinations.  
+The default color of the OSD text is white.  
+User can extend to red, green and blue are each represented by 8-bit values, for a total of 16 million colour combinations.
+
+The colour of the OSD text can be set to black using the following command:
+
+   ```text
+   v4l2-ctl -d /dev/video0 --set-ctrl=osd_color=0x0
+   ```
+
+The colour of the OSD text can be set to red using the following command:
+
+   ```text
+   v4l2-ctl -d /dev/video0 --set-ctrl=osd_color=0xff0000
    ```
 
 <a name="test-pattern-generator-controls"></a>

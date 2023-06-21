@@ -40,7 +40,7 @@ Exposes a standard TTY interface (/dev/RPMSGX) on top of the RPMsg framework. Al
 This driver is automatically configured in Yocto and Buildroot AMP machines using the following kernel configuration:
 
 ```kconfig
-CONFIG_RPMSG_MIV_TTY=m
+CONFIG_RPMSG_TTY=m
 ```
 
 ### Using the RPMsg TTY client driver
@@ -61,19 +61,19 @@ To test the RPMsg client driver using the Linux + FreeRTOS AMP configuration dem
     ```bash
     root@icicle-kit-es-amp:~# ls /dev/ttyRPMSG*
 
-    /dev/ttyRPMSG4
+    /dev/ttyRPMSG0
     ```
 
 5. Configure the RPMsg tty port using the stty command:
 
     ```bash
-    stty -echo -F /dev/ttyRPMSG4
+    stty -echo -F /dev/ttyRPMSG0
     ```
 
 6. Use the printf command to send a message to the FreeRTOS context:
 
     ```bash
-    printf "Hello from Linux context\r\r" > /dev/ttyRPMSG4
+    printf "Hello from Linux context\r\r" > /dev/ttyRPMSG0
     ```
 
 7. The message should be received and displayed on the FreeRTOS application.
@@ -92,6 +92,7 @@ This driver is automatically configured in Yocto and Buildroot AMP machines usin
 
 ```kconfig
 CONFIG_RPMSG_CHAR=m
+CONFIG_RPMSG_CTRL=m
 ```
 
 ### Using the RPMsg char client driver

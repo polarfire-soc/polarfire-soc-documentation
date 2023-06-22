@@ -12,12 +12,12 @@ Please note that this project is released with a [Contributor Code of Conduct][c
 
 ## Discussions, Issues and PRs
 
-If you have suggestions for how this project or an individual component could be improved, have a question or need help please open a discussion thread in the organization's [discussion forum](discussion-forum).
+If you have suggestions for how this project or an individual component could be improved, have a question or need help please open a discussion thread in the organization's [discussion forum][discussion-forum].
 Note: if your question is related to a fork of an external repository (e.g Zephyr) and the query isn't directly related to any Microchip code, please be aware that it may be better to open an discussion thread in the source repository.
 If you want to report a bug, open an issue against the source repository containing the offending code.
 We appreciate any contributions.
 
-We also welcome PRs to add features, board support for new targets and fix issues. If you would like to add a new feature it is advised to make an enhancement request in our [discussion forum](discussion-forum) so the feature request can be discussed. If you would like to add board support please reach out to your Mi-V ecosystem contact before opening a PR. Look at the links below if you're not sure how to open a PR.
+We also welcome PRs to add features, board support for new targets and fix issues. If you would like to add a new feature it is advised to make an enhancement request in our [discussion forum][discussion-forum] so the feature request can be discussed. If you would like to add board support please reach out to your Mi-V ecosystem contact before opening a PR. Look at the links below if you're not sure how to open a PR.
 
 ## Submitting a pull request
 

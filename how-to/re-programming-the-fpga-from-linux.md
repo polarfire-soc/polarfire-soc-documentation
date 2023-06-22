@@ -436,6 +436,15 @@ root@mpfs-video-kit:~# reboot
 
 Once the reboot command gets issued, the system controller reads the
 bitstream image from the SPI flash and programs the design into the device.
+The following message should be displayed in the terminal to indicate
+that the auto update is in progress.
+
+```text
+...
+[  214.968630] reboot: Restarting system
+[232.748680] reboot: Auto Update in progress
+
+```
 
 After a short delay, the HSS will start up and the new design should have been programmed to the device.
 

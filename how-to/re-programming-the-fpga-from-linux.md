@@ -497,7 +497,6 @@ root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
 [73947.850574] mpfs-auto-update mpfs-auto-update: Writing the image to the flash at address (1500400)
 [73950.270617] mpfs-auto-update mpfs-auto-update: Running verification of Update Image
 [73950.298524] mpfs-auto-update mpfs-auto-update: Verification of Update Image failed!
-[73950.306355] mpfs-auto-update mpfs-auto-update: Verification of Update Image passed!
 [73950.314199] fpga_manager fpga0: Error after writing image data to FPGA
 [73950.321164] mpfs-auto-update mpfs-auto-update: Failed to write the bitstream
 [73950.328294] mpfs-auto-update mpfs-auto-update: error -EBADMSG: Auto Update failed

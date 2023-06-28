@@ -9,10 +9,9 @@
       - [Adding an eNVM client to the bitstream](#adding-an-envm-client-to-the-bitstream)
       - [Configuring the Design and Back Level Version](#configuring-the-design-and-back-level-version)
       - [Generating a Golden/Recovery Image](#generating-a-golden-recovery-image)
-      - [Exporting the FPGA and SPI Programming Job Files](#exporting-the-fpga-and-spi-programming-job-files)
       - [Programming the FPGA and SPI Programming Job Files using FPExpress](#programming-the-fpga-and-spi-programming-job-files-using-fpexpress)
     - [DeviceTree Requirements for IAP and Auto Update](#devicetree-requirements-for-iap-and-auto-update)
-      - [Linux Requirements for Auto Update](#linux-requirements-for-auto-update)
+    - [Linux Requirements for Auto Update](#linux-requirements-for-auto-update)
   - [Performing an Auto Update](#performing-an-auto-update)
     - [Auto Update Failures](#auto-update-failures)
   - [SPI Flash Layout](#spi-flash-layout)
@@ -98,7 +97,7 @@ existing and the to-be-programmed bitstreams.
 
 #### Enabling Auto Update in Libero
 
-Firstly, the existing bitstream must enable auto update.
+Firstly, auto update must be enabled in the existing bitstream.
 
 1. Clone or download the latest [PolarFire SoC Video Kit Reference Design](https://mi-v-ecosystem.github.io/redirects/repo-sev-kit-reference-design)
 2. Open the latest Libero
@@ -112,8 +111,8 @@ Firstly, the existing bitstream must enable auto update.
 
     ![](./images/re-programming-the-fpga-from-linux/libero-gen-fpga-array.jpg)
 
-6. From the Design Flow window, double-click the Configure Design Initialization
-   Data and Memories option. Select the SPI Flash tab and set the "Enable Auto
+6. From the Design Flow window, double-click the "Configure Design Initialization
+   Data and Memories" option. Select the SPI Flash tab and set the "Enable Auto
    Update" checkbox and then click the "Apply" button
 
     ![](./images/re-programming-the-fpga-from-linux/libero-enable-auto-update.jpg)
@@ -125,16 +124,15 @@ Firstly, the existing bitstream must enable auto update.
 It is possible to program an eNVM client which may be useful for upgrading the HSS.
 To add an eNVM client:
 
-1. From the Design Flow window, double-click the Configure Design Initialization
-   Data and Memories option. Select the "eNVM" tab
+1. From the Design Flow window, double-click the "Configure Design Initialization
+   Data and Memories" option. Select the "eNVM" tab
 
     ![](./images/re-programming-the-fpga-from-linux/libero-envm-client.jpg)
 
 2. Click the "Add" button and then select "Add Boot Mode 1 Client" from the dropdown menu
 
 3. Select the binary that should be programmed to the eNVM. In this case, we
-   will select the Hart Software Services compiled using the PolarFire SoC Video
-   Kit as the target board. The binary should be in Intel Hex format.
+   will select the Hart Software Services compiled using the PolarFire SoC Video Kit as the target board. The binary should be in Intel Hex format.
    Click the OK button
 
     ![](./images/re-programming-the-fpga-from-linux/libero-envm-window.jpg)
@@ -143,7 +141,7 @@ To add an eNVM client:
     on GitHub contains assets in Intel hex format that can be to program to the eNVM.
 
 4. The eNVM tab should now show the eNVM client we just added in the step above.
-   Click Apply to save the changes
+   Click "Apply" to save the changes
 
     ![](./images/re-programming-the-fpga-from-linux/libero-envm-configured.jpg)
 
@@ -171,14 +169,27 @@ To add an eNVM client:
 3. In this case we will set the Design version to 23060 to indicate
     that the bitstream contains the 2023.06 PolarFire SoC Video Kit Reference
     Design release.
-    Click OK to apply the changes
+    Click "OK" to apply the changes
 
-4. From the Design Flow Window, double-click the Generate Bistream option
+4. From the Design Flow Window, double-click the "Generate Bistream" option
 
     ![](./images/re-programming-the-fpga-from-linux/libero-generate-bitstream.jpg)
 
-<a name="generating-a-golden-recovery-image"></a>
+    The bitstream with auto-update enable is now generated. To program it to the device, a `.job` file is required. It will be exported in the next step.
 
+5. Export the design bitstream into a Job file. From the Design Flow Window, select
+   "Export FlashPro Express Job"
+
+    ![](./images/re-programming-the-fpga-from-linux/libero-export-design.jpg)
+
+    Make sure you have selected the "Design" checkbox as shown in the image above.
+
+    Optionally, you can change the name and location of the output file.
+    For demonstration purposes, we are going to name it `VKPFSOC_TOP_DESIGN` and
+    leave the default output directory.
+    The default output directory is `polarfire-soc-video-kit-reference-design/VKPFSOC_H264/designer/VKPSOC_TOP/export`.
+
+<a name="generating-a-golden-recovery-image"></a>
 #### Generating a Golden/Recovery Image
 
 A `golden image` needs to be present in the SPI flash in image index 0, address
@@ -190,16 +201,16 @@ using auto update.
 This section explains how to generate and configure a golden image
 using Libero:
 
-1. From the Design Flow window, double-click the Export Bistream option. Select
-   the SPI checkbox to generate a bitstream with a `spi` extension. Click OK
+1. From the Design Flow window, double-click the "Export Bistream" option. Select
+   the SPI checkbox to generate a bitstream with a `spi` extension. Click "OK".
 
     ![](./images/re-programming-the-fpga-from-linux/libero-export-spi-bitstream.jpg)
 
     Optionally, you can change the name and location of the output file.
-    For demonstration purposes, we are going to leave the default values.
+    For demonstration purposes, we are going to name it `VKPFSOC_TOP.spi` and leave the dafault output directory.
     The default output directory is `polarfire-soc-video-kit-reference-design/VKPFSOC_H264/designer/VKPSOC_TOP/export`.
 
-2. Add the VKPFSOC_TOP.spi bitstream generated above as a Golden/Recovery image.
+2. Add the VKPFSOC_TOP.spi bitstream generated in step 1 above as a Golden/Recovery image.
    From the Design Flow window, double-click the Configure Design Initialization
    Data and Memories
 
@@ -224,33 +235,15 @@ using Libero:
 
     ![](./images/re-programming-the-fpga-from-linux/libero-spi-client.jpg)
 
-5. Click Ok and then select the Apply button to save the changes
+5. Click Ok and then select the "Apply" button to save the changes
 
-6. From the Design Flow Window, double-click the Generate Bistream option
+6. From the Design Flow Window, double-click the "Generate Bitstream" option
 
     ![](./images/re-programming-the-fpga-from-linux/libero-generate-bitstream.jpg)
 
-7. From the Design Flow Window, double-click the Generate SPI Flash Image
+    The `.spi` image used as golden image has now been generated. To program it on the SPI flash, a `.job` file is required. The later will be generated in the next step.
 
-    ![](./images/re-programming-the-fpga-from-linux/libero-generate-spi-image.jpg)
-
-<a name="exporting-the-fpga-and-spi-programming-job-files"></a>
-
-#### Exporting the FPGA and SPI Programming Job Files
-
-1. Export the design into a Job File. From the Design Flow Window, select
-   "Export Flash Pro Express Job"
-
-    ![](./images/re-programming-the-fpga-from-linux/libero-export-design.jpg)
-
-    Make sure you have selected the "Design" checkbox as shown in the image above.
-
-    Optionally, you can change the name and location of the output file.
-    For demonstration purposes, we are going to name it `VKPFSOC_TOP_DESIGN` and
-    leave the default output directory.
-    The default output directory is `polarfire-soc-video-kit-reference-design/VKPFSOC_H264/designer/VKPSOC_TOP/export`.
-
-2. Export the SPI Flash golden image to a Job File. From the Design Flow Window, select "Export Flash Pro Express Job"
+7. Export the SPI Flash golden image to a Job File. From the Design Flow Window, select "Export FlashPro Express Job"
 
     ![](./images/re-programming-the-fpga-from-linux/libero-export-spi.jpg)
 
@@ -294,7 +287,7 @@ For more information on FlashPro jumper settings please refer to the
 
     ![](./images/re-programming-the-fpga-from-linux/fpexpress-create-project-spi.jpg)
 
-8. Press the RUN button to program the golden image to the System Controller SPI Flash. Wait for the process to finish
+8. Press the "RUN" button to program the golden image to the System Controller SPI Flash. Wait for the process to finish
 
     ![](./images/re-programming-the-fpga-from-linux/fpexpress-flash-spi.jpg)
 
@@ -396,9 +389,9 @@ Before performing an auto update in Linux, you'll need:
    design release assets can be used instead (v2023.06 reference design or higher)
 
 2. A bitstream with a `.spi` file extension which contains a design version
-   higher than the design version programmed in the device
+   higher than the design version programmed in the device. For example `foo.spi`.
 
-The bitstream to be programmed must be placed in `/lib/firmware`, named `mpfs_bitstream.spi`.
+The bitstream to be programmed must be placed in `/lib/firmware`, named `mpfs_bitstream.spi`. Several methods can be used to place the `foo.spi` image into the Linux file system such as USB OTG in host mode (J19 on video kit with J57 and J18 closed) or Ethernet (RJ45 connector J7)
 
 ```sh
 root@mpfs-video-kit:~# mkdir -p /lib/firmware
@@ -408,7 +401,7 @@ root@mpfs-video-kit:~# cp foo.spi /lib/firmware/mpfs_bitstream.spi
 Write a `1` to `/sys/kernel/debug/fpga/microchip_exec_update`, for example:
 
 ```sh
-echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
+root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
 ```
 
 If successful, the console should display some messages indicating that the

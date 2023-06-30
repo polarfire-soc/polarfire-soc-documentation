@@ -51,7 +51,7 @@ Alternatively, from v2023.06 release, reference design assets with auto update s
 are provided as part of the [PolarFire SoC Video Kit Reference Design Releases][PolarFire SoC Video Kit Reference Design Releases].
 
 [Bitstream Requirements for Auto Update]: #bitstream-requirements-for-auto-update
-[PolarFire SoC Video Kit Reference Design Releases]: https://mi-v-ecosystem.github.io/redirects/redirects/releases-video-kit-reference-design
+[PolarFire SoC Video Kit Reference Design Releases]: https://mi-v-ecosystem.github.io/redirects/releases-video-kit-reference-design
 
 <a name="requirements"></a>
 
@@ -137,7 +137,7 @@ To add an eNVM client:
 
     ![](./images/re-programming-the-fpga-from-linux/libero-envm-window.jpg)
 
-    Note: The [Hart Software Services release page](https://mi-v-ecosystem.github.io/redirects/redirects/redirects/releases-hart-software-services)
+    Note: The [Hart Software Services release page](https://mi-v-ecosystem.github.io/redirects/releases-hart-software-services)
     on GitHub contains assets in Intel hex format that can be to program to the eNVM.
 
 4. The eNVM tab should now show the eNVM client we just added in the step above.

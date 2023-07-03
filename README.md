@@ -14,7 +14,8 @@
     - [RPMSG](./applications-and-demos/asymmetric-multiprocessing/rpmsg.md)
 
 - Bare Metal Embedded Software
-  - [Bare Metal Software Project Structure](./bare-metal-embedded-software/bare-metal-software-project-structure.md)
+  - [Software Project Structure](./bare-metal-embedded-software/bare-metal-software-project-structure.md)
+  - [Driver User Guides](./bare-metal-embedded-software/bare-metal-driver-user-guides/README.md)
 
 - Benchmarks
   - DMA Benchmarking

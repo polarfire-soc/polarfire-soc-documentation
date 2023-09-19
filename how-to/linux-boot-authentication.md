@@ -253,7 +253,7 @@ in the "Build Instructions" section of the [PolarFire SoC Yocto BSP README][Pola
 2. Run the PolarFire SoC Authenticated Boot setup script
 
     ```shell
-    $ . ../meta-polarfire-soc-yocto-bsp/scripts/polarfire-soc_auth_setup.sh
+    $ . ../meta-polarfire-soc-yocto-bsp/meta-polarfire-soc-extras/scripts/polarfire-soc_auth_setup.sh
     ```
 
 By default, the script will generate the HSS Payload Signing Keys (HPSK and HPSQ) and FIT Image Signging Keys in the repo workspace directory. For example:

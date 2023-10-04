@@ -10,21 +10,22 @@
 
   - [Hardware Flow Dependencies](#hardware-flow-dependencies)
 
-  - [Software Flow Dependencies](#software-flow-dependencies)
-
   - [Theory of Operation](#theory-of-operation)
+
+     - [Configuration](#configuration)
 
      - [Initialization](#initialization)
 
-     - [Configuration](#configuration)
+     - [10GBASE-KR](#10gbase-kr)
+
+     - [Clause74: FEC](#clause74:-fec)
 
      - [Clause73: Auto-negotiation](#clause73:-auto-negotiation)
 
      - [Clause72: Link Training](#clause72:-link-training)
 
-     - [10GBASE-KR](#10gbase-kr)
-
 - [Types](#types)
+  - [phy10gkr_error_t](#phy10gkrerrort)
   - [phy10gkr_lane_los_t](#phy10gkrlanelost)
   - [phy10gkr_timer_t](#phy10gkrtimert)
   - [phy10gkr_an_state_t](#phy10gkranstatet)
@@ -44,9 +45,18 @@
   - [phy10gkr_lt_instance_t](#phy10gkrltinstancet)
   - [phy10gkr_state_t](#phy10gkrstatet)
   - [phy10gkr_status_t](#phy10gkrstatust)
+  - [phy10gkr_xcvr_api_t](#phy10gkrxcvrapit)
+  - [phy10gkr_cfg_t](#phy10gkrcfgt)
   - [phy10gkr_instance_t](#phy10gkrinstancet)
 
 - [Constants](#constants)
+  - [CORE10GBASEKR_PHY VERSION TAGS](#core10gbasekrphy-version-tags)
+  - [CORE10GBASEKR_PHY FEC ABILITY](#core10gbasekrphy-fec-ability)
+  - [CORE10GBASEKR_PHY NO FEC ABILITY](#core10gbasekrphy-no-fec-ability)
+  - [CORE10GBASEKR_PHY ENABLE FEC REQUEST](#core10gbasekrphy-enable-fec-request)
+  - [CORE10GBASEKR_PHY DISABLE FEC REQUEST](#core10gbasekrphy-disable-fec-request)
+  - [CORE10GBASEKR_PHY FEC NEGOTIATED](#core10gbasekrphy-fec-negotiated)
+  - [CORE10GBASEKR_PHY FEC NOT NEGOTIATED](#core10gbasekrphy-fec-not-negotiated)
   - [CORE10GBASEKR_PHY LT MAX/MIN LIMITS](#core10gbasekrphy-lt-maxmin-limits)
   - [CORE10GBASEKR_PHY PRESET](#core10gbasekrphy-preset)
   - [CORE10GBASEKR_PHY INIT](#core10gbasekrphy-init)
@@ -54,18 +64,12 @@
   - [CORE10GBASEKR_PHY AN LINK FAIL INHIBIT TIMER](#core10gbasekrphy-an-link-fail-inhibit-timer)
 
 - [Functions](#functions)
+  - [PHY10GKR_cfg_struct_def_init](#phy10gkrcfgstructdefinit)
   - [PHY10GKR_init](#phy10gkrinit)
-  - [PHY10GKR_config](#phy10gkrconfig)
-  - [PHY10GKR_autonegotiate_sm](#phy10gkrautonegotiatesm)
-  - [PHY10GKR_link_training_sm](#phy10gkrlinktrainingsm)
   - [PHY10GKR_10gbasekr_sm](#phy10gkr10gbasekrsm)
-  - [PHY10GKR_set_lane_los_signal](#phy10gkrsetlanelossignal)
   - [PHY10GKR_get_current_time_ms](#phy10gkrgetcurrenttimems)
-  - [PHY10GKR_serdes_an_config](#phy10gkrserdesanconfig)
-  - [PHY10GKR_serdes_lt_config](#phy10gkrserdesltconfig)
-  - [PHY10GKR_serdes_cdr_lock](#phy10gkrserdescdrlock)
-  - [PHY10GKR_serdes_dfe_cal](#phy10gkrserdesdfecal)
-  - [PHY10GKR_serdes_tx_equalization](#phy10gkrserdestxequalization)
+  - [PHY10GKR_get_ip_version](#phy10gkrgetipversion)
+  - [PHY10GKR_get_driver_version](#phy10gkrgetdriverversion)
 
 <div id="TitlePage" data-type="text">
 
@@ -78,108 +82,109 @@ interface. This IP interfaces with the Ten Gigabit Media Independent Interface
 transceiver block at the line side. The physical layer is designed to work
 seamlessly with the PolarFire® and PolarFire SoC transceiver using the Physical
 Medium Attachment (PMA) mode. This user guide documents the features provided by
-the Core10GBaseKR_PHY firmware driver.
+the Core10GBaseKR_PHY embedded software driver.
 
 # Hardware Flow Dependencies
-This driver covers the configuration details of features such as IEEE802.3
-clauses 73 and 72.
+This driver covers the configuration details of features such as the clauses 72
+(Link Training), 73 (Auto-negotiation), and 74 (Forward Error Correction) of
+IEEE802.3.
 
-See the Core10GBaseKR_PHY User Guide for a detailed description of design
-requirements when interfacing the Core10GBaseKR_PHY to a transceiver.
-
-# Software Flow Dependencies
-A PHY software configuration file must be included when using this driver. This
-will include the macro definition "CORE10GBASEKR_PHY". The purpose of this file
-is to configure desired PHY model and to override driver default values as
-required. The driver configuration should be stored in a location away from the
-driver source code. The following with path is used in our recommended directory
-structure:
-
-` <project-root>/boards/<board-name>/platform_config/driver_config/phy_sw_cfg.h
-`
+See the <a href="https://mi-v-ecosystem.github.io/redirects/miv-rv32-ip-user-
+guide-core10gbasekr_phy">Core10GBaseKR_PHY User Guide</a> for a detailed
+description of design requirements when interfacing the Core10GBaseKR_PHY to a
+transceiver.
 
 # Theory of Operation
 The Core10GBaseKR_PHY driver functions are grouped into the following
 categories:
 
-  - Initialization
   - Configuration
+  - Initialization
+  - 10GBASE-KR
+  - Clause74: Forward Error Correction (FEC)
   - Clause73: Auto-negotiation
   - Clause72: Link training
-  - 10GBASE-KR
-
-## Initialization
-The Core10GBaseKR_PHY driver is initialized through a call to the
-PHY10GKR_init() function. The PHY10GKR_init() function must be called before
-calling any other Core10GBaseKR_PHY driver functions.
 
 ## Configuration
-An instance of the Core10GBaseKR_PHY is configured with a call to the
-PHY10GKR_config(). The configuration function resets all the PHY instance
-structure members other than information such as performance counters. Default
-configurations can be overridden be defining any of the Core10GBaseKR_PHY
-constants before loading the driver using a PHY software configuration file.
+The Core10GBaseKR_PHY driver requires an instance of a PHY configuration
+phy10gkr_cfg_t to be initialised. To load phy10gkr_cfg_t with default
+configurations, this configuration instance is passed by reference to
+PHY10GKR_cfg_struct_def_init(). This configuration structure may be overridden
+with alternative configurations before initialising the driver.
+
+The application must point to an instance of the Transceiver (XCVR) per instance
+of a phy10gkr_instance_t. The phy10gkr_instance_t structure members xcvr and
+xcvr_api must point to the XCVR that the Core10GBaseKR_PHY IP is interfacing
+with and the appropriate XCVR APIs for dynamic configuration.
+
+## Initialization
+The Core10GBaseKR_PHY driver is initialized through a call to PHY10GKR_init().
+The PHY10GKR_init() function must be called before calling any other
+Core10GBaseKR_PHY driver functions.
+
+## 10GBASE-KR
+The full 10GBASE-KR flow is handled by calling PHY10GKR_10gbasekr_sm(). As this
+function is dependent on interacting with a transceiver, transceiver function
+pointers must be configured by the user to point to the transceiver APIs that
+dynamically configure the transceiver implemented in the hardware design.
+
+Each time PHY10GKR_10gbasekr_sm() is in the AN_SERDES_CONFIG state, the private
+function phy_10gbasekr_reset(), is called, which will load any user
+configurations to the Core registers and resets all algorithm and debug
+counters.
+
+This API uses two private function calls, phy_10gbasekr_an() and
+phy_10gbasekr_lt(), to enable and interact with clause 72 and 73 hardware blocks
+within the Core10GBaseKR_PHY IP.
+
+## Clause74: FEC
+To enable FEC, FEC must be configured in the Core10GBaseKR_PHY IP. See the <a
+href="https://mi-v-ecosystem.github.io/redirects/miv-rv32-ip-user-guide-
+core10gbasekr_phy">Core10GBaseKR_PHY User Guide</a> for a detailed description
+of how to enable FEC logic using the IP configurator.
+
+During auto-negotiation initialization, if the FEC block has been configured in
+the Core, the driver will set the FEC ability bit 46 in the advertisement
+ability DME page.
+
+The fec_request member within the phy10gkr_cfg_t structure may be set prior to
+driver initialisation to indicate that the driver should set the FEC request bit
+47 in the advertisement ability clause 73 DME page. The driver implements error
+checking which identifies if fec_request is set when FEC is not configured
+within the Core.
 
 ## Clause73: Auto-negotiation
-The IEEE802.3 clause 73 auto-negotiation is enabled and executed by calling
-PHY10GKR_autonegotiate_sm() function.
+The IEEE802.3 clause 73 auto-negotiation is enabled and executed by the private
+function, phy_10gbasekr_an(). PHY10GKR_10gbasekr() uses this private function
+enable auto-negotiation and determines when the hardware has reached the
+AN_GOOD_CHECK state.
 
 ## Clause72: Link Training
-The IEEE802.3 clause 72 link training is enabled and executed by a calling
-PHY10GKR_link_training_sm(). The Core10GBaseKR_PHY IP and the Core10GBaseKR_PHY
+The IEEE802.3 clause 72 link training is enabled and executed by the private
+function phy_10gbasekr_lt(). The Core10GBaseKR_PHY IP and the Core10GBaseKR_PHY
 embedded software driver together carry out the link training. The driver
 initiates the link training and takes appropriate actions depending on the
 events indicated by the 10GBaseKR status register bits during the link training
-process. The following figure shows an overview of what actions are taken for
-each 10GBaseKR status bit:
+process.
 
-
-<div class="mermaid">
-%%{init : {"flowchart" : {"curve" : "linear", "useMaxWidth" : false, "useMaxHeight" : false, "nodeSpacing" : 30, "rankSpacing" : 40 }}}%%
-    flowchart TB
-        Start[/10GBASE-KR Status Register\] --> Rx[Rx Calibration]
-        Start --> Tx[Tx Equalization]
-        Start --> Fail[Fail]
-        Start --> Signal[Signal Detect]
-        
-        Fail --> LTFail[LT Failure]
-        
-        Rx --> IntRx[Set RX Calibration Bit to Clear Status Bit]
-        IntRx --> Algo[Max/Min Tap Sweep Algorithm]
-        Algo --> TxCU[Update the Tx Coefficient Update]
-        
-        Tx --> SerdesTX[Pass Rx Coefficient Update to Serdes]
-        SerdesTX --> TxSR[Update Tx Status Report]
-        TxSR --> TxDone[Set Tx Equalization Done to Clear Status Bit]
-                
-        Signal --> LTComp[LT Complete]
-
-</div>
-
-<style>
-    .mermaid svg { 
-        max-width: 100%; 
-        height: auto;
-    }
-</style>
 Training Failure: The training failure bit is set by the IP when the
 Core10GBaseKR_PHY link training timer exceeds 500 ms. The driver also implements
-a soft timer as an additional protection layer. The
-PHY10GKR_get_current_time_ms() function must be overridden by instantiating this
-function in user code so that the current time of a timer will be returned in
-milli-seconds. When this status is set by Core10GBaseKR_PHY, the embedded
-software must reduce the XCVR data rate by calling PHY10GKR_serdes_an_config()
-and restart the auto-negotiation state machine by calling
-PHY10GKR_autonegotiate_sm().
+a soft timer as an additional protection layer. PHY10GKR_get_current_time_ms()
+must be overridden by instantiating this function in user code, so that the
+current time of a timer will be returned in milli-seconds. When this status is
+set by Core10GBaseKR_PHY, the embedded software must reduce the XCVR data rate
+by calling PHY10GKR_serdes_an_config() and restart the auto-negotiation state
+machine by calling phy_10gbasekr_an().
 
 Rx Calibration: The IP sets this status bit to indicate that there is a received
 status report of Max/Min/Updated that the Rx calibration algorithm must handle.
-The maximum to minimum sweep algorithm described in the Core10GBaseKR_PHY User
-Guide is implemented by the functions which are defined within
-core10gbasekr_phy_link_training.h.
+The maximum to minimum sweep algorithm described in the <a href="https://mi-v-
+ecosystem.github.io/redirects/miv-rv32-ip-user-guide-
+core10gbasekr_phy">Core10GBaseKR_PHY User Guide</a> is implemented by the
+functions which are defined within core10gbasekr_phy_link_training.h.
 
 After the Rx calibration algorithm completes, the driver updates the transmit
-coefficient with new transmitter tap, which will be sent to the link partner.
+coefficient with new transmitter tap, which is sent to the link partner.
 
 Tx Equalization: This status bit indicates that the received coefficient update
 has been updated and that the firmware needs to update the transceiver
@@ -193,24 +198,50 @@ this status bit when both the transmitted and received status reports have the
 receiver ready bit set. This indicates that both devices have completed their Rx
 calibration algorithm.
 
-## 10GBASE-KR
-The full 10GBASE-KR flow is handled by calling PHY10GKR_10gbasekr_sm() function.
-As this function is dependent on interacting with a transceiver, the following
-weak functions should be overridden for the specific design being implemented.
-
-  - PHY10GKR_get_current_time_ms()
-  - PHY10GKR_serdes_an_config()
-  - PHY10GKR_serdes_lt_config()
-  - PHY10GKR_serdes_cdr_lock()
-  - PHY10GKR_serdes_dfe_cal()
-  - PHY10GKR_serdes_tx_equalization() 
-
 </div>
 
 
 # Types
 
  ---------------- 
+<a name="phy10gkrerrort"></a>
+## phy10gkr_error_t
+<a name="prototype"></a>
+### Prototype 
+
+<div id="Types$phy10gkr_error_t$prototype" data-type="code">
+
+ ``` 
+    typedef enum {
+        PHY10GKR_ERR_USER_CONFIG = 1,
+        PHY10GKR_ERR_NO_XCVR = 2,
+        PHY10GKR_ERR_XCVR_API_FUNCTION_POINTER = 3
+    } phy10gkr_error_t;
+
+
+ ``` 
+
+
+</div>
+
+<a name="description"></a>
+### Description 
+
+<div id="Types$phy10gkr_error_t$description" data-type="text">
+
+The phy10gkr_error_t enumeration acts as an error lookup.
+
+  - PHY10GKR_ERR_USER_CONFIG implies that the config structure is Null.
+  - PHY10GKR_ERR_NO_XCVR implies that there is no pointer to an instance of a 
+XCVR.
+  - PHY10GKR_ERR_XCVR_API_FUCNTION_POINTER implies that at least one XCVR API 
+function pointer is null. 
+
+
+</div>
+
+
+ --------------------------- 
 <a name="phy10gkrlanelost"></a>
 ## phy10gkr_lane_los_t
 <a name="prototype"></a>
@@ -391,6 +422,8 @@ negotiation state machine API.
         phy10gkr_an_api_state_t api_state; 
         uint32_t complete_cnt; 
         phy10gkr_an_status_t status; 
+        uint64_t adv_ability; 
+        uint64_t lp_bp_adv_ability; 
     } phy10gkr_an_instance_t ;
   ``` 
 
@@ -572,8 +605,9 @@ coefficient sweep algorithm.
 
 <div id="Types$phy10gkr_calirbation_request_t$description" data-type="text">
 
-This enumeration identifies the initial conditions of a device. For example, the
-local device will calibrate using a preset request.
+The phy10gkr_calirbation_request_t enumeration identifies the initial conditions
+of a device. For example, the local device will calibrate using a preset
+request.
 
 
 </div>
@@ -639,7 +673,8 @@ status report update.
 
 <div id="Types$phy10gkr_tx_equalizer_tap_t$description" data-type="text">
 
-This enumeration specifies the three different transmitter taps.
+The phy10gkr_tx_equalizer_tap_t enumeration specifies the three different
+transmitter taps.
 
 
 </div>
@@ -671,7 +706,8 @@ This enumeration specifies the three different transmitter taps.
 
 <div id="Types$phy10gkr_tap_cal_state_t$description" data-type="text">
 
-This enumeration specifies the state of the link partner calibration algorithm.
+The phy10gkr_tap_cal_state_t enumeration specifies the state of the link partner
+calibration algorithm.
 
 
 </div>
@@ -702,10 +738,10 @@ This enumeration specifies the state of the link partner calibration algorithm.
 
 <div id="Types$phy10gkr_local_rxcvr_lock_t$description" data-type="text">
 
-This enumeration specifies the condition of the link partner calibration
-algorithm. During training, when the link partner has been calibrated, the local
-receiver ready lock get locked and the status report will be updated to notify
-the link partner.
+The phy10gkr_local_rxcvr_lock_t enumeration specifies the condition of the link
+partner calibration algorithm. During training, when the link partner has been
+calibrated, the local receiver ready lock is locked and the status report is
+updated to notify the link partner.
 
 
 </div>
@@ -723,15 +759,7 @@ the link partner.
     typedef struct coeff_update {
         uint32_t cnt; 
         uint32_t inc_cnt; 
-        uint32_t hold_cnt; 
         uint32_t dec_cnt; 
-        uint32_t max_cnt; 
-        uint32_t min_cnt; 
-        uint32_t update_cnt; 
-        uint32_t no_update_cnt; 
-        uint32_t done_cnt; 
-        uint32_t index; 
-        phy10gkr_coeff_update_status_t status; 
         phy10gkr_tap_cal_state_t lp_tap_cal_state; 
         uint32_t optimal_index; 
         uint32_t optimal_cnt; 
@@ -746,8 +774,9 @@ the link partner.
 
 <div id="Types$phy10gkr_coeff_update_t$description" data-type="text">
 
-The coeff_update_t struct describes an instance of the link training coefficient
-update. This structure supports calibrating the link partners transmitter taps.
+The phy10gkr_coeff_update_t struct describes an instance of the link training
+coefficient update. This structure supports calibrating the link partners
+transmitter taps.
 
 
 </div>
@@ -767,8 +796,6 @@ update. This structure supports calibrating the link partners transmitter taps.
         phy10gkr_lt_api_state_t api_state; 
         phy10gkr_lt_link_status_t status; 
         phy10gkr_timer_t timer; 
-        phy10gkr_calirbation_request_t tx_request; 
-        phy10gkr_calirbation_request_t rx_request; 
         uint32_t fail_cnt; 
         uint32_t complete_cnt; 
         uint32_t tx_equ_cnt; 
@@ -792,7 +819,8 @@ update. This structure supports calibrating the link partners transmitter taps.
 
 <div id="Types$phy10gkr_lt_instance_t$description" data-type="text">
 
-The an_instance_t struct describes an instance of the link training parameters.
+The phy10gkr_lt_instance_t struct describes an instance of the link training
+parameters.
 
 
 </div>
@@ -826,7 +854,7 @@ The an_instance_t struct describes an instance of the link training parameters.
 
 <div id="Types$phy10gkr_state_t$description" data-type="text">
 
-The c10gbkr_state_t enumeration identifies the state of the 10GBASE-KR state
+The phy10gkr_state_t enumeration identifies the state of the 10GBASE-KR state
 machine.
 
 
@@ -866,10 +894,111 @@ machine.
 
 <div id="Types$phy10gkr_status_t$description" data-type="text">
 
-The c10gbkr_status_t enumeration identifies the status of the 10GBASE-KR state
+The phy10gkr_status_t enumeration identifies the status of the 10GBASE-KR state
 machine.
 
 This enumeration can identify failures encountered by the 10GBASE-KR algorithm.
+
+
+</div>
+
+
+ --------------------------- 
+<a name="phy10gkrxcvrapit"></a>
+## phy10gkr_xcvr_api_t
+<a name="prototype"></a>
+### Prototype 
+
+<div id="Types$phy10gkr_xcvr_api_t$prototype" data-type="code">
+
+``` 
+    typedef struct __phy10gkr_xcvr_api {
+        uint8_t(*init; 
+        uint8_t(*auto_neg_data_rate; 
+        uint8_t(*link_training_data_rate; 
+        uint8_t(*cdr_lock; 
+        uint8_t(*ctle_cal; 
+        uint8_t(*ctle_cal_status; 
+        uint8_t(*dfe_cal; 
+        uint8_t(*dfe_cal_status; 
+        uint8_t(*reset_pcs_rx; 
+        uint8_t(*tx_equalization; 
+    } phy10gkr_xcvr_api_t ;
+  ``` 
+
+
+</div>
+
+<a name="description"></a>
+### Description 
+
+<div id="Types$phy10gkr_xcvr_api_t$description" data-type="text">
+
+The phy10gkr_xcvr_api_t structure identifies the required XCVR APIs that this
+driver requires to complete IEEE802.3 Clause 72 and 73. All function pointers
+require a return value of type uint8_t. Each function that the pointers point to
+require void pointer to an XCVR instance, with the exception of tx_equalization
+which requires three additional parameters, absolute tap coefficients.
+
+  - init: Initialise the XCVR which is implemented in the hardware design.
+  - auto_neg_data_rate: Configure the XCVR for auto-negotiation.
+  - link_training_data_rate: Configure the XCVR for link training.
+  - cdr_lock: Check if CDR is locked and return success or failure, where 0 is 
+success.
+  - ctle_cal: Start CTLE calibration.
+  - ctle_cal_status: Check if CTLE is complete and return success or failure, 
+where 0 is success.
+  - dfe_cal: Start DFE calibration.
+  - dfe_cal_status: Check if DFE is complete and return success or failure, 
+where 0 is success.
+  - reset_pcs_rx: Reset the XCVR PCS RX path.
+  - tx_equalization: Set the XCVR coefficients which are passed as parameters, 
+where tx_main_tap implies C(0), tx_post_tap implies C(+1) and tx_pre_tap implies
+ C(-1). These coefficients are absolute but the XCVR may require the signed 
+value. 
+
+
+</div>
+
+
+ --------------------------- 
+<a name="phy10gkrcfgt"></a>
+## phy10gkr_cfg_t
+<a name="prototype"></a>
+### Prototype 
+
+<div id="Types$phy10gkr_cfg_t$prototype" data-type="code">
+
+``` 
+    typedef struct __phy10gkr_cfg {
+        phy10gkr_xcvr_api_t xcvr_api; 
+        uint32_t fec_request; 
+        uint32_t rx_calibration_request; 
+        uint32_t main_preset_tap_coeff; 
+        uint32_t post_preset_tap_coeff; 
+        uint32_t pre_preset_tap_coeff; 
+        uint32_t main_initialize_tap_coeff; 
+        uint32_t post_initialize_tap_coeff; 
+        uint32_t pre_initialize_tap_coeff; 
+        uint32_t main_max_tap_ceoff; 
+        uint32_t main_min_tap_ceoff; 
+        uint32_t post_max_tap_ceoff; 
+        uint32_t post_min_tap_ceoff; 
+        uint32_t pre_max_tap_ceoff; 
+        uint32_t pre_min_tap_ceoff; 
+    } phy10gkr_cfg_t ;
+  ``` 
+
+
+</div>
+
+<a name="description"></a>
+### Description 
+
+<div id="Types$phy10gkr_cfg_t$description" data-type="text">
+
+The phy10gkr_cfg_t struct describes an instance of the Core10GBaseKR_PHY
+configuration parameters.
 
 
 </div>
@@ -896,6 +1025,24 @@ This enumeration can identify failures encountered by the 10GBASE-KR algorithm.
         phy10gkr_status_t c10gbkr_status; 
         uint32_t serdes_id; 
         uint32_t serdes_lane_id; 
+        uint32_t fec_configured; 
+        uint32_t fec_negotiated; 
+        void *xcvr; 
+        phy10gkr_xcvr_api_t xcvr_api; 
+        uint32_t fec_request; 
+        phy10gkr_calirbation_request_t rx_calibration_request; 
+        uint32_t main_preset_tap_coeff; 
+        uint32_t post_preset_tap_coeff; 
+        uint32_t pre_preset_tap_coeff; 
+        uint32_t main_initialize_tap_coeff; 
+        uint32_t post_initialize_tap_coeff; 
+        uint32_t pre_initialize_tap_coeff; 
+        uint32_t main_max_tap_ceoff; 
+        uint32_t main_min_tap_ceoff; 
+        uint32_t post_max_tap_ceoff; 
+        uint32_t post_min_tap_ceoff; 
+        uint32_t pre_max_tap_ceoff; 
+        uint32_t pre_min_tap_ceoff; 
     } phy10gkr_instance_t ;
   ``` 
 
@@ -919,6 +1066,66 @@ parameters.
 # Constants
 
  ---------------- 
+<div id="Constants$C10GBKR_VERSION_MAJOR$description" data-type="text">
+
+<a name="c10gbkrversionmajor"></a>
+## CORE10GBASEKR_PHY VERSION TAGS
+The version tags define the major, minor and patch driver release tags
+
+</div>
+
+<div id="Constants$C10GBKR_FEC_ABILITY$description" data-type="text">
+
+<a name="c10gbkrfecability"></a>
+## CORE10GBASEKR_PHY FEC ABILITY
+This defines that the auto-negotiation advertisement FEC ability bit should be
+set as the IP is configured with FEC logic.
+
+</div>
+
+<div id="Constants$C10GBKR_NO_FEC_ABILITY$description" data-type="text">
+
+<a name="c10gbkrnofecability"></a>
+## CORE10GBASEKR_PHY NO FEC ABILITY
+This defines that the auto-negotiation advertisement FEC ability bit should be
+cleared as the IP is not configured with FEC logic.
+
+</div>
+
+<div id="Constants$C10GBKR_ENABLE_FEC_REQUEST$description" data-type="text">
+
+<a name="c10gbkrenablefecrequest"></a>
+## CORE10GBASEKR_PHY ENABLE FEC REQUEST
+This defines that the auto-negotiation advertisement FEC request bit should be
+set if the IP is configured with the FEC logic.
+
+</div>
+
+<div id="Constants$C10GBKR_DISABLE_FEC_REQUEST$description" data-type="text">
+
+<a name="c10gbkrdisablefecrequest"></a>
+## CORE10GBASEKR_PHY DISABLE FEC REQUEST
+This defines that the auto-negotiation advertisement FEC request bit should be
+cleared if the IP is configured with the FEC logic.
+
+</div>
+
+<div id="Constants$C10GBKR_FEC_NEGOTIATED$description" data-type="text">
+
+<a name="c10gbkrfecnegotiated"></a>
+## CORE10GBASEKR_PHY FEC NEGOTIATED
+This defines that FEC was negotiated during auto-negotiation
+
+</div>
+
+<div id="Constants$C10GBKR_FEC_NOT_NEGOTIATED$description" data-type="text">
+
+<a name="c10gbkrfecnotnegotiated"></a>
+## CORE10GBASEKR_PHY FEC NOT NEGOTIATED
+This defines that FEC was not negotiated during auto-negotiation
+
+</div>
+
 <div id="Constants$C10GBKR_LT_MAIN_TAP_MAX_LIMIT$description" data-type="text">
 
 <a name="c10gbkrltmaintapmaxlimit"></a>
@@ -975,6 +1182,78 @@ milli-seconds.
 # Functions
 
  ---------------- 
+<a name="phy10gkrcfgstructdefinit"></a>
+## PHY10GKR_cfg_struct_def_init
+<a name="prototype"></a>
+### Prototype 
+
+<div id="Functions$PHY10GKR_cfg_struct_def_init$prototype" data-type="code">
+
+    void
+    PHY10GKR_cfg_struct_def_init
+    (
+        phy10gkr_cfg_t * cfg
+    );
+
+
+</div>
+
+<a name="description"></a>
+### Description
+
+<div id="Functions$PHY10GKR_cfg_struct_def_init$description" data-type="text">
+
+PHY10GKR_cfg_struct_def_init() loads the PHY configuration struct as default.
+
+</div>
+
+
+ --------------------------- 
+
+<a name="parameters"></a>
+### Parameters
+#### cfg
+<div id="Functions$PHY10GKR_cfg_struct_def_init$description$parameters$cfg" data-type="text" data-name="cfg">
+
+The cfg parameter specifies the PHY configuration instance.
+
+
+</div>
+
+<a name="return"></a>
+### Return
+<div id="Functions$PHY10GKR_cfg_struct_def_init$description$return" data-type="text">
+
+This function does not return a value.
+
+
+</div>
+
+##### Example
+<div id="Functions$PHY10GKR_cfg_struct_def_init$description$example$Example1" data-type="text" data-name="Example">
+
+</div>
+
+<div id="Functions$PHY10GKR_cfg_struct_def_init$description$example$Example1" data-type="code" data-name="Example">
+
+
+```
+    #include "core10gbasekr_phy.h"
+    int main(void)
+    {
+      PHY10GKR_cfg_struct_def_init(&phy_cfg);
+      phy_cfg.fec_requested = 1;
+
+      PHY10GKR_init(&xcvr, &g_phy, CORE10GBKR_0_PHY_BASE_ADDR);
+      PHY10GKR_config(&g_phy, &phy_cfg);
+      return (0u);
+    }
+```
+
+</div>
+
+
+ -------------------------------- 
 <a name="phy10gkrinit"></a>
 ## PHY10GKR_init
 <a name="prototype"></a>
@@ -982,11 +1261,13 @@ milli-seconds.
 
 <div id="Functions$PHY10GKR_init$prototype" data-type="code">
 
-    void
+    uint32_t
     PHY10GKR_init
     (
         phy10gkr_instance_t * this_phy,
-        addr_t base_addr
+        addr_t base_addr,
+        phy10gkr_cfg_t * cfg,
+        void * xcvr
     );
 
 
@@ -997,9 +1278,9 @@ milli-seconds.
 
 <div id="Functions$PHY10GKR_init$description" data-type="text">
 
-The PHY10GKR_init() function initializes the Core10GBaseKR_PHY bare-metal
-driver. This function sets the base address of the Auto-negotiation, link-
-training, tx control, and rx status registers.
+PHY10GKR_init() initializes the Core10GBaseKR_PHY bare-metal driver. This
+function sets the base address of the Auto-negotiation, link-training, tx
+control, and rx status registers.
 
 </div>
 
@@ -1024,11 +1305,29 @@ The base_addr specifies the base address of the IP block.
 
 </div>
 
+#### cfg
+<div id="Functions$PHY10GKR_init$description$parameters$cfg" data-type="text" data-name="cfg">
+
+The cfg parameter specifies the PHY configuration instance.
+
+
+</div>
+
+#### xcvr
+<div id="Functions$PHY10GKR_init$description$parameters$xcvr" data-type="text" data-name="xcvr">
+
+This is a pointer to the instance of XCVR which is connected to this IP.
+
+
+</div>
+
 <a name="return"></a>
 ### Return
 <div id="Functions$PHY10GKR_init$description$return" data-type="text">
 
-This function does not return a value.
+This function returns success or failure, 0 implies success. On failure this
+function will return phy10gkr_error_t enumeration which indicates the error
+type.
 
 
 </div>
@@ -1042,241 +1341,15 @@ This function does not return a value.
 
 
 ```
-    #include "phy.h"
+    #include "core10gbasekr_phy.h"
     int main(void)
     {
-      PHY10GKR_init(&g_phy, CORE10GBKR_0_PHY_BASE_ADDR);
-      return (0u);
-    }
-```
-
-</div>
-
-
- -------------------------------- 
-<a name="phy10gkrconfig"></a>
-## PHY10GKR_config
-<a name="prototype"></a>
-### Prototype 
-
-<div id="Functions$PHY10GKR_config$prototype" data-type="code">
-
-    void
-    PHY10GKR_config
-    (
-        phy10gkr_instance_t * this_phy
-    );
-
-
-</div>
-
-<a name="description"></a>
-### Description
-
-<div id="Functions$PHY10GKR_config$description" data-type="text">
-
-The PHY10GKR_config() function configures the PHY registers with the predefined
-defaults and user configurations. This function also resets the structures back
-to their initial conditions.
-
-</div>
-
-
- --------------------------- 
-
-<a name="parameters"></a>
-### Parameters
-#### this_phy
-<div id="Functions$PHY10GKR_config$description$parameters$this_phy" data-type="text" data-name="this_phy">
-
-The this_phy parameter specifies the PHY instance.
-
-
-</div>
-
-<a name="return"></a>
-### Return
-<div id="Functions$PHY10GKR_config$description$return" data-type="text">
-
-This function does not return a value.
-
-
-</div>
-
-##### Example
-<div id="Functions$PHY10GKR_config$description$example$Example1" data-type="text" data-name="Example">
-
-</div>
-
-<div id="Functions$PHY10GKR_config$description$example$Example1" data-type="code" data-name="Example">
-
-
-```
-    #include "phy.h"
-    int main(void)
-    {
-      PHY10GKR_init(&g_phy, CORE10GBKR_0_PHY_BASE_ADDR);
-      PHY10GKR_config(&g_phy);
-      return (0u);
-    }
-```
-
-</div>
-
-
- -------------------------------- 
-<a name="phy10gkrautonegotiatesm"></a>
-## PHY10GKR_autonegotiate_sm
-<a name="prototype"></a>
-### Prototype 
-
-<div id="Functions$PHY10GKR_autonegotiate_sm$prototype" data-type="code">
-
-    void
-    PHY10GKR_autonegotiate_sm
-    (
-        phy10gkr_instance_t * this_phy
-    );
-
-
-</div>
-
-<a name="description"></a>
-### Description
-
-<div id="Functions$PHY10GKR_autonegotiate_sm$description" data-type="text">
-
-The PHY10GKR_autonegotiate_sm() function enables the auto-negotiation API state
-machine, which enables the auto-negotiation registers and then checks the status
-of the auto-negotiation state machine to determine if auto-negotiation has
-complete.
-
-</div>
-
-
- --------------------------- 
-
-<a name="parameters"></a>
-### Parameters
-#### this_phy
-<div id="Functions$PHY10GKR_autonegotiate_sm$description$parameters$this_phy" data-type="text" data-name="this_phy">
-
-The this_phy parameter specifies the PHY instance.
-
-
-</div>
-
-<a name="return"></a>
-### Return
-<div id="Functions$PHY10GKR_autonegotiate_sm$description$return" data-type="text">
-
-This function does not return a value.
-
-
-</div>
-
-##### Example
-<div id="Functions$PHY10GKR_autonegotiate_sm$description$example$Example1" data-type="text" data-name="Example">
-
-</div>
-
-<div id="Functions$PHY10GKR_autonegotiate_sm$description$example$Example1" data-type="code" data-name="Example">
-
-
-```
-    #include "phy.h"
-    int main(void)
-    {
-      PHY10GKR_init(&g_phy, CORE10GBKR_0_PHY_BASE_ADDR);
-      while(1)
-      {
-          PHY10GKR_autonegotiate_sm(&g_phy);
-          if(STATUS_AN_COMPLETE == g_phy.an.complete)
-          {
-              break;
-          }
-      }
-      return (0u);
-    }
-```
-
-</div>
-
-
- -------------------------------- 
-<a name="phy10gkrlinktrainingsm"></a>
-## PHY10GKR_link_training_sm
-<a name="prototype"></a>
-### Prototype 
-
-<div id="Functions$PHY10GKR_link_training_sm$prototype" data-type="code">
-
-    void
-    PHY10GKR_link_training_sm
-    (
-        phy10gkr_instance_t * this_phy
-    );
-
-
-</div>
-
-<a name="description"></a>
-### Description
-
-<div id="Functions$PHY10GKR_link_training_sm$description" data-type="text">
-
-The PHY10GKR_link_training_sm() function enables the link training API state
-machine, which enables the link training registers and then runs the link
-training algorithm.
-
-The connected transceiver must have a data rate of 10 Gbps and locked to a link
-partner with the same data rate for successful link training.
-
-</div>
-
-
- --------------------------- 
-
-<a name="parameters"></a>
-### Parameters
-#### this_phy
-<div id="Functions$PHY10GKR_link_training_sm$description$parameters$this_phy" data-type="text" data-name="this_phy">
-
-The this_phy parameter specifies the PHY instance.
-
-
-</div>
-
-<a name="return"></a>
-### Return
-<div id="Functions$PHY10GKR_link_training_sm$description$return" data-type="text">
-
-This function does not return a value.
-
-
-</div>
-
-##### Example
-<div id="Functions$PHY10GKR_link_training_sm$description$example$Example1" data-type="text" data-name="Example">
-
-</div>
-
-<div id="Functions$PHY10GKR_link_training_sm$description$example$Example1" data-type="code" data-name="Example">
-
-
-```
-    #include "phy.h"
-    int main(void)
-    {
-      PHY10GKR_init(&g_phy, CORE10GBKR_0_PHY_BASE_ADDR);
-      while(1)
-      {
-          PHY10GKR_link_training_sm(&g_phy);
-          if(STATUS_LT_FAILURE == g_phy.lt.status)
-          {
-              HAL_ASSERT(0);
-          }
-      }
+      void * xcvr;
+      xcvr.base_addr = 0xFFFFFFFF;
+      xcvr.lane = 1;
+      xcvr.serdes = 2;
+
+      PHY10GKR_init(&g_phy, CORE10GBKR_0_PHY_BASE_ADDR, &phy_cfg ,&xcvr);
       return (0u);
     }
 ```
@@ -1306,8 +1379,8 @@ This function does not return a value.
 
 <div id="Functions$PHY10GKR_10gbasekr_sm$description" data-type="text">
 
-The PHY10GKR_10gbasekr_sm() executes the full 10GBASE-KR flow required to
-complete the auto-negotiation and link training.
+PHY10GKR_10gbasekr_sm() executes the full 10GBASE-KR flow required to complete
+the auto-negotiation and link training.
 
 The 10GBASE-KR status enumeration allows the user to debug the auto-negotiation
 and link training algorithms.
@@ -1331,7 +1404,8 @@ The this_phy parameter specifies the PHY instance.
 ### Return
 <div id="Functions$PHY10GKR_10gbasekr_sm$description$return" data-type="text">
 
-This function returns a state machine status.
+This function returns the phy10gkr_status_t enumeration which indicates the
+status of the API state machine. 0 implies that a link has been established.
 
 
 </div>
@@ -1345,73 +1419,24 @@ This function returns a state machine status.
 
 
 ```
-    #include "phy.h"
+    #include "core10gbasekr_phy.h"
     int main(void)
     {
       uint32_t status;
-      PHY10GKR_init(&g_phy, CORE10GBKR_0_PHY_BASE_ADDR);
+      PHY10GKR_cfg_struct_def_init(&phy_cfg);
+      phy_cfg.fec_requested = 1;
+      PHY10GKR_init(&g_phy, CORE10GBKR_0_PHY_BASE_ADDR, &phy_cfg, &xcvr);
       while(1)
       {
-          status = PHY10GKR_10gbasekr_sm(&g_phy);
-          if(LINK_ESTABLISHED == status)
-          {
-              break;
-          }
+        status = PHY10GKR_10gbasekr_sm(&g_phy);
+        if(LINK_ESTABLISHED == status)
+        {
+          break;
+        }
       }
       return (0u);
     }
 ```
-
-</div>
-
-
- -------------------------------- 
-<a name="phy10gkrsetlanelossignal"></a>
-## PHY10GKR_set_lane_los_signal
-<a name="prototype"></a>
-### Prototype 
-
-<div id="Functions$PHY10GKR_set_lane_los_signal$prototype" data-type="code">
-
-    void
-    PHY10GKR_set_lane_los_signal
-    (
-        phy10gkr_instance_t * this_phy,
-        uint32_t state
-    );
-
-
-</div>
-
-<a name="description"></a>
-### Description
-
-<div id="Functions$PHY10GKR_set_lane_los_signal$description" data-type="text">
-
-The PHY10GKR_set_lane_los_signal() asserts and deasserts the transceivers Lane
-Loss of signal detection.
-
-</div>
-
-
- --------------------------- 
-
-<a name="parameters"></a>
-### Parameters
-#### state
-<div id="Functions$PHY10GKR_set_lane_los_signal$description$parameters$state" data-type="text" data-name="state">
-
-Asserts or deasserts the lane LOS
-
-
-</div>
-
-<a name="return"></a>
-### Return
-<div id="Functions$PHY10GKR_set_lane_los_signal$description$return" data-type="text">
-
-This function does not return a value.
-
 
 </div>
 
@@ -1438,8 +1463,8 @@ This function does not return a value.
 
 <div id="Functions$PHY10GKR_get_current_time_ms$description" data-type="text">
 
-The PHY10GKR_get_current_time_ms() is a weak function that can be overridden by
-the user to get the current time in milli-seconds.
+PHY10GKR_get_current_time_ms() is a weak function that can be overridden by the
+user to get the current time in milli-seconds.
 
 </div>
 
@@ -1466,17 +1491,20 @@ This function returns the time in milli-seconds.
 
 
  -------------------------------- 
-<a name="phy10gkrserdesanconfig"></a>
-## PHY10GKR_serdes_an_config
+<a name="phy10gkrgetipversion"></a>
+## PHY10GKR_get_ip_version
 <a name="prototype"></a>
 ### Prototype 
 
-<div id="Functions$PHY10GKR_serdes_an_config$prototype" data-type="code">
+<div id="Functions$PHY10GKR_get_ip_version$prototype" data-type="code">
 
-    void
-    PHY10GKR_serdes_an_config
+    uint8_t
+    PHY10GKR_get_ip_version
     (
-        void 
+        phy10gkr_instance_t * this_phy,
+        uint32_t * major,
+        uint32_t * minor,
+        uint32_t * sub
     );
 
 
@@ -1485,11 +1513,12 @@ This function returns the time in milli-seconds.
 <a name="description"></a>
 ### Description
 
-<div id="Functions$PHY10GKR_serdes_an_config$description" data-type="text">
+<div id="Functions$PHY10GKR_get_ip_version$description" data-type="text">
 
-The PHY10GKR_serdes_an_config() is a weak function that can be overridden by the
-user to configure the XCVR instance integrated in their design for auto-
-negotiation.
+PHY10GKR_get_ip_version() retrieves the IP version tags, the tags are passed by
+reference as parameters and updated by this function. This function must be
+called after initialization as there is a dependency on the instance of a
+Core10GBaseKR_PHY instance.
 
 </div>
 
@@ -1498,35 +1527,88 @@ negotiation.
 
 <a name="parameters"></a>
 ### Parameters
-<div id="" data-type="text" data-name="None">
+#### this_phy
+<div id="Functions$PHY10GKR_get_ip_version$description$parameters$this_phy" data-type="text" data-name="this_phy">
 
-This function takes no parameters.
+The this_phy parameter specifies the PHY instance.
+
+
+</div>
+
+#### major
+<div id="Functions$PHY10GKR_get_ip_version$description$parameters$major" data-type="text" data-name="major">
+
+This parameter identifies the major version number.
+
+
+</div>
+
+#### minor
+<div id="Functions$PHY10GKR_get_ip_version$description$parameters$minor" data-type="text" data-name="minor">
+
+This parameter identifies the minor version number.
+
+
+</div>
+
+#### sub
+<div id="Functions$PHY10GKR_get_ip_version$description$parameters$sub" data-type="text" data-name="sub">
+
+This parameter identifies the sub version number.
 
 
 </div>
 
 <a name="return"></a>
 ### Return
-<div id="Functions$PHY10GKR_serdes_an_config$description$return" data-type="text">
+<div id="Functions$PHY10GKR_get_ip_version$description$return" data-type="text">
 
-This function does not return a value.
+This function returns 0 on success.
 
+
+</div>
+
+##### Example
+<div id="Functions$PHY10GKR_get_ip_version$description$example$Example1" data-type="text" data-name="Example">
+
+</div>
+
+<div id="Functions$PHY10GKR_get_ip_version$description$example$Example1" data-type="code" data-name="Example">
+
+
+```
+    #include "core10gbasekr_phy.h"
+    int main(void)
+    {
+      uint32_t major,
+      uint32_t minor,
+      uint32_t sub,
+
+      PHY10GKR_cfg_struct_def_init(&phy_cfg);
+      PHY10GKR_init(&g_phy, CORE10GBKR_0_PHY_BASE_ADDR, &phy_cfg, &xcvr);
+
+      PHY10GKR_get_ip_version(&g_phy, &major, &minor, &sub);
+      return (0u);
+    }
+```
 
 </div>
 
 
  -------------------------------- 
-<a name="phy10gkrserdesltconfig"></a>
-## PHY10GKR_serdes_lt_config
+<a name="phy10gkrgetdriverversion"></a>
+## PHY10GKR_get_driver_version
 <a name="prototype"></a>
 ### Prototype 
 
-<div id="Functions$PHY10GKR_serdes_lt_config$prototype" data-type="code">
+<div id="Functions$PHY10GKR_get_driver_version$prototype" data-type="code">
 
-    uint32_t
-    PHY10GKR_serdes_lt_config
+    uint8_t
+    PHY10GKR_get_driver_version
     (
-        void 
+        uint32_t * major,
+        uint32_t * minor,
+        uint32_t * patch
     );
 
 
@@ -1535,60 +1617,10 @@ This function does not return a value.
 <a name="description"></a>
 ### Description
 
-<div id="Functions$PHY10GKR_serdes_lt_config$description" data-type="text">
+<div id="Functions$PHY10GKR_get_driver_version$description" data-type="text">
 
-The PHY10GKR_serdes_lt_config() is a weak function that can be overridden by the
-user to configure the XCVR instance integrated in their design for link training
-at 10 Gbps.
-
-</div>
-
-
- --------------------------- 
-
-<a name="parameters"></a>
-### Parameters
-<div id="" data-type="text" data-name="None">
-
-This function takes no parameters.
-
-
-</div>
-
-<a name="return"></a>
-### Return
-<div id="Functions$PHY10GKR_serdes_lt_config$description$return" data-type="text">
-
-This function does not return a value.
-
-
-</div>
-
-
- -------------------------------- 
-<a name="phy10gkrserdescdrlock"></a>
-## PHY10GKR_serdes_cdr_lock
-<a name="prototype"></a>
-### Prototype 
-
-<div id="Functions$PHY10GKR_serdes_cdr_lock$prototype" data-type="code">
-
-    uint32_t
-    PHY10GKR_serdes_cdr_lock
-    (
-        void 
-    );
-
-
-</div>
-
-<a name="description"></a>
-### Description
-
-<div id="Functions$PHY10GKR_serdes_cdr_lock$description" data-type="text">
-
-The PHY10GKR_serdes_cdr_lock() is a weak function that can be overridden by the
-user to determine that the XCVR instance integrated has achieved a CDR lock.
+PHY10GKR_get_driver_version() retrieves the driver version tags, the tags are
+passed by reference as parameters and updated by this function.
 
 </div>
 
@@ -1597,124 +1629,59 @@ user to determine that the XCVR instance integrated has achieved a CDR lock.
 
 <a name="parameters"></a>
 ### Parameters
-<div id="" data-type="text" data-name="None">
+#### major
+<div id="Functions$PHY10GKR_get_driver_version$description$parameters$major" data-type="text" data-name="major">
 
-This function t
-</html>
-arameters.
+This parameter identifies the major version number.
+
+
+</div>
+
+#### minor
+<div id="Functions$PHY10GKR_get_driver_version$description$parameters$minor" data-type="text" data-name="minor">
+
+This parameter identifies the minor version number.
+
+
+</div>
+
+#### patch
+<div id="Functions$PHY10GKR_get_driver_version$description$parameters$patch" data-type="text" data-name="patch">
+
+This parameter identifies the patch version number.
 
 
 </div>
 
 <a name="return"></a>
 ### Return
-<div id="Functions$PHY10GKR_serdes_cdr_lock$description$return" data-type="text">
+<div id="Functions$PHY10GKR_get_driver_version$description$return" data-type="text">
 
-This function returns 0 on success and 1 on failure.
-
-
-</div>
-
-
- -------------------------------- 
-<a name="phy10gkrserdesdfecal"></a>
-## PHY10GKR_serdes_dfe_cal
-<a name="prototype"></a>
-### Prototype 
-
-<div id="Functions$PHY10GKR_serdes_dfe_cal$prototype" data-type="code">
-
-    uint32_t
-    PHY10GKR_serdes_dfe_cal
-    (
-        void 
-    );
+This function returns 0 on success.
 
 
 </div>
 
-<a name="description"></a>
-### Description
-
-<div id="Functions$PHY10GKR_serdes_dfe_cal$description" data-type="text">
-
-The PHY10GKR_serdes_dfe_cal() is a weak function that can be overridden by the
-user to determine that the XCVR instance integrated has completed DFE
-calibration.
-
-Note this function should constantly check if the link training failure time has
-timeout and if so exit the function.
+##### Example
+<div id="Functions$PHY10GKR_get_driver_version$description$example$Example1" data-type="text" data-name="Example">
 
 </div>
 
-
- --------------------------- 
-
-<a name="parameters"></a>
-### Parameters
-<div id="" data-type="text" data-name="None">
-
-This function takes no parameters.
+<div id="Functions$PHY10GKR_get_driver_version$description$example$Example1" data-type="code" data-name="Example">
 
 
-</div>
+```
+    #include "core10gbasekr_phy.h"
+    int main(void)
+    {
+      uint32_t major,
+      uint32_t minor,
+      uint32_t patch,
 
-<a name="return"></a>
-### Return
-<div id="Functions$PHY10GKR_serdes_dfe_cal$description$return" data-type="text">
-
-This function does not return a value.
-
-
-</div>
-
-
- -------------------------------- 
-<a name="phy10gkrserdestxequalization"></a>
-## PHY10GKR_serdes_tx_equalization
-<a name="prototype"></a>
-### Prototype 
-
-<div id="Functions$PHY10GKR_serdes_tx_equalization$prototype" data-type="code">
-
-    void
-    PHY10GKR_serdes_tx_equalization
-    (
-        uint32_t tx_main_tap,
-        uint32_t tx_post_tap,
-        uint32_t tx_pre_tap
-    );
-
-
-</div>
-
-<a name="description"></a>
-### Description
-
-<div id="Functions$PHY10GKR_serdes_tx_equalization$description" data-type="text">
-
-The PHY10GKR_serdes_tx_equalization() is a weak function that can be overridden
-by the user to set the current XCVR tap coefficients.
-
-</div>
-
-
- --------------------------- 
-
-<a name="parameters"></a>
-### Parameters
-#### 
-<div id="" data-type="text" data-name="">
-
-
-</div>
-
-<a name="return"></a>
-### Return
-<div id="Functions$PHY10GKR_serdes_tx_equalization$description$return" data-type="text">
-
-This function does not return a value.
-
+      PHY10GKR_get_driver_version(&major, &minor, &patch);
+      return (0u);
+    }
+```
 
 </div>
 

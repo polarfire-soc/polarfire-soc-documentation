@@ -10,13 +10,13 @@
 
      - [MIV_RV32 V3.1](#miv_rv32-v3.1)
 
-     - [Floating Point Interrupt Support](#floating-point-interrupt-support)
-
   - [Customizing MIV_RV32 HAL](#customizing-miv_rv32-hal)
 
      - [Interrupt Handling](#interrupt-handling)
 
      - [MIE Register Map for MIV_RV32 V3.0](#mie-register-map-for-miv_rv32-v3.0)
+
+     - [Floating Point Interrupt Support](#floating-point-interrupt-support)
 
      - [SUBSYS - SubSystem for RISC-V](#subsys---subsystem-for-risc-v)
 
@@ -100,24 +100,12 @@ The MIV_RV32 Core as well as this document use the terms defined below:
   - SUBSYS - Processor Subsystem for RISC-V
   - OPSRV - Offload Processor Subsystem for RISC-V
   - GPR - General Purpose Registers
-  - MGECIE - Machine GPR ECC Controlable Interrupt Enable
-  - MGEUIE - Machine GPR ECC Uncontrolable Interrupt Enable
+  - MGECIE - Machine GPR ECC Correctable Interrupt Enable
+  - MGEUIE - Machine GPR ECC Uncorrectable Interrupt Enable
   - MTIE - Machine Timer Interrupt Enable
   - MEIE - Machine External Interrupt Enable
   - MSIE - Machine Software Interrupt Enable
   - ISR - Interrupt Service Routine
-
-## Floating Point Interrupt Support
-When an interrupt is taken and Floating Point instructions are used in the ISR,
-the floating point register context must be saved to resume the application
-correctly. To use this feature, enable the provided macro in the Softconsole
-build settings. This feature is turned off by default as it adds overhead which
-is not required when the ISR does not used FP insturctions and saving the
-general purpose register context is sufficient.
-
-| Macro Name    | Definition     | 
-| -----|-----|
-| MIV_FP_CONTEXT_SAVE    | Define to save the FP register file    | 
 
 # Customizing MIV_RV32 HAL
 To use the HAL with older releases of MIV_RV32, preprocessor macros have been
@@ -196,6 +184,18 @@ highlights the differences between the V3.0 and V3.1 of the core.
 
 Other interrupt bit postions like the MGEUIE and MSYS_IE5 to MSYS_IE0 remain
 unchanged.
+
+## Floating Point Interrupt Support
+When an interrupt is taken and Floating Point instructions are used in the ISR,
+the floating point register context must be saved to resume the application
+correctly. To use this feature, enable the provided macro in the Softconsole
+build settings. This feature is turned off by default as it adds overhead which
+is not required when the ISR does not used FP insturctions and saving the
+general purpose register context is sufficient.
+
+| Macro Name    | Definition     | 
+| -----|-----|
+| MIV_FP_CONTEXT_SAVE    | Define to save the FP register file    | 
 
 ## SUBSYS - SubSystem for RISC-V
 SUBSYS stands for SubSystem for RISC-V. This was previously (MIV_RV32 v3.0)
@@ -735,11 +735,9 @@ This functions returns the CORE_GPR_DED_RESET_REG bit value.
 
 <div id="Functions$MRV_read_mtvec_base$description" data-type="text">
 
-The MRV_read_mtvec_base() function sets the mtvec base value, which is the addr
-used when an interrupt/trap occurs in the mtvec register, [31:2] is the BASE
-address, which is used to point to the location of the trap_entry for both
-Vectored and Direct Interrupt modes, depending on the MODE [1:0] value of the
-mtvec register. The BASE addr must be aligned on a 4B boundary.
+The MRV_read_mtvec_base() function reads the mtvec base value, which is the addr
+used when an interrupt/trap occurs. In the mtvec register, [31:2] is the BASE
+address. NOTE: The BASE address must be aligned on a 4B boundary.
 
 </div>
 
@@ -788,9 +786,9 @@ value.
 
 <div id="Functions$MRV_set_mtvec_base$description" data-type="text">
 
-The set_mtvec_base() function takes the mtvec_base address as a unsigned int and
-writes the value into the BASE field [31:2] in the mtvec CSR, MODE[1:0] is Read-
-only. BASE is 4B aligned, so the lowest 2 bits of mtvec_base are ignored.
+The MRV_set_mtvec_base() function takes the mtvec_base address as a unsigned int
+and writes the value into the BASE field [31:2] in the mtvec CSR, MODE[1:0] is
+Read-only. BASE is 4B aligned, so the lowest 2 bits of mtvec_base are ignored.
 
 </div>
 

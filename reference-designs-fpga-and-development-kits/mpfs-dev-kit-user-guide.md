@@ -192,22 +192,22 @@ See the [FlashPro Express User Guide](https://www.microsemi.com/document-portal/
 
 | Switch | Ref | Section | Description | Definition | Default |
 | --- | --- | --- | --- | --- | --- |
-|1| SW3 |Power switch| Sliding switch for 12 V input |Open: DC adaptor 12 V is not connected to the board power  | Open
-|||||Closed: DC adaptor 12 V is connected to board power supplies ||
+| 1 | SW3 | Power switch | Sliding switch for 12 V input | Open: DC adaptor 12 V is not connected to the board power  | Open |
+| | | | |Closed: DC adaptor 12 V is connected to board power supplies | |
 | 2 | SW5 | PCIe switch (Switchtec) | Selection of Normal/Boot Recovery mode for PCIe switch | 0: Boot recovery mode | 1–2: Normal mode |
-||||| 1: Normal mode |
-| 3| J25 | SATA controller|Between SPI flash output to input of PCIe to SATA controller |Open: SPI flash o/p is not connected to PCIe to SATA controller | Close |
-|||||Close: SPI flash o/p is connected to PCIe to SATA controller ||
-|4|J31| USB instance 1 | VBUS source selection (onboard 5 V/USB connector)|Open: VBUS sourced by USB connector (Device mode) | Close
-|||||Close: On-board 5 V to USB CONN (Host mode) ||
-|6| J27 | USB instance 2 | Configuring USB PHY (U60) as host/device|Open: USB3340 acts as device|Close|
-|||||Close: USB3340 acts as host||
-|7| J30 USB instance 2 | VBUS source selection (onboard 5 V/USB connector)|Open: VBUS sourced by USB connector (Device mode)|Close|
-|||||Close: On-board 5 V to USB CONN (Host mode)||
-|8| J21 |SC-SPI |SC-SPI I/O configuration interface|Open: SC SPI acts as master|Close|
-|||||Close: SC SPI acts as slave||
-|9| J22 |JTAG |Weak pull down to JTAG TRSTB|Open: 1K pull down connected to TRSTB| Open|
-|||||Close: 1K||100K pull down connected to TRSTB||
+||||| 1: Normal mode | |
+| 3 | J25 | SATA controller | Between SPI flash output to input of PCIe to SATA controller | Open: SPI flash o/p is not connected to PCIe to SATA controller | Close |
+| | | | | Close: SPI flash o/p is connected to PCIe to SATA controller | |
+| 4 | J31 | USB instance 1 | VBUS source selection (onboard 5 V/USB connector) | Open: VBUS sourced by USB connector (Device mode) | Close |
+| | | | |Close: On-board 5 V to USB CONN (Host mode) | |
+| 6 | J27 | USB instance 2 | Configuring USB PHY (U60) as host/device | Open: USB3340 acts as device | Close |
+| | | | | Close: USB3340 acts as host | |
+| 7 | J30 | USB instance 2 | VBUS source selection (onboard 5 V/USB connector) | Open: VBUS sourced by USB connector (Device mode) | Close |
+| | | | | Close: On-board 5 V to USB CONN (Host mode) | |
+| 8 | J21 | SC-SPI | SC-SPI I/O configuration interface | Open: SC SPI acts as master | Close |
+| | | | | Close: SC SPI acts as slave | |
+| 9 | J22 | JTAG | Weak pull down to JTAG TRSTB | Open: 1K pull down connected to TRSTB | Open |
+| | | | | Close: A 100k pull down connected in parallel to the default 1k pull down to TRSTB | |
 
 ## Building and Loading the Linux Image
 
@@ -234,7 +234,7 @@ More IPs are being ported on the HiFive Unleashed Platform and will be made avai
 The IPs ported on the PolarFire FPGA are accessible from the RISC-V U540 memory map as listed in the
 following table. The interrupt number 42 is used for all the peripherals.
 
-| Peripherals | Mem Requirement | Start Address | End Address | Mem Allocation| Comments
+| Peripherals | Mem Requirement | Start Address | End Address | Mem Allocation | Comments |
 | --- | --- | --- | --- | --- | --- |
 | PCIe | --- | --- | --- | --- | --- |
 | PCIe Config Space | 256 MB | 0x2030000000 | 0x203fffffff | 256 MB | --- |
@@ -244,14 +244,14 @@ following table. The interrupt number 42 is used for all the peripherals.
 | Peripherals | --- | --- | --- | --- | --- |
 | I2C_0 | 4 KB | 0x2000100000 | 0x2000100fff | 4095 KB | I2C0 header |
 | Reserved | 4 KB | 0x2000101000 | 0x2000101fff | 4095 KB | Reserved |
-| GPIO 4 KB | 0x2000103000 | 0x2000103fff | 4095 KB | GPIO Implementation |
+| GPIO 4 KB | 0x2000103000 | 0x2000103fff | 4095 KB | GPIO Implementation | --- |
 | MMUART_0 | 4 KB | 0x2000104000 | 0x2000104fff | 4095 KB | J36 |
 | Reserved | 4 KB | 0x2000105000 | 0x2000105fff | 4095 KB | Reserved |
 | Reserved | 4 KB | 0x2000106000 | 0x2000106fff | 4095 KB | Reserved |
 | SPI_0 | 4 KB | 0x2000107000 | 0x2000107fff | 4095 KB | SPI0 header |
 | Reserved | 4 KB | 0x2000108000 | 0x2000108fff | 4095 KB | Reserved |
 | FIC (AXI) | 256 MB | 0x2010000000 | 0x201fffffff | 256 MB | To connect with user logic |
-| free space | --- | 0x2020000000 | 0x202fffffff | 256 MB |
+| free space | --- | 0x2020000000 | 0x202fffffff | 256 MB | --- |
 
 ### GPIO Implementation
 

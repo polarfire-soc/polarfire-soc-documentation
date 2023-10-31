@@ -6,5 +6,6 @@
 - [CoreSPI](./CoreSPI/corespi-driver-user-guide.md)
 - [CoreSysServices-PF](./CoreSysServices-PF/coresysservices-pf-driver-user-guide.md)
 - [CoreTimer](./CoreTimer/coretimer-driver-user-guide.md)
+- [CoreTSE](./CoreTSE/coretse-driver-user-guide.md)
 - [CoreUARTapb](./CoreUARTapb/coreuartapb-driver-user-guide.md)
 - [miv-udma](./miv-udma/miv-udma-driver-user-guide.md)

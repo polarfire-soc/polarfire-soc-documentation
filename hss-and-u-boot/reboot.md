@@ -4,7 +4,6 @@
 * [Relevant KConfig Options](#relevant-hss-kconfig-options)
 * [Reboot Operation](#reboot-operation)
   * [OpenSBI Reboot ecall](#opensbi-reboot-ecall)
-  * [Bare Metal Reboot](#bare-metal-reboot)
   * [Linux Reboot](#linux-reboot)
 
 This document provides a brief overview of the PolarFire SoC features related to system and context reboot.
@@ -96,7 +95,7 @@ The `SBI_EXT_SRST_RESET` extension is defined in `thirdparty/opensbi/include/sbi
 
 THe HSS adds an `sbi_system_reset_device` structure named `mpfs_reset`.
 
-Once the upper layers (Linux, RTOS or bare metal) issue an SBI ecall for a reset, the control flow, is as follows:
+Once the upper layers (Linux, RTOS) issue an SBI ecall for a reset, the control flow, is as follows:
 
 ```C
     .
@@ -116,44 +115,6 @@ Once the upper layers (Linux, RTOS or bare metal) issue an SBI ecall for a reset
 `mpfs_hart_stop()` decides, based on the `reset_type` provided and on the privileges of the context, whether to do a full-system cold reboot (forced via `HSS_Wdog_Reboot()`, or a context-based warm reboot (via `HSS_OpenSBI_Reboot()`).
 
 See the [RISC-V Supervisor Binary Interface Specification](https://github.com/riscv-non-isa/riscv-sbi-doc/blob/master/riscv-sbi.adoc) for more details, particularly [System Reset Extension (EID #0x53525354 "SRST")](https://github.com/riscv-non-isa/riscv-sbi-doc/blob/master/riscv-sbi.adoc#system-reset-extension-eid-0x53525354-srst).
-
-<a name="bare-metal-reboot"></a>
-
-### Bare Metal Reboot
-
-A bare metal application can issue an `SBI_EXT_0_1_SHUTDOWN` or `SBI_EXT_SRST_RESET` SBI ecall and cause a cold or warm reboot, depending on the Kconfig settings used to build the HSS and the entitlements of that bare metal context within the payload.bin.
-
-![Bare Metal Reboot](images/reboot/bm-rtos-reboot.drawio.svg)
-
-For example, to perform a cold reboot, a bare metal application might do something like the following:
-
-```C
-
-    #define SBI_EXT_SRST_RESET 0
-    #define SBI_EXT_SRST 0x53525354
-    #define SBI_SRST_RESET_TYPE_SHUTDOWN 0
-    #define SBI_SRST_RESET_TYPE_COLD_REBOOT 1
-    #define SBI_SRST_RESET_TYPE_WARM_REBOOT 2
-    #define SBI_SRST_RESET_REASON_NONE 0
-    #define SBI_SRST_RESET_REASON_SYS_FAILURE 1
-
-    //
-
-    register uintptr_t a0 asm ("a0") = (uintptr_t)(SBI_SRST_RESET_TYPE_COLD_REBOOT);
-    register uintptr_t a1 asm ("a1") = (uintptr_t)(SBI_SRST_RESET_REASON_NONE);
-    register uintptr_t a2 asm ("a2") = (uintptr_t)0;
-    register uintptr_t a3 asm ("a3") = (uintptr_t)0;
-    register uintptr_t a4 asm ("a4") = (uintptr_t)0;
-    register uintptr_t a5 asm ("a5") = (uintptr_t)0;
-    register uintptr_t a6 asm ("a6") = (uintptr_t)(SBI_EXT_SRST_RESET);
-    register uintptr_t a7 asm ("a7") = (uintptr_t)(SBI_EXT_SRST);
-    asm volatile ("ecall"
-              : "+r" (a0), "+r" (a1)
-              : "r" (a2), "r" (a3), "r" (a4), "r" (a5), "r" (a6), "r" (a7)
-              : "memory");
-
-    // After ecall, returned error is in a0, returned value is in a1
-```
 
 <a name="linux-reboot"></a>
 

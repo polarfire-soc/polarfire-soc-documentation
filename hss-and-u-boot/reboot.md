@@ -125,6 +125,36 @@ A bare metal application can issue an `SBI_EXT_0_1_SHUTDOWN` or `SBI_EXT_SRST_RE
 
 ![Bare Metal Reboot](images/reboot/bm-rtos-reboot.drawio.svg)
 
+For example, to perform a cold reboot, a bare metal application might do something like the following:
+
+```C
+
+    #define SBI_EXT_SRST_RESET 0
+    #define SBI_EXT_SRST 0x53525354
+    #define SBI_SRST_RESET_TYPE_SHUTDOWN 0
+    #define SBI_SRST_RESET_TYPE_COLD_REBOOT 1
+    #define SBI_SRST_RESET_TYPE_WARM_REBOOT 2
+    #define SBI_SRST_RESET_REASON_NONE 0
+    #define SBI_SRST_RESET_REASON_SYS_FAILURE 1
+
+    //
+
+    register uintptr_t a0 asm ("a0") = (uintptr_t)(SBI_SRST_RESET_TYPE_COLD_REBOOT);
+    register uintptr_t a1 asm ("a1") = (uintptr_t)(SBI_SRST_RESET_REASON_NONE);
+    register uintptr_t a2 asm ("a2") = (uintptr_t)0;
+    register uintptr_t a3 asm ("a3") = (uintptr_t)0;
+    register uintptr_t a4 asm ("a4") = (uintptr_t)0;
+    register uintptr_t a5 asm ("a5") = (uintptr_t)0;
+    register uintptr_t a6 asm ("a6") = (uintptr_t)(SBI_EXT_SRST_RESET);
+    register uintptr_t a7 asm ("a7") = (uintptr_t)(SBI_EXT_SRST);
+    asm volatile ("ecall"
+              : "+r" (a0), "+r" (a1)
+              : "r" (a2), "r" (a3), "r" (a4), "r" (a5), "r" (a6), "r" (a7)
+              : "memory");
+
+    // After ecall, returned error is in a0, returned value is in a1
+```
+
 <a name="linux-reboot"></a>
 
 ### Linux Reboot

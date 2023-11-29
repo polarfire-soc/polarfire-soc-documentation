@@ -4,7 +4,6 @@
 * [Relevant KConfig Options](#relevant-hss-kconfig-options)
 * [Reboot Operation](#reboot-operation)
   * [OpenSBI Reboot ecall](#opensbi-reboot-ecall)
-  * [Bare Metal Reboot](#bare-metal-reboot)
   * [Linux Reboot](#linux-reboot)
 
 This document provides a brief overview of the PolarFire SoC features related to system and context reboot.
@@ -96,7 +95,7 @@ The `SBI_EXT_SRST_RESET` extension is defined in `thirdparty/opensbi/include/sbi
 
 THe HSS adds an `sbi_system_reset_device` structure named `mpfs_reset`.
 
-Once the upper layers (Linux, RTOS or bare metal) issue an SBI ecall for a reset, the control flow, is as follows:
+Once the upper layers (Linux, RTOS) issue an SBI ecall for a reset, the control flow, is as follows:
 
 ```C
     .
@@ -116,14 +115,6 @@ Once the upper layers (Linux, RTOS or bare metal) issue an SBI ecall for a reset
 `mpfs_hart_stop()` decides, based on the `reset_type` provided and on the privileges of the context, whether to do a full-system cold reboot (forced via `HSS_Wdog_Reboot()`, or a context-based warm reboot (via `HSS_OpenSBI_Reboot()`).
 
 See the [RISC-V Supervisor Binary Interface Specification](https://github.com/riscv-non-isa/riscv-sbi-doc/blob/master/riscv-sbi.adoc) for more details, particularly [System Reset Extension (EID #0x53525354 "SRST")](https://github.com/riscv-non-isa/riscv-sbi-doc/blob/master/riscv-sbi.adoc#system-reset-extension-eid-0x53525354-srst).
-
-<a name="bare-metal-reboot"></a>
-
-### Bare Metal Reboot
-
-A bare metal application can issue an `SBI_EXT_0_1_SHUTDOWN` or `SBI_EXT_SRST_RESET` SBI ecall and cause a cold or warm reboot, depending on the Kconfig settings used to build the HSS and the entitlements of that bare metal context within the payload.bin.
-
-![Bare Metal Reboot](images/reboot/bm-rtos-reboot.drawio.svg)
 
 <a name="linux-reboot"></a>
 

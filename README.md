@@ -25,6 +25,9 @@
       - [Fabric DMA Benchmarking](./benchmarks/dma-benchmarking/benchmarking-results/fabric-dma-benchmarking.md)
       - [Concurrent DMA Benchmarking](./benchmarks/dma-benchmarking/benchmarking-results/concurrent-dma-benchmarking.md)
 
+- Fundamentals
+  - [Handling ECC errors on PolarFire SoC](./fundamentals/ecc/handling-ecc-errors-on-polarfire-soc.md)
+
 - How To
   - [Booting From QSPI](./how-to/booting-from-qspi.md)
   - [Debug From Scratchpad](./how-to/debug-from-scratchpad.md)

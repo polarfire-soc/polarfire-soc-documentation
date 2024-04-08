@@ -5,8 +5,9 @@
 - [MPFS Video Kit H.264 Demo](#mpfs-video-kit-h.264-demo)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
+  - [H.264 Compact Pipeline](#h264-pipeline)
   - [Requirements](#requirements)
-  - [Pre-Requisite](#pre-requisite)
+  - [Pre-Requisite](#pre-requisites)
   - [Running the Demo](#runninng-the-demo)
     - [Running the demo using DHCP](#runninng-the-demo-using-dhcp)
     - [Steps to configure static IP addresses](#steps-to-configure-static-ip-address)
@@ -39,9 +40,21 @@ Users can view the webserver by entering the IP address of the kit in a web brow
 After the user initiates the stream on the webpage, the application running on the MSS reads a compressed stream of data from the fabric and sends encoded H.264 RTP ethernet packets to the IP address of the system which initiated the stream.
 Users can play the video stream on a computer using applications such as VLC Media Player, Gstreamer or FFPlay. The webpage allows users to download an SDP file that can be passed on to the video player (VLC, Gstreamer, FFplay) after streaming is initiated.
 
+<a name="h264-pipeline"></a>
+
+## H.264 Compact Pipeline
+
 Below block diagram explains the H.264 frame generation
 
 ![](./images/mpfs-video-kit-h264-demo/high-level-block-diagram.png)
+
+Above diagram is for a simple H.264 base (compact) design and where one driver is used for all.
+
+A modular pipeline architecture for H.264 video processing using IP cores in the fabric can provide significant flexibility and control over the video processing workflow. Each IP core that performs a specific function in the H.264 encoding process should have its own driver, and the pipeline connecting these cores should be defined through the device tree.
+
+This modular approach allows for a high degree of customization, scalability, reusability, as each core can be independently developed, tested, and updated.
+
+Refer to the [modular pipeline documentation](https://mi-v-ecosystem.github.io/redirects/demo-guides-mpfs-video-kit-h264-modular-pipeline-demo)
 
 <a name="requirements"></a>
 
@@ -51,9 +64,9 @@ Below block diagram explains the H.264 frame generation
 - VLC Media Player – 3.0.16 (Windows) and above / VLC Media Player – 3.0.9.2 (Ubuntu) and above.
 - Web Browser – Chrome 96.0.4664.110 (Official Build) (64-bit) and above or Microsoft Edge Version 96.0.1054.53 (Official build) (64-bit) and above
 
-<a name="pre-requisite"></a>
+<a name="pre-requisites"></a>
 
-## Pre-Requisite
+## Pre-Requisites
 
 Before running the demo, make sure to complete the following steps:
 
@@ -61,6 +74,8 @@ Before running the demo, make sure to complete the following steps:
 - Setting up the two Serial Terminal programs "Interface 0 (UART0) and Interface 1 (UART1)" using extra-putty:
   - Select the COM ports which are connected to the following interfaces: Silicon Labs Quad CP2108 USB to UART BRIDGE: Interface 0 and Interface 1.
   - Set Baud rate to “115200”, Set Data to 8-bit, Set Flow control to None.
+- Make sure that the H.264 base (compact) design (MPFS_VIDEO_KIT_BASE_DESIGN_xxxx_xx.zip) is programmed to the PolarFire SoC Video Kit. A FlashPro Express programming job file can be found in the Video Kit reference design [ref link](https://mi-v-ecosystem.github.io/redirects/releases-video-kit-reference-design).
+- H.264 modular pipeline has extra pre-requisites [refer here](https://mi-v-ecosystem.github.io/redirects/demo-guides-mpfs-video-kit-h264-modular-pipeline-demo-pre-requisites)
 
 <a name="runninng-the-demo"></a>
 
@@ -205,7 +220,7 @@ Follow the steps below to configure static IP addresses:
 
 ### Running the demo using static IP address
 
-To run the H264 demo using the static IP address follow the steps provided in [Quick Start Guide](https://onlinedocs.microchip.com/v2/literature/DS50003455?version=latest&redirect=true).
+To run the H.264 demo using the static IP address follow the steps provided in the [Quick Start Guide](https://onlinedocs.microchip.com/v2/literature/DS50003455?version=latest&redirect=true).
 
 <a name="on-screen-displayoverlay-controls"></a>
 

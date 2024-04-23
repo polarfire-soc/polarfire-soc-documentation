@@ -9,6 +9,7 @@
     - [Default Jumper Settings](#default-jumper-settings)
   - [Coming out of the box](#coming-out-of-the-box)
   - [Updating](#updating)
+  - [Connecting to MSS UART interfaces from Linux hosts](#connecting-to-mss-uart-interfaces-from-linux-hosts)
   - [References](#references)
 
 <a name="introduction"></a>
@@ -75,6 +76,39 @@ Consult the [Updating MPFS Kit](https://mi-v-ecosystem.github.io/redirects/board
 Pre-generated FPGA programming job files for the Discovery Kit can be found in the releases section of the [Discovery Kit Reference Design](https://mi-v-ecosystem.github.io/redirects/repo-discovery-kit-reference-design) repository.
 
 Linux images for the Icicle Kit are available from the releases section of the [Meta PolarFire SoC Yocto BSP](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp).
+
+<a name="linux-host-uart"></a>
+
+## Connecting to MSS UART interfaces from Linux hosts
+
+If the Discovery Kit is being used with a Linux host PC the following udev rules should be added to allow Linux to detect the FTDI USB to UART bridge.
+Without these settings COM ports may not appear on the Linux host.
+
+Add the following to: ```/etc/udev/rules.d/70-microchip.rules``` using a text editor such as vim or nano:
+
+```
+# Bind ftdi_sio driver to all input 
+ACTION=="add", ATTRS{idVendor}=="1514", ATTRS{idProduct}=="2008", \
+ATTRS{product}=="Embedded FlashPro5", ATTR{bInterfaceNumber}!="00", \
+RUN+="/sbin/modprobe ftdi_sio", RUN+="/bin/sh -c 'echo 1514 2008 > /sys/bus/usb-serial/drivers/ftdi_sio/new_id'"
+ 
+# Unbind ftdi_sio driver for channel A which should be the JTAG
+SUBSYSTEM=="usb", DRIVER=="ftdi_sio", ATTR{bInterfaceNumber}=="00", ATTR{interface}=="Embedded FlashPro5",\
+RUN+="/bin/sh -c 'echo $kernel > /sys/bus/usb/drivers/ftdi_sio/unbind'"
+ 
+# Helper (optional)
+KERNEL=="ttyUSB[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", \
+ATTRS{interface}=="Embedded FlashPro5", ATTRS{bInterfaceNumber}=="01", \
+SYMLINK+="ttyUSB-FlashPro5B" GROUP="dialout" MODE="0666"
+ 
+KERNEL=="ttyUSB[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", \
+ATTRS{interface}=="Embedded FlashPro5", ATTRS{bInterfaceNumber}=="02", \
+SYMLINK+="ttyUSB-FlashPro5C" GROUP="dialout" MODE="0666"
+ 
+KERNEL=="ttyUSB[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", \
+ATTRS{interface}=="Embedded FlashPro5", ATTRS{bInterfaceNumber}=="03", \
+SYMLINK+="ttyUSB-FlashPro5D" GROUP="dialout" MODE="0666"
+```
 
 <a name="references"></a>
 

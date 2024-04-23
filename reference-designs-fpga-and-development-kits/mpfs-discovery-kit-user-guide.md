@@ -6,6 +6,7 @@
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Connectors and Jumpers](#connectors-and-jumpers)
+    - [Default Jumper Settings](#default-jumper-settings)
   - [Coming out of the box](#coming-out-of-the-box)
   - [Updating](#updating)
   - [References](#references)
@@ -48,13 +49,22 @@ The Discovery Kit jumper settings required to boot Linux are as follows:
 
 ## Coming out of the box
 
-The board is pre-programmed with a FIR filter example design. To boot Linux the board will need to be re-programmed with the reference design from the [Discovery Kit Reference Design Repository](https://github.com/polarfire-soc/polarfire-soc-discovery-kit-reference-design). FlashPro express files for programming without using Libero are available in the "Releases". Consult the [Updating MPFS Kit](https://mi-v-ecosystem.github.io/redirects/boards-mpfs-generic-updating-mpfs-kit) document for information on how to update the kit to a bitstream supporting Linux.
+The Discovery Kit is pre-programmed with a FIR filter example design.
+To boot Linux the Discovery Kit will need to be re-programmed with the reference design from the [Discovery Kit Reference Design Repository](https://github.com/polarfire-soc/polarfire-soc-discovery-kit-reference-design).
+FlashPro express files for programming without using Libero are available in the "Releases". Consult the [Updating MPFS Kit](https://mi-v-ecosystem.github.io/redirects/boards-mpfs-generic-updating-mpfs-kit) document for information on how to update the kit to a bitstream supporting Linux.
 
-Connect the Discovery Kit's USB C connector (J4) to your host computer. Use the terminal software of your choice (Putty ExtraPutty, minicom, screen) to open serial connections to the three UARTs available though the USB C connector. **Serial port settings: 115220 baud, no flow control, no parity**. Power cycle the board. This should result in boot messages appearing on two of the serials ports.
+Connect the Discovery Kit's USB C connector (J4) to your host computer.
+Use the terminal software of your choice (Putty ExtraPutty, minicom, screen) to open serial connections to the three UARTs available though the USB C connector.
+**Serial port settings: 115220 baud, no flow control, no parity**.
+Power cycle the board. This should result in boot messages appearing on two of the serials ports.
 
 ![](./images/discovery-kit-user-guide/discovery-kit-terminals.png)
 
-MMUART1 (1st COM port) displays the Hart Software Service (HSS) boot messages. MMUART4 (2nd COM port) displays U-Boot messages, Linux boot messages and provides a Linux prompt. The default user name is "root". No password is required. If a password is requested at any stage "microchip" is used as default password.
+MMUART1 (1st COM port) displays the Hart Software Service (HSS) boot messages.
+MMUART4 (2nd COM port) displays U-Boot messages, Linux boot messages and provides a Linux prompt.
+The default user name is "root".
+No password is required.
+If a password is requested at any stage "microchip" is used as default password.
 
 <a name="updating"></a>
 

@@ -5,6 +5,7 @@
   - [MPFS OPC-UA Industrial Edge Demo](./mpfs-opcua-industrial-edge-demo.md)
   - [MPFS PMP Demo](./mpfs-pmp-demo.md)
   - [MPFS Video kit H264 Demo](./mpfs-video-kit-h264-demo.md)
+  - [MPFS Video kit H264 Modlar Pipeline Demo](./mpfs-video-kit-h264-modular-pipeline-demo.md)
 
   - Asymmetric Multiprocessing
     - [AMP](./asymmetric-multiprocessing/amp.md)

@@ -86,25 +86,25 @@ Without these settings COM ports may not appear on the Linux host.
 
 Add the following to: ```/etc/udev/rules.d/70-microchip.rules``` using a text editor such as vim or nano:
 
-```
-# Bind ftdi_sio driver to all input 
+```console
+# Bind ftdi_sio driver to all input
 ACTION=="add", ATTRS{idVendor}=="1514", ATTRS{idProduct}=="2008", \
 ATTRS{product}=="Embedded FlashPro5", ATTR{bInterfaceNumber}!="00", \
 RUN+="/sbin/modprobe ftdi_sio", RUN+="/bin/sh -c 'echo 1514 2008 > /sys/bus/usb-serial/drivers/ftdi_sio/new_id'"
- 
+
 # Unbind ftdi_sio driver for channel A which should be the JTAG
 SUBSYSTEM=="usb", DRIVER=="ftdi_sio", ATTR{bInterfaceNumber}=="00", ATTR{interface}=="Embedded FlashPro5",\
 RUN+="/bin/sh -c 'echo $kernel > /sys/bus/usb/drivers/ftdi_sio/unbind'"
- 
+
 # Helper (optional)
 KERNEL=="ttyUSB[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", \
 ATTRS{interface}=="Embedded FlashPro5", ATTRS{bInterfaceNumber}=="01", \
 SYMLINK+="ttyUSB-FlashPro5B" GROUP="dialout" MODE="0666"
- 
+
 KERNEL=="ttyUSB[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", \
 ATTRS{interface}=="Embedded FlashPro5", ATTRS{bInterfaceNumber}=="02", \
 SYMLINK+="ttyUSB-FlashPro5C" GROUP="dialout" MODE="0666"
- 
+
 KERNEL=="ttyUSB[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", \
 ATTRS{interface}=="Embedded FlashPro5", ATTRS{bInterfaceNumber}=="03", \
 SYMLINK+="ttyUSB-FlashPro5D" GROUP="dialout" MODE="0666"

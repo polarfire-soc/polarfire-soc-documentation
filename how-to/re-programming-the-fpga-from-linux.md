@@ -360,7 +360,9 @@ our [Yocto BSP][Yocto BSP] & [Buildroot][Buildroot].
 
 ### Linux Requirements for Auto Update
 
-The auto update driver and FPGA manager subsystem must be enabled:
+The auto update driver and dependencies must be enabled. If using
+a release prior to v2024.06, and therefore the linux-6.1-mchp+fpga kernel,
+the required options are:
 
 ```kconfig
 CONFIG_FPGA=y
@@ -369,6 +371,15 @@ CONFIG_FPGA_REGION=y
 CONFIG_FPGA_MGR_MICROCHIP_AUTO_UPDATE=y
 CONFIG_FPGA_MGR_MICROCHIP_SPI=y
 CONFIG_DEBUG_FS=y
+```
+
+For v2024.06 and later releases the driver and interface has changed.
+
+```kconfig
+CONFIG_FW_UPLOAD=y
+CONFIG_FW_LOADER_USER_HELPER=y
+CONFIG_FW_LOADER_USER_HELPER_FALLBACK=y
+CONFIG_POLARFIRE_SOC_AUTO_UPDATE=y
 ```
 
 All required options are set in mpfs_defconfig, used as the basis of PolarFire SoC's support in
@@ -391,16 +402,24 @@ Before performing an auto update in Linux, you'll need:
 2. A bitstream with a `.spi` file extension which contains a design version
    higher than the design version programmed in the device. For example `foo.spi`.
 
-The bitstream to be programmed must be placed in `/lib/firmware`, named `mpfs_bitstream.spi`. Several methods can be used to place the `foo.spi` image into the Linux file system such as USB OTG in host mode (J19 on video kit with J57 and J18 closed) or Ethernet (RJ45 connector J7)
+After upstreaming the driver to mainline Linux, the interface changed and no
+longer uses debugfs. The steps here differ depending on whether a release
+prior to v2024.06 is in use or not, with the final portion being common.
 
-```sh
+### Releases Prior to v2024.06
+
+The bitstream to be programmed must be placed in `/lib/firmware`, named `mpfs_bitstream.spi`.
+Several methods can be used to place the `foo.spi` image into the Linux file system such as
+USB OTG in host mode (J19 on video kit with J57 and J18 closed) or Ethernet (RJ45 connector J7)
+
+```text
 root@mpfs-video-kit:~# mkdir -p /lib/firmware
 root@mpfs-video-kit:~# cp foo.spi /lib/firmware/mpfs_bitstream.spi
 ```
 
 Write a `1` to `/sys/kernel/debug/fpga/microchip_exec_update`, for example:
 
-```sh
+```text
 root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
 ```
 
@@ -420,6 +439,91 @@ root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
 [  172.018172] mpfs-auto-update mpfs-auto-update: Running verification of Update Image
 [  176.746100] mpfs-auto-update mpfs-auto-update: Verification of Update Image passed!
 ```
+
+### v2024.06 and Later Releases
+
+In these releases we make use of the [Firmware Upload][korgdoc] API provided
+by the Linux kernel to write the bitstream to the device.
+
+Start by copying the bitstream to the device.
+Several methods can be used to place the `foo.spi` image into the Linux file system such as
+USB OTG in host mode (J19 on video kit with J57 and J18 closed) or Ethernet (RJ45 connector J7)
+
+Start the upload process by writing "1" to the loading file. Then write the bitstream
+into the data file.
+
+```text
+root@mpfs-video-kit:~# echo 1 > /sys/class/firmware/mpfs-auto-update/loading
+root@mpfs-video-kit:~# cat fw_f.spi > /sys/class/firmware/mpfs-auto-update/data
+```
+
+Finally write a "0" to the loading file to begin copying the bitstream to the system
+controller's flash.
+
+```text
+root@mpfs-video-kit:~# echo 0 > /sys/class/firmware/mpfs-auto-update/loading
+```
+
+If successful, the console should display some messages indicating that the
+bistream image has been transferred to the SPI flash and the bitstream
+address has been copied to the spi flash directory. For more information
+on the SPI flash memory layout please refer to the [SPI Directory Layout][SPI Directory Layout]
+section.
+Finally, the system controller reads the bitstream from the SPI flash to verify its content.
+
+```text
+root@mpfs-video-kit:~# echo 0 > /sys/class/firmware/mpfs-auto-update/loading
+[ 1406.107274] mpfs-auto-update mpfs-auto-update: Erasing the flash at address (0x1500400)
+[ 1414.275359] mpfs-auto-update mpfs-auto-update: Writing the image to the flash at address (0x1500400)
+[ 1421.669156] mpfs-auto-update mpfs-auto-update: Wrote 0x227830 bytes to the flash
+[ 1421.677115] mpfs-auto-update mpfs-auto-update: Running verification of Upgrade Image
+[ 1423.007712] mpfs-auto-update mpfs-auto-update: Verification of Upgrade Image passed!
+```
+
+[korgdoc]: https://docs.kernel.org/driver-api/firmware/fw_upload.html
+
+### Updating the Design Info ()
+
+In v2024.06 and later releases, it is possible to use the same interface and procedures to update any design info stored in the SPI flash.
+This data uses the following format to store several Devicetree overlays, with support for multiple contexts.
+
+#### Main Header Format
+
+| Address      | Size (bytes) | Field Name                             | Description                   |
+| ---          | ---          | ---                                    | ---                           |
+|  0x0         | 4            | Magic value                            | Characters "M", "C", "H", "P" |
+|  0x4         | 4            | Descriptor Length                      | 12 + 4 * #contexts            |
+|  0x8         | 2            | Info Format Version                    | Set to 0 for this revision    |
+|  0xA         | 2            | Number of AMP contexts                 |                               |
+|  0xC + 4 * N | 4            | Start address of dtbo struct context N |                               |
+
+#### Devicetree Overlay Header Format
+
+Each context has an individual header/table, pointed to by the "Start address of dtbo struct context N" field in the Main Header.
+"dtbo" here is the common shorthand for Devicetree overlay blob files, derived
+from the file extension.
+
+| Offset       | Size (bytes) | Field Name                       | Description |
+| ---          | ---          | ---                              | ---         |
+| 0x0          | 4            | Number of dtbos in this context  |             |
+| 0x4 + 12 * M | 4            | Start address of Mth dtbo        |             |
+| 0x8 + 12 * M | 4            | End address of Mth dtbo          |             |
+| 0xC + 12 * M | 4            | Size of Mth dtbo                 |             |
+
+#### Writing the Design Info
+
+The Design Info is written to the SPI flash in the same way as the image itself:
+
+```text
+root@mpfs-video-kit:~# echo 1 > /sys/class/firmware/mpfs-auto-update/loading
+root@mpfs-video-kit:~# cat design_info.spi > /sys/class/firmware/mpfs-auto-update/data
+root@mpfs-video-kit:~# echo 0 > /sys/class/firmware/mpfs-auto-update/loading
+[  281.201780] mpfs-auto-update mpfs-auto-update: Erasing the flash at address (0x400)
+[  281.452358] mpfs-auto-update mpfs-auto-update: Writing the image to the flash at address (0x400)
+[  281.472072] mpfs-auto-update mpfs-auto-update: Wrote 0xbcc bytes to the flash
+```
+
+### Common Reboot Procedure
 
 If verification passes, type `reboot` to initiate the re-programming:
 
@@ -454,7 +558,7 @@ There are cases were writing the image to the flash or doing the auto update may
 The following error is likely to occur if there is no bitstream named
 `mpfs_bistream.spi` in the /lib/firmware directory:
 
-```shell
+```text
 root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
 [   56.441509] fpga_manager fpga0: writing mpfs_bitstream.spi to Microchip MPFS Auto Update FPGA Manager
 [   56.450992] fpga_manager fpga0: Direct firmware load for mpfs_bitstream.spi failed with error -2
@@ -467,7 +571,14 @@ root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
 
 The following error is likely to occur if the image exceeds the space available on the flash:
 
-```shell
+```text
+root@mpfs-video-kit:~# echo 0 > /sys/class/firmware/mpfs-auto-update/loading
+[ 1819.027032] mpfs-auto-update mpfs-auto-update: flash device has insufficient capacity to store this bitstream
+```
+
+or with releases prior to v2024.06:
+
+```text
 root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
 [73801.553485] fpga_manager fpga0: writing mpfs_bitstream.spi to Microchip MPFS Auto Update FPGA Manager
 [73806.743402] mpfs-auto-update mpfs-auto-update: flash device has insufficient capacity to store this bitstream
@@ -481,6 +592,17 @@ root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
 In this other example, the driver failed to verify the image that was intended to be programmed.
 In this case, it is likely that the bitstream is invalid, ensure you have followed the steps in
 this document for the creation of a correctly formatted bitstream.
+
+```text
+root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
+[ 1962.080868] mpfs-auto-update mpfs-auto-update: Erasing the flash at address (0x5f0400)
+[ 1970.284324] mpfs-auto-update mpfs-auto-update: Writing the image to the flash at address (0x5f0400)
+[ 1977.727192] mpfs-auto-update mpfs-auto-update: Wrote 0x227830 bytes to the flash
+[ 1977.735101] mpfs-auto-update mpfs-auto-update: Running verification of Upgrade Image
+[ 1977.763514] mpfs-auto-update mpfs-auto-update: Verification of Upgrade Image failed!
+```
+
+or with releases prior to v2024.06:
 
 ```text
 root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
@@ -499,6 +621,22 @@ root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
 
 The following message may be seen if the version of the bitstream being programmed is the same as that
 which is already programmed:
+
+```text
+root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update
+[ 1406.107274] mpfs-auto-update mpfs-auto-update: Erasing the flash at address (0x1500400)
+[ 1414.275359] mpfs-auto-update mpfs-auto-update: Writing the image to the flash at address (0x1500400)
+[ 1421.669156] mpfs-auto-update mpfs-auto-update: Wrote 0x227830 bytes to the flash
+[ 1421.677115] mpfs-auto-update mpfs-auto-update: Running verification of Upgrade Image
+[ 1423.007712] mpfs-auto-update mpfs-auto-update: Verification of Upgrade Image passed!
+root@mpfs-video-kit:~# reboot
+...
+[76214.185933] reboot: Restarting system
+[76232.88482] reboot: Auto Update image is not an update: 24
+[76232.94498] reboot: Using fallback reboot provider
+```
+
+or with releases prior to v2024.06:
 
 ```text
 root@mpfs-video-kit:~# echo 1 > /sys/kernel/debug/fpga/microchip_exec_update

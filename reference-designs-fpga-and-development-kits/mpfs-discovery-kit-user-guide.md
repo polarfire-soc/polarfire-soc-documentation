@@ -75,7 +75,7 @@ Consult the [Updating MPFS Kit](https://mi-v-ecosystem.github.io/redirects/board
 
 Pre-generated FPGA programming job files for the Discovery Kit can be found in the releases section of the [Discovery Kit Reference Design](https://mi-v-ecosystem.github.io/redirects/repo-discovery-kit-reference-design) repository.
 
-Linux images for the Icicle Kit are available from the releases section of the [Meta PolarFire SoC Yocto BSP](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp).
+Linux images for the Discovery Kit are available from the releases section of the [Meta PolarFire SoC Yocto BSP](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp).
 
 <a name="linux-host-uart"></a>
 
@@ -118,4 +118,4 @@ SYMLINK+="ttyUSB-FlashPro5D" GROUP="dialout" MODE="0666"
 
 [PolarFire SoC Discovery Kit Schematics](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/ReferenceManuals/PolarFire_SoC_Discovery_Kit_Rev2_SCH_090423_01.pdf)
 
-[PolarFire SoC Icicle Kit Product Page](https://www.microchip.com/en-us/development-tool/mpfs-disco-kit)
+[PolarFire SoC Discovery Kit Product Page](https://www.microchip.com/en-us/development-tool/mpfs-disco-kit)

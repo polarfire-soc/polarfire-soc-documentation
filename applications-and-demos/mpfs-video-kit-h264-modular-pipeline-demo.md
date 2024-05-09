@@ -120,4 +120,3 @@ RISC-V # bootm go;
 ## Running the Demo
 
 Please see the [Running the Demo](https://mi-v-ecosystem.github.io/redirects/demo-guides-mpfs-video-kit-h264-runninng-the-demo) guide for information on how to run the modular pipeline demo.
-

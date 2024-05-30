@@ -5,6 +5,7 @@
 - [CoreI2C](./CoreI2C/corei2c-driver-user-guide.md)
 - [CoreMMC](./CoreMMC/coremmc-driver-user-guide.md)
 - [CorePWM](./CorePWM/corepwm-driver-user-guide.md)
+- [CoreQSPI](./CoreQSPI/coreqspi-driver-user-guide.md)
 - [CoreSPI](./CoreSPI/corespi-driver-user-guide.md)
 - [CoreSysServices-PF](./CoreSysServices-PF/coresysservices-pf-driver-user-guide.md)
 - [CoreTimer](./CoreTimer/coretimer-driver-user-guide.md)

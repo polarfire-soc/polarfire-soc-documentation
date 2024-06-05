@@ -482,7 +482,7 @@ root@mpfs-video-kit:~# echo 0 > /sys/class/firmware/mpfs-auto-update/loading
 
 [korgdoc]: https://docs.kernel.org/driver-api/firmware/fw_upload.html
 
-### Updating the Design Info ()
+### Updating the Design Info
 
 In v2024.06 and later releases, it is possible to use the same interface and procedures to update any design info stored in the SPI flash.
 This data uses the following format to store several Devicetree overlays, with support for multiple contexts.

@@ -137,7 +137,7 @@ root@mpfs-video-kit:~# openssl enc -engine devcrypto -aes-256-ecb -d -K 1d85a181
 #### AES-CBC 256-bit Encryption
 
 ```c
-root@mpfs-video-kit:~# openssl enc -engine devcrypto -aes-256-cbc -e -K 1d85a181b54cde51f0e098095b2962fdc93b51fe9b88602b3f54130bf76a5bd9 -in plain.txt -out cipher.txt -nopad
+root@mpfs-video-kit:~# openssl enc -engine devcrypto -aes-256-cbc -e -K 1d85a181b54cde51f0e098095b2962fdc93b51fe9b88602b3f54130bf76a5bd9 -iv 00000000000000000000000000000000 -in plain.txt -out cipher.txt -nopad
 ```
 
 <a name="aes-cbc-256-bit-decryption"></a>
@@ -145,7 +145,7 @@ root@mpfs-video-kit:~# openssl enc -engine devcrypto -aes-256-cbc -e -K 1d85a181
 #### AES-CBC 256-bit Decryption
 
 ```c
-root@mpfs-video-kit:~# openssl enc -engine devcrypto -aes-256-cbc -d -K 1d85a181b54cde51f0e098095b2962fdc93b51fe9b88602b3f54130bf76a5bd9 -in cipher.txt -out dec.txt -nopad
+root@mpfs-video-kit:~# openssl enc -engine devcrypto -aes-256-cbc -d -K 1d85a181b54cde51f0e098095b2962fdc93b51fe9b88602b3f54130bf76a5bd9 -iv 00000000000000000000000000000000 -in cipher.txt -out dec.txt -nopad
 ```
 
 Note: Use `-nopad` for AES-CBC mode encryption and decryption.

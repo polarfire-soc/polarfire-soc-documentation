@@ -80,9 +80,9 @@ The Physical layer is composed of two basic hardware components: shared memory a
 
 With regards to shared memory, PolarFire SoC has some reserved memory area in DDR memory dedicated for inter-hart communication.
 
-In addition to this, PolarFire SoC provides a dedicated Inter-Hart Communication (IHC) subsystem that allows software contexts to communicate and coordinate with each other through  a non-blocking interrupt signaling mechanism.
+In addition to this, PolarFire SoC provides a dedicated Inter-Hart Communication (IHC) that allows software contexts to communicate and coordinate with each other through  a non-blocking interrupt signaling mechanism.
 
-For more information on the IHC subsystem, please refer to the [IHC subsystem documentation](ihc.md) page.
+For more information on the IHC, please refer to the [IHC documentation](ihc.md) page.
 
 <a name="rpmsg-communication-flow"></a>
 
@@ -113,17 +113,17 @@ On the Linux side, the RPmsg Framework relies on the interaction of following co
 
 - **Rpmsg client driver** : a client driver that implements a specific service to communicate with the remote processor. Some of them may expose user space interfaces if needed. Some examples include the RPMsg TTY client driver and the RPMsg char driver.
 
-- **Mi-V Remoteproc driver**: Remoteproc platform driver for Mi-V SoCs.
+- **Microchip IPC Remoteproc driver**: Remoteproc platform driver for Microchip families of SoCs using the IPC mailbox driver.
 
-- **Mi-V Inter-Hart communication (IHC) driver**: Linux driver that interacts with the Mi-V Inter-Hart Communication (IHC) subsystem.
+- **Inter-Processor communication (IPC) mailbox driver**: Linux driver that interacts with the Inter-Hart Communication (IHC) Soft-IP.
 
-![rpmsg-linux-overview](./images/rpmsg/rpmsg-linux-arch.png)
+![rpmsg-linux-overview](./images/rpmsg/rpmsg-linux-arch.jpg)
 
 <a name="rpmsg-linux-kernel-configuration"></a>
 
 ### RPMsg Linux Kernel Configuration
 
-The RPMsg framework is automatically enabled when the remote `MIV_REMOTEPROC` configuration is enabled.
+The RPMsg framework is automatically enabled when the remote `CONFIG_MCHP_SBI_IPC_MBOX` configuration is enabled.
 
 This option is already configured in the PolarFire SoC Yocto and Buildroot build systems when using the AMP machine.
 
@@ -269,7 +269,7 @@ The polarfire-soc-amp-examples repository provides a resources/ folder with a sa
 3. Open a terminal and execute the following commands:
 
     ```bash
-    cd polarfire-soc-amp-examples/rresources
+    cd polarfire-soc-amp-examples/resources
     hss-payload-generator -c hss-payload-freertos_freertos.yaml payload.bin
     ```
 

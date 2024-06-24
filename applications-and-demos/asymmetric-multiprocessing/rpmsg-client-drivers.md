@@ -59,7 +59,7 @@ To test the RPMsg client driver using the Linux + FreeRTOS AMP configuration dem
 4. A new tty device should be registered in Linux. To verify this, run the command shown below:
 
     ```bash
-    root@icicle-kit-es-amp:~# ls /dev/ttyRPMSG*
+    root@mpfs-icicle-kit-amp:~# ls /dev/ttyRPMSG*
 
     /dev/ttyRPMSG0
     ```
@@ -114,9 +114,9 @@ The application then uses this /dev/rpmsgX device to send chunks of data (payloa
 4. Build and run the mpfs-pingpong application provided in the /opt/microchip/amp directory:
 
     ```bash
-    root@icicle-kit-es-amp:~# cd /opt/microchip/amp/rpmsg-pingpong/
-    root@icicle-kit-es-amp:~# make
-    root@icicle-kit-es-amp:~# ./rpmsg-pingpong
+    root@mpfs-icicle-kit-amp:~# cd /opt/microchip/amp/rpmsg-pingpong/
+    root@mpfs-icicle-kit-amp:~# make
+    root@mpfs-icicle-kit-amp:~# ./rpmsg-pingpong
     ```
 
     For more information on how to build/run the rpmsg-pingpong linux example, please refer to the [polarfire-soc-linux-examples repository](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-linux-examples).

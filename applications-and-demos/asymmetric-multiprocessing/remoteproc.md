@@ -56,7 +56,7 @@ The [resource table](https://mi-v-ecosystem.github.io/redirects/polarfire-soc-am
 ```c
 # define NUM_VRINGS                  0x02
 # define VRING_ALIGN                 0x1000
-# define VDEV0_VRING_BASE            0x81400000
+# define VDEV0_VRING_BASE            0x91D00000
 # define VRING_SIZE                  0x8000
 
 const struct remote_resource_table __attribute__((section(".resource_table"))) resources
@@ -134,11 +134,11 @@ A sample HSS payload generator YAML file configured with late boot flow is provi
 
 set-name: 'PolarFire-SoC-HSS::Linux + FreeRTOS AMP'
 
-hart-entry-points: {u54_1: '0x1000200000', u54_2: '0x1000200000', u54_3: '0x1000200000', u54_4: '0x81000000'}
+hart-entry-points: {u54_1: '0x80200000', u54_2: '0x80200000', u54_3: '0x80200000', u54_4: '0x91C00000'}
 
 payloads:
-  u-boot.bin: {exec-addr: '0x1000200000', owner-hart: u54_1, secondary-hart: u54_2, secondary-hart: u54_3, priv-mode: prv_s}
-  amp-application.elf: {exec-addr: '0x81000000', owner-hart: u54_4, priv-mode: prv_m, skip-opensbi: true, skip-autoboot: true}
+  u-boot.bin: {exec-addr: '0x80200000', owner-hart: u54_1, secondary-hart: u54_2, secondary-hart: u54_3, priv-mode: prv_s}
+  amp-application.elf: {exec-addr: '0x91C00000', owner-hart: u54_4, priv-mode: prv_m, skip-opensbi: true, skip-autoboot: true}
 ```
 
 <a name="booting-the-remote-context-using-remoteproc"></a>
@@ -160,7 +160,7 @@ There are two possibilities to load and start the remote processor from Linux wh
 
 By default, when using the Late Boot mode, the remote context firmware must be manually started using SysFS.
 
-The Linux Remoteproc framework will search for an ELF file with the name `rproc-miv-rproc-fw` in the /lib/firmware directory in the file system
+The Linux Remoteproc framework will search for an ELF file with the name `rproc-remote-context-fw` in the /lib/firmware directory in the file system
 
 - To start the firmware, the following command should be used:
 
@@ -168,7 +168,7 @@ The Linux Remoteproc framework will search for an ELF file with the name `rproc-
 # echo start >/sys/class/remoteproc/remoteproc0/state
 ```
 
-Optionally, if the firmware elf file is different from the default one (rproc-miv-rproc-fw), the following command can be used to set the name of the firmware used by the remoteproc framework:
+Optionally, if the firmware elf file is different from the default one (rproc-remote-context-fw), the following command can be used to set the name of the firmware used by the remoteproc framework:
 
 ```bash
 # echo -n <firmware_name.elf> > /sys/class/remoteproc/remoteproc0/firmware
@@ -197,7 +197,7 @@ To enable auto boot support, the `microchip,auto-boot` property can be enabled i
 
 ```dts
     rproc_contextb: remote-context {
-        compatible = "microchip,miv-remoteproc";
+        compatible = "microchip,ipc-sbi-remoteproc";
         ...
         microchip,auto-boot;
         status = "okay";
@@ -208,15 +208,15 @@ To enable auto boot support, the `microchip,auto-boot` property can be enabled i
 
 ## RemoteProc Linux Overview
 
-![remoteproc-overview](./images/remoteproc/arch-remoteproc.png)
+![remoteproc-overview](./images/remoteproc/arch-remoteproc.jpg)
 
 On the Linux side, the Remoteproc relies on the following components:
 
 - **Linux Remoteproc framework**: Generic Linux remoteproc framework drivers, including the core remoteproc Linux driver, ELF loader and additional drivers to interact with SysFS, virtIO, debugFS, etc. For more information on the Linux remoteproc framework, please refer to the [Linux Remoteproc documentation](https://www.kernel.org/doc/Documentation/remoteproc.txt)
 
-- **Mi-V Remoteproc driver**: This is the remoteproc platform specific Mi-V driver that interacts with the Linux Remoteproc framework.
+- **Microchip Inter-Processor Communication (IPC) Remoteproc driver**: This is the remoteproc platform specific driver that interacts with the Linux Remoteproc framework.
 
-The remoteproc components mentioned above interact with other subsystems including the Inter-hart communication driver (mailbox subsystem) and the rpmsg subsystem.
+The remoteproc components mentioned above interact with other subsystems including the Inter-Processor communication driver (mailbox subsystem) and the rpmsg subsystem.
 
 <a name="remoteproc-linux-kernel-configuration"></a>
 
@@ -225,8 +225,8 @@ The remoteproc components mentioned above interact with other subsystems includi
 To enable the RPMsg communication on PolarFire SoC using Linux, remoteproc must be enabled in the Linux kernel by using the following kernel configurations:
 
 ```Kconfig
-CONFIG_REMOTEPROC=y
-CONFIG_MIV_REMOTEPROC=y
+CONFIG_MCHP_IPC_SBI_REMOTEPROC=y
+CONFIG_MCHP_SBI_IPC_MBOX=y
 ```
 
 The Remoteproc Kconfig options shown above are already configured in the PolarFire SoC Yocto environment when using the AMP machine.
@@ -235,9 +235,9 @@ The Remoteproc Kconfig options shown above are already configured in the PolarFi
 
 ## Remoteproc Linux Device Tree Configuration
 
-The default device tree configuration provided in the [Icicle Kit AMP device tree](https://mi-v-ecosystem.github.io/redirects/linux4microchip-icicle-kit-amp-dts) reserved all required memory regions to be able to:
+The default AMP device tree overlay provided in the [dt-overlay-mchp repository](https://github.com/linux4microchip/dt-overlay-mchp/blob/master/mpfs_icicle/mpfs_icicle_amp.dtso) reserves all required memory regions to be able to:
 
 - start, stop and load firmware to the remote AMP context
 - vring and buffers required for RPMsg communication between Linux and the remote context (FreeRTOS/BM)
 
-The [Mi-V Remoteproc bindings](https://mi-v-ecosystem.github.io/redirects/linux4microchip-bindings-microchip-miv-remoteproc) documentation deals with all required and optional device tree properties for remoteproc.
+The [Microchip IPC Remoteproc bindings](https://mi-v-ecosystem.github.io/redirects/linux4microchip-bindings-microchip-miv-remoteproc) documentation deals with all required and optional device tree properties for remoteproc.

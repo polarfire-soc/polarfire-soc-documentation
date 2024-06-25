@@ -39,6 +39,7 @@
   - [Cryptography with OpenSSL](./how-to/cryptography-with-openssl.md)
 
 - HSS And U-Boot
+  - [Devicetree](./hss-and-u-boot/devicetree.md)
   - [E51 Lockdown Service](./hss-and-u-boot/e51-lockdown-service.md)
   - [HSS Payloads](./hss-and-u-boot/hss-payloads.md)
   - [Profiling](./hss-and-u-boot/profiling.md)

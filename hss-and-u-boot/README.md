@@ -1,6 +1,7 @@
 # HSS And U-Boot Index
 
 - HSS And U-Boot
+  - [Devicetree](./devicetree.md)
   - [E51 Lockdown Service](./e51-lockdown-service.md)
   - [HSS Payloads](./hss-payloads.md)
   - [Profiling](./profiling.md)

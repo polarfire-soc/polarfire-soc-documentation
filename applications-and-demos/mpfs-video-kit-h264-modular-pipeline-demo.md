@@ -85,6 +85,8 @@ In the above diagram, the Video device node is created by the Video Capture (DMA
 
 ## Steps To Load H.264 Modular Pipeline
 
+- `Note`: If FlashPro Express programming job file (taken from [Video Kit reference design](https://mi-v-ecosystem.github.io/redirects/releases-video-kit-reference-design)) version is v2024.06 or above, there is no need to follow the below steps, as the devicetree overlay for the modular pipeline will be loaded from flash automatically while booting Linux.
+
 - To load the H.264 modular pipeline, stop at U-Boot prompt (while booting on boot console press any key on key board to stop, U-Boot logs looks like below):
 
 ```sh

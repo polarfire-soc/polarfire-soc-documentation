@@ -1,4 +1,4 @@
-# MPFS Video Kit User Guide
+# MPFS Video Kit Embedded Software User Guide
 
 ## Table of Contents
 

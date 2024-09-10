@@ -1,4 +1,4 @@
-# MPFS Icicle Kit User Guide
+# MPFS Icicle Kit Embedded Software User Guide
 
 ## Table of Contents
 

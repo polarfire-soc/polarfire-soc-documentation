@@ -1,4 +1,4 @@
-# MPFS-DEV-KIT User Guide
+# MPFS-DEV-KIT Embedded Software User Guide
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# MPFS Discovery Kit User Guide
+# MPFS Discovery Kit Embedded Software User Guide
 
 ## Table of Contents
 

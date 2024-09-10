@@ -1,4 +1,4 @@
-# Updating MPFS Kit
+# Updating Linux in MPFS Kit
 
 ## Table of Contents
 

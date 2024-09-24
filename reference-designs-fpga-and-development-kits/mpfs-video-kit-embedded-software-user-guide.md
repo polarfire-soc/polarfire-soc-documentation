@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [MPFS Video Kit User Guide](#mpfs-mpfs-video-kit-user-guide)
+- [MPFS Video Kit Embedded Software User Guide](#mpfs-mpfs-video-kit-embedded-software-user-guide)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Connectors & Jumpers](#connectors-&-Jumpers)

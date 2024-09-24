@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [Updating MPFS Kit](#updating-mpfs-kit)
+- [Updating Linux in MPFS Kit](#updating-linux-in-mpfs-kit)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Requirements](#requirements)

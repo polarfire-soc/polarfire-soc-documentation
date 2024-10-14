@@ -54,10 +54,12 @@ There are helper scripts in `tools/secure-boot` in the HSS (`gen_keys.sh` for Li
 The `hss-payload-generator` tool allows the specification of an X.509 ASN.1 PEM private key for image signing, e.g.:
 
 ```shell
-$ ./hss-payload-generator -c test/config.yaml payload.bin -p /path/to/private.pem
+$ ./hss-payload-generator -c test/config.yaml -p /path/to/private.pem payload.bin
 ```
 
 It calculates a SHA-384 message digest for the entire payload.bin image, and signs it using ECDSA SECP384r1.
+
+*NOTE: specifically when running the payload generator on Windows, the output file (`payload.bin` in the example above) must come last on the command line, after all other options.  On Linux, the order of the options on the commmand line does not matter, but we recommend also keeping the payload as the last argument.*
 
 ### HSS Configuration
 

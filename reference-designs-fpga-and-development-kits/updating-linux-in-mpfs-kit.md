@@ -1,8 +1,8 @@
-# updating the linux image-and-FPGA-design-on-a-mpfs-kit
+# Updating linux in MPFS kit
 
 ## Table of Contents
 
-- [updating-the-linux image and FPGA design on a mpfs kit](#updating-the-linux-image-and-FPGA-design-on-a-mpfs-kit)
+- [Updating Linux in MPFS Kit](#updating-linux-in-mpfs-kit)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Requirements](#requirements)

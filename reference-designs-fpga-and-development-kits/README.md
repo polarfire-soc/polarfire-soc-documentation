@@ -6,4 +6,4 @@
   - [MPFS Dev Kit Embedded Software User Guide](./mpfs-dev-kit-embedded-software-user-guide.md)
   - [MPFS Discovery Kit Embedded Software User Guide](./mpfs-discovery-kit-embedded-software-user-guide.md)
   - [MPFS Video Kit Embedded Software User Guide](./mpfs-video-kit-embedded-software-user-guide.md)
-  - [Updating Linux in MPFS kit](./updating-linux-in-mpfs-kit)
+  - [Updating Linux in MPFS kit](./updating-linux-in-mpfs-kit.md)

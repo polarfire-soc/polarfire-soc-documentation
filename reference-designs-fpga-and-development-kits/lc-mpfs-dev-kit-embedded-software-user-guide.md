@@ -1,4 +1,4 @@
-# LC-MPFS-DEV-KIT User Guide
+# LC-MPFS-DEV-KIT Embedded Software User Guide
 
 ## Overview
 

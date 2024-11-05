@@ -1,8 +1,8 @@
-# MPFS Discovery Kit User Guide
+# MPFS Discovery Kit Embedded Software User Guide
 
 ## Table of Contents
 
-- [MPFS Discovery Kit User Guide](#mpfs-discovery-kit-user-guide)
+- [MPFS Discovery Kit Embedded Software User Guide](#mpfs-discovery-kit-embedded-software-user-guide)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Connectors and Jumpers](#connectors-and-jumpers)

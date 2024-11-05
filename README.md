@@ -62,9 +62,9 @@
   - [PolarFire SoC USB](./linux-drivers-and-build-systems/polarfire-soc-usb.md)
 
 - Reference Designs Fpga And Development Kits
-  - [Icicle Kit User Guide](./reference-designs-fpga-and-development-kits/icicle-kit-user-guide.md)
-  - [LC MPFS Dev Kit User Guide](./reference-designs-fpga-and-development-kits/lc-mpfs-dev-kit-user-guide.md)
-  - [MPFS Discovery Kit User Guide](./reference-designs-fpga-and-development-kits/mpfs-discovery-kit-user-guide.md)
-  - [MPFS Dev Kit User Guide](./reference-designs-fpga-and-development-kits/mpfs-dev-kit-user-guide.md)
-  - [MPFS Video Kit User Guide](./reference-designs-fpga-and-development-kits/mpfs-video-kit-user-guide.md)
-  - [Updating MPFS Kit](./reference-designs-fpga-and-development-kits/updating-mpfs-kit.md)
+  - [Icicle Kit Embedded Software User Guide](./reference-designs-fpga-and-development-kits/icicle-kit-embedded-software-user-guide.md)
+  - [LC MPFS Dev Kit Embedded Software User Guide](./reference-designs-fpga-and-development-kits/lc-mpfs-dev-kit-embedded-software-user-guide.md)
+  - [MPFS Discovery Kit Embedded Software User Guide](./reference-designs-fpga-and-development-kits/mpfs-discovery-kit-embedded-software-user-guide.md)
+  - [MPFS Dev Kit Embedded Software User Guide](./reference-designs-fpga-and-development-kits/mpfs-dev-kit-embedded-software-user-guide.md)
+  - [MPFS Video Kit Embedded Software User Guide](./reference-designs-fpga-and-development-kits/mpfs-video-kit-embedded-software-user-guide.md)
+  - [Updating Linux in MPFS Kit](./reference-designs-fpga-and-development-kits/updating-linux-in-mpfs-kit.md)

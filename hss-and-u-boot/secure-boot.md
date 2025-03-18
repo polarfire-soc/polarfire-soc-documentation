@@ -68,13 +68,27 @@ Once the keys are generated, the HSS needs to be compiled with support for code 
 ```text
 CONFIG_CRYPTO_SIGNING=y
 CONFIG_CRYPTO_SIGNING_KEY_PUBLIC="tools/secure-boot/x509-ec-secp384r1-public.der"
-CONFIG_CRYPTO_LIBECC=y
 CONFIG_CRYPTO_SHA384=y
 ```
 
-Then, build the HSS as normal.  Program the payload.bin image to the boot device (SPI flash, eMMC or SD-Card) as normal. When the HSS reads the payload image, it will check the digital signature to ensure it has not been tampered with before proceeding to boot it.
+To use the libecc software Implementation (for parts without user cryptoprocessor hardware):
+
+```text
+CONFIG_CRYPTO_LIBECC=y
+```
+
+To use the User cryptoprocessor hardware (supported on -S parts):
+
+```text
+CONFIG_CRYPTO_USER_CRYPTO=y
+CONFIG_USE_USER_CRYPTO=y
+```
+
+Then, build the HSS as normal. The build will fail if user crypto config is enabled for an unsupported Microchip PolarFire SoC part. Program the payload.bin image to the boot device (SPI flash, eMMC or SD-Card) as normal. When the HSS reads the payload image, it will check the digital signature to ensure it has not been tampered with before proceeding to boot it.
 
 If the signature check fails, the HSS will refuse to boot the image.
+
+Enabling user crypto significantly reduces code size and boot time.
 
 ## Appendix: NIST P-384 Details
 

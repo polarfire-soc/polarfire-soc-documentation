@@ -1,6 +1,7 @@
 # soft-ip-driver-user-guides
 
 - [Core10GBaseKR-PHY](./Core10GBaseKR-PHY/core10gbasekr-phy-driver-user-guide.md)
+- [CoreAXI4ProtoConv](./CoreAXI4ProtoConv/coreaxi4protoconv-driver-user-guide.md)
 - [CoreGPIO](./CoreGPIO/coregpio-driver-user-guide.md)
 - [CoreI2C](./CoreI2C/corei2c-driver-user-guide.md)
 - [CoreMMC](./CoreMMC/coremmc-driver-user-guide.md)

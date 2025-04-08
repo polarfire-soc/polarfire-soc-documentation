@@ -710,4 +710,4 @@ The SPI directory is laid out like so:
  |------------------------------| 0x400
 ```
 
-[PolarFire SoC FPGA Programming User Guide]: https://www.microsemi.com/document-portal/doc_download/1245813-polarfire-fpga-and-polarfire-soc-fpga-programming-user-guide
+[PolarFire SoC FPGA Programming User Guide]: https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/UserGuides/PolarFire_FPGA_and_PolarFire_SoC_FPGA_Programming_User_Guide_VB.pdf

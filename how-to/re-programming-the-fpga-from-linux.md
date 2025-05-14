@@ -660,6 +660,13 @@ root@mpfs-video-kit:~# reboot
 The first 1 MiB after the SPI directory is reserved for carrying information about the bitstream,
 dt-overlays etc. It has no corresponding SPI directory.
 
+The exact address chosen for the Auto Update Image, in the example below 0x1500400, is dependant
+on the size of the flash. The formula used by the driver is as follows: First, ignore the first
+1 KiB as it's reserved for the directory. The 1 MiB reserved for design info needs to be ignored
+also. What remains is carved into three sections, rounded down to a multiple of the erasesize.
+If the flash is sufficiently big that the tree sections would exceed 20 MiB, the size of each
+section is limited to that.
+
 ```text
  |------------------------------| 0x0000000
  | 1 KiB                        |
@@ -673,11 +680,11 @@ dt-overlays etc. It has no corresponding SPI directory.
  | Golden Image                 |
  |------------------------------| 0x1500400
  | 20 MiB                       |
- | Auto Update Image           |
+ | Auto Update Image            |
  |------------------------------| 0x2900400
  | 20 MiB                       |
  | Reserved for multi-image IAP |
- | Unused for Auto Update      |
+ | Unused for Auto Update       |
  |------------------------------| 0x3D00400
  | ? B                          |
  | Unused                       |

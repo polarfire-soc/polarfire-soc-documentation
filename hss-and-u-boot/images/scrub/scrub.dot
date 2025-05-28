@@ -1,0 +1,14 @@
+digraph MemoryScrubbingStateMachine {
+    rankdir=LR;
+    node [shape=rectangle, style="rounded", fontname="Helvetica"];
+    edge [fontname="Helvetica"];
+
+    /* States */
+    INIT [label="SCRUB_INITIALIZATION\n• Waits for DDR training completion (EVENT_DDR_TRAINED)\n• Initializes scrubbing process"];
+    SCRUB [label="SCRUB_SCRUBBING\n• Processes memory regions in chunks\n• Uses atomic OR (L2LIM) or volatile reads\n• Triggers cache/TLB flushes\n• Coordinates with U54 cores via IPI\n• Cycles through regions indefinitely"];
+
+    /* Transitions */
+    INIT -> SCRUB [label="EVENT_DDR_TRAINED"];
+    SCRUB -> SCRUB [label="Loop:\n1. Process next memory chunk\n2. Manage cache flush timing\n3. Cycle regions"];
+}
+

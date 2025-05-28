@@ -48,6 +48,7 @@
   - [Profiling](./hss-and-u-boot/profiling.md)
   - [Reboot](./hss-and-u-boot/reboot.md)
   - [Secure Boot](./hss-and-u-boot/secure-boot.md)
+  - [Memory Scrubbing](./hss-and-u-boot/scrub.md)
   - [Watchdog Service](./hss-and-u-boot/watchdog-service.md)
 
 - Knowledge Base

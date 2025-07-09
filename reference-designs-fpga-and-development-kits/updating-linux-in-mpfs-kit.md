@@ -104,19 +104,19 @@ Note: If using an image generated with the PolarFire SoC Yocto BSP, please extra
 7. The eMMC should now appear as mass storage device/drive on your host PC.
 8. Launch USBImager
 
-    ![](./images/updating-mpfs-kit/start.png)
+    ![USBImager start window](./images/updating-mpfs-kit/start.png)
 
 9. Select the *Image file* you would like to program to the eMMC. Note: Linux images are generated with a time stamp; assets from different releases will have different names.
 
-    ![](./images/updating-mpfs-kit/select-file.png)
+    ![USBImager select image window](./images/updating-mpfs-kit/select-file.png)
 
 10. Select the target *Device* to program the image to.
 
-    ![](./images/updating-mpfs-kit/select-device.png)
+    ![USBImager select device](./images/updating-mpfs-kit/select-device.png)
 
 11. Click *Write*.
 
-    ![](./images/updating-mpfs-kit/write.png)
+    ![USBImager write button](./images/updating-mpfs-kit/write.png)
 
 12. Once writing has completed, unmount/eject the drive from the host PC and press `CTRL+C` in the HSS command line interface. Disconnect the micro-USB cable from the USB-OTG connector.
 13. Type `boot` to boot the newly copied Linux image.
@@ -137,25 +137,25 @@ Note: If using an image generated with the PolarFire SoC Yocto BSP, please extra
 
 2. Launch USBImager
 
-    ![](./images/updating-mpfs-kit/start.png)
+    ![USBImager start window](./images/updating-mpfs-kit/start.png)
 
 3. Select *Image file* that was extracted in step 3. Note: Yocto Linux images are generated with a time stamp, assets from different releases will have different names.
 
-    ![](./images/updating-mpfs-kit/select-file.png)
+    ![USBImager select image window](./images/updating-mpfs-kit/select-file.png)
 
 4. Select the *Device*.
 
-    ![](./images/updating-mpfs-kit/select-device.png)
+    ![USBImager select device](./images/updating-mpfs-kit/select-device.png)
 
 5. Click *Write*.
 
-    ![](./images/updating-mpfs-kit/write.png)
+    ![USBImager write button](./images/updating-mpfs-kit/write.png)
 
 6. Once writing has completed, eject the SD card from the host PC.
 7. Insert the SD card into the kit's SD card slot and power on the board.
 8. HSS boot messages will appear on MMUART0 and the Linux boot will appear on MMUART1. The expected HSS output for a successful boot from eMMC is shown below:
 
-    ![](./images/updating-mpfs-kit/hss-boot.png)
+    ![HSS boot log](./images/updating-mpfs-kit/hss-boot.png)
 
 <a name="external-qspi-flash-memory"></a>
 
@@ -183,29 +183,29 @@ If both QSPI and an MMC services are enabled in the HSS, you must specify the de
 8. Download the asset for the Linux image that you want to program to the kit from the PolarFire SoC Yocto BSP [releases](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp). The asset should have a `.mtdimg` file extension. Alternatively, create a "nand.img" or "nor.img" image using [Microchip Buildroot External](https://mi-v-ecosystem.github.io/redirects/repo-microchip-buildroot-external).
 9. Launch USBImager
 
-    ![](./images/updating-mpfs-kit/start.png)
+    ![USBImager start window](./images/updating-mpfs-kit/start.png)
 
 10. Select the *Image file* that was downloaded in step 8. Note: Yocto Linux images are generated with a time stamp; assets from different releases will have different names.
 
-    ![](./images/updating-mpfs-kit/select-file-flash.png)
+    ![USBImager select flash file window](./images/updating-mpfs-kit/select-file-flash.png)
 
 11. Select the target *Device* to program the image to.
 
-    ![](./images/updating-mpfs-kit/select-device-flash.png)
+    ![USBImager select flash device](./images/updating-mpfs-kit/select-device-flash.png)
 
 12. Click *Write*.
 
-    ![](./images/updating-mpfs-kit/write-flash.png)
+    ![USBImager flash write button](./images/updating-mpfs-kit/write-flash.png)
 
 13. Once writing has completed, unmount/eject the drive from the host PC and press `CTRL+C` in the HSS command line interface. Disconnect the micro-USB cable from the USB-OTG connector.
 
 14. A progress bar will show up, indicating that the image is being transfered to the QSPI flash that is connected.
 
-    ![](./images/updating-mpfs-kit/transfer-flash-wait.png)
+    ![HSS transfer flash wait log](./images/updating-mpfs-kit/transfer-flash-wait.png)
 
 15. Once the transfer has completed, the HSS console shoud look as shown in the image below
 
-    ![](./images/updating-mpfs-kit/flash-transfer-complete.png)
+    ![HSS transfer flash complete log](./images/updating-mpfs-kit/flash-transfer-complete.png)
 
 16. Type `boot` to boot the newly copied Linux image.
 

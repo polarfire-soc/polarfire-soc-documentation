@@ -151,6 +151,7 @@ The table below describes the DDR memory layout used in this demo:
 Pre-requisites: Before following the steps described in this section, make sure you have the latest [Yocto](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp) or [Buildroot](https://mi-v-ecosystem.github.io/redirects/repo-polarfire-soc-buildroot-sdk) build systems configured and setup in your system. Please refer to the README of each build system for further information.
 
 <a name="build-linux--freertos--bm-amp-demo-using-yocto"></a>
+
 #### Build Linux + FreeRTOS/Bare Metal AMP Demo using Yocto
 
 1. Open the `mpfs-icicle-kit-amp.conf` machine configuration file located in the `conf` directory. Make sure that the `AMP_DEMO` variable is set to `freertos` for a Linux+FreeRTOS demo or `bm` for a Linux+Bare Metal demo:

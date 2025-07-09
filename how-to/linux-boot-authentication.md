@@ -58,7 +58,7 @@ stage fails, the device will not continue to boot.
 
 The chain of trust that will be demonstrated in this application note is shown in the image below:
 
-![](./images/linux-boot-authentication/chain-of-trust-example.png)
+![Linux boot authentication chain of trust example](./images/linux-boot-authentication/chain-of-trust-example.png)
 
 <a name="polarfire-soc-boot-modes"></a>
 
@@ -71,7 +71,7 @@ stages before it begins the execution of user programs.
 The MSS Core Complex can be booted in one of four modes. There are two boot modes relevant for
 authenticated boot; User Secure Boot and Factory Secure Boot.
 
-![](./images/linux-boot-authentication/boot-up-sequence.png)
+![Linux boot authentication boot up sequence](./images/linux-boot-authentication/boot-up-sequence.png)
 
 The [User Secure Boot][User Secure Boot] methodology is intended for implementing user-defined secure boot authentication.
 
@@ -127,7 +127,7 @@ In this document we will generate three key pairs
 The image below shows the key generation process, as well as the signing and programming tools
 that will be used for each of the boot stages, that conforms to this chain of trust example.
 
-![](./images/linux-boot-authentication/chain-of-trust-example-explained.png)
+![Linux boot authentication chain of trust explained](./images/linux-boot-authentication/chain-of-trust-example-explained.png)
 
 <a name="authenticated-boot-tasks"></a>
 
@@ -413,61 +413,61 @@ Firstly, the HSS needs to be compiled with support for code signing enabled and 
 1. Clone or download the hart-software-services project from GitHub
 
     ```bash
-    $ git clone https://github.com/polarfire-soc/hart-software-services.git
+    git clone https://github.com/polarfire-soc/hart-software-services.git
     ```
 
 2. Launch SoftConsole IDE and open either a new or an existing workspace
 
 3. In the Project Explorer window, click `Import projects...` as shown in the following figure. Expand the `General` drop-down list and select `Existing Projects into Workspace`, then click Next.
 
-    ![](./images/linux-boot-authentication/softconsole-import-project.png)
+    ![SoftConsole import project window](./images/linux-boot-authentication/softconsole-import-project.png)
 
 4. Click `Browse...`, navigate to the location where the hart-software-services project folder is located, select the folder and then, click `Finish`.
 
-    ![](./images/linux-boot-authentication/softconsole-import-hss.png)
+    ![SoftConsole import HSS](./images/linux-boot-authentication/softconsole-import-hss.png)
 
 5. Launch a terminal emulator and navigate to the hart-software-services repository
 
     ```bash
-    $ cd hart-software-services
+    cd hart-software-services
     ```
 
 6. Copy the default config of your board. For example:
 
     ```bash
-    $ cp boards/mpfs-icicle-kit-es/def_config .config
+    cp boards/mpfs-icicle-kit-es/def_config .config
     ```
 
 7. Edit the default HSS configuration using menuconfig
 
     ```bash
-    $ make menuconfig
+    make menuconfig
     ```
 
     After running the command shown above, a configuration menu should pop-up.
 
     Navigate to the Crypto category
 
-    ![](./images/linux-boot-authentication/crypto-kconfig.png)
+    ![Menuconfig crypto Kconfig option](./images/linux-boot-authentication/crypto-kconfig.png)
 
     Enable Cryptographic Signing support
 
-    ![](./images/linux-boot-authentication/crypto-signing-kconfig.png)
+    ![Menuconfig crypto Kconfig menu](./images/linux-boot-authentication/crypto-signing-kconfig.png)
 
     Navigate to the Signing Configuration category
 
-    ![](./images/linux-boot-authentication/crypto-kconfig-signing-config.png)
+    ![Menuconfig crypto Kconfig menu signing config option](./images/linux-boot-authentication/crypto-kconfig-signing-config.png)
 
     Enter the path to the HSS Payload Signing Public Key (HPSQ). For example `/home/user/yocto-dev/conf/keys/x509-ec-secp384r1-public.der"`:
 
-    ![](./images/linux-boot-authentication/crypto-signing-key-directory.png)
+    ![Menuconfig crypto signing key directory](./images/linux-boot-authentication/crypto-signing-key-directory.png)
 
     Exit menuconfig by pressing the "Q" in the keyboard and save the configuration when prompted.
 
 8. Build the HSS by pressing the Build button in SoftConsole or by using the command line
 
-    ```
-    $ make
+    ```bash
+    make
     ```
 
 For more information on how to build the HSS using the command line, please refer to the [Hart Software Services README][Hart Software Services README].
@@ -490,9 +490,9 @@ When setting Boot Mode 3 (Factory Secure Boot), the Boot Mode Programmer Tool em
 To generate the User Signing Keys (UCSK and UCSQ) which are used to sign and verify the SBIC:
 
 ```shell
-$ openssl ecparam -name secp384r1 -genkey -noout -out combined.ec.key
-$ openssl pkcs8 -topk8 -nocrypt -in combined.ec.key -out ucsk-private.pem
-$ openssl ec -in ucsk-private.pem -pubout -out ucsq-public.pem
+openssl ecparam -name secp384r1 -genkey -noout -out combined.ec.key
+openssl pkcs8 -topk8 -nocrypt -in combined.ec.key -out ucsk-private.pem
+openssl ec -in ucsk-private.pem -pubout -out ucsq-public.pem
 ```
 
 Flash the HSS to your board using factory secure boot mode 3:

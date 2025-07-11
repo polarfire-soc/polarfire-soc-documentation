@@ -66,7 +66,7 @@ The [PolarFire SoC Yocto BSP](https://mi-v-ecosystem.github.io/redirects/repo-me
 
 Linux images with a '.wic' or ".wic.gz" file extension use a GUID partition table (GPT) and are suitable for programming to the eMMC or an SD card. For Microchip Buildroot External, an image with the name `sdcard.img` is use instead. For more information on how to program any of these images into storage, plese refer to the steps outlined in the [eMMC](#emmc) or [SD](#sd-card-content-update-procedure) sections.
 
-Linux images created using the PolarFire SoC Yocto BSP layer and named per the `<image>-<machine>-<timestamp>.<flash-type>.mtdimg` format, for example, `core-image-minimal-mtdutils-icicle-kit-es-yyyyMMddHHmmSS.nand.mtdimg` or `core-image-minimal-mtdutils-icicle-kit-es-yyyyMMddHHmmSS.nor.mtdimg` are suitable for programming to a QSPI flash device using the HSS. For Microchip Buildroot External, images with the name `nand.img` or `nor.img` are used instead.
+Linux images created using the PolarFire SoC Yocto BSP layer and named per the `<image>-<machine>-<timestamp>.<flash-type>.mtdimg` format, for example, `core-image-minimal-mtdutils-mpfs-icicle-kit-yyyyMMddHHmmSS.nand.mtdimg` or `core-image-minimal-mtdutils-mpfs-icicle-kit-yyyyMMddHHmmSS.nor.mtdimg` are suitable for programming to a QSPI flash device using the HSS. For Microchip Buildroot External, images with the name `nand.img` or `nor.img` are used instead.
 
 For more information on how to program images to QSPI flash devices, please follow the steps outlined in the [External QSPI Flash Memory](#external-qspi-flash-memory) section.
 

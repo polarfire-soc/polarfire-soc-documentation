@@ -33,7 +33,7 @@ The following flash memory devices are officially supported on PolarFire SoC:
 | Winbond       | W25N01GV | NAND | 1Gb (128MB)   |
 | Micron*       | MT25QL256| NOR | 256Mb (32MB)   |
 
-*Micron QSPI is only supported in the Meta PolarFire SoC Yocto BSP and Microchip Buildroot External.
+*Micron QSPI is only supported in the Polarfire SoC Yocto BSP and Microchip Buildroot External.
 
 Depending on the PolarFire SoC board being used the QSPI I/Os may be routed via the FPGA fabric to a Raspberry Pi interface, in this case an adapter daughter board may be required to connect a QSPI flash. See the individual sections below for more information.
 

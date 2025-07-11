@@ -30,7 +30,7 @@ This document describes a simple approach for booting an authenticated Linux ker
 - PolarFire SoC Icicle Kit
 - SoftConsole v2022.2 or later
 - Serial Terminal Program
-- Ubuntu Host PC configured as shown in the "Build Instructions" of the PolarFire SoC Yocto BSP [README](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp)
+- Ubuntu Host PC with all prerequisites installed as shown in the "Prerequisites" of the PolarFire SoC Yocto BSP [README][meta-mchp-common README]
 
 <a name="introduction"></a>
 
@@ -162,10 +162,10 @@ at a time, and prevents having to get everything working together at the beginni
 This document relies on the Yocto build system to manage the process of building a working Linux
 image that can be run from eMMC/SD on the Icicle Kit.
 
-Before continuing with this document, please make sure you have set up Yocto in a host PC as shown
-in the "Build Instructions" section of the [PolarFire SoC Yocto BSP README][PolarFire SoC Yocto BSP README].
+Before continuing with this document, please make sure you have set up Yocto on a host PC as shown
+in the "Prerequisites" section of the PolarFire SoC Yocto BSP [README][meta-mchp-common README].
 
-[PolarFire SoC Yocto BSP README]: https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp
+[meta-mchp-common README]: https://github.com/linux4microchip/meta-mchp/blob/HEAD/meta-mchp-common/README.md
 
 <a name="u-boot-verified-boot"></a>
 
@@ -204,7 +204,7 @@ help ensure security. One configuration setting, `CONFIG_FIT_SIGNATURE`, allows 
 checking and is the heart of U-Boot’s Verified Boot methodology. Without the `CONFIG_FIT_SIGNATURE`
 setting, it is not possible to check, or even generate, a properly signed FIT file.
 
-The `CONFIG_FIT_SIGNATURE` option is configured in the `icicle-kit-es-auth` machine
+The `CONFIG_FIT_SIGNATURE` option is configured in the `mpfs-icicle-kit-es-auth` and `mpfs-icicle-kit-prod-auth` machines
 included in our [Yocto BSP][Yocto BSP].
 
 Although this document focuses on the boot authentication process, there are many other
@@ -215,7 +215,6 @@ some configurations, such as autoboot, command line and the use of U-Boot boot s
 could be used by an attacker to alter the boot sequence. For additional details on securing U-Boot
 see the document by [F-Secure][F-Secure].
 
-[PolarFire SoC Yocto BSP]: https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp
 [F-Secure]: https://www.f-secure.com/content/dam/labs/docs/2020-05-u-booting-securely-wp-final.pdf
 
 <a name="creating-the-keys"></a>
@@ -237,23 +236,18 @@ or installed via a Linux distribution package manager (e..g., for Ubuntu, apt in
 
 This section will describe how to generate the HSS Payload Signing Keys (HPSK and HPSQ) and FIT Image Signing Keys.
 
-Before continuing with this document, please make sure you have set up Yocto in a host PC as shown
-in the "Build Instructions" section of the [PolarFire SoC Yocto BSP README][PolarFire SoC Yocto BSP README].
+Before continuing with this document, please make sure you have set up Yocto on a host PC as shown
+in the "Prerequsites" section of the PolarFire SoC Yocto BSP [README][meta-mchp-common README].
 
 [openssl.org]:https://www.openssl.org/
 [openssl's website]:https://www.openssl.org/community/binaries.html
-[PolarFire SoC Yocto BSP README]:https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp
 
-1. First, setup the Bitbake environment if you haven't already
+1. First, setup the Bitbake environment if you haven't already by following the instructions in the "Usage" section of the PolarFire SoC Yocto BSP [README][meta-mchp-common README]
 
-    ```shell
-    $ . ./meta-polarfire-soc-yocto-bsp/polarfire-soc_yocto_setup.sh
-    ```
-
-2. Run the PolarFire SoC Authenticated Boot setup script
+2. From the build directory run the PolarFire SoC Authenticated Boot setup script
 
     ```shell
-    $ . ../meta-polarfire-soc-yocto-bsp/meta-polarfire-soc-extras/scripts/polarfire-soc_auth_setup.sh
+    . ../meta-mchp/meta-mchp-polarfire-soc/meta-mchp-polarfire-soc-bsp/scripts/polarfire-soc_auth_setup.sh
     ```
 
 By default, the script will generate the HSS Payload Signing Keys (HPSK and HPSQ) and FIT Image Signging Keys in the repo workspace directory. For example:
@@ -266,7 +260,7 @@ By default, the script will generate the HSS Payload Signing Keys (HPSK and HPSQ
 │   ├── x509-ec-secp384r1-private.pem
 │   └── x509-ec-secp384r1-public.der
 ├── meta-openembedded
-├── meta-polarfire-soc-yocto-bsp
+├── meta-mchp
 ├── openembedded-core
 ```
 
@@ -302,7 +296,7 @@ For more information please refer to the [Yocto Project Reference Manual][Yocto 
 The `HSS_PAYLOAD_GEN_KEYNAME` variable should contain the name of the private key to sign the HSS
 payload, this should be located in the directory specified in the `HSS_PAYLOAD_GEN_KEYDIR` variable.
 
-Our [Yocto BSP][Yocto BSP] provides an `icicle-kit-es-auth` machine that has all the options above configured by default.
+Our [Yocto BSP][Yocto BSP] provides an `mpfs-icicle-kit-es-auth` and `mpfs-icicle-kit-prod-auth` machines that has all the options above configured by default.
 
 [Yocto Project Reference Manual]: https://docs.yoctoproject.org/ref-manual/variables.html#term-FIT_SIGN_ALG
 [Yocto BSP]: https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp
@@ -313,10 +307,11 @@ Our [Yocto BSP][Yocto BSP] provides an `icicle-kit-es-auth` machine that has all
 
 To build an image with authenticated boot:
 
-1. Build the `mpfs-initramfs-image` for the Icicle  using the `icicle-kit-es-auth` machine:
+1. Build the `mchp-initramfs-wic-image` for the Icicle using the `mppfs-icicle-kit-es-auth` or `mpfs-icicle-kit-prod-auth` machine:
 
 ```bash
-$ MACHINE=icicle-kit-es-auth bitbake -R conf/initramfs.conf mpfs-initramfs-image
+MACHINE=mpfs-icicle-kit-es-auth bitbake mchp-initramfs-wic-image
+MACHINE=mpfs-icicle-kit-prod-auth bitbake mchp-initramfs-wic-image
 ```
 
 Note: The chain of trust demonstrated in this document uses an initramfs, this ensures that only an
@@ -332,7 +327,7 @@ filesystem, it is recommended to authenticate the rootfs using other tools such 
 1. Copy the image to the eMMC/SD card
 
     ```bash
-    bmaptool copy tmp-glibc/deploy/images/icicle-kit-es-auth/mpfs-initramfs-image-icicle-kit-es-auth.wic /dev/sdX
+    bmaptool copy tmp-glibc/deploy/images/mpfs-icicle-kit-es-auth/mchp-initramfs-wic-image-mpfs-icicle-kit-es-auth.rootfs.wic /dev/sdX
     ```
 
     > Be very careful while picking /dev/sdX device! Look at dmesg, lsblk, GNOME Disks, etc. before and after plugging in your usb flash device/uSD/SD to find a proper device. Double check it to avoid overwriting any of system disks/partitions!

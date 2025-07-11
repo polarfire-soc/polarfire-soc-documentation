@@ -353,7 +353,7 @@ All required options are configured in the PolarFire SoC Video Kit device tree,
 used as the basis of PolarFire SoC's support in
 our [Yocto BSP][Yocto BSP] & [Buildroot][Buildroot].
 
-[Yocto BSP]: https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp
+[Yocto BSP]: https://github.com/linux4microchip/meta-mchp/tree/HEAD/meta-mchp-polarfire-soc
 [Buildroot]: https://github.com/linux4microchip/buildroot-external-microchip
 
 <a name="linux-requirements-for-auto-update"></a>
@@ -384,9 +384,6 @@ CONFIG_POLARFIRE_SOC_AUTO_UPDATE=y
 
 All required options are set in mpfs_defconfig, used as the basis of PolarFire SoC's support in
 our [Yocto BSP][Yocto BSP] & [Buildroot][Buildroot].
-
-[Yocto BSP]: https://github.com/polarfire-soc/meta-polarfire-soc-yocto-bsp
-[Buildroot]: https://github.com/linux4microchip/buildroot-external-microchip
 
 <a name="performing-an-auto-update"></a>
 

@@ -153,7 +153,7 @@ Pre-requisites: Before following the steps described in this section, make sure 
 <a name="build-linux--freertos--bm-amp-demo-using-yocto"></a>
 #### Build Linux + FreeRTOS/Bare Metal AMP Demo using Yocto
 
-1. Open the `icicle-kit-es-amp.conf` machine configuration file located in the `conf` directory. Make sure that the `AMP_DEMO` variable is set to `freertos` for a Linux+FreeRTOS demo or `bm` for a Linux+Bare Metal demo:
+1. Open the `mpfs-icicle-kit-amp.conf` machine configuration file located in the `conf` directory. Make sure that the `AMP_DEMO` variable is set to `freertos` for a Linux+FreeRTOS demo or `bm` for a Linux+Bare Metal demo:
 
     ```bash
     ## Set this to "freertos" for a Linux + FreeRTOS demo or "bm" for a Linux + Bare Metal demo
@@ -161,10 +161,10 @@ Pre-requisites: Before following the steps described in this section, make sure 
     ##AMP_DEMO = "bm"
     ```
 
-2. Use the Yocto bitbake command and set the icicle-kit-es-amp MACHINE and image required:
+2. Use the Yocto bitbake command and set the mpfs-icicle-kit-amp MACHINE and image required:
 
     ```bash
-    MACHINE=icicle-kit-es-amp bitbake mpfs-dev-cli
+    MACHINE=mpfs-icicle-kit-amp bitbake mchp-base-image
     ```
 
 3. Copy the created Disk Image to a flash device (USB mmc flash/SD/uSD)
@@ -173,7 +173,7 @@ Pre-requisites: Before following the steps described in this section, make sure 
 
 ```bash
 cd yocto-dev/build
-bmaptool copy tmp-glibc/deploy/images/icicle-kit-es-amp/mpfs-dev-cli-icicle-kit-es-amp.wic dev/sdX
+bmaptool copy tmp-glibc/deploy/images/mpfs-icicle-kit-amp/mchp-base-image-mpfs-icicle-kit-amp.rootfs.wic dev/sdX
 ```
 
 The disk image flashed to the device in the step above contains the following partitions:

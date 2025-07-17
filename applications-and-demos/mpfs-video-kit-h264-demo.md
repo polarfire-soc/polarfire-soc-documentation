@@ -46,7 +46,7 @@ Users can play the video stream on a computer using applications such as VLC Med
 
 Below block diagram explains the H.264 frame generation
 
-![](./images/mpfs-video-kit-h264-demo/high-level-block-diagram.png)
+![H264 frame generation high level block diagram](./images/mpfs-video-kit-h264-demo/high-level-block-diagram.png)
 
 Above diagram is for a simple H.264 base (compact) design and where one driver is used for all.
 
@@ -97,15 +97,15 @@ Follow the steps below to run the Demo using DHCP IP address:
 3. From the Host PC open the browser (Chrome). Enter the IP address of the PolarFire SoC Video kit (assigned by DHCP) in the address bar.
 4. The H.264 demo GUI will load automatically as shown in the image below:
 
-    ![](./images/mpfs-video-kit-h264-demo/h264-1.png)
+    ![H264 demo GUI](./images/mpfs-video-kit-h264-demo/h264-1.png)
 
 5. Click the "Start Video" button as shown and follow the below steps:
 
-    ![](./images/mpfs-video-kit-h264-demo/h264-1-1.png)
+    ![H264 demo start video button](./images/mpfs-video-kit-h264-demo/h264-1-1.png)
 
 6. Click on "SDP file" button to download SDP file.
 
-    ![](./images/mpfs-video-kit-h264-demo/h264-1-2.png)
+    ![H264 demo SDP file button](./images/mpfs-video-kit-h264-demo/h264-1-2.png)
 
 7. Open SDP file:
 
@@ -113,7 +113,7 @@ Follow the steps below to run the Demo using DHCP IP address:
 - Linux: Open the SDP file with the GUI of VLC Media Player, OR execute the "vlc" command in the terminal, passing the SDP file as an argument "e.g. vlc video.sdp"
 - You should be able to observe a livestream video. This is a scaled & H.264 compressed video of the selected resolution. To change the resolution, select the resolution as shown below and click "update" button.
 
-![](./images/mpfs-video-kit-h264-demo/h264-1-3.png)
+![H264 demo configure resolution](./images/mpfs-video-kit-h264-demo/h264-1-3.png)
 
 <a name="vlc-configuration"></a>
 
@@ -127,17 +127,17 @@ Follow the steps below to run the Demo using DHCP IP address:
 2. Click “All” under the “Show Settings” option at the bottom of the window.
 3. Click “Input / Codecs” in the left sidebar.
 
-   ![](./images/mpfs-video-kit-h264-demo/vlc-1.png)
+   ![VLC codecs menu](./images/mpfs-video-kit-h264-demo/vlc-1.png)
 
 4. The standard delay in VLC for "Network Caching (ms)" is 1000 ms. This will cause noticeable lag, in order to avoid it reduce the caching value to 30 ms.
 
-   ![](./images/mpfs-video-kit-h264-demo/vlc-1-2.png)
+   ![VLC codecs network caching setting](./images/mpfs-video-kit-h264-demo/vlc-1-2.png)
 
 5. Select "Disable" for "Hardware-accelerated decoding" as it is not supported by the Video kit.
 
 From the Preferences panel, click “Simple” in the lower left-hand corner, then, go to to Input/Codecs. Click the “Hardware-accelerated decoding” dropdown and choose "Disable".
 
-![](./images/mpfs-video-kit-h264-demo/vlc-1-3.png)
+![VLC hardware-accelerated decoding setting](./images/mpfs-video-kit-h264-demo/vlc-1-3.png)
 
 <a name="configuration-of-ffmpeg-video-decoder-parameters"></a>
 
@@ -146,7 +146,7 @@ From the Preferences panel, click “Simple” in the lower left-hand corner, th
 1. Open the preferences panel by selecting "Tools" > "Preferences"
 2. Select “All” under the “Show Settings” option at the bottom of the window.
 
-   ![](./images/mpfs-video-kit-h264-demo/vlc-1-4.png)
+   ![VLC FFmpeg settings](./images/mpfs-video-kit-h264-demo/vlc-1-4.png)
 
 3. Select “Input/Codecs" -> "Video codecs"-> "FFMPEG”
 4. Uncheck "Direct rendering"
@@ -163,7 +163,7 @@ From the Preferences panel, click “Simple” in the lower left-hand corner, th
 3. Click as video output modules as windows GDI video output in the left sidebar.
 4. Click "Save".
 
-![](./images/mpfs-video-kit-h264-demo/vlc-1-5.png)
+![VLC video output modules menu](./images/mpfs-video-kit-h264-demo/vlc-1-5.png)
 
 <a name="steps-to-configure-static-ip-address"></a>
 

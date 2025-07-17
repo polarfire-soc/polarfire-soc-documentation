@@ -84,7 +84,7 @@ The Video Kit jumper settings required to boot Linux are as follows:
 
 The board is pre-programmed with a reference design booting Linux from eMMC.
 
-![](./images/mpfs-video-kit-user-guide/mpfs-video-kit-terminals.png)
+![MPFS Video kit terminals on boot](./images/mpfs-video-kit-user-guide/mpfs-video-kit-terminals.png)
 
 MMUART0 displays the Hart Software Service (HSS) boot messages. MMUART1 displays U-Boot messages, Linux boot messages and provides a Linux prompt. The default user name is "root". No password is required. If a password is requested at any stage "microchip" is used as default password.
 

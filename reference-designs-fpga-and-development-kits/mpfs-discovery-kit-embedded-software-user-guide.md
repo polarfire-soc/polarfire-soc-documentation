@@ -29,9 +29,9 @@ Microchip's SoftConsole IDE enables the rapid development of C/C++ source code b
 
 The connectors and jumpers for the Discovery Kit can be seen below:
 
-![](./images/discovery-kit-user-guide/discovery-kit-top.svg)
+![Discovery kit top](./images/discovery-kit-user-guide/discovery-kit-top.svg)
 
-![](./images/discovery-kit-user-guide/discovery-kit-bottom.svg)
+![Discovery Kit bottom](./images/discovery-kit-user-guide/discovery-kit-bottom.svg)
 
 <a name="default-jumper-settings"></a>
 
@@ -59,7 +59,7 @@ Use the terminal software of your choice (Putty ExtraPutty, minicom, screen) to 
 **Serial port settings: 115220 baud, no flow control, no parity**.
 Power cycle the board. This should result in boot messages appearing on two of the serials ports.
 
-![](./images/discovery-kit-user-guide/discovery-kit-terminals.png)
+![Discovery kit terminals on boot](./images/discovery-kit-user-guide/discovery-kit-terminals.png)
 
 MMUART1 (1st COM port) displays the Hart Software Service (HSS) boot messages.
 MMUART4 (2nd COM port) displays U-Boot messages, Linux boot messages and provides a Linux prompt.

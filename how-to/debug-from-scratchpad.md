@@ -21,6 +21,7 @@
     - [Debugging the hss-l2scratch.elf using the command line](#debugging-the-hss-l2scratchelf-using-the-command-line)
 
 <a name="Introduction"></a>
+
 ## Introduction
 
 Debugging of bare metal applications that target the L2 scratchpad on
@@ -43,6 +44,7 @@ required by the bare metal software and it expects DDR to be confgured for it
 when it starts running then DDR training is required in the reduced HSS.
 
 <a name="Methodology"></a>
+
 ### Methodology
 
 The following methodology is used to debug an application from the L2 scratchpad
@@ -62,6 +64,7 @@ memory:
 5. Debug as normal
 
 <a name="The-HSS"></a>
+
 ### The HSS
 
 The HSS is built in two parts:
@@ -74,6 +77,7 @@ It is possible to debug and step through the `hss-l2scratch.elf` using the
 methodology in this document.
 
 <a name="HSS-startup"></a>
+
 #### HSS startup
 
 The HSS code resides in eNVM, but its code size is too large so it needs to be
@@ -92,9 +96,11 @@ There are two main reasons that we run from L2 scratchpad and not LIM:
 - Scratchpad is slightly faster than LIM
 
 <a name="Configuring-a-reduced-HSS-to-set-up-the-L2-scratchpad"></a>
+
 ## Configuring a reduced HSS to set up the L2 scratchpad
 
 <a name="Using-SoftConsole-to-configure-a-reduced-HSS"></a>
+
 ### Using SoftConsole to configure a reduced HSS
 
 Make sure to clean, build and program the modified HSS to the eNVM
@@ -160,6 +166,7 @@ Make sure to clean, build and program the modified HSS to the eNVM
     natively debug from it (set/remove breakpoints, step, run, etc.).
 
 <a name="Using-the-command-line-to-configure-a-reduced-HSS"></a>
+
 ### Using the command line to configure a reduced HSS
 
 In the `.config file`, ensure that `CONFIG_SKIP_DDR=y` is present. Also ensure
@@ -184,9 +191,9 @@ matches the XML used in the `.config` file.
 Make sure to clean, build and program the modified HSS to the eNVM:
 
 ```ruby
-$ make clean
-$ make
-$ make program
+make clean
+make
+make program
 ```
 
 When configured like this, the HSS will start running from eNVM on a power-cycle
@@ -199,6 +206,7 @@ to attach a debugger and download an ELF that targets L2 scratchpad, and to
 natively debug from it (set/remove breakpoints, step, run, etc.)
 
 <a name="Configuring-a-bare-metal-application-to-execute-from-L2-scratchpad"></a>
+
 ## Configuring a bare metal application to execute from L2 scratchpad
 
 If the HSS is being debugged from L2 scratchpad these steps do not need to be
@@ -218,6 +226,7 @@ debug or run code from this location:
     will overwrite the HSS memory and would fail to boot if used as a payload.
 
 <a name="Creating-a-custom-linker-script-for-L2-scratchpad-applications"></a>
+
 ### Creating a custom linker script for L2 scratchpad applications
 
 It is recommended that the linker script to target L2 scratchpad is based off
@@ -280,6 +289,7 @@ HAL. To modify this linker script to target the L2 scratchpad:
     ![update_linker_script_0](./images/debug-from-scratchpad/update-linker-script-0.png)
 
 <a name="Debugging-bare-metal-applications-executing-from-L2-scratchpad"></a>
+
 ## Debugging bare metal applications executing from L2 scratchpad
 
 This section is broken up into 3 sections:
@@ -292,6 +302,7 @@ This section is broken up into 3 sections:
 3. [Debugging the hss-l2scratch.elf using the command line](#Debgging-the-hss-l2scratch.elf-the-using-command-line)
 
 <a name="Debugging-a-bare-metal-application-executing-from-L2-scratchpad"></a>
+
 ### Debugging a bare metal application executing from L2 scratchpad
 
 All bare metal applications from the PolarFire SoC Bare Metal Examples
@@ -306,6 +317,7 @@ repository include 3 debug configurations:
 A new debug configuration will need to be created for L2 scratchpad debug.
 
 <a name="Creating-an-L2-scratchpad-debug-configuration"></a>
+
 #### Creating an L2 scratchpad debug configuration
 
 In the "Debug Configurations" view:
@@ -323,6 +335,7 @@ In the "Debug Configurations" view:
 3. Apply the changes
 
 <a name="Starting-the-debug-session"></a>
+
 #### Starting the debug session
 
 Before starting a debug session ensure the reduced HSS has been programmed into
@@ -332,6 +345,7 @@ the `[project name] hw all-harts debug-from-scratchpad` debug configuration and
 clicking `Debug`. The application can now be debugged as normal.
 
 <a name="Debgging-the-hss-l2scratch.elf-using-SoftConsole"></a>
+
 ### Debugging the hss-l2scratch.elf using SoftConsole
 
 1. Restore the original HSS build configuration which was backed up in [Using
@@ -352,6 +366,7 @@ clicking `Debug`. The application can now be debugged as normal.
     ![debug_hss_0](./images/debug-from-scratchpad/debug-hss-0.png)
 
 <a name="Debgging-the-hss-l2scratch.elf-the-using-command-line"></a>
+
 ### Debugging the hss-l2scratch.elf using the command line
 
 Important: at this point, revert your configuration changes from [Using the
@@ -371,8 +386,8 @@ There should be no other mentions of either `CONFIG_SKIP_DDR` or
 Make sure to clean and build the modified HSS:
 
 ```ruby
-$ make clean
-$ make
+make clean
+make
 ```
 
 In a terminal window, start OpenOCD manually:

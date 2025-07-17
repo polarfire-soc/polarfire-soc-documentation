@@ -272,7 +272,7 @@ The default configurations for eMMC can be viewed by cloning the [HSS repository
 
 3. Open a terminal and enter:
 
-    ```
+    ```bash
     make BOARD=icicle-kit-es config
     ```
 
@@ -356,6 +356,7 @@ To build the HSS for the Icicle Kit using the command line on Windows:
 A workaround currently needed (for SoftConsole v2021.1) is to copy `python3\bin\python.exe` to `python3\bin\python3.exe` in the SoftConsole v2021.1 installation folder on Windows.
 
 <a name="using-the-mss-configurator"></a>
+
 ## Using the MSS Configurator
 
 The Microcrocessor Subsystem (MSS) is configured using the PolarFire SoC MSS Configurator. This software tool takes user inputs and generates an XML configuration file along with a Libero component.

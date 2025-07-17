@@ -60,13 +60,13 @@ The flash drive can be mounted in Linux using the following method
 Create a directory such as usbmsc inside media. This will be the mount point for the flash drive.
 
 ```sh
-$ mkdir /media/usbmsc
+mkdir /media/usbmsc
 ```
 
 Idenitfy the flash drive on the Icicle kit, use dmesg to check what the drive identifier for the flash drive is.
 
 ```sh
-$ dmesg | egrep "sd"
+dmesg | egrep "sd"
 ```
 
 The output should contain a line similar to one of the following lines:
@@ -88,7 +88,7 @@ For these examples the identifier sdX is used.
 Once sure of the drive identifier, use the following command to mount the flash drive to the board, replacing the X as appropriate:
 
 ```sh
-$ mount -t vfat /dev/sdX /media/usbmsc
+mount -t vfat /dev/sdX /media/usbmsc
 ```
 
 <a name="accessing-the-flash-drive"></a>
@@ -98,13 +98,13 @@ $ mount -t vfat /dev/sdX /media/usbmsc
 Change the current directory to Flash drive.
 
 ```sh
-$ cd /media/usbmsc
+cd /media/usbmsc
 ```
 
 List the content of the Flash drive:
 
 ```sh  
-$ ls
+ls
 ```
 
 <a name="verify-the-flash-drive"></a>
@@ -114,22 +114,22 @@ $ ls
 To verify the Flash drive, copy a file to it, unmount the drive.
 
 ```sh
-$ cp /home/dummy.txt /media/usbmsc/
-$ umount /media/usbmsc
+cp /home/dummy.txt /media/usbmsc/
+umount /media/usbmsc
 ```
 
 Remove and reconnect the flash drive to the Icicle kit. Check the flash drive identifier (as mentioned in [Mounting the Flash Drive](#usb-device-mount)).
 Once sure of the drive identifier, use the below command to mount the flash drive, replacing the X as appropriate.
 
 ```sh
-$ mount -t vfat /dev/sdX /media/usbmsc
+mount -t vfat /dev/sdX /media/usbmsc
 ```
 
 Next, read the dummy file from the flash drive and compare the stored file with the original to determine that the content is the same/correct using diff command.
 
 ```sh
-$ cp /media/usbmsc/dummy.txt /home/dummy1.txt
-$ diff /home/dummy.txt /home/dummy2.txt
+cp /media/usbmsc/dummy.txt /home/dummy1.txt
+diff /home/dummy.txt /home/dummy2.txt
 ```
 
 The diff command should show nothing (means copy successfully).
@@ -141,7 +141,7 @@ The diff command should show nothing (means copy successfully).
 Issue the umount command to unmount the flash drive so it can safely be removed.
 
 ```sh
-$ umount /media/usbmsc
+umount /media/usbmsc
 ```
 
 <a name="working-with-a-webcam"></a>
@@ -163,7 +163,7 @@ To work with USB video devices, such as webcams, the following packages need to 
 Use the below command to capture an image from a webcam
 
 ```sh
-$ v4l2-ctl --device /dev/video0 --set-fmt-video=width=640,height=480,pixelformat=MJPG --stream-mmap=3 --stream-count=100 --stream-to=stream.vid
+v4l2-ctl --device /dev/video0 --set-fmt-video=width=640,height=480,pixelformat=MJPG --stream-mmap=3 --stream-count=100 --stream-to=stream.vid
 ```
 
 <a name="mss-usb-hardware-block-configurations"></a>

@@ -17,7 +17,8 @@
 
 ## Introduction
 
-The PolarFire SoC Icicle Kit features an MPFS250T_ES PolarFire SoC device.
+The PolarFire SoC Icicle Kit ([MPFS-ICICLE-KIT](https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT)) features an MPFS250T PolarFire SoC device. For information about the earlier version of the Icicle Kit with the Engineering Sample (ES), see [MPFS-ICICLE-KIT-ES](https://www.microchip.com/en-us/development-tool/mpfs-icicle-kit-es).
+
 Microchip's PolarFire SoC devices combine a RISC-V 5x core Microprocessor Subsystem capable of running Linux and the PolarFire FPGA fabric in a single device.
 This powerful combination enables the partitioning of user designs between the Microprocessor Subsystem (MSS) and the FPGA fabric.
 Microchip's Libero SoC enables the rapid development of RTL based designs for PolarFire SoC and many other device families.
@@ -101,8 +102,8 @@ Linux images for the Icicle Kit are available from the releases section of the [
 
 ## References
 
-[PolarFire SoC Icicle Kit Quick Start Guide](https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide#overview)
+[PolarFire SoC Icicle Kit Quick Start Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/UserGuides/PolarFire_SoC_Icicle_Kit_QuickStart_Guide_50003930.pdf)
 
-[PolarFire SoC Icicle Kit Schematics](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/ReferenceManuals/mpfs-icicle-kit-es-schematics.pdf)
+[PolarFire SoC Icicle Kit Schematics](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/BoardDesignFiles/PolarFire_SoC_ICICLE_KIT_Schematics0725.pdf)
 
-[PolarFire SoC Icicle Kit Product Page](https://www.microchip.com/en-us/development-tool/MPFS-ICICLE-KIT-ES)
+[PolarFire SoC Icicle Kit Product Page](https://www.microchip.com/en-us/development-tool/mpfs-icicle-kit)

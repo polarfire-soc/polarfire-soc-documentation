@@ -27,9 +27,10 @@ Internally, the Mi-V IHC consists of multiple interconnected instances of the fo
 Starting from release v2025.07 and onwards, the Icicle Kit and Discovery Kit reference designs use
 the Mi-V IHC IP v2 available in the Libero catalog.
 The Mi-V IHC IP version 2 is not backwards compatible with the Mi-V IHC subsystem used in the
-Icicle Kit reference design 2025.03 or earlier.
-For documentation on the Mi-V IHC subsystem available in v2025.03 release or earlier, please refer to
+Icicle Kit reference design 2025.03 or earlier. For documentation on the Mi-V IHC subsystem available in v2025.03 release or earlier, please refer to
 the [v2025.03 AMP documentation](https://github.com/polarfire-soc/polarfire-soc-documentation/tree/v2025.03/applications-and-demos)
+
+The Mi-V IHC IP v2 documentation including the registery map can be found in the [Mi-V IHC User Guide](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/UserGuides/ip_cores/directcores/MIV_IHC_User_Guide.pdf).
 
 <a name="inter-hart-communication-channel-ihcc"></a>
 

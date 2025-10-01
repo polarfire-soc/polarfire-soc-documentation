@@ -140,7 +140,22 @@ See `mss_watchdog.h` for more details on interacting with the Watchdog blocks fr
 
 ### Linux example
 
-Support for interacting with the watchdog via a Linux kernel driver is under development.
+Support for interacting with the watchdog via a Linux kernel driver is provided by watchdog driver module at [drivers/watchdog/mpfs_wdt.c](https://github.com/linux4microchip/linux/blob/linux-6.12-mchp%2Bfpga/drivers/watchdog/mpfs_wdt.c).
+
+Related KConfig option needs to be activated:
+```
+config MPFS_WATCHDOG
+```
+
+You can then use the [Linux Watchdog API](https://www.kernel.org/doc/Documentation/watchdog/watchdog-api.txt) using the `/dev/watchdog` device(s).
+
+Example to keep alive the watchdog:
+```C
+while (1) {
+		ioctl(fd, WDIOC_KEEPALIVE, 0);
+		sleep(10);
+	}
+```
 
 <a name="source-code"></a>
 

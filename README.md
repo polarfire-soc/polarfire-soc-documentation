@@ -42,6 +42,7 @@
   - [Cryptography with OpenSSL](./how-to/cryptography-with-openssl.md)
 
 - HSS And U-Boot
+  - [Adding a New Customer-Specific Service to HSS](./hss-and-u-boot/add-new-custom-service.md)
   - [Devicetree](./hss-and-u-boot/devicetree.md)
   - [E51 Lockdown Service](./hss-and-u-boot/e51-lockdown-service.md)
   - [Health Monitoring](./hss-and-u-boot/healthmon.md)

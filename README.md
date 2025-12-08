@@ -44,11 +44,12 @@
 - HSS And U-Boot
   - [Devicetree](./hss-and-u-boot/devicetree.md)
   - [E51 Lockdown Service](./hss-and-u-boot/e51-lockdown-service.md)
+  - [Health Monitoring](./hss-and-u-boot/healthmon.md)
   - [HSS Payloads](./hss-and-u-boot/hss-payloads.md)
+  - [Memory Scrubbing](./hss-and-u-boot/scrub.md)
   - [Profiling](./hss-and-u-boot/profiling.md)
   - [Reboot](./hss-and-u-boot/reboot.md)
   - [Secure Boot](./hss-and-u-boot/secure-boot.md)
-  - [Memory Scrubbing](./hss-and-u-boot/scrub.md)
   - [Watchdog Service](./hss-and-u-boot/watchdog-service.md)
 
 - Knowledge Base

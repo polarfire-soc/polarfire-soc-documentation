@@ -140,22 +140,46 @@ See `mss_watchdog.h` for more details on interacting with the Watchdog blocks fr
 
 ### Linux example
 
-Support for interacting with the watchdog via a Linux kernel driver is provided by watchdog driver module at [drivers/watchdog/mpfs_wdt.c](https://github.com/linux4microchip/linux/blob/linux-6.12-mchp%2Bfpga/drivers/watchdog/mpfs_wdt.c).
+Support for interacting with the watchdog via a Linux kernel driver is provided by the PolarFire SoC watchdog driver at [drivers/watchdog/mpfs_wdt.c](https://github.com/linux4microchip/linux/blob/linux-6.12-mchp%2Bfpga/drivers/watchdog/mpfs_wdt.c).
 
 Related KConfig option needs to be activated:
-```
-config MPFS_WATCHDOG
+
+```text
+CONFIG_MPFS_WATCHDOG=y
 ```
 
 You can then use the [Linux Watchdog API](https://www.kernel.org/doc/Documentation/watchdog/watchdog-api.txt) using the `/dev/watchdog` device(s).
 
 Example to keep alive the watchdog:
+
 ```C
-while (1) {
-		ioctl(fd, WDIOC_KEEPALIVE, 0);
-		sleep(10);
-	}
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <linux/watchdog.h>
+#include <sys/ioctl.h>
+
+int main(void) {
+    int fd = open("/dev/watchdog", O_RDWR);
+    if (fd == -1) {
+        printf("Failed to open /dev/watchdog\n");
+        return 1;
+    }
+
+    while (1) {
+        if (ioctl(fd, WDIOC_KEEPALIVE, 0) == -1) {
+            printf("Failed to ping watchdog\n");
+            break;
+        }
+        sleep(10); // Keep interval < watchdog timeout
+    }
+
+    close(fd);
+    return 0;
+}
 ```
+
+Alternatively, the watchdog can be managed using systemd or the [watchdog utility](https://linux.die.net/man/8/watchdog).
 
 <a name="source-code"></a>
 

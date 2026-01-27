@@ -16,7 +16,8 @@
 
 - Bare Metal Embedded Software
   - [Software Project Structure](./bare-metal-embedded-software/bare-metal-software-project-structure.md)
-  - [Driver User Guides](./bare-metal-embedded-software/bare-metal-driver-user-guides/README.md)
+  - [MSS Driver User Guides](./bare-metal-embedded-software/bare-metal-driver-user-guides/polarfire-soc-mss-driver-user-guides/README.md)
+  - [Soft IP Driver User Guides](./bare-metal-embedded-software/bare-metal-driver-user-guides/soft-ip-driver-user-guides/README.md)
 
 - Benchmarks
   - DMA Benchmarking
@@ -30,7 +31,8 @@
   - [Handling ECC errors on PolarFire SoC](./fundamentals/ecc/handling-ecc-errors-on-polarfire-soc.md)
 
 - How To
-  - [Booting From QSPI](./how-to/booting-from-qspi.md)
+  - [Booting from QSPI](./how-to/booting-from-qspi.md)
+  - [Booting Linux from TFTP](./how-to/tftpboot-with-uboot.md)
   - [Debug From Scratchpad](./how-to/debug-from-scratchpad.md)
   - [Linux Boot Authentication](./how-to/linux-boot-authentication.md)
   - [Multiprocessor Debugging](./how-to/multiprocessor-debugging.md)

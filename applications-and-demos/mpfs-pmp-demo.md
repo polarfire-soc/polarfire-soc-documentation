@@ -18,9 +18,9 @@ In this design, PMP is enabled in all the U54 processor cores to restrict the ac
 
 ## Requirements
 
-* PolarFire SoC Icicle Kit (MPFS250T_ES-FCVG484E)
-* SoftConsole v2021.1
-* Libero SoC v2021.1
+* PolarFire SoC Icicle Kit (MPFS250T_ES-FCVG484E or MPFS250T-FCVG484E)
+* SoftConsole v2021.1 or later
+* Libero SoC v2025.2
 * Serial Terminal program (extra-putty)
 * Host PC - Windows 10 OS
 
@@ -37,19 +37,30 @@ Before running the user application, make sure to complete the following steps:
 ## Enabling PMP in the MSS configurator tool and generate xml file
 
 * Download the icicle-kit-reference-design from [here](https://mi-v-ecosystem.github.io/redirects/releases-icicle-kit-reference-design).
-* Extract the downloaded design. Go to the path icicle-kit-reference-design\script_support and open PF_SoC_MSS_Icicle_eMMC.cfg with MSS configurator tool.
+* Extract the downloaded design. Go to the path script_support/mss_cfg_files/MPFS250T/MPFS_ICICLE_MSS_linux_ES.cfg with MSS configurator tool.
 * In the PolarFire SoC MSS Configurator > Memory partitions and Protection tab > "Use processor PMP and AXI switch MPU configurations" tick the checkbox to enable PMP.
 * In the PolarFire SoC MSS Configurator > Memory Partition and Protection tab > Processor PMP tab, there are two contexts Context A and Context B. Each Context's associations with the U54 processor cores, peripherals and memory regions are configured here. Each peripheral and/or memory region can be protected with access permissions, such as, read, write and execute. The peripheral or memory regions can be enabled in either Context A or in Context B.
   * U54_1 and U54_2 processor cores in Context A.
   * U54_3 and U54_4 processor cores in Context B.
-* Save and generate ICICLE_MSS_mss_cfg.xml file.
-
-In this design:
-
-* DDR_Cached_1GB_1 address 0x80000000 and size 2 MB is added to provide memory access (read, write, and execute permissions) for Context A.
-* DDR_Cached_1GB_2 address 0x80200000 and size 2 MB is added to provide memory access (read, write, and execute permissions) for Context B.
 
 ![](./images/mpfs-pmp-demo/mss.jpg)
+
+* Memory Regions
+  * DDR_Cached_1GB_1 address 0x80000000 and size 2 MB is added to provide memory access (read, write, and execute permissions) for Context A.
+  * DDR_Cached_1GB_2 address 0x80200000 and size 2 MB is added to provide memory access (read, write, and execute permissions) for Context B.
+  > [!NOTE] After completing the edits, please select the “Expert Mode” checkbox to disable further editing and display the final values for the PMP register and we can directly edit the PMP register values to optimize the number of registers used.
+
+![](./images/mpfs-pmp-demo/mss-1.jpg)
+
+* DMA Memory
+  * EMMC_DDR_Non_Cached_16GB_1 address 0x103F000000 and size 16MB is added to provide memory access (read, write, and execute permissions)
+  * EMMC_DDR_Non_Cached_256MB_2 address 0x000A000000 and size 2MB is added to provide memory access (read, write, and execute permissions)
+  * EMMC_DDR_Non_Cached_256MB_2 address 0x0080000000 and size 2MB is added to provide memory access (read, write, and execute permissions)
+  > [!NOTE] After completing the edits, please select the “Expert Mode” checkbox to disable further editing and display the final values for the PMP register and We can directly edit the PMP register values to optimize the number of registers used.
+
+![](./images/mpfs-pmp-demo/mss-2.jpg)
+
+* Save and generate ICICLE_MSS_mss_cfg.xml file.
 
 For more information about PMP see [PolarFire SoC Standalone MSS Configurator User Guide](https://onlinedocs.microchip.com/pr/GUID-BC096324-C726-48DB-8987-EF2BBC748A73-en-US-7/index.html?GUID-8F623149-225E-4A84-8BC9-3142A409FAD4) and [PolarFire SoC FPGA MSS Technical Reference Manual](https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/ReferenceManuals/PolarFire_SoC_FPGA_MSS_Technical_Reference_Manual_VC.pdf).
 

@@ -10,8 +10,8 @@
     - [Configure the HSS payload for Late Boot Mode](#configure-the-hss-payload-for-late-boot-mode)
     - [Booting the remote context using Remoteproc](#booting-the-remote-context-using-remoteproc)
       - [Booting the remote context using SysFs](#booting-the-remote-context-using-sysfs)
-      - [Automatically Booting Firmware using RemoteProc (Advanced)](#automatically-booting-firmware-using-remoteproc-advanced)
-- [RemoteProc Linux Overview](#remoteproc-linux-overview)
+      - [Automatically Booting Firmware using Remoteproc (Advanced)](#automatically-booting-firmware-using-remoteproc-advanced)
+- [Remoteproc Linux Overview](#remoteproc-linux-overview)
 - [Remoteproc Linux Kernel Configuration](#remoteproc-linux-kernel-configuration)
 - [Remoteproc Linux Device Tree Configuration](#remoteproc-linux-device-tree-configuration)
 - [Yocto BSP Remoteproc Configuration](#yocto-bsp-remoteproc-configuration)
@@ -24,7 +24,7 @@
 
 This page provides a brief introduction to the Remote Processor Framework (Remoteproc) used to control the Life Cycle Management (LCM) of a remote AMP context (RTOS/BM) from Linux.
 
-The remoteproc APIs provide life cycle management of remote processors by performing the following functions:
+The Remoteproc APIs provide life cycle management of remote processors by performing the following functions:
 
 - Allow the master context to load code and data sections of the remote context firmware image (in ELF format) to appropiate locations in memory
 - Start and stop exection of the remote context firmware
@@ -41,7 +41,7 @@ The role of the resource table is to:
 - Describe contiguous memory carveouts required by the remote firmware's code and data sections
 - Support additional resource entries to announce additional features supported by the remote processor, such as virtIO devices for RPMsg-based communication
 
-The remoteproc framework on the master context parses the remote context resource table to allocate appropiate system resources, create virtIO devices for rpmsg communication, etc.
+The Remoteproc framework on the master context parses the remote context resource table to allocate appropiate system resources, create virtIO devices for rpmsg communication, etc.
 
 The resource table configuration and entries may mary depending on application requirements. [Section 2.1](#polarfire-soc-default-resource-table) describes the default resource table used in PolarFire SoC RPMsg application demos. Alternatively, [Section 2.2](a-resource-table-example-without-rpmsg-communication) describes a simple resource table that can be used on custom applications without RPmsg communication.
 
@@ -98,7 +98,7 @@ const struct remote_resource_table __attribute__((section(".resource_table"))) r
 
 <a name="remoteproc-boot-modes"></a>
 
-## RemoteProc Boot Modes
+## AMP Boot Modes
 
 There are two possible ways to load and start the remote context firmware; an Early Boot mode or a Late Boot mode. The following sections explain each modes in more detail.
 
@@ -112,11 +112,11 @@ This is the default mode configured the PolarFire SoC Yocto BSP when using the I
 
 In the Early boot flow, the remote context firmware is booted by the HSS before Linux boots.
 
-Once Linux boots, the remoteproc framework in Linux will automatically attach itself to the remote context. Once attached, it is possible for Linux to control the life cycle of the remote context.
+Once Linux boots, the Remoteproc framework in Linux will automatically attach itself to the remote context. Once attached, it is possible for Linux to control the life cycle of the remote context.
 
 For RPMsg communication to work in this mode, a `rsc-table` property pointing to the location in memory where the resource table was loaded by the remote processor should be provided in the Linux device Tree.
 
-For more information on the device tree settings for remoteproc, please refer to the [Remoteproc Linux Device Tree Configuration](#remoteproc-linux-device-tree-configuration) section.
+For more information on the device tree settings for Remoteproc, please refer to the [Remoteproc Linux Device Tree Configuration](#remoteproc-linux-device-tree-configuration) section.
 
 <a name="late-boot-mode"></a>
 
@@ -150,14 +150,10 @@ payloads:
 
 #### Booting the remote context using Remoteproc
 
-When using the Late Boot mode, the Linux remoteproc framework will search and parse the resource table from the remote context firmware ELF file.
+When using the Late Boot mode, the Linux Remoteproc framework will search and parse the resource table from the remote context firmware ELF file.
 Therefore, there is no need to provide a rsc-table property in the device tree as done in the Early Boot mode.
 
-There are two possibilities to load and start the remote processor from Linux when using the Late Boot mode:
-
-- Start the firmware using the SysFS interface
-
-- Auto boot: Automatically starts the firmware during the remoteproc driver probing
+The SysFS interface can be used to start and load the remote processor firmware from Linux when operating in late boot mode
 
 <a name="booting-the-remote-context-using-sysfs"></a>
 
@@ -173,7 +169,7 @@ The Linux Remoteproc framework will search for an ELF file with the name `rproc-
 # echo start >/sys/class/remoteproc/remoteproc0/state
 ```
 
-Optionally, if the firmware elf file is different from the default one (rproc-remote-context-fw), the following command can be used to set the name of the firmware used by the remoteproc framework:
+Optionally, if the firmware elf file is different from the default one (rproc-remote-context-fw), the following command can be used to set the name of the firmware used by the Remoteproc framework:
 
 ```bash
 # echo -n <firmware_name.elf> > /sys/class/remoteproc/remoteproc0/firmware
@@ -185,49 +181,25 @@ Optionally, to stop the firmware running in the remote context, the following co
 # echo stop >/sys/class/remoteproc/remoteproc0/state
 ```
 
-<a name="automatically-booting-firmware-using-remoteproc-advanced"></a>
-
-#### Automatically Booting Firmware using RemoteProc (Advanced)
-
-Alternatively, there is an option that allows the firmware to boot automatically when the remoteproc driver is probed by Linux. This can be achieved by setting the `microchip,auto-boot` device tree property in the remoteproc stanza.
-
-This requires additional configurations that are not enabled by default. Therefore, it is recommended for users who are familiar with Linux kernel and build systems.
-
-It is worth mentioning that the firmware must be present in /lib/firmware before the remoteproc driver is probed. However, in normal conditions, the remoteproc driver is probed before the filesystem is mounted, and the firmware is consequently not available during the Linux driver probing phase. Possible solutions could be:
-
-- To use an initramfs
-- To compile remoteproc as a module and not as kernel built-in driver
-
-To enable auto boot support, the `microchip,auto-boot` property can be enabled in the Linux Icicle Kit Device Tree as shown below
-
-```dts
-    rproc_contextb: remote-context {
-        compatible = "microchip,ipc-sbi-remoteproc";
-        ...
-        microchip,auto-boot;
-        status = "okay";
-    };
-```
-
 <a name="remoteproc-linux-overview"></a>
 
-## RemoteProc Linux Overview
+## Remoteproc Linux Overview
 
 ![remoteproc-overview](./images/remoteproc/arch-remoteproc.jpg)
 
 On the Linux side, the Remoteproc relies on the following components:
 
-- **Linux Remoteproc framework**: Generic Linux remoteproc framework drivers, including the core remoteproc Linux driver, ELF loader and additional drivers to interact with SysFS, virtIO, debugFS, etc. For more information on the Linux remoteproc framework, please refer to the [Linux Remoteproc documentation](https://www.kernel.org/doc/Documentation/remoteproc.txt)
+- **Linux Remoteproc framework**: Generic Linux Remoteproc framework drivers, including the core Remoteproc Linux driver, ELF loader and additional drivers to interact with SysFS, virtIO, debugFS, etc. For more information on the Linux Remoteproc framework, please refer to the [Linux Remoteproc documentation](https://www.kernel.org/doc/Documentation/remoteproc.txt)
 
-- **Microchip Inter-Processor Communication (IPC) Remoteproc driver**: This is the remoteproc platform specific driver that interacts with the Linux Remoteproc framework.
+- **Microchip Inter-Processor Communication (IPC) Remoteproc driver**: This is the Remoteproc platform specific driver that interacts with the Linux Remoteproc framework.
 
-The remoteproc components mentioned above interact with other subsystems including the Inter-Processor communication driver (mailbox subsystem) and the rpmsg subsystem.
+The Remoteproc components mentioned above interact with other subsystems including the Inter-Processor communication driver (mailbox subsystem) and the rpmsg subsystem.
 
 <a name="remoteproc-linux-kernel-configuration"></a>
 
 ## Remoteproc Linux Kernel Configuration
 
-To enable the RPMsg communication on PolarFire SoC using Linux, remoteproc must be enabled in the Linux kernel by using the following kernel configurations:
+To enable the RPMsg communication on PolarFire SoC using Linux, Remoteproc must be enabled in the Linux kernel by using the following kernel configurations:
 
 ```Kconfig
 CONFIG_MCHP_IPC_SBI_REMOTEPROC=y
@@ -245,7 +217,7 @@ The default AMP device tree overlay provided in the [dt-overlay-mchp repository]
 - start, stop and load firmware to the remote AMP context
 - vring and buffers required for RPMsg communication between Linux and the remote context (FreeRTOS/BM)
 
-The [Microchip IPC Remoteproc bindings](https://mi-v-ecosystem.github.io/redirects/linux4microchip-bindings-microchip-miv-remoteproc) documentation deals with all required and optional device tree properties for remoteproc.
+The [Microchip IPC Remoteproc bindings](https://mi-v-ecosystem.github.io/redirects/linux4microchip-bindings-microchip-miv-remoteproc) documentation deals with all required and optional device tree properties for Remoteproc.
 
 ## Yocto BSP Remoteproc Configuration
 

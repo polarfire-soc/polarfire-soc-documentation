@@ -14,6 +14,9 @@
 - [RemoteProc Linux Overview](#remoteproc-linux-overview)
 - [Remoteproc Linux Kernel Configuration](#remoteproc-linux-kernel-configuration)
 - [Remoteproc Linux Device Tree Configuration](#remoteproc-linux-device-tree-configuration)
+- [Yocto BSP Remoteproc Configuration](#yocto-bsp-remoteproc-configuration)
+  - [Default Boot Behavior](#default-boot-behavior)
+  - [Choosing Boot Mode](#choosing-boot-mode)
 
 <a name="introduction-to-remoteproc"></a>
 
@@ -98,6 +101,8 @@ const struct remote_resource_table __attribute__((section(".resource_table"))) r
 ## RemoteProc Boot Modes
 
 There are two possible ways to load and start the remote context firmware; an Early Boot mode or a Late Boot mode. The following sections explain each modes in more detail.
+
+Note: When building an AMP image using the [meta-mchp-polarfire-soc BSP](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp) see the Remoteproc [Yocto BSP Remoteproc Configuration](#yocto-bsp-remoteproc-configuration) section.
 
 <a name="early-boot-mode"></a>
 
@@ -241,3 +246,18 @@ The default AMP device tree overlay provided in the [dt-overlay-mchp repository]
 - vring and buffers required for RPMsg communication between Linux and the remote context (FreeRTOS/BM)
 
 The [Microchip IPC Remoteproc bindings](https://mi-v-ecosystem.github.io/redirects/linux4microchip-bindings-microchip-miv-remoteproc) documentation deals with all required and optional device tree properties for remoteproc.
+
+## Yocto BSP Remoteproc Configuration
+
+### Default Boot Behavior
+
+When an AMP image is built using the [meta-mchp-polarfire-soc BSP](https://mi-v-ecosystem.github.io/redirects/linux4microchip-bindings-microchip-miv-remoteproc)
+the AMP boot mode is set to early boot, and the HSS automatically boots the FreeRTOS AMP example at startup.
+
+### Choosing Boot Mode
+
+By default, the FreeRTOS AMP example is early booted by the HSS. To change this behavior, add `DISTRO_FEATURES_BACKFILL_CONSIDERED = "hss-early-boot-freertos"`
+to local.conf to disable the default. Then either:
+
+- Add a different distro feature (e.g., `DISTRO_FEATURES:append = " hss-early-boot-bm"` for the bare metal AMP demo)
+- Do not add a distro feature, leaving the AMP context idle for [late boot](#late-boot-mode).

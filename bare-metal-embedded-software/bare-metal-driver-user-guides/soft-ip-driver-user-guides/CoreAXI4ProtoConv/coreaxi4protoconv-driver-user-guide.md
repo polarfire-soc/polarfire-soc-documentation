@@ -34,6 +34,7 @@
   - [PCDMA_S2MM_get_int_src](#pcdmas2mmgetintsrc)
   - [PCDMA_S2MM_clr_int_src](#pcdmas2mmclrintsrc)
   - [PCDMA_S2MM_get_len](#pcdmas2mmgetlen)
+  - [PCDMA_S2MM_get_TUSER_sideband](#pcdmas2mmgettusersideband)
   - [PCDMA_MM2S_configure](#pcdmamm2sconfigure)
   - [PCDMA_MM2S_start_transfer](#pcdmamm2sstarttransfer)
   - [PCDMA_MM2S_get_status](#pcdmamm2sgetstatus)
@@ -41,6 +42,7 @@
   - [PCDMA_MM2S_disable_irq](#pcdmamm2sdisableirq)
   - [PCDMA_MM2S_get_int_src](#pcdmamm2sgetintsrc)
   - [PCDMA_MM2S_clr_int_src](#pcdmamm2sclrintsrc)
+  - [PCDMA_MM2S_set_TUSER_sideband](#pcdmamm2ssettusersideband)
 
 <div id="TitlePage" data-type="text">
 
@@ -116,6 +118,11 @@ When S2MM Undefined Burst Length Enable feature is enabled in the
 CoreAXI4ProtoConv IP configurator, see the PCDMA_S2MM_get_len() function for
 additional details.
 
+When S2MM TUSER Descriptor Enable feature is enabled in the CoreAXI4ProtoConv IP
+configurator, the PCDMA_S2MM_get_TUSER_sideband() function can be used to capture
+and retrieve the TUSER sideband information sampled from the AXI4-Stream interface
+at the end of the most recent packet (when T_AXI4S_TLAST is asserted).
+
 PCDMA_S2MM_get_status() function is used to get the current status of the S2MM
 data transfer.
 
@@ -153,6 +160,12 @@ PCDMA_MM2S_configure() function to configure transfer size (indicates the total
 number of bytes to be transferred), 64-bit address, command ID, and burst type.
 After the configuration, the PCDMA_MM2S_start_transfer() function begins the
 data transfer from the AXI4-Memory Mapped interface and AXI4-Stream interface.
+
+When MM2S TUSER Descriptor Enable feature is enabled in the CoreAXI4ProtoConv IP
+configurator, the PCDMA_MM2S_set_TUSER_sideband() function can be used to program
+the TUSER sideband information that will be driven on the AXI4-Stream interface
+during MM2S transfers. This function should be called before starting the MM2S
+transfer.
 
 PCDMA_MM2S_get_status() function is used to get the current status of the MM2S
 data transfer.
@@ -620,7 +633,8 @@ driver functions that operate on this CoreAXI4ProtoConv instance.
 ### Return
 <div id="Functions$PCDMA_S2MM_get_status$description$return" data-type="text">
 
-This function returns the current value of the S2MM status register.
+This function returns the current value of the S2MM status register. When a
+null pointer is passed, it returns 0xFFFFFFFFUL.
 
 
 </div>
@@ -892,6 +906,7 @@ driver functions that operate on this CoreAXI4ProtoConv instance.
 <div id="Functions$PCDMA_S2MM_get_int_src$description$return" data-type="text">
 
 This function returns the current value of the S2MM interrupt source register.
+When a null pointer is passed, it returns 0xFFFFFFFFUL.
 
 
 </div>
@@ -1071,7 +1086,8 @@ driver functions that operate on this CoreAXI4ProtoConv instance.
 <div id="Functions$PCDMA_S2MM_get_len$description$return" data-type="text">
 
 This function returns value representing number of bytes received in the
-undefined burst transaction.
+undefined burst transaction. When a null pointer is passed, it returns
+0xFFFFFFFFUL.
 
 
 </div>
@@ -1097,6 +1113,97 @@ undefined burst transaction.
                                        S2MM_CMD_ID, PCDMA_BURST_TYPE_INCR);
     PCDMA_S2MM_start_transfer(&g_pcdma);
     uint32_t reg_value = PCDMA_S2MM_get_len(&g_pcdma);
+```
+
+</div>
+
+
+ -------------------------------- 
+<a name="pcdmas2mmgettusersideband"></a>
+## PCDMA_S2MM_get_TUSER_sideband
+<a name="prototype"></a>
+### Prototype 
+
+<div id="Functions$PCDMA_S2MM_get_TUSER_sideband$prototype" data-type="code">
+
+    uint32_t
+    PCDMA_S2MM_get_TUSER_sideband
+    (
+        PCDMA_instance_t * this_pcdma
+    );
+
+
+</div>
+
+<a name="description"></a>
+### Description
+
+<div id="Functions$PCDMA_S2MM_get_TUSER_sideband$description" data-type="text">
+
+The PCDMA_S2MM_get_TUSER_sideband() function captures and returns the S2MM TUSER
+sideband information sampled from the AXI4-Stream interface. The value reflects
+the TUSER descriptor sampled at the end of the most recent packet, specifically
+when T_AXI4S_TLAST is asserted. This function is valid only when the S2MM TUSER
+Descriptor Enable is set to 1. The width of the returned data corresponds to the
+configured S2MM TUSER Descriptor Width. Any unused bits are reserved and read as
+zero.
+
+Note: Use this API only when the S2MM TUSER Descriptor Enable is set to 1 in the
+CoreAXI4ProtoConv IP configurator.
+
+</div>
+
+
+ --------------------------- 
+
+<a name="parameters"></a>
+### Parameters
+#### this_pcdma
+<div id="Functions$PCDMA_S2MM_get_TUSER_sideband$description$parameters$this_pcdma" data-type="text" data-name="this_pcdma">
+
+The this_pcdma parameter is a pointer to a PCDMA_instance_t structure that holds
+all the data related to the CoreAXI4ProtoConv instance being initialized. A
+pointer to this data structure is used in all subsequent calls to the PCDMA
+driver functions that operate on this CoreAXI4ProtoConv instance.
+
+
+</div>
+
+<a name="return"></a>
+### Return
+<div id="Functions$PCDMA_S2MM_get_TUSER_sideband$description$return" data-type="text">
+
+This function returns the S2MM TUSER sideband information. It returns
+0xFFFFFFFFUL when a NULL instance pointer is passed or an invalid TUSER
+descriptor width is configured.
+
+
+</div>
+
+##### Example 
+<div id="Functions$PCDMA_S2MM_get_TUSER_sideband$description$example$Example 1" data-type="text" data-name="Example ">
+
+</div>
+
+<div id="Functions$PCDMA_S2MM_get_TUSER_sideband$description$example$Example 1" data-type="code" data-name="Example ">
+
+
+```
+    #define COREAXI4PROTOCONV_BASE_ADDR                 0x60030000u
+    #define DDR_BASE_ADDR                               0x80010000u
+    #define S2MM_CMD_ID                                 0xb6
+    #define TRANSFER_SIZE_BYTES                         1000
+
+    PCDMA_instance_t  g_pcdma;
+
+    PCDMA_init(&g_pcdma, COREAXI4PROTOCONV_BASE_ADDR);
+    PCDMA_S2MM_enable_irq(&g_pcdma, S2MM_IE_DONE_IRQ | S2MM_IE_AXI4_ERR_IRQ);
+    PCDMA_S2MM_configure(&g_pcdma, TRANSFER_SIZE_BYTES, DDR_BASE_ADDR, \
+                                       S2MM_CMD_ID, PCDMA_BURST_TYPE_INCR);
+    PCDMA_S2MM_start_transfer(&g_pcdma);
+
+    while ((PCDMA_S2MM_get_status(&g_pcdma) & S2MM_IE_DONE_IRQ) == 0U);
+    uint32_t TUSER_SIDEBAND_DATA = PCDMA_S2MM_get_TUSER_sideband(&g_pcdma);
 ```
 
 </div>
@@ -1351,7 +1458,8 @@ driver functions that operate on this CoreAXI4ProtoConv instance.
 ### Return
 <div id="Functions$PCDMA_MM2S_get_status$description$return" data-type="text">
 
-This function returns the current value of the MM2S status register.
+This function returns the current value of the MM2S status register. When a null
+pointer is passed, it returns 0xFFFFFFFFUL.
 
 
 </div>
@@ -1619,6 +1727,7 @@ driver functions that operate on this CoreAXI4ProtoConv instance.
 <div id="Functions$PCDMA_MM2S_get_int_src$description$return" data-type="text">
 
 This function returns the current value of the MM2S interrupt source register.
+When a null pointer is passed, it returns 0xFFFFFFFFUL.
 
 
 </div>
@@ -1740,6 +1849,104 @@ This function does not return any value.
                                           MM2S_CMD_ID, PCDMA_BURST_TYPE_INCR);
     PCDMA_MM2S_start_transfer(&g_pcdma);
     PCDMA_MM2S_clr_int_src(&g_pcdma, MM2S_IE_DONE_IRQ | MM2S_IE_AXI4_ERR_IRQ);
+```
+
+</div>
+
+
+ -------------------------------- 
+<a name="pcdmamm2ssettusersideband"></a>
+## PCDMA_MM2S_set_TUSER_sideband
+<a name="prototype"></a>
+### Prototype 
+
+<div id="Functions$PCDMA_MM2S_set_TUSER_sideband$prototype" data-type="code">
+
+    void
+    PCDMA_MM2S_set_TUSER_sideband
+    (
+        PCDMA_instance_t * this_pcdma,
+        uint32_t tuser_value
+    );
+
+
+</div>
+
+<a name="description"></a>
+### Description
+
+<div id="Functions$PCDMA_MM2S_set_TUSER_sideband$description" data-type="text">
+
+The PCDMA_MM2S_set_TUSER_sideband() function programs the MM2S TUSER Sideband
+Register, which provides TUSER sideband information on the AXI4-Stream interface
+during MM2S transfers. This function must be called only when the MM2S TUSER
+Descriptor Enable is set to 1. The width of valid data written to the register
+corresponds to the configured MM2S TUSER Descriptor Width. Any unused bits are
+reserved and are ignored by the hardware.
+
+Note: This API must be used when MM2S TUSER Descriptor Enable is set to 1 in the
+CoreAXI4ProtoConv IP configurator.
+
+</div>
+
+
+ --------------------------- 
+
+<a name="parameters"></a>
+### Parameters
+#### this_pcdma
+<div id="Functions$PCDMA_MM2S_set_TUSER_sideband$description$parameters$this_pcdma" data-type="text" data-name="this_pcdma">
+
+The this_pcdma parameter is a pointer to a PCDMA_instance_t structure that holds
+all the data related to the CoreAXI4ProtoConv instance being initialized. A
+pointer to this data structure is used in all subsequent calls to the PCDMA
+driver functions that operate on this CoreAXI4ProtoConv instance.
+
+
+</div>
+
+#### tuser_value
+<div id="Functions$PCDMA_MM2S_set_TUSER_sideband$description$parameters$tuser_value" data-type="text" data-name="tuser_value">
+
+Application-defined TUSER sideband value to be driven on the AXI4-Stream
+interface during the MM2S transfer. Only the least significant bits
+corresponding to the configured MM2S TUSER Descriptor Width are used.
+
+
+</div>
+
+<a name="return"></a>
+### Return
+<div id="Functions$PCDMA_MM2S_set_TUSER_sideband$description$return" data-type="text">
+
+This function does not return any value.
+
+
+</div>
+
+##### Example 
+<div id="Functions$PCDMA_MM2S_set_TUSER_sideband$description$example$Example 1" data-type="text" data-name="Example ">
+
+</div>
+
+<div id="Functions$PCDMA_MM2S_set_TUSER_sideband$description$example$Example 1" data-type="code" data-name="Example ">
+
+
+```
+    #define COREAXI4PROTOCONV_BASE_ADDR                 0x60030000u
+    #define DDR_BASE_ADDR                               0x80010000u
+    #define MM2S_CMD_ID                                 0xa6
+    #define TRANSFER_SIZE_BYTES                         1000
+    #define TUSER_VALUE                                 0xABCD
+
+    PCDMA_instance_t  g_pcdma;
+
+    PCDMA_init(&g_pcdma, COREAXI4PROTOCONV_BASE_ADDR);
+    PCDMA_MM2S_enable_irq(&g_pcdma, MM2S_IE_DONE_IRQ | MM2S_IE_AXI4_ERR_IRQ);
+    PCDMA_MM2S_set_TUSER_sideband(&g_pcdma, TUSER_VALUE);
+    PCDMA_MM2S_configure(&g_pcdma, TRANSFER_SIZE_BYTES, DDR_BASE_ADDR, \
+                                          MM2S_CMD_ID, PCDMA_BURST_TYPE_INCR);
+    PCDMA_MM2S_start_transfer(&g_pcdma);
 ```
 
 </div>

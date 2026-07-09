@@ -62,7 +62,8 @@ The .zip file in the release assets should be downloaded and extracted to access
 
 ### Linux image
 
-The [PolarFire SoC Yocto BSP](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp) and [Microchip Buildroot External](https://mi-v-ecosystem.github.io/redirects/repo-microchip-buildroot-external) repositories allow users to create a minimal Linux image for several development kits. Alternatively, a pre-built minimal Linux image is provided as an asset in the Meta PolarFire SoC Yocto BSP releases [page](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp).
+The [PolarFire SoC Yocto BSP](https://mi-v-ecosystem.github.io/redirects/repo-meta-polarfire-soc-yocto-bsp) and [Microchip Buildroot External](https://mi-v-ecosystem.github.io/redirects/repo-microchip-buildroot-external) repositories allow users to create a minimal Linux image for several development kits.
+Alternatively, a pre-built minimal Linux image is provided as an asset in the Meta PolarFire SoC Yocto BSP releases [page](https://mi-v-ecosystem.github.io/redirects/releases-meta-polarfire-soc-yocto-bsp).
 
 Linux images with a '.wic' or ".wic.gz" file extension use a GUID partition table (GPT) and are suitable for programming to the eMMC or an SD card. For Microchip Buildroot External, an image with the name `sdcard.img` is use instead. For more information on how to program any of these images into storage, plese refer to the steps outlined in the [eMMC](#emmc) or [SD](#sd-card-content-update-procedure) sections.
 

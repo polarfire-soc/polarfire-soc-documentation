@@ -231,7 +231,7 @@ for Windows and Linux from [openssl.org][openssl.org]. OpenSSL is a robust,
 commercial-grade, fully-featured toolkit for general-purpose cryptography and secure communication.
 
 OpenSSL can be compiled from source, installed via third-party community contributed binaries
-for Windows etc. (available from [openssl's website][openssl's website]
+for Windows etc. (available from [openssl's wiki][openssl's website]
 or installed via a Linux distribution package manager (e..g., for Ubuntu, apt install openssl).
 
 This section will describe how to generate the HSS Payload Signing Keys (HPSK and HPSQ) and FIT Image Signing Keys.
@@ -240,7 +240,7 @@ Before continuing with this document, please make sure you have set up Yocto on 
 in the "Prerequsites" section of the PolarFire SoC Yocto BSP [README][meta-mchp-common README].
 
 [openssl.org]:https://www.openssl.org/
-[openssl's website]:https://www.openssl.org/community/binaries.html
+[openssl's wiki]:https://github.com/openssl/openssl/wiki/Binaries
 
 1. First, setup the Bitbake environment if you haven't already by following the instructions in the "Usage" section of the PolarFire SoC Yocto BSP [README][meta-mchp-common README]
 

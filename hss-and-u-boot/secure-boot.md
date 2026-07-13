@@ -38,7 +38,7 @@ The are three steps to the boot image generation:
 
 The easiest way to generate a public/private key pair is to use the OpenSSL library, available for Windows and Linux from [openssl.org](https://www.openssl.org/). OpenSSL is a robust, commercial-grade, fully-featured toolkit for general-purpose cryptography and secure communication.
 
-OpenSSL can be compiled from source, installed via third-party community contributed binaries for Windows etc. (available from [openssl's website](https://www.openssl.org/community/binaries.html) or installed via a Linux distribution package manager (e..g., for Ubuntu, `apt install openssl`).
+OpenSSL can be compiled from source, installed via third-party community contributed binaries for Windows etc. (available from [openssl's website](https://github.com/openssl/openssl/wiki/Binaries) or installed via a Linux distribution package manager (e..g., for Ubuntu, `apt install openssl`).
 
 With OpenSSL installed, generate a private key, and a public key from the private key, as follows:
 

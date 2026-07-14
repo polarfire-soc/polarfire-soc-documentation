@@ -212,10 +212,7 @@ configurations that need to be considered for enforcing U-Boot security. For exa
 someone to be able to tamper with the U-Boot environment script or arbitrarily execute whatever
 U-Boot commands they would like. For this reason, it is recommended to lock-down U-Boot by disabling
 some configurations, such as autoboot, command line and the use of U-Boot boot scripts, since they
-could be used by an attacker to alter the boot sequence. For additional details on securing U-Boot
-see the document by [F-Secure][F-Secure].
-
-[F-Secure]: https://www.f-secure.com/content/dam/labs/docs/2020-05-u-booting-securely-wp-final.pdf
+could be used by an attacker to alter the boot sequence.
 
 <a name="creating-the-keys"></a>
 

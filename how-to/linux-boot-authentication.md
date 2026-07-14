@@ -553,4 +553,4 @@ other configurations such as user keys and passcodes that should be considered t
 enforce security. For more information please refer to the
 [PolarFire SoC FPGA Security User Guide][PolarFire SoC FPGA Security User Guide].
 
-[PolarFire SoC FPGA Security User Guide]: https://ww1.microchip.com/downloads/aemDocuments/documents/FPGA/ProductDocuments/UserGuides/Microchip_PolarFire_FPGA_and_PolarFire_SoC_FPGA_Security_User_Guide_VA+%282%29.pdf
+[PolarFire SoC FPGA Security User Guide]: https://mi-v-ecosystem.github.io/redirects/microchip-polarfire-security-user-guide

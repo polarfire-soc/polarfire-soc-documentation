@@ -19,7 +19,7 @@
 
 This document describes how to use crypto hardware acceleration on PolarFire SoC.
 
-While PolarFire SoC supports rich set of [cryptography services](https://www.microchip.com/content/dam/mchp/documents/FPGA/ProductDocuments/UserGuides/Microchip_PolarFire_FPGA_and_PolarFire_SoC_FPGA_Security_User_Guide_VA%20(2).pdf), currently only the AES services are supported in software.
+While PolarFire SoC supports rich set of [cryptography services](https://mi-v-ecosystem.github.io/redirects/microchip-polarfire-security-user-guide), currently only the AES services are supported in software.
 
 <a name="hardware-support"></a>
 

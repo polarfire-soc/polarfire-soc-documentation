@@ -40,6 +40,7 @@
   - [Programming The SPI Flash On A PolarFire SoC Board And Booting Via HSS](./how-to/programming-the-spi-flash-on-a-polarfire-soc-board-and-booting-via-hss.md)
   - [Re-programming the FPGA from Linux](./how-to/re-programming-the-fpga-from-linux.md)
   - [Cryptography with OpenSSL](./how-to/cryptography-with-openssl.md)
+  - [Linux Power Management](./how-to/linux-power-management.md)
 
 - HSS And U-Boot
   - [Adding a New Customer-Specific Service to HSS](./hss-and-u-boot/add-new-custom-service.md)

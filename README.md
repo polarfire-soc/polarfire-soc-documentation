@@ -32,6 +32,7 @@
 
 - How To
   - [Booting from QSPI](./how-to/booting-from-qspi.md)
+  - [Booting from SNVM](./how-to/booting-from-snvm.md)
   - [Booting Linux from TFTP](./how-to/tftpboot-with-uboot.md)
   - [Debug From Scratchpad](./how-to/debug-from-scratchpad.md)
   - [Linux Boot Authentication](./how-to/linux-boot-authentication.md)

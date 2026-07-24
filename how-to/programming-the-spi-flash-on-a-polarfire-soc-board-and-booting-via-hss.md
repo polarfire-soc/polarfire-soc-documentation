@@ -103,9 +103,13 @@ $ sudo pip install bincopy
 
 ## Use Libero to program the SPI flash
 
-Clone the Icicle Kit reference design (`git clone
- https://github.com/polarfire-soc/icicle-kit-reference-design.git`) and
-Open Libero. Either click `Project→Execute Script` (or press CTRL-u)
+Clone the Icicle Kit reference design
+
+```shell
+$ git clone https://github.com/polarfire-soc/icicle-kit-reference-design.git
+```
+
+and open Libero. Either click `Project→Execute Script` (or press CTRL-u)
 to get the `Execute Script` dialog, and click "..." to select the
 Icicle Kit reference design Tcl script:
 

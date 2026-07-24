@@ -216,7 +216,7 @@ If both QSPI and an MMC services are enabled in the HSS, you must specify the de
 
 ### Ubuntu Server Image
 
-An Ubuntu preinstalled server image is available for the Icicle Kit on the official [Ubuntu website](https://ubuntu.com/download/risc-v).
+An Ubuntu preinstalled server image is available for the Icicle Kit on the official [Ubuntu website](https://ubuntu.com/download/risc-v/canonical-built).
 
 This section describes how to program an Ubuntu server image to an SD card or on-board eMMC on the Icicle Kit.
 

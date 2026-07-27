@@ -98,7 +98,7 @@ before Linux regains control, producing output similar to the following:
 [  234.383363] macb 20112000.ethernet end0: Link is Up - 1Gbps/Full - flow control off
 ```
 
-Newer HSS versions (TBD) support extra options via Kconfig:
+HSS versions later than v2026.04.1 support extra options via Kconfig:
 
 - SERVICE\_OPENSBI\_SUSPEND\_CLOCK\_SCALING
 

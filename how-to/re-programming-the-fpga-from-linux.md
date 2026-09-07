@@ -693,7 +693,7 @@ section is limited to that.
 
 The SPI directory is a collection of image descriptor pointers that
 point to the beginning of the programming image. For more information,
-please refer to section 10.2 of the [PolarFire SoC FPGA Programming User Guide][PolarFire SoC FPGA Programming User Guide].
+please refer to section 11.2 of the [PolarFire SoC FPGA Programming User Guide][PolarFire SoC FPGA Programming User Guide].
 
 The SPI directory is laid out like so:
 

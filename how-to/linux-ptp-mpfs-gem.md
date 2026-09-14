@@ -15,6 +15,8 @@ some information on basic testing.
 - [PTP Test Procedure](#ptp-test-procedure)
   - [Test Setup](#test-setup)
   - [Using LinuxPTP](#using-linuxptp)
+    - [Using Layer 2 Transport](#using-layer-2-transport)
+    - [Using UDP/IPv4 Transport](#using-udpipv4-transport)
 
 <a name="requirements"></a>
 
@@ -70,9 +72,12 @@ For more information, please refer to the Time Stamping Unit section in the [Pol
 
 This method uses Ethernet frames at Layer 2 to synchronize clocks across the network.
 
-- PTP over IP (UDP/IP) is not supported.
+- PTP over IP (UDP/IP) is supported with a workaround.
 
-PTP frames must be transmitted as raw Ethernet frames, not encapsulated in UDP/IP packets.
+The GEM has an erratum (ETH-1712) where its timestamp filter rejects PTP v2.1 packets, which are the default in linuxptp >= 4.0.
+
+It is necessary to force the userspace software to use PTP v2.0 for the GEM to correctly recognize and timestamp the packets.
+This is only applicable for IPv4, as IPv6 uses a separate filter that is not affected, thus it should work out of the box.
 
 <a name="linux-requirements-for-ptp"></a>
 
@@ -124,6 +129,22 @@ In the Linux ecosystem, Linux PTP is the most popular implementation of the Prec
 
 The linuxptp package is included in both Microchip Buildroot and Yocto Project layer starting from PolarFire SoC release v2025.10.1 and onwards.
 
+For versions prior to v2026.10, an erratum in the Ethernet controller (ETH-1712) prevents hardware timestamping of UDP/IPv4 PTP v2.1 packets.
+Layer 2 and UDP/IPv6 are not affected. Use PTP v2.0 for UDP/IPv4.
+
+Use linuxptp 3.1.1, which uses PTP v2.0 by default, or linuxptp 4.2 or later
+with the following configuration option:
+
+```text
+[global]
+ptp_minor_version 0
+```
+
+From version v2026.10 onward, the configuration in Microchip builds is updated to include the workaround.
+
+Please note that manually invoking `ptp4l` does not read it by default. When running `ptp4l` manually, it is necessary to either provide the configuration
+file path with `-f /etc/linuxptp/ptp4l.conf` or override just the minor version with `--ptp_minor_version 0`.
+
 <a name="test-setup"></a>
 
 ### Test Setup
@@ -143,6 +164,10 @@ The two PolarFire SoC boards are connected via their respective Ethernet ports u
 <a name="using-linux-ptp"></a>
 
 ### Using LinuxPTP
+
+The following examples use the default two-step mode and end-to-end (E2E) delay mechanism.
+
+#### Using Layer 2 Transport
 
 1. On the first board, run ptp4l in master mode using the default configuration (two-step mode, E2E delay request-response), and IEEE 802.3 (Ethernet) network transport:
 
@@ -181,3 +206,31 @@ The two PolarFire SoC boards are connected via their respective Ethernet ports u
     ptp4l[328.182]: master offset        173 s2 freq   -7172 path delay       901
     ptp4l[329.182]: master offset        250 s2 freq   -7043 path delay       872
     ```
+
+#### Using UDP/IPv4 Transport
+
+Configure an IPv4 address on each Ethernet interface with addresses in the same subnet:
+
+```text
+# First board
+ip addr add 192.168.50.1/24 dev eth0
+ip link set eth0 up
+
+# Second board
+ip addr add 192.168.50.2/24 dev eth0
+ip link set eth0 up
+```
+
+1. On the first board, run ptp4l in master mode using UDP/IPv4 transport:
+
+    ```text
+    ptp4l -i eth0 -m -4 --ptp_minor_version 0
+    ```
+
+2. On the second board, run ptp4l in slave mode using UDP/IPv4 transport:
+
+    ```text
+    ptp4l -i eth0 -m -s -4 --ptp_minor_version 0
+    ```
+
+The slave output should show a transition to the `SLAVE` state. The master offset values should stabilize.

@@ -6,6 +6,7 @@
   - [MPFS PMP Demo](./applications-and-demos/mpfs-pmp-demo.md)
   - [MPFS Video kit H264 Demo](./applications-and-demos/mpfs-video-kit-h264-demo.md)
   - [MPFS Video kit H264 Modlar Pipeline Demo](./applications-and-demos/mpfs-video-kit-h264-modular-pipeline-demo.md)
+  - [MPFS PMP AMP Demo](./applications-and-demos/mpfs-pmp-amp-demo.md)
   - [MPFS Power-Saving Demo](./applications-and-demos/pac1934-driver-user-guide.md)
 
   - Asymmetric Multiprocessing
